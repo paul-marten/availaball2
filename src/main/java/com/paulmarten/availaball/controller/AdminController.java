@@ -26,15 +26,22 @@ public class AdminController {
 	
     @RequestMapping(path="/index", method= RequestMethod.GET)
     public String goIndex(){
-        return "/admin/index";
+        return "/admin/page/index";
     }
 
     @RequestMapping(path="/user", method= RequestMethod.GET)
     public String goUser(Model model){
     	model.addAttribute("account", new Account());
-        return "/admin/user";
+        return "/admin/page/user";
     }
 
+    @RequestMapping(path="/map", method= RequestMethod.GET)
+    public String goMap(){
+        return "/admin/page/map";
+    }
+
+    
+    
     @RequestMapping(value = {"/logout"}, method = RequestMethod.POST)
     public String logout(){
         return "redirect:/";
@@ -43,13 +50,12 @@ public class AdminController {
     @RequestMapping(value = "/view-lapangan/{id}")
     public String viewField(@PathVariable int id, Model model){
         model.addAttribute("view",futsalFieldService.findFutsalFieldById(id));
-        return "/admin/view-lapangan";
+        return "/admin/page/view-lapangan";
     }
-    
-//    @RequestMapping(value = "/delete-field/{id}")
-//    public String editField(@PathVariable int id, Model model){
-//    	futsalFieldService.deleteFutsalField(id);
-//        return "/admin/index";
-////    	return "redirect:admin/index";
-//    }
+    @RequestMapping(value = "/edit-field/{id}")
+    public String editField(@PathVariable int id, Model model){
+        model.addAttribute("view",futsalFieldService.findFutsalFieldById(id));
+        return "/admin/page/edit-field";
+    }
+
 }

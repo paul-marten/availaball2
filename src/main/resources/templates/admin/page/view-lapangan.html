@@ -1,17 +1,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title></title>
+<title>Availaball</title>
 <th:block th:replace="/admin/layout :: head"></th:block>
+ <link rel="stylesheet" th:href="@{/css/plugins/view-field.css}" />
 </head>
 
 <body>
 	<div id="wrapper">
-		<div th:replace="/fragment/top :: top-header"></div>
+		<div th:replace="/admin/fragment/top :: top-header"></div>
 
 	 <div id="page-wrapper">
 				<div layout:fragment="content">
 				<th:block layout:fragment="content">
             <div class="container-fluid">
+
                 <!-- Page Heading -->
                 <div class="row">
             
@@ -44,7 +46,7 @@
                         </div>
                         <div>
                             <label class="text">
-                               <span th:text="${view.account.detailAccount.name}"></span>
+                               <span th:text="${view.account.username}"></span>
                             </label>
                         </div>
 
@@ -56,7 +58,7 @@
 
                         <!-- Field img -->
                         <div class="col-md-6 mdtop6">
-                            <img th:src="@{(${view.photo})}"  height="168" width="360">
+                            <img src="/img/aa.jpg"  height="168" width="360">
                         </div>        
                         <!--end of field img-->
 
@@ -64,14 +66,10 @@
                             <!-- detail -->
                         <div  class="col-md-6 mdtop2 " >
                         <div>
-                            <label class="titles">Bolalob Futsal Field</label>
+                            <label class="titles"><span th:text="${view.fieldName}"></span></label>
                         </div>    
                         <div class="labels">
-                            <p>
-                            <br>Jl. Raya Kebayoran Lama</br>
-                            <br> RT/RW</br>
-                            <br>Jakarta Selatan</br>
-                            </p>
+                            <span th:text="${view.location}"></span>
                         </div>       
                         </div>
                         <!-- end of detail-->
@@ -85,7 +83,7 @@
                                 </label>
                             </div>
                             <div  >
-                                <p class="textes"><span th:text="${view.account.detailAccount.phone}"></span></p>
+                                <span th:text="${view.phoneNumber}"></span>
                             </div>
                         </div>
                         <!-- end of phone number-->
@@ -97,7 +95,7 @@
                             <label class="labels">Jumlah Lapangan</label>
                         </div>
                         <div>
-                            <p class="textes"><span th:text="${view.account.detailAccount.totalField}"></span></p>
+                            <span th:text="${view.numberOfField}"></span>
                         </div>
                         </div>
                         <!-- end of number of field -->
@@ -126,7 +124,7 @@
                             <label class="labels">Harga Normal Per Jam</label>
                         </div>
                         <div class="textes">
-                            Rp. <span th:text="${view.price}"></span>
+                            <span th:text="${view.price}"></span>
                         </div>
 
                         </div>

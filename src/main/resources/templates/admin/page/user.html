@@ -2,11 +2,14 @@
 <head>
 <title>User</title>
 <th:block th:replace ="/admin/layout :: head"></th:block>
+    <link rel="stylesheet" th:href="@{/css/plugins/main.css}" />
+        <link rel="stylesheet" th:href="@{/css/plugins/main-user.css}" />
+      <script src="/js/user.js"></script>
 </head>
 
 <body>
 <div id="wrapper">
-    <div th:replace="/fragment/top :: top-header"></div>
+    <div th:replace="/admin/fragment/top :: top-header"></div>
 
         <div id="page-wrapper">
             <div layout:fragment="content">
@@ -43,12 +46,12 @@
 					<div class="modal-body">
 				
        <p class="header" style="margin-top: 30px;text-align: center;margin-bottom: 35px;font-size: 20px;color: #000000;font-family: roboto;">Create New User</p>
-        <form method="post" accept-charset="utf-8"> 
-			 
-			 <input type="hidden" name="id" value="">
+        <form  method="post" accept-charset="utf-8"> 
+
 	         <div class="form-group has-feedback" class="form-create">
 	         	<label-s style="margin-left: 30px;"> Nama Lengkap </label-s>
-	            <input type="text" name="name" value="" placeholder="Ketik Nama Lengkap" class="form-controls" id="nama" required maxlength="80" size="30">
+	            <input type="text" name="name" value="" placeholder="Ketik Nama Lengkap" class="form-controls" id="nama" required maxlength="80" size="30">            
+	           
 	        </div>
 	
 	         <div class="form-group has-feedback" class="form-create">
@@ -64,7 +67,8 @@
 	        
 	        <div class="form-group has-feedback" class="form-create">
 	         	<label-s style="margin-left: 30px;"> Password </label-s>
-	            <input type="password" name="pass" value="" placeholder="Ketik Password" class="form-controls" id="nomor" required maxlength="80" size="30">
+	            <input type="password" name="pass" value="" placeholder="Ketik Password" class="form-controls" id="nomor" required maxlength="80" size="30">            
+	           
 	        </div>
 	        
 			<!-- penting to change -->
@@ -136,7 +140,8 @@
 		           
 		        </div>
 		              <input type="submit" name="submit" value="Edit" id="submit" class="btn-user btn-edit-default">  
-		              <input name="submit" value="Cancel" id="submit" data-dismiss="editForm" class="btn-user btn-cancel btn-cancel-default" style="margin-left: 10px;" type="submit">
+		              <input name="submit" value="Cancel" id="submit" data-dismiss="editForm" class="btn-user btn-cancel btn-cancel-default" style="margin-left: 10px;" type="submit">          
+		
 		        </form> 			
 			</div>
 	</div>
@@ -144,6 +149,6 @@
 	
 </div>
 </div>
-		<script type="text/javascript" th:src="@{/js/user.js}"></script>	
+			
 </body>
 </html>
