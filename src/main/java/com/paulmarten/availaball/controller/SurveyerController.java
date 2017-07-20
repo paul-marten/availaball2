@@ -1,5 +1,6 @@
 package com.paulmarten.availaball.controller;
 
+import com.paulmarten.availaball.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
@@ -15,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.paulmarten.availaball.ViewJSON;
 import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.FutsalField;
-import com.paulmarten.availaball.model.ResponseMessage;
 import com.paulmarten.availaball.service.FutsalFieldService;
 import com.paulmarten.availaball.service.SurveyerService;
 
@@ -42,16 +42,9 @@ public class SurveyerController {
     public String loginAccount(@PathVariable String username, @PathVariable String password){
         return surveyerService.checkAccount(username,password);
     }
-    
-//    @ResponseBody
-//    @RequestMapping(value="/login", method = RequestMethod.POST)
-//    public String loginAccount(@RequestParam(value = "username", required=false) String username, @RequestParam(value = "password", required=false) String password){
-//        return surveyerService.checkAccount(username,password) + username + password;
-//    }
-    
+
     @JsonView(DataTablesOutput.View.class)
     @RequestMapping(value="/get-all-futsal-field", method = RequestMethod.GET , headers="Accept=application/json")
-//    public List<FutsalField> getAllFutsalField(@PathVariable("id") int id){
     public ResponseMessage getAllFutsalField(@RequestParam(required = false, defaultValue = "1") int page){
         ResponseMessage responseMessage = new ResponseMessage();
         Page <FutsalField> futsalField = futsalFieldService.findAllFutsalField(page);
@@ -67,11 +60,4 @@ public class SurveyerController {
     	System.out.println(account.getId());
     	return surveyerService.getAccount(account.getId());
    	}
-    
-//    @JsonView(DataTablesOutput.View.class)
-//    @RequestMapping(value = "/delete-field", method = RequestMethod.POST)
-//    public FutsalField deletefield(@ModelAttribute FutsalField futsalField){
-//    	System.out.println(futsalField.getIdFutsalField());
-//    	return futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
-//   	}
 }

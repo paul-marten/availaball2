@@ -14,9 +14,9 @@ function centerModal(id) {
 	             url: "/delete-field",
 	             data: futsalField,
 	             timeout: 600000,
-	             success: function (data2) {
+	             success: function (data) {
 	                 console.log("sukses");
-	                 $('#myModal').modal('hide');
+
 	             },
 	             error: function (e) {
 	                 console.log("gagal");

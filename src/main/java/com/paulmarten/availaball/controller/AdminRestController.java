@@ -58,10 +58,9 @@ public class AdminRestController {
   @JsonView(DataTablesOutput.View.class)
   @RequestMapping(value = "/delete-field", method = RequestMethod.POST,
   headers = "Accept=application/json")
-  public String deletefield(@ModelAttribute FutsalField futsalField) {
+  public void deletefield(@ModelAttribute FutsalField futsalField) {
     System.out.println(futsalField);
     futsalFieldService.deleteFutsalField(futsalField.getIdFutsalField());
-    return "redirect:/admin/index";
   }
   //@formatter:off
 
