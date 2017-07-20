@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Availaball</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" th:href="@{/css/sb-admin.css}" />
+    <link rel="stylesheet" th:href="@{/fonts/style.css}"/>
+    <link rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.css}"/>
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{//fonts.googleapis.com/css?family=Open+Sans}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="/js/datatable.js"></script>
+	
+	
+</head>
+
+<!-- Header -->
+<body>
+
+<div id="wrapper">
+    <div th:replace="/fragment/top :: top-header">
+    </div>
+    </div>
+    <div id="page-wrapper">
+        <div th:fragment="content">
+        </div>
+      
+    </div>
+
+    <script th:src="@{/static/js/jquery.js}"></script>
+    <script th:src="@{/static/js/bootstrap.min.js}"></script>
+
+</body>
+
+</html>
