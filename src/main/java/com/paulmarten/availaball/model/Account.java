@@ -31,7 +31,7 @@ public class Account implements Serializable {
 	private String repeatPassword;
 	private String name;
 	private String phone;
-	private String totalField;
+	private int totalField;
 	private Date latestUpdate;
 
 	public Account() {
@@ -40,7 +40,7 @@ public class Account implements Serializable {
 	
 
 	public Account(int id, String username, String password, String role, Set<FutsalField> futsalFields,
-			String plainPassword, String repeatPassword, String name, String phone, String totalField,
+			String plainPassword, String repeatPassword, String name, String phone, int totalField,
 			Date latestUpdate) {
 		super();
 		this.id = id;
@@ -152,11 +152,11 @@ public class Account implements Serializable {
 
 	@JsonView(DataTablesOutput.View.class)
 	@Column(name = "total_field")
-	public String getTotalField() {
+	public int getTotalField() {
 		return totalField;
 	}
 
-	public void setTotalField(String totalField) {
+	public void setTotalField(int totalField) {
 		this.totalField = totalField;
 	}
 

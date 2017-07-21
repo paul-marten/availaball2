@@ -43,25 +43,9 @@ $(document)
 													"sClass" : "drop",
 													searchable : false,
 													"orderable" : false,
-													// defaultContent: '<div
-													// class="btn-group"> <a
-													// href="#"
-													// class="dropdown-toggle"
-													// data-toggle="dropdown"><i
-													// class="icon-edit_icon"></i>
-													// </a> </div>'
 													"createdCell" : function(
 															td, cellData,
 															rowData, row, col) {
-														console.log(rowData);
-														console
-																.log(rowData.name);
-														// var link =
-														// $('<a>',{'href':'/admin/view-lapangan/'+rowData.idFutsalField}).append(
-														// rowData.fieldName+'</a>');
-														// $(td).html(link);
-														// console.log(cellData.detailAccount.email);
-
 														var name = rowData.name;
 														var btngroup = $(
 																'<div>',
@@ -77,6 +61,8 @@ $(document)
 																			+ rowData.name
 																			+ "','"
 																			+ rowData.username
+																			+ "','"
+																			+ rowData.id
 																			+ "','"
 																			+ rowData.phone
 																			+ "')"
@@ -105,9 +91,10 @@ $(document)
 				});
 
 // function editUserForm(iduser, name, email, phone){
-function editUserForm(name, email, phone) {
+function editUserForm(name, email, id, phone) {
 	$('#editForm input[name=name]').val(name);
-	$('#editForm input[name=email]').val(email);
+	$('#editForm input[name=username]').val(email);
+	$('#editForm input[name=id]').val(id);
 	$('#editForm input[name=phone]').val(phone);
 	$('#editForm').show();
 }

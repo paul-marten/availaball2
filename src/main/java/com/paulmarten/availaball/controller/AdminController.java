@@ -5,8 +5,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,6 +58,25 @@ public class AdminController {
     	model.addAttribute("account", account);
     	model.addAttribute("time", dtf.format(localDate));
     	return "/admin/page/map";
+    }
+    
+    //create user 
+    @RequestMapping(path="/create/user", method = RequestMethod.POST)
+    String createUser(@ModelAttribute Account account){
+    	String password = new BCryptPasswordEncoder().encode(account.getPlainPassword());
+    	account.setPassword(password);
+    	account.setTotalField(0);
+    	account.setRole("ROLE_SURVEYER");
+    	accountService.saveUser(account);
+    	return "redirect:/admin/user";
+    }
+    
+    //edit user
+    @RequestMapping(path="/edit/user", method = RequestMethod.POST)
+    String editUser(@ModelAttribute Account account){
+    	System.out.println(account.getId());
+//    	accountService.saveUser(account);
+    	return "redirect:/admin/user";
     }
     
     @RequestMapping(value = {"/logout"}, method = RequestMethod.POST)
