@@ -47,10 +47,15 @@ public class AdminController {
     	model.addAttribute("time", dtf.format(localDate));
         return "/admin/page/user";
     }
-
+    
     @RequestMapping(path="/map", method= RequestMethod.GET)
-    public String goMap(){
-        return "/admin/page/map";
+    public String goMap(Model model,Principal principal){
+    	Account account = accountService.findAccountByUsername(principal.getName());
+    	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d MMMM y");
+    	LocalDate localDate = LocalDate.now();
+    	model.addAttribute("account", account);
+    	model.addAttribute("time", dtf.format(localDate));
+    	return "/admin/page/map";
     }
     
     @RequestMapping(value = {"/logout"}, method = RequestMethod.POST)
