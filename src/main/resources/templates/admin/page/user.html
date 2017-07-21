@@ -1,19 +1,16 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html layout:decorator="/admin/layout"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>User</title>
-<th:block th:replace ="/admin/layout :: head"></th:block>
+<!-- <th:block layout:decorator ="/admin/layout :: head"></th:block> -->
     <link rel="stylesheet" th:href="@{/css/plugins/main.css}" />
         <link rel="stylesheet" th:href="@{/css/plugins/main-user.css}" />
       <script src="/js/user.js"></script>
+      
 </head>
-
 <body>
-<div id="wrapper">
-    <div th:replace="/admin/fragment/top :: top-header"></div>
-
         <div id="page-wrapper">
             <div layout:fragment="content">
-                <th:block layout:fragment="content">
 
             <div class="container-fluid">
                 <!-- Page Heading -->
@@ -38,7 +35,7 @@
 										</div>
 									</form>
 								</div>
-    <button class="butns butns-default" data-target="#squarespaceModal" data-toggle="modal" style="padding-top: 0px; margin-top: 30px; margin-bottom: 19px; margin-left: 28px;" type="submit" value="+ User">+ User</button>
+    <button class="btnss btnss-default" data-target="#squarespaceModal" data-toggle="modal" style="padding-top: 0px; margin-top: 30px; margin-bottom: 19px; margin-left: 28px;" type="submit" value="+ User">+ User</button>
    
    <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -69,22 +66,17 @@
 	         	<label-s style="margin-left: 30px;"> Password </label-s>
 	            <input type="password" name="pass" value="" placeholder="Ketik Password" class="form-controls" id="nomor" required maxlength="80" size="30">            
 	           
-	        </div>
-	        
+	        </div>    
 			<!-- penting to change -->
 	        <div class="actions">
 	        	<input type="submit" name="Submit" value="Create" id="submit" class="btn-user btn-create-default" >  
 	        	<input name="submit" value="Cancel" id="submit" data-dismiss="modal" class="btn-user btn-cancel btn-cancel-default" style="margin-left: 10px;" type="submit">
 	        </div>          
-
         </form>   
-
-			</div>
-									
+			</div>					
 				</div>
 			</div>
 		</div>
-	
        </div>
                         <div class="col-lg-12">
                          <div class="table-responsive">
@@ -103,12 +95,9 @@
 <tbody>
     </tbody>
 </table>
-</div>
-   
-</div>
+</div> 
 </div>
 </div>
-</th:block>
 </div>
 	<div id="editForm">
 		<div class="overlay">
@@ -131,24 +120,15 @@
 		        <label-s style="margin-left: 30px;"> Nomor Telepon </label-s>
 		         <div class="form-group has-feedback">
 		            <input type="text" name="phone" value="" class="form-control-edit" id="phone" maxlength="80" size="30">            
-		           
-		        </div>
-		        
-		         <label-s style="margin-left: 30px;"> Password </label-s>
-		         <div class="form-group has-feedback">
-		            <input type="password" name="password" value="" class="form-control-edit" id="login" maxlength="80" size="30">            
-		           
 		        </div>
 		              <input type="submit" name="submit" value="Edit" id="submit" class="btn-user btn-edit-default">  
 		              <input name="submit" value="Cancel" id="submit" data-dismiss="editForm" class="btn-user btn-cancel btn-cancel-default" style="margin-left: 10px;" type="submit">          
-		
 		        </form> 			
 			</div>
 	</div>
-	
-	
+	</div>
 </div>
-</div>
+
 			
 </body>
 </html>

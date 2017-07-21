@@ -1,0 +1,10 @@
+#gmap_canvas {
+	height: 200%;
+	width: 200%;
+}
+
+#mapouter {
+	margin-left: 306px;
+	height: 500px;
+	width: 1000px;
+}

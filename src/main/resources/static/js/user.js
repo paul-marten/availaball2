@@ -64,10 +64,11 @@ $(document).ready( function () {
 
 //function editUserForm(iduser, name, email, phone){
 function editUserForm(name,email,phone){
-	$('#editform input[name=name]').val(name);
-	$('#editform input[name=email]').val(email);
-	$('#editform input[name=phone]').val(phone);
-	$('#editform input[name=password]').val("123123");
+    console.log(name);
+	$('#editForm input[name=name]').val(name);
+	$('#editForm input[name=email]').val(email);
+	$('#editForm input[name=phone]').val(phone);
+//	$('#editform input[name=password]').val("123123");
 	$('#editForm').show();
 }
 
