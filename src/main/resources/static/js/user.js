@@ -20,11 +20,11 @@ $(document).ready( function () {
          	  "sClass":"buts",
          	
             },
-            {data : 'detailAccount.name'},
-            {data : 'detailAccount.phone'},
-            {data : 'detailAccount.email'},
-            {data : 'detailAccount.totalField'},
-            {data : 'detailAccount.latestUpdate'},
+            {data : 'name'},
+            {data : 'phone'},
+            {data : 'username'},
+            {data : 'totalField'},
+            {data : 'latestUpdate'},
             {
                 "data" : 'id',
                 "sClass":"drop",
@@ -33,14 +33,11 @@ $(document).ready( function () {
 //                defaultContent: '<div class="btn-group"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-edit_icon"></i> </a> </div>'
                 "createdCell" : function (td, cellData, rowData, row, col) {
                       console.log(rowData);
-                      console.log(rowData.detailAccount.name);
-//                      var link = $('<a>',{'href':'/admin/view-lapangan/'+rowData.idFutsalField}).append( rowData.fieldName+'</a>');
-//                      $(td).html(link);
-//                      console.log(cellData.detailAccount.email);
-                	  var name = rowData.detailAccount.name;
+                      console.log(rowData.name);
+                	  var name = rowData.name;
                       var btngroup = $('<div>',{'class':'btn-group'});
         	    	  var dropdowntoggle =$('<a>');
-        	    	  var icon = $("<i>",{"class":"icon-edit_icon", "onclick":"editUserForm('"+ rowData.detailAccount.name +"','"+rowData.detailAccount.email+"','"+rowData.detailAccount.phone+"')"});
+        	    	  var icon = $("<i>",{"class":"icon-edit_icon", "onclick":"editUserForm('"+ rowData.name +"','"+rowData.username+"','"+rowData.phone+"')"});
         	    	  var edit = $(btngroup).append($(dropdowntoggle).append(icon));
         	    	  $(td).html(edit);
         	    	  }
@@ -64,11 +61,9 @@ $(document).ready( function () {
 
 //function editUserForm(iduser, name, email, phone){
 function editUserForm(name,email,phone){
-    console.log(name);
 	$('#editForm input[name=name]').val(name);
 	$('#editForm input[name=email]').val(email);
 	$('#editForm input[name=phone]').val(phone);
-//	$('#editform input[name=password]').val("123123");
 	$('#editForm').show();
 }
 

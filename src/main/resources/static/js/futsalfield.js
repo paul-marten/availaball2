@@ -1,6 +1,4 @@
 function centerModal(id) {
-//	   console.log(id);
-//       $('#modal_footer input[name=id]').val(id);
        $(this).css('display', 'block');
 	   var $dialog = $(this).find(".modal-dialog");
 	   var offset = ($(window).height() - $dialog.height()) / 2;
@@ -16,7 +14,7 @@ function centerModal(id) {
 	             timeout: 600000,
 	             success: function (data) {
 	                 console.log("sukses");
-
+	                 window.location.href="/admin/index/";
 	             },
 	             error: function (e) {
 	                 console.log("gagal");
