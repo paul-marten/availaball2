@@ -22,4 +22,8 @@ public class AccountService {
 	public DataTablesOutput<Account> findAllSurveyer(@Valid DataTablesInput input) {
         return accountRepository.findAll(input);
     }
+	
+	public Account findAccountByUsername(String username){
+		return accountRepository.findByUsername(username);
+	}
 }

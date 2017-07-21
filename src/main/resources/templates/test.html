@@ -7,7 +7,7 @@
 </head>
 <body>
 <form th:action="@{/logout}" method="post" class="form-group pull-right signoutForm">
-
+	<label th:text="${account}"></label>
     <div class="pull-right">
         <button type="submit" class="btn btn-primary btn-flat">Sign out</button>
     </div>
