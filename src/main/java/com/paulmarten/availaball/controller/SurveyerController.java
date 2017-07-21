@@ -25,39 +25,53 @@ import com.paulmarten.availaball.service.SurveyerService;
 @RestController
 @RequestMapping("/surveyer")
 public class SurveyerController {
-    @Autowired
-    private SurveyerService surveyerService;
-    
-    @Autowired
-    private FutsalFieldService futsalFieldService;
-    
-    @JsonView(ViewJSON.AccountView.class)
-    @RequestMapping(value = "/getid/{id}" , method = RequestMethod.POST)
-    public Account getId(@PathVariable int id){
-        return surveyerService.getAccount(id);
-    }
-    
-    @ResponseBody
-    @RequestMapping(value="/login/{username}/{password}", method = RequestMethod.POST)
-    public String loginAccount(@PathVariable String username, @PathVariable String password){
-        return surveyerService.checkAccount(username,password);
-    }
+	@Autowired
+	private SurveyerService surveyerService;
 
-    @JsonView(DataTablesOutput.View.class)
-    @RequestMapping(value="/get-all-futsal-field", method = RequestMethod.GET , headers="Accept=application/json")
-    public ResponseMessage getAllFutsalField(@RequestParam(required = false, defaultValue = "1") int page){
-        ResponseMessage responseMessage = new ResponseMessage();
-        Page <FutsalField> futsalField = futsalFieldService.findAllFutsalField(page);
-        responseMessage.setObject(futsalField.getContent());
-        responseMessage.setCurrentPage(futsalField.getNumber()+1);
-        responseMessage.setTotalPage(futsalField.getTotalPages());
-        return responseMessage;
-    }
-    
-    @JsonView(DataTablesOutput.View.class)
-    @RequestMapping(value = "/view-id", method = RequestMethod.POST)
-    public Account process(@ModelAttribute Account account){
-    	System.out.println(account.getId());
-    	return surveyerService.getAccount(account.getId());
-   	}
+	@Autowired
+	private FutsalFieldService futsalFieldService;
+
+	@JsonView(ViewJSON.AccountView.class)
+	@RequestMapping(value = "/getid/{id}", method = RequestMethod.POST)
+	public Account getId(@PathVariable int id) {
+		return surveyerService.getAccount(id);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/login/{username}/{password}", method = RequestMethod.POST)
+	public String loginAccount(@PathVariable String username, @PathVariable String password) {
+		return surveyerService.checkAccount(username, password);
+	}
+
+	// @JsonView(DataTablesOutput.View.class)
+	// @RequestMapping(value="/get-all-futsal-field", method = RequestMethod.GET
+	// , headers="Accept=application/json")
+	// public ResponseMessage getAllFutsalField(@RequestParam(required = false,
+	// defaultValue = "1") int page){
+	// ResponseMessage responseMessage = new ResponseMessage();
+	// Page <FutsalField> futsalField =
+	// futsalFieldService.findAllFutsalField(page);
+	// responseMessage.setObject(futsalField.getContent());
+	// responseMessage.setCurrentPage(futsalField.getNumber()+1);
+	// responseMessage.setTotalPage(futsalField.getTotalPages());
+	// return responseMessage;
+	// }
+
+	@JsonView(DataTablesOutput.View.class)
+	@RequestMapping(value = "/get-all-futsal-field", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseMessage getAllFutsalField(@RequestParam(required = false, defaultValue = "1") int page) {
+		ResponseMessage responseMessage = new ResponseMessage();
+		Page<FutsalField> futsalField = futsalFieldService.findAllFutsalField(page);
+		responseMessage.setObject(futsalField.getContent());
+		responseMessage.setCurrentPage(futsalField.getNumber() + 1);
+		responseMessage.setTotalPage(futsalField.getTotalPages());
+		return responseMessage;
+	}
+
+	@JsonView(DataTablesOutput.View.class)
+	@RequestMapping(value = "/view-id", method = RequestMethod.POST)
+	public Account viewId(@ModelAttribute Account account) {
+		System.out.println(account.getId());
+		return surveyerService.getAccount(account.getId());
+	}
 }

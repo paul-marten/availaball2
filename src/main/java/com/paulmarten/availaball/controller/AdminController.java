@@ -45,11 +45,4 @@ public class AdminController {
         model.addAttribute("view",futsalFieldService.findFutsalFieldById(id));
         return "/admin/view-lapangan";
     }
-    
-//    @RequestMapping(value = "/delete-field/{id}")
-//    public String editField(@PathVariable int id, Model model){
-//    	futsalFieldService.deleteFutsalField(id);
-//        return "/admin/index";
-////    	return "redirect:admin/index";
-//    }
 }

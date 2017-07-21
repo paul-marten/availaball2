@@ -17,23 +17,23 @@ import com.paulmarten.availaball.repository.FutsalFieldRepository;
  */
 @Service("futsalfieldService")
 public class FutsalFieldService {
-	
+
 	@Autowired
 	private FutsalFieldRepository futsalFieldRepository;
-	
+
 	public DataTablesOutput<FutsalField> findAllFutsalFieldAdmin(@Valid DataTablesInput input) {
-        return futsalFieldRepository.findAll(input);
-    }
-	
-	public FutsalField findFutsalFieldById(int id) {	
+		return futsalFieldRepository.findAll(input);
+	}
+
+	public FutsalField findFutsalFieldById(int id) {
 		return futsalFieldRepository.findOne(id);
 	}
-	
-	public Page<FutsalField> findAllFutsalField(int page){
-	        return futsalFieldRepository.findAllByOrderByIdFutsalFieldDesc(new PageRequest(page-1,1));
+
+	public Page<FutsalField> findAllFutsalField(int page) {
+		return futsalFieldRepository.findAllByOrderByIdFutsalFieldDesc(new PageRequest(page - 1, 10));
 	}
-	
-	public void deleteFutsalField(int id){
+
+	public void deleteFutsalField(int id) {
 		futsalFieldRepository.delete(id);
 	}
 }
