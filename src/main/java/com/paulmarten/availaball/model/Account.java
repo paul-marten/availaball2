@@ -131,7 +131,7 @@ public class Account implements Serializable {
 
 	@JsonView(DataTablesOutput.View.class)
 	@NotEmpty
-	@Column(name = "name", unique = true)
+	@Column(name = "name")
 	public String getName() {
 		return name;
 	}
@@ -141,7 +141,6 @@ public class Account implements Serializable {
 	}
 
 	@JsonView(DataTablesOutput.View.class)
-	@NotEmpty
 	@Column(name = "phone", unique = true)
 	public String getPhone() {
 		return phone;
@@ -152,7 +151,7 @@ public class Account implements Serializable {
 	}
 
 	@JsonView(DataTablesOutput.View.class)
-	@Column(name = "total_field", unique = true)
+	@Column(name = "total_field")
 	public String getTotalField() {
 		return totalField;
 	}
@@ -162,8 +161,7 @@ public class Account implements Serializable {
 	}
 
 	@JsonView(DataTablesOutput.View.class)
-	@NotEmpty
-	@Column(name = "latest_update", unique = true)
+	@Column(name = "latest_update")
 	public Date getLatestUpdate() {
 		return latestUpdate;
 	}
