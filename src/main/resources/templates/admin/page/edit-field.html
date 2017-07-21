@@ -1,0 +1,738 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Availaball</title>
+<th:block th:replace="/admin/layout :: head"></th:block>
+    <link rel="stylesheet" th:href="@{/css/plugins/edit-field.css}" />
+</head>
+
+<body>
+	<div id="wrapper">
+		<div th:replace="/admin/fragment/top :: top-header"></div>
+		    <script th:src="@{/js/edit-field.js}"></script>
+
+	 <div id="page-wrapper">
+				<div layout:fragment="content">
+				<th:block layout:fragment="content">
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+            
+	<div class="row">
+            
+                    <div  class="col-lg-12" id="font">
+                        
+                        <!-- Title -->
+                        <div class="col-lg-3 lefted">
+                        <h4 class="title">EDIT</h4>
+                        </div>
+                        <!-- end of title -->
+                        <br>
+
+                        <!-- Image -->
+                        <div class="col-lg-12 lefted">
+                        
+			       		 <div class="show-image">
+			          	<img src="/img/blank.jpg" style="  width: 360px;  height: 180px;" onchange="readURL(this);" id="field-img">   
+			         
+			            <div class="button-edit " id="button-edit">
+			            <input  type="file" class="update ">
+			            <i class="icon-edit_icon"></i>
+			            </div>
+			         
+			
+			
+			       
+			        </div>
+
+                        </div>
+
+
+                            
+
+
+                    
+                        <!-- end of Image -->
+
+                        <!-- Field Name -->
+
+                        <div class="col-lg-12 lefted">
+                       
+                            
+                            <div class="col-lg-6 lefted">
+                             <label class="field-nama label-color">Nama</label>
+                    
+                         <input type="text"  class="form-control" name="nama"  size="35"   placeholder="Nama Lapangan">
+                        
+                                 </div>
+                        </div>
+                        <!-- end of Field Name -->
+
+
+
+                        <!-- Address -->
+                        <div class="col-lg-12 lefted">
+                      
+                 
+
+                            <div class="col-lg-6 field-alamat lefted">
+
+
+                              <label class="label-color lefted">Alamat</label>
+
+                                  <!-- Map icon -->
+                        <div class="col-lg-4 map2 lefted" id="map" style="margin-top: -9px;padding-right: unset;" >
+                           <label class="label-color lefted"> -6.19152212312</label>
+                           <a th:href="@{/admin/map}">
+                           <img src="/img/map.jpg" class="map-icons">
+                           </a>
+                           
+
+                        </div>
+                        <!-- end of Map Icon  -->
+
+
+                         <textarea  class="form-control"  size="35"   placeholder="Alamat"></textarea>
+                        
+           
+                             </div>
+                        </div>
+                        <!-- end of Address -->
+
+                        <!-- Phone & number Of field -->
+                        <!-- Phone -->
+                     
+                      		<div class="col-lg-12  field-telpon lefted">
+                            <div class="col-lg-6 lefted">
+                          
+
+							<div class="control-group lefted" id="fields">
+							            <label class="control-label label-color" for="field1">Telepon</label>
+							            <div class="controls"> 
+							                <form role="form" autocomplete="off">
+							                    <div class="entry input-group col-lg-4" style="width:205px;">
+							                    <div class="bound">
+							                        <input class="form-control" name="fields[]" type="text" id="fields-round" placeholder="phone number" /></div>
+							                    	<span class="input-group-btn ">
+							                            <button class="btn btn-success btn-add" type="button" id="buttoned">
+							                                <span class="glyphicon glyphicon-plus" id="icon-light" ></span>
+							                            </button>
+							                        </span>
+							                    </div>
+							                </form>
+							          
+							            </div>
+						</div>
+
+
+                        <!-- end of Phone -->
+
+                 
+                        <!-- end of Phone & number Of field -->
+
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+              
+                    </div>
+                             <!-- number of field -->
+                        <div class="col-lg-6"> 
+                     
+                            <div class="col-lg-6"     style="    margin-left: -151px;">
+                              <label class="label-color">Jumlah Lapangan</label>
+            
+                        	 <select class="form-control selectpicker" style="width:60px;">
+							  <option>1</option>
+							  <option>2</option>
+							  <option>3</option>
+							  <option>4</option>
+							  <option>5</option>
+							  <option>6</option>
+							</select>
+
+                             </div>
+
+                        </div>
+                        <!-- end of Number of field -->
+                    </div>
+            
+     <!-- Jam Buka -->
+                         
+                        <div class="line"></div>
+                    <div class="col-lg-12">
+                
+                    <label> Jam Buka</label>
+                    </div>
+					   <div class="col-lg-12">
+	
+                        <!-- Senin -->
+                        
+                        <div class="col-lg-4">
+                          
+						   <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Senin
+						   
+						   
+						   <form action="/action_page.php">
+  								<select class="time"  >
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed">
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  </form>
+                        </div>
+                        <!-- end Of senin -->
+
+                        <!-- Selasa -->
+                        <div class="col-lg-4">
+                            <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Selasa 
+                             <form action="/action_page.php">
+  								<select class="time">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed">
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  </form>
+                        </div>
+                        <!-- end Of selasa -->
+
+                        <!-- Rabu  -->
+                        <div class="col-lg-4">
+                           <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Rabu
+                            <form action="/action_page.php">
+  								<select class="time">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed">
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  </form>
+                        </div>
+                        <!-- end Of Rabu -->
+
+                        <!-- Kamis -->
+                        <div class="col-lg-4">
+                           <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Kamis
+                            <form action="/action_page.php">
+  								<select class="time">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed">
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  </form>
+                        </div>
+                        <!-- end Of Kamis -->
+
+                        <!-- Jumat  -->
+                        <div class="col-lg-4">
+                            <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Jumat
+                             <form action="/action_page.php">
+  								<select class="time">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed">
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  </form>
+                        </div>
+                        <!-- end of Jumat  -->
+
+                        <!-- Sabtu  -->
+                        <div class="col-lg-4">
+                            <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Sabtu
+                             <form action="/action_page.php">
+  								<select class="time">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed">
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  </form>
+                        </div>
+                        <!-- end Of Sabtu -->
+
+                        <!-- Minggu -->
+                        <div class="col-lg-4">
+                            <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Minggu
+                             <form action="/action_page.php">
+  								<select class="time">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed">
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  </form>
+                        </div>
+                        <!-- end Of Minggu -->
+
+
+						
+                        </div>
+                  
+                  
+                        <!-- Harga -->
+                             <div class="line"></div>
+                        
+                        <div class="col-lg-12">
+              
+                    <label class="lab"> Harga</label>
+                    </div>
+                        <div class="col-lg-12">
+                        
+                        <div class="col-lg-5">
+                          
+						 <label>Senin</label>
+						   
+						   <form action="/action_page.php">
+  								<select class="time in">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed in">
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  </form>
+								  
+								  
+								  <form action="/action_page.php">
+  								<select class="time in">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed in">
+								    <option value="r">15.00</option>
+								    <option value="s">16.00</option>
+								    <option value="t">17.00</option>
+								    <option value="u">18.00</option>
+								    <option value="v">19.00</option>
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  
+								  Rp <button class="ton">200,000</button>	  	
+								   
+  									<button class="but-cir-add" style="border-radius: 50px;" >+</button>
+  								    <button class="but-cir-rem" style="border-radius: 50px;">-</button>
+								  </form>
+								    
+
+                        </div>
+                        
+                         <div class="col-lg-5">
+                          
+						 <label>Jumat</label>
+						 
+							  <form action="/action_page.php">
+  								<select class="time in">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed in">
+								    <option value="r">15.00</option>
+								    <option value="s">16.00</option>
+								    <option value="t">17.00</option>
+								    <option value="u">18.00</option>
+								    <option value="v">19.00</option>
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  
+								   Rp <button class="ton">150,000</button>	  	
+								    <button class="but-cir-add" style="border-radius: 50px;" >+</button>
+								  </form>
+								   	  
+                        </div>
+
+                        </div>
+                        
+                         <div class="col-lg-12">
+                        
+                        <div class="col-lg-5">
+                          
+						 <label>Selasa</label>
+
+								  <form action="/action_page.php">
+  								<select class="time in">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed in">
+								    <option value="r">15.00</option>
+								    <option value="s">16.00</option>
+								    <option value="t">17.00</option>
+								    <option value="u">18.00</option>
+								    <option value="v">19.00</option>
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  
+								  Rp <button class="ton">200,000</button>	  	
+								   
+  									<button class="but-cir-add" style="border-radius: 50px;" >+</button>
+								  </form>
+
+                        </div>
+                        
+                         <div class="col-lg-5">
+                          
+						 <label>Sabtu</label>
+						 
+							  <form action="/action_page.php">
+  								<select class="time in">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed in">
+								    <option value="r">15.00</option>
+								    <option value="s">16.00</option>
+								    <option value="t">17.00</option>
+								    <option value="u">18.00</option>
+								    <option value="v">19.00</option>
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  
+								   Rp <button class="ton">150,000</button>	  	
+								    <button class="but-cir-add" style="border-radius: 50px;" >+</button>
+								  </form>
+								   	  
+                        </div>
+
+                        </div>
+                        
+                         <div class="col-lg-12">
+                        
+                        <div class="col-lg-5">
+                          
+						 <label>Rabu</label>
+
+								  <form action="/action_page.php">
+  								<select class="time in">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed in">
+								    <option value="r">15.00</option>
+								    <option value="s">16.00</option>
+								    <option value="t">17.00</option>
+								    <option value="u">18.00</option>
+								    <option value="v">19.00</option>
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  
+								  Rp <button class="ton">200,000</button>	  	
+								   
+  									<button class="but-cir-add" style="border-radius: 50px;" >+</button>
+								  </form>
+
+                        </div>
+                        
+                         <div class="col-lg-5">
+                          
+						 <label>Minggu</label>
+						 
+							  <form action="/action_page.php">
+  								<select class="time in">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed in">
+								    <option value="r">15.00</option>
+								    <option value="s">16.00</option>
+								    <option value="t">17.00</option>
+								    <option value="u">18.00</option>
+								    <option value="v">19.00</option>
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  
+								   Rp <button class="ton">150,000</button>	  	
+								    <button class="but-cir-add" style="border-radius: 50px;" >+</button>
+								  </form>
+								   	  
+                        </div>
+
+                        </div>
+                        
+                        <div class="col-lg-12">
+                        
+                        <div class="col-lg-5">
+                          
+						 <label>Kamis</label>
+
+								  <form action="/action_page.php">
+  								<select class="time in">
+								    <option value="a">08.00</option>
+								    <option value="b">09.00</option>
+								    <option value="c">10.00</option>
+								    <option value="d">11.00</option>
+								    <option value="e">12.00</option>
+								    <option value="f">13.00</option>
+								    <option value="g">14.00</option>
+								    <option value="h">15.00</option>
+								    <option value="i">16.00</option>
+								    <option value="j">17.00</option>
+								    <option value="k">18.00</option>
+								    <option value="l">19.00</option>
+								  </select>
+  
+								  <select class="timed in">
+								    <option value="r">15.00</option>
+								    <option value="s">16.00</option>
+								    <option value="t">17.00</option>
+								    <option value="u">18.00</option>
+								    <option value="v">19.00</option>
+								    <option value="m">20.00</option>
+								    <option value="n">21.00</option>
+								    <option value="o">22.00</option>
+								    <option value="p">23.00</option>
+								    <option value="q">24.00</option>
+								  </select>
+								  
+								  Rp <button class="ton">200,000</button>	  	
+								   
+  									<button class="but-cir-add" style="border-radius: 50px;" >+</button>
+								  </form>
+
+                        </div>
+                        
+                         
+
+                        </div>
+                        
+                        <!-- end of harga -->
+                    </div>
+            </div>
+
+          
+		</th:block>
+            </div>
+			
+        </div>
+        <!-- /#page-wrapper -->
+
+	
+    </div>
+    <!-- /#wrapper -->
+		
+	
+</body>
+</html>
