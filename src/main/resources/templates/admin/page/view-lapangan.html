@@ -1,152 +1,127 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html layout:decorator="/admin/layout"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Availaball</title>
-<th:block th:replace="/admin/layout :: head"></th:block>
- <link rel="stylesheet" th:href="@{/css/plugins/view-field.css}" />
+<link rel="stylesheet" th:href="@{/css/plugins/view-field.css}" />
 </head>
-
 <body>
-	<div id="wrapper">
-		<div th:replace="/admin/fragment/top :: top-header"></div>
+	<div id="page-wrapper">
+		<div layout:fragment="content">
+			<div class="container-fluid">
 
-	 <div id="page-wrapper">
-				<div layout:fragment="content">
-				<th:block layout:fragment="content">
-            <div class="container-fluid">
+				<!-- Page Heading -->
+				<div class="row">
 
-                <!-- Page Heading -->
-                <div class="row">
-            
-                    <div id="md12" class="col-lg-12">
-                        
-                        <div id="" class="col-lg-12">
-                            <!-- last update -->
-                        <div  class="col-md-2 mdtop1">
-                        <div >
-                            <label class="labels">
-                                Latest update
-                            </label>
-                        </div>
-                        <div>
-                            <label class="text">
-                                05/04/2017 15:03
-                            </label>
-                        </div>
+					<div id="md12" class="col-lg-12">
 
-                        </div>
-                         <!-- end of last update -->   
+						<div id="" class="col-lg-12">
+							<!-- last update -->
+							<div class="col-md-2 mdtop1">
+								<div>
+									<label class="labels"> Latest update </label>
+								</div>
+								<div>
+									<label class="text"> 05/04/2017 15:03 </label>
+								</div>
+
+							</div>
+							<!-- end of last update -->
 
 
-                        <!-- Surveyer name-->
-                        <div  class="col-md-2 mdtop1">
-                        <div>
-                            <label class="labels" >
-                               Surveyer
-                            </label>
-                        </div>
-                        <div>
-                            <label class="text">
-                               <span th:text="${view.account.username}"></span>
-                            </label>
-                        </div>
+							<!-- Surveyer name-->
+							<div class="col-md-2 mdtop1">
+								<div>
+									<label class="labels"> Surveyer </label>
+								</div>
+								<div>
+									<label class="text"> <span
+										th:text="${view.account.username}"></span>
+									</label>
+								</div>
 
-                        </div>
-                        <!-- end of surveyer name-->
-
-                       
-                        </div>
-
-                        <!-- Field img -->
-                        <div class="col-md-6 mdtop6">
-                            <img src="/img/aa.jpg"  height="168" width="360">
-                        </div>        
-                        <!--end of field img-->
-
-                        <div class="col-lg-12">
-                            <!-- detail -->
-                        <div  class="col-md-6 mdtop2 " >
-                        <div>
-                            <label class="titles"><span th:text="${view.fieldName}"></span></label>
-                        </div>    
-                        <div class="labels">
-                            <span th:text="${view.location}"></span>
-                        </div>       
-                        </div>
-                        <!-- end of detail-->
+							</div>
+							<!-- end of surveyer name-->
 
 
-                       <div  class="col-lg-12 mdtop3" >
-                            <!-- phone number -->
-                        <div  class="col-md-2 mdtop4" >
-                            <div>
-                                <label class="labels">Telepon
-                                </label>
-                            </div>
-                            <div  >
-                                <span th:text="${view.phoneNumber}"></span>
-                            </div>
-                        </div>
-                        <!-- end of phone number-->
+						</div>
 
-                        <!-- number of field -->
-                        <div  class="col-md-3 mdtop4">
-                            
-                        <div>
-                            <label class="labels">Jumlah Lapangan</label>
-                        </div>
-                        <div>
-                            <span th:text="${view.numberOfField}"></span>
-                        </div>
-                        </div>
-                        <!-- end of number of field -->
+						<!-- Field img -->
+						<div class="col-md-6 mdtop6">
+							<img src="/img/aa.jpg" height="168" width="360">
+						</div>
+						<!--end of field img-->
 
-                       </div>
+						<div class="col-lg-12">
+							<!-- detail -->
+							<div class="col-md-6 mdtop2 ">
+								<div>
+									<label class="titles"><span th:text="${view.fieldName}"></span></label>
+								</div>
+								<div class="labels">
+									<span th:text="${view.location}"></span>
+								</div>
+							</div>
+							<!-- end of detail-->
 
 
-                        <!-- jam buka -->
-                        <div  class="col-md-12 mdtop5">
-                            <div>
-                                <label class="labels">Jam Buka</label>
-                            </div>
-                            <div>
-                                <label class="texts">Senin-Sabtu</label>
-                            </div>
-                            <div>
-                                <label class="textes">08:00-20:00</label>
-                            </div>
-                        </div> 
-                        <!-- end of jam buka-->
+							<div class="col-lg-12 mdtop3">
+								<!-- phone number -->
+								<div class="col-md-2 mdtop4">
+									<div>
+										<label class="labels">Telepon </label>
+									</div>
+									<div>
+										<span th:text="${view.phoneNumber}"></span>
+									</div>
+								</div>
+								<!-- end of phone number-->
 
+								<!-- number of field -->
+								<div class="col-md-3 mdtop4">
 
-                        <!-- harga-->
-                        <div  class="col-md-12 mdtop5">
-                        <div>
-                            <label class="labels">Harga Normal Per Jam</label>
-                        </div>
-                        <div class="textes">
-                            <span th:text="${view.price}"></span>
-                        </div>
+									<div>
+										<label class="labels">Jumlah Lapangan</label>
+									</div>
+									<div>
+										<span th:text="${view.numberOfField}"></span>
+									</div>
+								</div>
+								<!-- end of number of field -->
 
-                        </div>
-                        <!-- end of harga-->
-                        </div>
-                     
-                    </div>
-                
+							</div>
 
-               <div class="col-lg-12">
-               </div>
-             </div>
+							<!-- jam buka -->
+							<div class="col-md-12 mdtop5">
+								<div>
+									<label class="labels">Jam Buka</label>
+								</div>
+								<div>
+									<label class="texts">Senin-Sabtu</label>
+								</div>
+								<div>
+									<label class="textes">08:00-20:00</label>
+								</div>
+							</div>
+							<!-- end of jam buka-->
 
-            </div>
-			</th:block>
-        </div>
-        <!-- /#page-wrapper -->
+							<!-- harga-->
+							<div class="col-md-12 mdtop5">
+								<div>
+									<label class="labels">Harga Normal Per Jam</label>
+								</div>
+								<div class="textes">
+									<span th:text="${view.price}"></span>
+								</div>
 
-	
-    </div>
-    <!-- /#wrapper -->
+							</div>
+							<!-- end of harga-->
+						</div>
+					</div>
+					<div class="col-lg-12"></div>
+				</div>
+			</div>
 		</div>
-	
+		<!-- /#page-wrapper -->
+	</div>
 </body>
 </html>
