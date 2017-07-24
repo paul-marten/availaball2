@@ -91,7 +91,8 @@ public class Account implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+//	@JsonView(DataTablesOutput.View.class)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
 	public Set<FutsalField> getFutsalFields() {
 		return futsalFields;
@@ -100,7 +101,8 @@ public class Account implements Serializable {
 	public void setFutsalFields(Set<FutsalField> futsalFields) {
 		this.futsalFields = futsalFields;
 	}
-
+	
+	@JsonView(DataTablesOutput.View.class)
 	@Column(name = "role")
 	public String getRole() {
 		return role;

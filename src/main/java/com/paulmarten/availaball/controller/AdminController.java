@@ -39,49 +39,30 @@ public class AdminController {
     	LocalDate localDate = LocalDate.now();
     	session.setAttribute("mySessionAttributeAccount", account);
     	session.setAttribute("mySessionAttributeTime", dtf.format(localDate));
-//    	model.addAttribute("account", account);
-//    	model.addAttribute("time", dtf.format(localDate));
         return "/admin/page/index";
     }
 
     @RequestMapping(path="/user", method= RequestMethod.GET)
-    public String goUser(Model model,Principal principal){
-    	Account account = accountService.findAccountByUsername(principal.getName());
-    	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d MMMM y");
-    	LocalDate localDate = LocalDate.now();
-    	model.addAttribute("account", account);
-    	model.addAttribute("time", dtf.format(localDate));
+    public String goUser(){
         return "/admin/page/user";
     }
     
     @RequestMapping(path="/map", method= RequestMethod.GET)
-    public String goMap(Model model,Principal principal){
-    	Account account = accountService.findAccountByUsername(principal.getName());
-    	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d MMMM y");
-    	LocalDate localDate = LocalDate.now();
-    	model.addAttribute("account", account);
-    	model.addAttribute("time", dtf.format(localDate));
+    public String goMap(){
     	return "/admin/page/map";
     }
     
     //create user 
     @RequestMapping(path="/create/user", method = RequestMethod.POST)
     String createUser(@ModelAttribute Account account){
-    	String password = new BCryptPasswordEncoder().encode(account.getPlainPassword());
-    	account.setPassword(password);
-    	account.setTotalField(0);
-    	account.setRole("ROLE_SURVEYER");
     	accountService.saveUser(account);
     	return "redirect:/admin/user";
     }
     
     //edit user
     @RequestMapping(path="/edit/user", method = RequestMethod.POST)
-    String editUser(@ModelAttribute Account account, @ModelAttribute Account accountSave){
-    	System.out.println(account.getId());
-//    	accountSave = new Account(accountService.findAccountById(account.getId()));
-//    	accountService.saveUser(account);
-//    	accountService.saveUser(account);
+    String editUser(@ModelAttribute Account account){
+    	accountService.saveUser(account);
     	return "redirect:/admin/user";
     }
     
