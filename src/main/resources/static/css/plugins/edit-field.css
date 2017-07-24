@@ -1,3 +1,4 @@
+
 #font{
 	font-family:Roboto!important;
 }
@@ -81,20 +82,18 @@
 	color:white!important;
 
 }
-#buttoned_1
+#green-round
 {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-  color:#5cb85c;
-  background-color:white!important;
-     margin-bottom:9px;
-  
+font-size:20px!important;
+background-color:white;
+border-color:white;
+box-shadow:none !important;
+ outline: none;
 }
+
+
+
+
 #buttoned_2
 {
   width: 30px;
@@ -110,17 +109,12 @@
   
 }
 
-#reds{
-width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-  color:#d8514c!important;
-   background-color:white!important;
-   margin-bottom:9px;
+#red-round{
+       font-size: 20px;
+		background-color:white;
+		border-color:white;
+		box-shadow:none !important;
+		 outline: none;
 }
 
 #reds_2{
@@ -136,11 +130,15 @@ width: 30px;
    margin-bottom:9px;
 }
 
-hr .line{
-	  height: 0!important;
-  -webkit-box-sizing: content-box!important;
-     -moz-box-sizing: content-box!important;
-          box-sizing: content-box!important;
+.horizontal-line{
+    width: 100%;
+    height: 2px;
+    /* background-color: #24404c; */
+    border-bottom: 1px solid #c7c7c7;
+    margin-bottom: 60px;
+    overflow: hidden;
+    margin-top: 60px;
+    margin-left: 5px;
 }
 
 #fields-round{

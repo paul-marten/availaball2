@@ -101,4 +101,11 @@ public class AdminController {
         model.addAttribute("view",futsalFieldService.findFutsalFieldById(id));
         return "/admin/page/edit-field";
     }
+    @RequestMapping(value = "/current-map/{id}")
+    public String viewMap(@PathVariable int id, Model model){
+        model.addAttribute("edit",futsalFieldService.findFutsalFieldById(id));
+        return "/admin/page/current-map";
+    }
+
+
 }
