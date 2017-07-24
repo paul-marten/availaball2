@@ -30,4 +30,8 @@ public class AccountService {
 	public Account saveUser(Account account){
 		return accountRepository.save(account);
 	}
+	
+	public Account findAccountById(int id){
+		return accountRepository.findOne(id);
+	}
 }

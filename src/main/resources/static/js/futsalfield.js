@@ -81,7 +81,7 @@ $(document).ready( function () {
                     return '';
                 }
             },
-// @formatter:off
+//@formatter:off
 
             {
                 "data" : 'idFutsalField',
@@ -153,4 +153,4 @@ $(document).ready( function () {
 		    } );
 	});
 });
-// @formatter:on
+//@formatter:on

@@ -4,6 +4,8 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -31,12 +33,14 @@ public class AdminController {
 	private AccountService accountService;
 	
     @RequestMapping(path="/index", method= RequestMethod.GET)
-    public String goIndex(Model model,Principal principal){
+    public String goIndex(Model model,Principal principal, HttpSession session){
     	Account account = accountService.findAccountByUsername(principal.getName());
     	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy");
     	LocalDate localDate = LocalDate.now();
-    	model.addAttribute("account", account);
-    	model.addAttribute("time", dtf.format(localDate));
+    	session.setAttribute("mySessionAttributeAccount", account);
+    	session.setAttribute("mySessionAttributeTime", dtf.format(localDate));
+//    	model.addAttribute("account", account);
+//    	model.addAttribute("time", dtf.format(localDate));
         return "/admin/page/index";
     }
 
@@ -73,8 +77,10 @@ public class AdminController {
     
     //edit user
     @RequestMapping(path="/edit/user", method = RequestMethod.POST)
-    String editUser(@ModelAttribute Account account){
+    String editUser(@ModelAttribute Account account, @ModelAttribute Account accountSave){
     	System.out.println(account.getId());
+//    	accountSave = new Account(accountService.findAccountById(account.getId()));
+//    	accountService.saveUser(account);
 //    	accountService.saveUser(account);
     	return "redirect:/admin/user";
     }
