@@ -15,7 +15,7 @@ $(function()
 	        controlForm.find('.entry:not(:last) .btn-add')
 	            .removeClass('btn-add').addClass('btn-remove')
 	            .removeClass('btn-success').addClass('btn-danger')
-	            .html('<span class="icon_minus"></span>');
+	            .html('<span class="glyphicon glyphicon-minus" id="icon-light"></span>');
 	        	$("#buttoned_1").prop('id', 'reds');
 	    	}      
 	    )

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/css/sb-admin.css}" />
+	<title>Spring Boot + JPA + Datatables</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/bs/jqc-1.11.3,dt-1.10.10/datatables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/s/bs/jqc-1.11.3,dt-1.10.10/datatables.min.js"></script>
+	<!--<script src="/js/datatable.js"></script>-->
+    <script type="text/javascript" th:src="@{/js/datatable.js}"></script>
+    <script type="text/javascript" th:src="@{/lib/jquery.spring-friendly.js}"></script>
+</head>
+<form th:action="@{/logout}" method="post" class="form-group pull-right signoutForm">
+
+    <div class="pull-right">
+        <button type="submit" class="btn btn-primary btn-flat">Sign out</button>
+    </div>
+</form>
+<body>
+	<h1>Futsal Field</h1>
+	<table id="futsalfieldsTable" class="table table-bordred table-striped center">
+       <!-- Header Table -->
+       <thead>
+            <tr>
+				<th>Nama Lapangan</th>
+                <th>Lokasi</th>
+                <th>Nomor Telpon</th>
+                <th>Jumlah Lapangan</th>
+                <th>Waktu Buka</th>
+                <th>Waktu Tutup</th>
+                <th>Harga</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+       
+    </table>
+    
+</body>
+</html>
