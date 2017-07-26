@@ -49,11 +49,6 @@ public class AccountService {
 		return accountRepository.save(result);
 	}
 
-	// public void updateAccountById(String name, String username, String phone,
-	// int id){
-	// accountRepository.updateAccountById(name, username, phone, id);
-	// }
-
 	public Account findAccountById(int id) {
 		return accountRepository.findOne(id);
 	}

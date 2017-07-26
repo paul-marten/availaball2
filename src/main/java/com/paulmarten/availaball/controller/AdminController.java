@@ -3,11 +3,11 @@ package com.paulmarten.availaball.controller;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,6 +31,7 @@ public class AdminController {
 	
 	@Autowired
 	private AccountService accountService;
+	
 	
     @RequestMapping(path="/index", method= RequestMethod.GET)
     public String goIndex(Model model,Principal principal, HttpSession session){
@@ -71,15 +72,21 @@ public class AdminController {
         return "redirect:/";
     }
     
-    @RequestMapping(value = "/view-lapangan/{id}")
+    @RequestMapping(value = "/view-lapangan/{id}", method = RequestMethod.GET)
     public String viewField(@PathVariable int id, Model model){
         model.addAttribute("view",futsalFieldService.findFutsalFieldById(id));
+        String number = futsalFieldService.findFutsalFieldById(id).getPhone();
+        String[] result = number.split(",");
+        System.out.println(result[0]);
+        model.addAttribute("phone", result[0]);
         return "/admin/page/view-lapangan";
     }
 
-    @RequestMapping(value = "/edit-field/{id}")
+    @RequestMapping(value = "/edit-field/{id}", method = RequestMethod.POST)
     public String editField(@PathVariable int id, Model model){
         model.addAttribute("view",futsalFieldService.findFutsalFieldById(id));
         return "/admin/page/edit-field";
     }
+    
+    
 }

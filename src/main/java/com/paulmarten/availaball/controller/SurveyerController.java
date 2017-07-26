@@ -1,6 +1,9 @@
 package com.paulmarten.availaball.controller;
 
 import com.paulmarten.availaball.ResponseMessage;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
@@ -73,5 +76,11 @@ public class SurveyerController {
 	public Account viewId(@ModelAttribute Account account) {
 		System.out.println(account.getId());
 		return surveyerService.getAccount(account.getId());
+	}
+	
+	@JsonView(DataTablesOutput.View.class)
+	@RequestMapping(value = "/create-futsal-field", method = RequestMethod.POST)
+	public void createField(@ModelAttribute FutsalField futsalField) {
+		futsalFieldService.saveField(futsalField);
 	}
 }

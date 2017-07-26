@@ -12,7 +12,7 @@ import com.paulmarten.availaball.model.FutsalField;
 /**
  * Created by paulms on 7/4/2017.
  */
-@Repository("futsalfieldRepository")
+@Repository("futsalFieldRepository")
 public interface FutsalFieldRepository extends DataTablesRepository<FutsalField, Integer> {
 	List<FutsalField>findTop10ByIdFutsalFieldLessThanOrderByIdFutsalFieldDesc(int id);
 	Page<FutsalField>findAllByOrderByIdFutsalFieldDesc(Pageable pageable);
