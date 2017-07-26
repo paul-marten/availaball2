@@ -70,13 +70,12 @@ public class AdminController {
     public String logout(){
         return "redirect:/";
     }
-    
+  
     @RequestMapping(value = "/view-lapangan/{id}")
     public String viewField(@PathVariable int id, Model model){
         model.addAttribute("view",futsalFieldService.findFutsalFieldById(id));
         return "/admin/page/view-lapangan";
     }
-
     @RequestMapping(value = "/edit-field/{id}")
     public String editField(@PathVariable int id, Model model){
         model.addAttribute("view",futsalFieldService.findFutsalFieldById(id));

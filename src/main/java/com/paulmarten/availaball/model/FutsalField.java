@@ -20,6 +20,7 @@ public class FutsalField implements Serializable {
 
     private int idFutsalField;
     private String fieldName;
+    private String phoneNumber;
     private String location;
     private String detailLocation;
     private int numberOfField;
@@ -39,12 +40,13 @@ public class FutsalField implements Serializable {
     }
     
 
-	public FutsalField(int idFutsalField, String fieldName, String location, String detailLocation, int numberOfField,
+	public FutsalField(int idFutsalField, String fieldName,String phoneNumber, String location, String detailLocation, int numberOfField,
 			Time openingHours, Time closingHours, String price, String photo, Date latestUpdate, Account account,
 			Set<FutsalFieldPhone> futsalFieldPhones, Set<DetailPrice> detailPrices, String latitude, String longitud) {
 		super();
 		this.idFutsalField = idFutsalField;
 		this.fieldName = fieldName;
+		this.phoneNumber = phoneNumber;
 		this.location = location;
 		this.detailLocation = detailLocation;
 		this.numberOfField = numberOfField;
@@ -82,6 +84,16 @@ public class FutsalField implements Serializable {
 
     public void setFieldName(String fieldName) {
         this.fieldName = fieldName;
+    }
+    
+    @JsonView(DataTablesOutput.View.class)
+    @Column (name = "phoneNumber")
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @JsonView(DataTablesOutput.View.class)

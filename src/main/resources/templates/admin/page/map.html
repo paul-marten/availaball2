@@ -1,21 +1,107 @@
+<!DOCTYPE html>
 <html layout:decorator="/admin/layout"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
 <title>Map</title>
+<link rel="stylesheet" th:href="@{/css/plugins/view-field.css}" />
 <link rel="stylesheet" th:href="@{/css/plugins/map.css}" />
 </head>
 <body>
-	<div id="page-wrapper">
-            <div layout:fragment="content">
-	<div id="mapouter">
-		<div id="gmap_canvas">
-			<iframe width="100%" height="200%" frameborder="0" scrolling="no" marginheight="0" src="https://maps.google.com/maps?q=Jakarta%20Indonesia&t=&z=14&ie=UTF8&iwloc=&output=embed" marginwidth="0">
-		</div>
-	</div>
-	</div>
-</div>
+
+		<th:block layout:fragment="content">
+
+			<div  style="height:100%;position:relative">
+				<div id="map"></div>
+
+
+				<div class="form-box collapse">
+
+					<div class="row">
+						<div id="md12" class="col-lg-12">
+							<div id="" class="col-lg-12">
+								<!-- last update -->
+								<div class="col-md-2 mdtop1">
+									<div>
+										<label class="labels"> Latest update </label>
+									</div>
+									<div>
+										<label class="text"> 05/04/2017 15:03 </label>
+									</div>
+								</div>
+								<div class="col-md-2 mdtop1">
+									<div>
+										<label class="labels"> Surveyer </label>
+									</div>
+									<div></div>
+
+								</div>
+							</div>
+
+							<div class="col-md-6 mdtop6">
+								<img src="/img/aa.jpg" height="168" width="360">
+							</div>
+							<!--end of field img-->
+
+							<div class="col-lg-12">
+								<!-- detail -->
+								<div class="col-md-6 mdtop2 "></div>
+								<div class="col-lg-12 mdtop3">
+									<!-- phone number -->
+									<div class="col-md-2 mdtop4">
+										<div>
+											<label class="labels">Telepon </label>
+										</div>
+
+									</div>
+									<!-- end of phone number-->
+
+									<!-- number of field -->
+									<div class="col-md-3 mdtop4">
+
+										<div>
+											<label class="labels">Jumlah Lapangan</label>
+										</div>
+
+									</div>
+									<!-- end of number of field -->
+
+								</div>
+
+								<!-- jam buka -->
+								<div class="col-md-12 mdtop5">
+									<div>
+										<label class="labels">Jam Buka</label>
+									</div>
+									<div>
+										<label class="texts">Senin-Sabtu</label>
+									</div>
+									<div>
+										<label class="textes">08:00-20:00</label>
+									</div>
+								</div>
+								<!-- end of jam buka-->
+
+								<!-- harga-->
+								<div class="col-md-12 mdtop5">
+									<div>
+										<label class="labels">Harga Normal Per Jam</label>
+									</div>
+								</div>
+								<!-- end of harga-->
+							</div>
+						</div>
+						<div class="col-lg-12"></div>
+					</div>
+				</div>
+		<script th:src="@{/js/map.js}"></script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiqWonUwIc3h-5FEvMJMIMvCKdMv7yZy0&callback=initMap">
+			
+		</script>
+			</div>
+</div>   
+		</th:block>
 </body>
 </html>
-
-
-
