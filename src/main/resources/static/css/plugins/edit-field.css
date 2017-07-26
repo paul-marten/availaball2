@@ -92,23 +92,6 @@ box-shadow:none !important;
 }
 
 
-
-
-#buttoned_2
-{
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-  color:#5cb85c;
-  background-color:white!important;
-     margin-bottom:9px;
-  
-}
-
 #red-round{
        font-size: 20px;
 		background-color:white;
@@ -117,18 +100,24 @@ box-shadow:none !important;
 		 outline: none;
 }
 
-#reds_2{
-width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-  color:#d8514c!important;
-   background-color:white!important;
-   margin-bottom:9px;
+#green-round_2
+{
+font-size:20px!important;
+background-color:white;
+border-color:white;
+box-shadow:none !important;
+ outline: none;
 }
+
+
+#red-round_2{
+       font-size: 20px;
+		background-color:white;
+		border-color:white;
+		box-shadow:none !important;
+		 outline: none;
+}
+
 
 .horizontal-line{
     width: 100%;
@@ -147,6 +136,19 @@ width: 30px;
 
 .form-controled {
     display: block;
+    width: 82px;
+    height: 32px;
+    padding: 6px 20px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+
+.field-harga{
+	display: inline;
     width: 82px;
     height: 32px;
     padding: 6px 20px;

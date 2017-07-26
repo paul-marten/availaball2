@@ -34,7 +34,7 @@ $(function()
 		{	
 		    $(document)
 		    	
-			    .on('click', '.btn-add', function(e)
+			    .on('click', '.btn-add_2', function(e)
 			    {
 			        e.preventDefault();
 			        var konForm = $('.kon form:first'),
@@ -42,10 +42,11 @@ $(function()
 			            nEntry = $(curEntry.clone()).appendTo(konForm);
 	
 			        nEntry.find('input').val('');
-			        konForm.find('.entry:not(:last) .btn-add')
-			            .removeClass('btn-add').addClass('btn-remove')
+			        konForm.find('.entry:not(:last) .btn-add_2')
+			            .removeClass('btn-add_2').addClass('btn-remove')
 			            .removeClass('btn-success').addClass('btn-danger')
-			            .html('<span class="glyphicon glyphicon-minus" id="icon-light"></span>');
+			            .html('<span class="icon_minus" ></span>');
+			       	$("#green-round_2").prop('id', 'red-round_2');
 			    	}
 			    )    
 		    .on('click', '.btn-remove', function(e){		
