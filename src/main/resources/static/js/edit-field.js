@@ -15,8 +15,8 @@ $(function()
 	        controlForm.find('.entry:not(:last) .btn-add')
 	            .removeClass('btn-add').addClass('btn-remove')
 	            .removeClass('btn-success').addClass('btn-danger')
-	            .html('<span class="glyphicon glyphicon-minus" id="icon-light"></span>');
-	        	$("#buttoned_1").prop('id', 'reds');
+	            .html('<span class="icon_minus"></span>');
+	        	$("#green-round").prop('id', 'red-round');
 	    	}      
 	    )
 	    
@@ -45,7 +45,8 @@ $(function()
 			        konForm.find('.entry:not(:last) .btn-add_2')
 			            .removeClass('btn-add_2').addClass('btn-remove')
 			            .removeClass('btn-success').addClass('btn-danger')
-			            .html('<span class="glyphicon glyphicon-minus" id="icon-light"></span>');
+			            .html('<span class="icon_minus" ></span>');
+			       	$("#green-round_2").prop('id', 'red-round_2');
 			    	}
 			    )    
 		    .on('click', '.btn-remove', function(e){		

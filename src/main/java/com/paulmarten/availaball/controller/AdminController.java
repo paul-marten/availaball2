@@ -77,7 +77,6 @@ public class AdminController {
         model.addAttribute("view",futsalFieldService.findFutsalFieldById(id));
         String number = futsalFieldService.findFutsalFieldById(id).getPhone();
         String[] result = number.split(",");
-        System.out.println(result[0]);
         model.addAttribute("phone", result[0]);
         return "/admin/page/view-lapangan";
     }
@@ -88,5 +87,9 @@ public class AdminController {
         return "/admin/page/edit-field";
     }
     
-    
+    @RequestMapping(value = "/current-map/{id}")
+    public String viewMap(@PathVariable int id, Model model){
+        model.addAttribute("edit",futsalFieldService.findFutsalFieldById(id));
+        return "/admin/page/current-map";
+    }
 }
