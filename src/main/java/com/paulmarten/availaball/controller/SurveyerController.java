@@ -46,20 +46,6 @@ public class SurveyerController {
 		return surveyerService.checkAccount(username, password);
 	}
 
-	// @JsonView(DataTablesOutput.View.class)
-	// @RequestMapping(value="/get-all-futsal-field", method = RequestMethod.GET
-	// , headers="Accept=application/json")
-	// public ResponseMessage getAllFutsalField(@RequestParam(required = false,
-	// defaultValue = "1") int page){
-	// ResponseMessage responseMessage = new ResponseMessage();
-	// Page <FutsalField> futsalField =
-	// futsalFieldService.findAllFutsalField(page);
-	// responseMessage.setObject(futsalField.getContent());
-	// responseMessage.setCurrentPage(futsalField.getNumber()+1);
-	// responseMessage.setTotalPage(futsalField.getTotalPages());
-	// return responseMessage;
-	// }
-
 	@JsonView(DataTablesOutput.View.class)
 	@RequestMapping(value = "/get-all-futsal-field", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseMessage getAllFutsalField(@RequestParam(required = false, defaultValue = "1") int page) {
