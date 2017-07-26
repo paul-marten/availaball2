@@ -1,6 +1,6 @@
 
 #font{
-	font-family:Roboto!important;
+	font-family:Open Sans!important;
 }
 
 .title{
@@ -12,7 +12,7 @@
 }
 .label-color{
 	color: #8c8c8c!important;
-   
+   font-family: Roboto!important;
     font-weight: 300;
 	
 }
@@ -82,49 +82,17 @@
 	color:white!important;
 
 }
-#green-round
-{
-font-size:20px!important;
-background-color:white;
-border-color:white;
-box-shadow:none !important;
- outline: none;
+
+
+.lefted{
+    padding-left: unset;
 }
-
-
-#red-round{
-       font-size: 20px;
-		background-color:white;
-		border-color:white;
-		box-shadow:none !important;
-		 outline: none;
-}
-
-#green-round_2
-{
-font-size:20px!important;
-background-color:white;
-border-color:white;
-box-shadow:none !important;
- outline: none;
-}
-
-
-#red-round_2{
-       font-size: 20px;
-		background-color:white;
-		border-color:white;
-		box-shadow:none !important;
-		 outline: none;
-}
-
-
 .horizontal-line{
     width: 100%;
     height: 2px;
     /* background-color: #24404c; */
     border-bottom: 1px solid #c7c7c7;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     overflow: hidden;
     margin-top: 60px;
     margin-left: 5px;
@@ -134,6 +102,10 @@ box-shadow:none !important;
 	    border-radius: 4px;
 }
 
+label.control-label{
+    font-family: Open Sans!important;
+    color:#333333!important;
+}
 .form-controled {
     display: block;
     width: 82px;
@@ -158,6 +130,8 @@ box-shadow:none !important;
     background-color: #fff;
     background-image: none;
     border: 1px solid #ccc;
+    font-family: Open Sans;
+
 }
 
 .bound{
@@ -194,21 +168,24 @@ box-shadow:none !important;
 
 /* Edit Harga */
 
-.lab{
-	margin-top: 20px !important;
-	margin-bottom: 15px !important;
+.label-edit{
+
 	max-width: 100% !important;
-	font-weight: normal !important;	
+	font-family: Roboto !important;	
+    color: #8c8c8c!important;
+    padding-left: unset;
+
 }
 
 .time{
 	border-radius: 5px;
 	border-width: thin;
 	border-color: #CCCCCC;
-	font-family: opensans;
+	font-family: Open Sans;
 	margin-right: 10px;
 	width: 73px;
 	height: 32px;
+        padding-left: 13px;
 	
 }
 
@@ -216,11 +193,176 @@ box-shadow:none !important;
 	border-radius: 5px;
 	border-width: thin;
 	border-color: #CCCCCC;
-	font-family: opensans;
+	font-family: Open Sans;
 	margin-right: 30px;
 	width: 73px;
 	height: 32px;	
+      padding-left: 13px;
 }
 
     
-	
+	/*button add remove*/
+    #green-round
+{
+font-size:20px!important;
+background-color:white;
+border-color:white;
+box-shadow:none !important;
+ outline: none;
+}
+
+
+#red-round{
+       font-size: 20px;
+        background-color:white;
+        border-color:white;
+        box-shadow:none !important;
+         outline: none;
+}
+
+#green-round_2
+{
+font-size:20px!important;
+background-color:white;
+border-color:white;
+box-shadow:none !important;
+ outline: none;
+}
+
+
+#red-round_2{
+       font-size: 20px;
+        background-color:white;
+        border-color:white;
+        box-shadow:none !important;
+         outline: none;
+}
+
+
+#green-round_3
+{
+font-size:20px!important;
+background-color:white;
+border-color:white;
+box-shadow:none !important;
+ outline: none;
+}
+
+
+#red-round_3{
+       font-size: 20px;
+        background-color:white;
+        border-color:white;
+        box-shadow:none !important;
+         outline: none;
+}
+
+
+#green-round_4
+{
+font-size:20px!important;
+background-color:white;
+border-color:white;
+box-shadow:none !important;
+ outline: none;
+}
+
+
+#red-round_4{
+       font-size: 20px;
+        background-color:white;
+        border-color:white;
+        box-shadow:none !important;
+         outline: none;
+}
+
+#green-round_5
+{
+font-size:20px!important;
+background-color:white;
+border-color:white;
+box-shadow:none !important;
+ outline: none;
+}
+
+
+#red-round_5{
+       font-size: 20px;
+        background-color:white;
+        border-color:white;
+        box-shadow:none !important;
+         outline: none;
+}
+
+
+#green-round_6
+{
+font-size:20px!important;
+background-color:white;
+border-color:white;
+box-shadow:none !important;
+ outline: none;
+}
+
+
+#red-round_6{
+       font-size: 20px;
+        background-color:white;
+        border-color:white;
+        box-shadow:none !important;
+         outline: none;
+}
+
+
+#green-round_7
+{
+font-size:20px!important;
+background-color:white;
+border-color:white;
+box-shadow:none !important;
+ outline: none;
+}
+
+
+#red-round_7{
+       font-size: 20px;
+        background-color:white;
+        border-color:white;
+        box-shadow:none !important;
+         outline: none;
+}
+#green-round_8
+{
+font-size:20px!important;
+background-color:white;
+border-color:white;
+box-shadow:none !important;
+ outline: none;
+}
+
+
+#red-round_8{
+       font-size: 20px;
+        background-color:white;
+        border-color:white;
+        box-shadow:none !important;
+         outline: none;
+}
+
+
+#button-save{
+    background-color: #5acf90!important;
+    border-color: #5acf90!important;
+    padding: 6px 27px!important;  
+        margin-left: 24px!important;
+        margin-top: 55px!important;  
+}
+
+
+.rp{
+        float: left;
+    padding-right: 9px;
+    padding-top: 9px;
+    font-size: 10px;
+    font-family: Roboto;
+}

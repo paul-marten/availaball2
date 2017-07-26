@@ -26,7 +26,7 @@
                         <!-- Image -->
                         <div class="col-lg-12 lefted">
                         
-			       		 <div class="show-image">
+			       		 <div class="show-image lefted">
 			          	<img src="/img/blank.jpg" style="  width: 360px;  height: 180px;" onchange="readURL(this);" id="field-img">   
 			         
 			            <div class="button-edit " id="button-edit">
@@ -64,7 +64,7 @@
                                   <!-- Map icon -->
                         <div class="col-lg-4 map2 lefted" id="map" style="margin-top: -9px;padding-right: unset;" >
                            <label class="label-color lefted"> -6.19152212312</label>
-                           <a th:href="@{/admin/page/current-map}">
+                           <a th:href="@{/admin/picklocation}">
                            <img src="/img/map.jpg" class="map-icons">
                            </a>
                            
@@ -87,14 +87,14 @@
                             <div class="col-lg-6 lefted">
                         
 							<div class="control-group" id="fields">
-										<label class="control-label" for="field1">Telepon</label>
+										<label class="control-label label-color" for="field1">Telepon</label>
 										<div class="controls">
 											<form role="form" autocomplete="off">
 												<div class="entry input-group col-lg-4"
 													style="width: 205px;">
 													<div class="bound">
 														<input class="form-control" name="fields[]" type="text"
-															id="fields-round" placeholder="phone number" />
+															id="fields-round" placeholder="Phone Number" />
 													</div>
 													<span class="input-group-btn ">
 														<button class="btn btn-success btn-add" type="button"
@@ -136,247 +136,154 @@
                         <!-- end of Number of field -->
                     </div>
             
-     <!-- Jam Buka -->
-                         
-                        <div class="horizontal-line"></div>
-                    <div class="col-lg-12">
-                
-                    <label> Jam Buka</label>
-                    </div>
-					   <div class="col-lg-12">
-	
-                        <!-- Senin -->
-                        
-                        <div class="col-lg-4">
-                          
-						   <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Senin
-						   
-						   
-						   <form action="/action_page.php">
-  								<select class="time"  >
-								    <option value="a">08.00</option>
-								    <option value="b">09.00</option>
-								    <option value="c">10.00</option>
-								    <option value="d">11.00</option>
-								    <option value="e">12.00</option>
-								    <option value="f">13.00</option>
-								    <option value="g">14.00</option>
-								    <option value="h">15.00</option>
-								    <option value="i">16.00</option>
-								    <option value="j">17.00</option>
-								    <option value="k">18.00</option>
-								    <option value="l">19.00</option>
-								  </select>
-  
-								  <select class="timed">
-								    <option value="m">20.00</option>
-								    <option value="n">21.00</option>
-								    <option value="o">22.00</option>
-								    <option value="p">23.00</option>
-								    <option value="q">24.00</option>
-								  </select>
-								  </form>
-                        </div>
-                        <!-- end Of senin -->
-
-                        <!-- Selasa -->
-                        <div class="col-lg-4">
-                            <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Selasa 
-                             <form action="/action_page.php">
-  								<select class="time">
-								    <option value="a">08.00</option>
-								    <option value="b">09.00</option>
-								    <option value="c">10.00</option>
-								    <option value="d">11.00</option>
-								    <option value="e">12.00</option>
-								    <option value="f">13.00</option>
-								    <option value="g">14.00</option>
-								    <option value="h">15.00</option>
-								    <option value="i">16.00</option>
-								    <option value="j">17.00</option>
-								    <option value="k">18.00</option>
-								    <option value="l">19.00</option>
-								  </select>
-  
-								  <select class="timed">
-								    <option value="m">20.00</option>
-								    <option value="n">21.00</option>
-								    <option value="o">22.00</option>
-								    <option value="p">23.00</option>
-								    <option value="q">24.00</option>
-								  </select>
-								  </form>
-                        </div>
-                        <!-- end Of selasa -->
-
-                        <!-- Rabu  -->
-                        <div class="col-lg-4">
-                           <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Rabu
-                            <form action="/action_page.php">
-  								<select class="time">
-								    <option value="a">08.00</option>
-								    <option value="b">09.00</option>
-								    <option value="c">10.00</option>
-								    <option value="d">11.00</option>
-								    <option value="e">12.00</option>
-								    <option value="f">13.00</option>
-								    <option value="g">14.00</option>
-								    <option value="h">15.00</option>
-								    <option value="i">16.00</option>
-								    <option value="j">17.00</option>
-								    <option value="k">18.00</option>
-								    <option value="l">19.00</option>
-								  </select>
-  
-								  <select class="timed">
-								    <option value="m">20.00</option>
-								    <option value="n">21.00</option>
-								    <option value="o">22.00</option>
-								    <option value="p">23.00</option>
-								    <option value="q">24.00</option>
-								  </select>
-								  </form>
-                        </div>
-                        <!-- end Of Rabu -->
-
-                        <!-- Kamis -->
-                        <div class="col-lg-4">
-                           <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Kamis
-                            <form action="/action_page.php">
-  								<select class="time">
-								    <option value="a">08.00</option>
-								    <option value="b">09.00</option>
-								    <option value="c">10.00</option>
-								    <option value="d">11.00</option>
-								    <option value="e">12.00</option>
-								    <option value="f">13.00</option>
-								    <option value="g">14.00</option>
-								    <option value="h">15.00</option>
-								    <option value="i">16.00</option>
-								    <option value="j">17.00</option>
-								    <option value="k">18.00</option>
-								    <option value="l">19.00</option>
-								  </select>
-  
-								  <select class="timed">
-								    <option value="m">20.00</option>
-								    <option value="n">21.00</option>
-								    <option value="o">22.00</option>
-								    <option value="p">23.00</option>
-								    <option value="q">24.00</option>
-								  </select>
-								  </form>
-                        </div>
-                        <!-- end Of Kamis -->
-
-                        <!-- Jumat  -->
-                        <div class="col-lg-4">
-                            <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Jumat
-                             <form action="/action_page.php">
-  								<select class="time">
-								    <option value="a">08.00</option>
-								    <option value="b">09.00</option>
-								    <option value="c">10.00</option>
-								    <option value="d">11.00</option>
-								    <option value="e">12.00</option>
-								    <option value="f">13.00</option>
-								    <option value="g">14.00</option>
-								    <option value="h">15.00</option>
-								    <option value="i">16.00</option>
-								    <option value="j">17.00</option>
-								    <option value="k">18.00</option>
-								    <option value="l">19.00</option>
-								  </select>
-  
-								  <select class="timed">
-								    <option value="m">20.00</option>
-								    <option value="n">21.00</option>
-								    <option value="o">22.00</option>
-								    <option value="p">23.00</option>
-								    <option value="q">24.00</option>
-								  </select>
-								  </form>
-                        </div>
-                        <!-- end of Jumat  -->
-
-                        <!-- Sabtu  -->
-                        <div class="col-lg-4">
-                            <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Sabtu
-                             <form action="/action_page.php">
-  								<select class="time">
-								    <option value="a">08.00</option>
-								    <option value="b">09.00</option>
-								    <option value="c">10.00</option>
-								    <option value="d">11.00</option>
-								    <option value="e">12.00</option>
-								    <option value="f">13.00</option>
-								    <option value="g">14.00</option>
-								    <option value="h">15.00</option>
-								    <option value="i">16.00</option>
-								    <option value="j">17.00</option>
-								    <option value="k">18.00</option>
-								    <option value="l">19.00</option>
-								  </select>
-  
-								  <select class="timed">
-								    <option value="m">20.00</option>
-								    <option value="n">21.00</option>
-								    <option value="o">22.00</option>
-								    <option value="p">23.00</option>
-								    <option value="q">24.00</option>
-								  </select>
-								  </form>
-                        </div>
-                        <!-- end Of Sabtu -->
-
-                        <!-- Minggu -->
-                        <div class="col-lg-4">
-                            <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Minggu
-                             <form action="/action_page.php">
-  								<select class="time">
-								    <option value="a">08.00</option>
-								    <option value="b">09.00</option>
-								    <option value="c">10.00</option>
-								    <option value="d">11.00</option>
-								    <option value="e">12.00</option>
-								    <option value="f">13.00</option>
-								    <option value="g">14.00</option>
-								    <option value="h">15.00</option>
-								    <option value="i">16.00</option>
-								    <option value="j">17.00</option>
-								    <option value="k">18.00</option>
-								    <option value="l">19.00</option>
-								  </select>
-  
-								  <select class="timed">
-								    <option value="m">20.00</option>
-								    <option value="n">21.00</option>
-								    <option value="o">22.00</option>
-								    <option value="p">23.00</option>
-								    <option value="q">24.00</option>
-								  </select>
-								  </form>
-                        </div>
-                        <!-- end Of Minggu -->
-
+   
 
 						
                         </div>
                   
-                <div class="horizontal-line" style="padding-top:25px;"></div>  
+                <div class="horizontal-line lefted" ></div>  
                         <!-- Harga -->
-                             <div class="col-lg-12">
+                             <div class="col-lg-12" style="padding-bottom: 20px;">
+								<label class="label-color">Harga</label>
+							</div>
+				<div class="col-lg-6" style="float: left;">
+							<div class="">
+								
+									<div class="control-group" id="fields">
+										<div class="col-lg-6">
+											<label class="control-label" for="field1">  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Selasa</label>
+
+										</div>
+										<div class="senin">
+											<form autocomplete="off">
+											<div class="entry" style="float:left;     padding-left: 23px;">
+										
+												<select class="time">
+													<option value="a">08.00</option>
+													<option value="b">09.00</option>
+													<option value="c">10.00</option>
+													<option value="d">11.00</option>
+													<option value="e">12.00</option>
+													<option value="f">13.00</option>
+													<option value="g">14.00</option>
+													<option value="h">15.00</option>
+													<option value="i">16.00</option>
+													<option value="j">17.00</option>
+													<option value="k">18.00</option>
+													<option value="l">19.00</option>
+													<option value="m">20.00</option>
+													<option value="n">21.00</option>
+													<option value="o">22.00</option>
+													<option value="p">23.00</option>
+													<option value="q">24.00</option>
+												</select> <select class="timed">
+													<option value="a">24.00</option>
+													<option value="b">23.00</option>
+													<option value="c">22.00</option>
+													<option value="d">21.00</option>
+													<option value="e">20.00</option>
+													<option value="f">19.00</option>
+													<option value="g">18.00</option>
+													<option value="h">17.00</option>
+													<option value="i">16.00</option>
+													<option value="j">15.00</option>
+													<option value="k">14.00</option>
+													<option value="l">13.00</option>
+													<option value="m">12.00</option>
+													<option value="n">11.00</option>
+													<option value="o">10.00</option>
+													<option value="p">09.00</option>
+													<option value="q">08.00</option>
+												</select>
+												<div class=" input-group " style="float:right">
+														<label class="rp" > Rp </label>
+														<input class="field-harga" name="fields[]" type="text"
+															id="fields-round" placeholder="Harga" style="float:left"/>
+															<button class="btn btn-success btn-add_2" type="button"
+													id="green-round_2" >
+													<span class="icon_add" style="float:right" ></span>
+												</button>
+											</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								
+					</div>
+		
+								<div class="lefted" >
+									<div class="control-group" id="fields">
+										<div class="col-lg-6">
+											<label class="control-label" for="field1">  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Selasa</label>
+										</div>
+										<div class="selasa">
+											<form autocomplete="off">
+											<div class="entry" style="float:left;     padding-left: 23px;">
+										
+												<select class="time">
+													<option value="a">08.00</option>
+													<option value="b">09.00</option>
+													<option value="c">10.00</option>
+													<option value="d">11.00</option>
+													<option value="e">12.00</option>
+													<option value="f">13.00</option>
+													<option value="g">14.00</option>
+													<option value="h">15.00</option>
+													<option value="i">16.00</option>
+													<option value="j">17.00</option>
+													<option value="k">18.00</option>
+													<option value="l">19.00</option>
+													<option value="m">20.00</option>
+													<option value="n">21.00</option>
+													<option value="o">22.00</option>
+													<option value="p">23.00</option>
+													<option value="q">24.00</option>
+												</select> <select class="timed">
+													<option value="a">24.00</option>
+													<option value="b">23.00</option>
+													<option value="c">22.00</option>
+													<option value="d">21.00</option>
+													<option value="e">20.00</option>
+													<option value="f">19.00</option>
+													<option value="g">18.00</option>
+													<option value="h">17.00</option>
+													<option value="i">16.00</option>
+													<option value="j">15.00</option>
+													<option value="k">14.00</option>
+													<option value="l">13.00</option>
+													<option value="m">12.00</option>
+													<option value="n">11.00</option>
+													<option value="o">10.00</option>
+													<option value="p">09.00</option>
+													<option value="q">08.00</option>
+												</select>
+												<div class=" input-group " style="float:right">
+														<label class="rp" > Rp </label>
+														<input class="field-harga" name="fields[]" type="text"
+															id="fields-round" placeholder="Harga" style="float:left"/>
+															<button class="btn btn-success btn-add_3" type="button"
+													id="green-round_3" >
+													<span class="icon_add" style="float:right" ></span>
+												</button>
+											</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
 							
-								<label class="lab">Harga</label>
-							</div>
 
-							<div class="col-lg-12">
-								<div class="col-lg-6">
+
+					
+								<div class="lefted">
 									<div class="control-group" id="fields">
-										<label class="control-label" for="field1">Senin</label>
-										<div class="kon">
+										<div class="col-lg-6">
+											<label class="control-label" for="field1">  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Rabu</label>
+
+										</div>
+										<div class="rabu">
 											<form autocomplete="off">
-											<div class="entry" style="float:left">
+											<div class="entry" style="float:left;     padding-left: 23px;">
 										
 												<select class="time">
 													<option value="a">08.00</option>
@@ -416,11 +323,11 @@
 													<option value="q">08.00</option>
 												</select>
 												<div class=" input-group " style="float:right">
-														<label style="float:left" > Rp </label>
+														<label class="rp" > Rp </label>
 														<input class="field-harga" name="fields[]" type="text"
 															id="fields-round" placeholder="Harga" style="float:left"/>
-															<button class="btn btn-success btn-add_2" type="button"
-													id="green-round_2" >
+															<button class="btn btn-success btn-add_4" type="button"
+													id="green-round_4" >
 													<span class="icon_add" style="float:right" ></span>
 												</button>
 											</div>
@@ -428,138 +335,19 @@
 											</form>
 										</div>
 									</div>
-								</div>
-</div>
-<div class="col-lg-12">
-								<div class="col-lg-6">
-									<div class="control-group" id="fields">
-										<label class="control-label" for="field1">Senin</label>
-										<div class="kon">
-											<form autocomplete="off">
-											<div class="entry" style="float:left">
-										
-												<select class="time">
-													<option value="a">08.00</option>
-													<option value="b">09.00</option>
-													<option value="c">10.00</option>
-													<option value="d">11.00</option>
-													<option value="e">12.00</option>
-													<option value="f">13.00</option>
-													<option value="g">14.00</option>
-													<option value="h">15.00</option>
-													<option value="i">16.00</option>
-													<option value="j">17.00</option>
-													<option value="k">18.00</option>
-													<option value="l">19.00</option>
-													<option value="m">20.00</option>
-													<option value="n">21.00</option>
-													<option value="o">22.00</option>
-													<option value="p">23.00</option>
-													<option value="q">24.00</option>
-												</select> <select class="timed">
-													<option value="a">24.00</option>
-													<option value="b">23.00</option>
-													<option value="c">22.00</option>
-													<option value="d">21.00</option>
-													<option value="e">20.00</option>
-													<option value="f">19.00</option>
-													<option value="g">18.00</option>
-													<option value="h">17.00</option>
-													<option value="i">16.00</option>
-													<option value="j">15.00</option>
-													<option value="k">14.00</option>
-													<option value="l">13.00</option>
-													<option value="m">12.00</option>
-													<option value="n">11.00</option>
-													<option value="o">10.00</option>
-													<option value="p">09.00</option>
-													<option value="q">08.00</option>
-												</select>
-												<div class=" input-group " style="float:right">
-														<label style="float:left" > Rp </label>
-														<input class="field-harga" name="fields[]" type="text"
-															id="fields-round" placeholder="Harga" style="float:left"/>
-															<button class="btn btn-success btn-add_2" type="button"
-													id="green-round_2" >
-													<span class="icon_add" style="float:right" ></span>
-												</button>
-											</div>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
 								</div>
 
 
-							<div class="col-lg-12">
-								<div class="col-lg-6">
-									<div class="control-group" id="fields">
-										<label class="control-label" for="field1">Senin</label>
-										<div class="kon">
-											<form autocomplete="off">
-											<div class="entry" style="float:left">
-										
-												<select class="time">
-													<option value="a">08.00</option>
-													<option value="b">09.00</option>
-													<option value="c">10.00</option>
-													<option value="d">11.00</option>
-													<option value="e">12.00</option>
-													<option value="f">13.00</option>
-													<option value="g">14.00</option>
-													<option value="h">15.00</option>
-													<option value="i">16.00</option>
-													<option value="j">17.00</option>
-													<option value="k">18.00</option>
-													<option value="l">19.00</option>
-													<option value="m">20.00</option>
-													<option value="n">21.00</option>
-													<option value="o">22.00</option>
-													<option value="p">23.00</option>
-													<option value="q">24.00</option>
-												</select> <select class="timed">
-													<option value="a">24.00</option>
-													<option value="b">23.00</option>
-													<option value="c">22.00</option>
-													<option value="d">21.00</option>
-													<option value="e">20.00</option>
-													<option value="f">19.00</option>
-													<option value="g">18.00</option>
-													<option value="h">17.00</option>
-													<option value="i">16.00</option>
-													<option value="j">15.00</option>
-													<option value="k">14.00</option>
-													<option value="l">13.00</option>
-													<option value="m">12.00</option>
-													<option value="n">11.00</option>
-													<option value="o">10.00</option>
-													<option value="p">09.00</option>
-													<option value="q">08.00</option>
-												</select>
-												<div class=" input-group " style="float:right">
-														<label style="float:left" > Rp </label>
-														<input class="field-harga" name="fields[]" type="text"
-															id="fields-round" placeholder="Harga" style="float:left"/>
-															<button class="btn btn-success btn-add_2" type="button"
-													id="green-round_2" >
-													<span class="icon_add" style="float:right" ></span>
-												</button>
-											</div>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-</div>
 
-<div class="col-lg-12">
-								<div class="col-lg-6">
+								<div class="lefted">
 									<div class="control-group" id="fields">
-										<label class="control-label" for="field1">Senin</label>
-										<div class="kon">
+										<div class="col-lg-6">
+											<label class="control-label" for="field1">  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Kamis</label>
+
+										</div>
+										<div class="kamis">
 											<form autocomplete="off">
-											<div class="entry" style="float:left">
+											<div class="entry" style="float:left;     padding-left: 23px;">
 										
 												<select class="time">
 													<option value="a">08.00</option>
@@ -599,11 +387,11 @@
 													<option value="q">08.00</option>
 												</select>
 												<div class=" input-group " style="float:right">
-														<label style="float:left" > Rp </label>
+														<label class="rp" > Rp </label>
 														<input class="field-harga" name="fields[]" type="text"
 															id="fields-round" placeholder="Harga" style="float:left"/>
-															<button class="btn btn-success btn-add_2" type="button"
-													id="green-round_2" >
+															<button class="btn btn-success btn-add_5" type="button"
+													id="green-round_5" >
 													<span class="icon_add" style="float:right" ></span>
 												</button>
 											</div>
@@ -612,14 +400,22 @@
 										</div>
 									</div>
 								</div>
-</div>
-<div class="col-lg-12">
-								<div class="col-lg-6">
+
+</div>	
+
+<div class="col-lg-6 " style="  padding-bottom: 55px; float: right;">
+	
+
+<div class="">
+								
 									<div class="control-group" id="fields">
-										<label class="control-label" for="field1">Senin</label>
-										<div class="kon">
+										<div class="col-lg-6">
+											<label class="control-label" for="field1">  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Jumat</label>
+
+										</div>
+										<div class="jumat">
 											<form autocomplete="off">
-											<div class="entry" style="float:left">
+											<div class="entry" style="float:left;     padding-left: 23px;">
 										
 												<select class="time">
 													<option value="a">08.00</option>
@@ -659,11 +455,11 @@
 													<option value="q">08.00</option>
 												</select>
 												<div class=" input-group " style="float:right">
-														<label style="float:left" > Rp </label>
+														<label class="rp" > Rp </label>
 														<input class="field-harga" name="fields[]" type="text"
 															id="fields-round" placeholder="Harga" style="float:left"/>
-															<button class="btn btn-success btn-add_2" type="button"
-													id="green-round_2" >
+															<button class="btn btn-success btn-add_6" type="button"
+													id="green-round_6" >
 													<span class="icon_add" style="float:right" ></span>
 												</button>
 											</div>
@@ -671,15 +467,18 @@
 											</form>
 										</div>
 									</div>
-								</div>
+								
 						</div>
-<div class="col-lg-12">
-								<div class="col-lg-6">
+
+								<div class=" lefted">
 									<div class="control-group" id="fields">
-										<label class="control-label" for="field1">Senin</label>
-										<div class="kon">
+									<div class="col-lg-6">
+											<label class="control-label" for="field1">  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Sabtu</label>
+
+										</div>
+										<div class="sabtu">
 											<form autocomplete="off">
-											<div class="entry" style="float:left">
+											<div class="entry" style="float:left;     padding-left: 23px;">
 										
 												<select class="time">
 													<option value="a">08.00</option>
@@ -719,11 +518,11 @@
 													<option value="q">08.00</option>
 												</select>
 												<div class=" input-group " style="float:right">
-														<label style="float:left" > Rp </label>
+														<label class="rp" > Rp </label>
 														<input class="field-harga" name="fields[]" type="text"
 															id="fields-round" placeholder="Harga" style="float:left"/>
-															<button class="btn btn-success btn-add_2" type="button"
-													id="green-round_2" >
+															<button class="btn btn-success btn-add_7" type="button"
+													id="green-round_7" >
 													<span class="icon_add" style="float:right" ></span>
 												</button>
 											</div>
@@ -731,16 +530,19 @@
 											</form>
 										</div>
 									</div>
-								</div>
 								</div>
 
-<div class="col-lg-12">
-								<div class="col-lg-6">
+
+
+								<div class="lefted">
 									<div class="control-group" id="fields">
-										<label class="control-label" for="field1">Senin</label>
-										<div class="kon">
+										<div class="col-lg-6">
+											<label class="control-label" for="field1">  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Minggu</label>
+
+										</div>
+										<div class="minggu">
 											<form autocomplete="off">
-											<div class="entry" style="float:left">
+											<div class="entry" style="float:left;     padding-left: 23px;">
 										
 												<select class="time">
 													<option value="a">08.00</option>
@@ -780,11 +582,11 @@
 													<option value="q">08.00</option>
 												</select>
 												<div class=" input-group " style="float:right">
-														<label style="float:left" > Rp </label>
+														<label class="rp" > Rp </label>
 														<input class="field-harga" name="fields[]" type="text"
 															id="fields-round" placeholder="Harga" style="float:left"/>
-															<button class="btn btn-success btn-add_2" type="button"
-													id="green-round_2" >
+															<button class="btn btn-success btn-add_8" type="button"
+													id="green-round_8" >
 													<span class="icon_add" style="float:right" ></span>
 												</button>
 											</div>
@@ -793,12 +595,15 @@
 										</div>
 									</div>
 								</div>
-						
+
+
 
 							</div>
+								
 							</div>
                         
                         <!-- end of harga -->
+                        	<a href="#" id="button-save" class="btn btn-primary btn-default">Simpan</a>
                     </div>
             </div>
 
