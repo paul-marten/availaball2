@@ -23,10 +23,9 @@ public class AuthService implements UserDetailsService{
 
     public void register(Account account){
         account.setRole("ROLE_SURVEYER");
-//		siteUser.setPassword(passwordEncoder.encode(siteUser.getPassword()));
         accountRepository.save(account);
     }
-
+    
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepository.findByUsername(username);
