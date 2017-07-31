@@ -86,17 +86,17 @@ public class AdminController {
         model.addAttribute("view",futsalFieldService.findFutsalFieldById(id));
         return "/admin/page/edit-field";
     }
-<<<<<<< HEAD
+
 
     @RequestMapping(value = "/picklocation")
     public String blank(){
         return "/admin/page/picklocation";
-=======
+    }
     
     @RequestMapping(value = "/current-map/{id}")
     public String viewMap(@PathVariable int id, Model model){
         model.addAttribute("edit",futsalFieldService.findFutsalFieldById(id));
         return "/admin/page/current-map";
->>>>>>> d59b680aecd941e35783e0dccdb3a34e57aac06d
+
     }
 }

@@ -1,208 +1,200 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Map</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
-    <link rel="stylesheet" th:href="@{/css/plugins/view-field.css}" />
-
-<style type="text/css">
-
-/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+<html layout:decorator="/admin/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Map</title>
+<style>
 #map {
-	height: 100%;
-	width: 100%;
-	position:static;
-	z-index:0;
-}
-/* Optional: Makes the sample page fill the window. */
-html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
+	height: 700px;
+	width: 120%;
+	position: static;
+	z-index: 0;
 }
 
-.map-box{
-	height:100%;
-	position:relative;
+.map-box {
+	height: 700px;
+	position: relative;
 }
 
-.form-box{
+.form-box {
 	position: absolute;
-	top:0;
-	height:100%;
-	width:30%;
-	right:0;
-	background-color:rgba(255,255,255,0.8);
-	z-index:10;
-	padding-top:50px;
+	top: 0;
+	height: 100%;
+	width: 30%;
+	right: 0;
+	background-color: rgba(255, 255, 255, 0.8);
+	z-index: 10;
+	padding-top: 50px;
 }
-
 </style>
-  </head>
-  <body>
-	<div class="map-box">
-		<div id="map"></div>
-		<div class="form-box collapse">
-			<div class="row">
-				<div id="md12" class="col-lg-12">
-					<div id="" class="col-lg-12">
-						<!-- last update -->
-						<div class="col-md-2 mdtop1">
-							<div>
-								<label class="labels"> Latest update </label>
-							</div>
-							<div>
-								<label class="text"> 05/04/2017 15:03 </label>
-							</div>
-						</div>
-						<div class="col-md-2 mdtop1">
-							<div>
-								<label class="labels"> Surveyer </label>
-							</div>
-							<div></div>
-						</div>
-					</div>
-					<div class="col-md-6 mdtop6">
-						<img src="/img/aa.jpg" height="168" width="360">
-					</div>
-					<!--end of field img-->
-					<div class="col-lg-12">
-						<!-- detail -->
-						<div class="col-md-6 mdtop2 "></div>
-						<div class="col-lg-12 mdtop3">
-							<!-- phone number -->
-							<div class="col-md-2 mdtop4">
-								<div>
-									<label class="labels">Telepon </label>
+</head>
+<body>
+	<div id="page-wrapper">
+		<div class="padding-md content content-list" layout:fragment="content">
+			<div class="map-box">
+				<div id="map"></div>
+				<div class="form-box collapse">
+					<div class="row">
+						<div id="md12" class="col-lg-12">
+							<div id="" class="col-lg-12">
+								<!-- last update -->
+								<div class="col-md-2 mdtop1">
+									<div>
+										<label class="labels"> Latest update </label>
+									</div>
+									<div>
+										<label class="text"> 05/04/2017 15:03 </label>
+									</div>
+								</div>
+								<div class="col-md-2 mdtop1">
+									<div>
+										<label class="labels"> Surveyer </label>
+									</div>
+									<div></div>
 								</div>
 							</div>
-							<!-- end of phone number-->
-						<!-- number of field -->
-							<div class="col-md-3 mdtop4">
-								<div>
-									<label class="labels">Jumlah Lapangan</label>
+							<div class="col-md-6 mdtop6">
+								<img src="/img/aa.jpg" height="150" width="280">
+							</div>
+							<!--end of field img-->
+							<div class="col-lg-12">
+								<!-- detail -->
+								<div class="col-md-6 mdtop2 "></div>
+								<div class="col-lg-12 mdtop3">
+									<!-- phone number -->
+									<div class="col-md-2 mdtop4">
+										<div>
+											<label class="labels">Telepon </label>
+										</div>
+									</div>
+									<!-- end of phone number-->
+									<!-- number of field -->
+									<div class="col-md-3 mdtop4">
+										<div>
+											<label class="labels">Jumlah Lapangan</label>
+										</div>
+									</div>
+									<!-- end of number of field -->
 								</div>
+								<!-- jam buka -->
+								<div class="col-md-12 mdtop5">
+									<div>
+										<label class="labels">Jam Buka</label>
+									</div>
+									<div>
+										<label class="texts">Senin-Sabtu</label>
+									</div>
+									<div>
+										<label class="textes">08:00-20:00</label>
+									</div>
+								</div>
+								<!-- end of jam buka-->
+								<!-- harga-->
+								<div class="col-md-12 mdtop5">
+									<div>
+										<label class="labels">Harga Normal Per Jam</label>
+									</div>
+								</div>
+								<!-- end of harga-->
 							</div>
-							<!-- end of number of field -->
 						</div>
-						<!-- jam buka -->
-						<div class="col-md-12 mdtop5">
-							<div>
-								<label class="labels">Jam Buka</label>
-							</div>
-							<div>
-								<label class="texts">Senin-Sabtu</label>
-							</div>
-							<div>
-								<label class="textes">08:00-20:00</label>
-							</div>
-						</div>
-						<!-- end of jam buka-->
+						<div class="col-lg-12"></div>
+					</div>
+					<img class="pam" src="/img/app_icon.png" />
 
-						<!-- harga-->
-						<div class="col-md-12 mdtop5">
-							<div>
-								<label class="labels">Harga Normal Per Jam</label>
-							</div>
-						</div>
-						<!-- end of harga-->
-					</div>
+					<script>
+						function initMap() {
+							var map = new google.maps.Map(document
+									.getElementById('map'), {
+								zoom : 10,
+								center : {
+									lat : -6.300,
+									lng : 106.805
+								}
+							});
+							setMarkers(map);
+						}
+						var loc = [
+								[ 'Jl. Palmerah Barat No. 4, Jakarta Pusat',
+										-6.208116299999999, 106.7926943, 3 ],
+								[
+										'Jl. Asia Afrika Pintu IX, Gelora Senayan, Jakarta Pusat 10270',
+										-6.224614400000001, 106.79716540000004,
+										2 ],
+								[
+										'Jl. Raya Kebayoran Baru (Komplek Hankam), Jakarta Selatan',
+										-6.2272487, 106.77768279999998, 1 ],
+								[
+										'Jl. Raden Inten II No. 46, Duren Sawit, Jakarta Timur 13440',
+										-6.246799299999999, 106.91970630000003,
+										4 ],
+								[
+										'JJl. Danau Sunter Barat, Blok A4 No. 8-10, Jakarta Utara',
+										-6.1421, 106.85725400000001, 5 ],
+								[
+										'Jl. Raya Serpong Km 7, Kompleks Multi Guna Blok B2 No. 8, Tangerang',
+										-6.212711, 106.68357609999998, 6 ] ];
+						
+						function setMarkers(map) {
+							var image = {
+								url : 'https://image.ibb.co/hT57Zk/app_icon.png',
+								
+							//	url : 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+								
+								size : new google.maps.Size(50, 50),
+								//20, 32
+								origin : new google.maps.Point(0, 0),
+								anchor : new google.maps.Point(0, 50)
+							};
+
+							var shape = {
+								coords : [ 1, 1, 1, 50, 48, 50, 48, 1 ],
+								type : 'poly'
+							};
+							for (var i = 0; i < loc.length; i++) {
+								var locations = loc[i];
+								var marker = new google.maps.Marker({
+									position : {
+										lat : locations[1],
+										lng : locations[2]
+									},
+									map : map,
+									icon: image,
+									shape : shape,
+									title : locations[0],
+									zIndex : locations[3]
+								});
+								google.maps.event.addListener(marker, 'click',
+										function() {
+											map.setCenter(this.getPosition());
+											$(".form-box").removeClass("collapse");
+											$(this).addClass("collapse");
+										});
+								/*	google.maps.event.addListener(marker,'click', function() {
+										map.setCenter(this.getPosition());
+										$(".form-box").addClass("collapse");	
+									});	
+						$(function(){
+								$('#content').load('bio.html .content'); // fill #content when page loads
+								$('#heading li').each(function() {
+								$('a', this).click(function(e){
+								e.preventDefault();
+								$('#content').load( $(this).attr('href') + ' .content' );
+								$('#heading li a').removeClass('selected');
+								$(this).addClass('selected');
+								});
+								});
+								});
+								 */
+							}
+						}
+					</script>
+					<script async defer
+						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDByR5Y8ovC_QFWCQnHcdGYGYzqLZfZ1ew&callback=initMap">
+    </script>
 				</div>
-				<div class="col-lg-12"></div>
 			</div>
-
 		</div>
-		
 	</div>
-	<script>
-		// The following example creates complex markers to indicate beaches near
-		// Sydney, NSW, Australia. Note that the anchor is set to (0,32) to correspond
-		// to the base of the flagpole.
-
-		function initMap() {
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom : 10,
-				center : {
-					lat : -6.300, lng : 106.805 }
-			});
-
-			setMarkers(map);
-		}
-		// Data for the markers consisting of a name, a LatLng and a zIndex for the
-		// order in which these markers should display on top of each other.
-		var beaches = [
-        ['Jl. Palmerah Barat No. 4, Jakarta Pusat', -6.208116299999999, 106.7926943, 3],
-        ['Jl. Asia Afrika Pintu IX, Gelora Senayan, Jakarta Pusat 10270', -6.224614400000001, 106.79716540000004, 2],
-        ['Jl. Raya Kebayoran Baru (Komplek Hankam), Jakarta Selatan', -6.2272487, 106.77768279999998, 1],
-         ['Jl. Raden Inten II No. 46, Duren Sawit, Jakarta Timur 13440', -6.246799299999999, 106.91970630000003, 4],
-          ['JJl. Danau Sunter Barat, Blok A4 No. 8-10, Jakarta Utara', -6.1421, 106.85725400000001, 5],
-
-        ['Jl. Raya Serpong Km 7, Kompleks Multi Guna Blok B2 No. 8, Tangerang', -6.212711, 106.68357609999998, 6]
-      ];
-
-		function setMarkers(map) {
-			// Adds markers to the map.
-
-			// Marker sizes are expressed as a Size of X,Y where the origin of the image
-			// (0,0) is located in the top left of the image.
-
-			// Origins, anchor positions and coordinates of the marker increase in the X
-			// direction to the right and in the Y direction down.
-			var image = {
-				url : 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-				// This marker is 20 pixels wide by 32 pixels high.
-				size : new google.maps.Size(20, 32),
-				// The origin for this image is (0, 0).
-				origin : new google.maps.Point(0, 0),
-				// The anchor for this image is the base of the flagpole at (0, 32).
-				anchor : new google.maps.Point(0, 32)
-			};
-			// Shapes define the clickable region of the icon. The type defines an HTML
-			// <area> element 'poly' which traces out a polygon as a series of X,Y points.
-			// The final coordinate closes the poly by connecting to the first coordinate.
-			var shape = {
-				coords : [ 1, 1, 1, 20, 18, 20, 18, 1 ],
-				type : 'poly'
-			};
-			for (var i = 0; i < beaches.length; i++) {
-				var beach = beaches[i];
-				var marker = new google.maps.Marker({
-					position : {
-						lat : beach[1],
-						lng : beach[2]
-					},
-					map : map,
-					icon : image,
-					shape : shape,
-					title : beach[0],
-					zIndex : beach[3]
-				});
-
-				google.maps.event.addListener(marker,'click', function() {
-					map.setCenter(this.getPosition());
-					$(".form-box").removeClass("collapse");	
-				});
-
-			/*	google.maps.event.addListener(marker,'click', function() {
-					map.setCenter(this.getPosition());
-					$(".form-box").addClass("collapse");
-					
-				});
-				
-				*/
-			}
-		}
-	</script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiqWonUwIc3h-5FEvMJMIMvCKdMv7yZy0&callback=initMap">
-    </script> 
-	<script th:src="@{/js/jquery.js}"></script>
-	<script th:src="@{/js/bootstrap.min.js}"></script>
-	<script th:src="@{/js/app.min.js}"></script>
-	<script th:src="@{/js/jquery.slimscroll.min.js}"></script>
-	
-  </body>
-</html> 
+</body>
+</html>
