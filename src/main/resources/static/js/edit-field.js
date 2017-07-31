@@ -124,7 +124,7 @@ $(function()
 						console.log(Form1);
 
 			            $('#entry input:not(:first)').remove();	
-			            $('#entry :not(:first)').remove();
+			            $('#entry input:not(:last)').remove();
 
 			       		$('#start_senin').attr('disabled','disabled');
 			            $('#end_senin').attr('disabled','disabled');
@@ -138,8 +138,34 @@ $(function()
 
 		});
 
+/*
+$('.time').on('change', function(e) {
+var from_time = Date.parse($(this).val());
 
+var from_time_adj = new Date();
+from_time_adj.setTime(from_time.getTime() + (60 * 60));
 
+$('.to option').each(function(index, el) {
+var to_time = Date.parse($(el).val());
+  if (to_time < from_time_adj) {
+      $(el).attr('disabled', true);
+   }
+});
+});
+
+$('.timed').on('change', function(e) {
+
+var to_time = Date.parse($(this).val());
+var to_time_adj = new Date();
+
+to_time_adj.setTime(to_time.getTime() - (60 * 60 * 1000));
+$('.from option').each(function(index, el) {
+var from_time = Date.parse($(el).val());
+  if (from_time > to_time_adj) {
+      $(el).attr('disabled', true);
+   }
+});
+});*/
 
 /*--------------------------------------selasa--------------------------------------------*/
 $(function()
