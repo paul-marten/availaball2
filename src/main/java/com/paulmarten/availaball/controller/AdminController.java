@@ -92,4 +92,9 @@ public class AdminController {
         model.addAttribute("edit",futsalFieldService.findFutsalFieldById(id));
         return "/admin/page/current-map";
     }
+
+    @RequestMapping(value = "/picklocation")
+    public String blank(){
+        return "/admin/page/picklocation";
+    }
 }
