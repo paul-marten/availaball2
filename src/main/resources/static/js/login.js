@@ -1,10 +1,9 @@
-$(function(){
-        $(".form-control").on('blur', function(){
-           if($("#inputEmail").val()!==''){  //assuming the form doesn't have some fields populated by default.
-          
-         	$("#inputEmail").attr("id", "filled");
-           } else {
-             
-           }
-        });
+$(function delete(){
+       
+          $("#inputEmail").removeAttr("id", "filled");
+      
   });
+
+
+
+console.log(delete);

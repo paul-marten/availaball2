@@ -38,7 +38,7 @@ font-family: Open Sans!important;
     font-weight: light;
 }
 .logo-img {
-    width: 145px;
+    width: 143px;
     height: 42px;
     margin: 0 auto 10px;
     display: block;
@@ -74,11 +74,7 @@ font-size:12px;
  
 }
 #filled{
-    margin-bottom: 20px;
-    background-color: #4d4d4d;
-    border-radius: 4px;
-    border-color: #b3b3b3;
-    color:#FFFFFF;
+
      font-style:normal!important;
  
  
@@ -134,5 +130,5 @@ font-size:12px;
    height: 29px;
    width: 100%;
    text-align: center;
-   padding-top: 4px;
+   padding-top: 5px;
 }
