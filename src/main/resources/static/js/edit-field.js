@@ -1,42 +1,94 @@
 //Phone
 $(function()
-{	
+{	 
+	var max_button = 3; 
+	var x=1;
     $(document)
     	
 	    .on('click', '.btn-add', function(e)
 	    {
 	        e.preventDefault();
-	        
-	        var controlForm = $('.controls form:first'),
-	            currentEntry = $(this).parents('.entry:first'),
-	            newEntry = $(currentEntry.clone()).appendTo(controlForm);
-	        	
-	        newEntry.find('input').val('');
-	        controlForm.find('.entry:not(:last) .btn-add')
+	        console.log(x);
+				var controlForm = $('.controls form:first'),
+				currentEntry = $(this).parents('.entry:first');
+	            
+	        if(x<2){
+
+	            var newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+		        newEntry.find('input').val('');
+		        controlForm.find('.entry:not(:last) .btn-add')
 	            .removeClass('btn-add').addClass('btn-remove')
 	            .removeClass('btn-success').addClass('btn-danger')
 	            .html('<span class="icon_minus"></span>');
 	        	$("#green-round").prop('id', 'red-round');
+	        
+
+	        	x++;
+	        	console.log(x);
+	        }
+	        else if( x < max_button){
+	        
+	        	var lastEntry = $(currentEntry.clone()).appendTo(controlForm);
+	        	lastEntry.find('input').val('');
+	        	controlForm.find('.entry:not(:last) .btn-add')
+	            .removeClass('btn-add').addClass('btn-remove')
+	            .removeClass('btn-success').addClass('btn-danger')
+	            .html('<span class="icon_minus"></span>');
+	        	$("#green-round").prop('id', 'red-round');
+
+	        	console.log(x);
+	        	if(x = 2){
+	        		controlForm.find('.entry:last .btn-add')
+		            .removeClass('btn-add').addClass('btn-remove')
+		            .removeClass('btn-success').addClass('btn-danger')
+		            .html('<span class="icon_minus"></span>');
+		        	$("#green-round").prop('id', 'red-round');
+	        	}
+	        	x++;
+	        }
+	       
+	        	
 	    	}      
 	    )
 	    
-    .on('click', '.btn-remove', function(e){		
-	    $(this).parents('.entry:first').remove();
+    .on('click', '.btn-remove', function(e){
+    	var controlForm = $('.controls form:first'),
+		currentEntry = $(this).parents('.entry:first');
+    	if(x == 3){
+    		x--;
+    		$(this).parents('.entry:first').remove();
+
+    		controlForm.find('.entry:not(:first) .btn-remove')
+    		.removeClass('btn-remove').addClass('btn-add')
+		    .removeClass('btn-danger').addClass('btn-success')
+            .html('<span class="icon_add"></span>');
+         	$("#green-round").prop('id', 'red-round');
+    	}
+    	else{	
+    		x--;
+	    	$(this).parents('.entry:first').remove();
+
+	    }
 		e.preventDefault();
+		console.log(x);	
 		return false;		
 	});
 
 });
 
-//Harga
-//Senin
+
+
+
+
+/*--------------------------------------senin--------------------------------------------*/
 $(function()
 		{	
 		    $(document)
 		    	
 			    .on('click', '.btn-add_2', function(e)
 			    {
-			        e.preventDefault();
+			      
 			        var Form1 = $('.senin form:first'),
 			            curEntry = $(this).parents('.entry:first'),
 			            nEntry = $(curEntry.clone()).appendTo(Form1);
@@ -46,7 +98,8 @@ $(function()
 			            .removeClass('btn-add_2').addClass('btn-remove')
 			            .removeClass('btn-success').addClass('btn-danger')
 			            .html('<span class="icon_minus" ></span>');
-			       	$("#green-round_2").prop('id', 'red-round_2');
+			       		$("#green-round_2").prop('id', 'red-round_2');
+
 			    	}
 			    )    
 		    .on('click', '.btn-remove', function(e){		
@@ -55,8 +108,40 @@ $(function()
 				return false;		
 			});
 
+				$(document).on('change', '#senin', function(){
+
+			    if($('#senin').prop('checked')){
+			       $('#start_senin').removeAttr('disabled');
+			            $('#end_senin').removeAttr('disabled');
+			                 $('#fields-round').removeAttr('disabled');
+			                 $('#green-round_2').removeAttr('disabled');
+			                 $('#red-round_2').removeAttr('disabled');
+			    } else {
+			       
+			   			var Form1 = $('#entry form:not(:last)'),
+			            curEntry = $(this).parents('#entry form:first'),
+			            nEntry = $(Form1.clone()).appendTo(curEntry);
+						console.log(Form1);
+
+			            $('#entry input:not(:first)').remove();	
+			            $('#entry :not(:first)').remove();
+
+			       		$('#start_senin').attr('disabled','disabled');
+			            $('#end_senin').attr('disabled','disabled');
+			                 $('#fields-round').attr('disabled','disabled');
+			                 $('#green-round_2').attr('disabled','disabled');
+			                 $('#red-round_2').attr('disabled','disabled');
+
+			           		    }
+			});
+
+
 		});
 
+
+
+
+/*--------------------------------------selasa--------------------------------------------*/
 $(function()
 		{	
 		    $(document)
@@ -82,9 +167,13 @@ $(function()
 				return false;		
 			});
 
+
+
+
+		 
 		});
 
-
+/*--------------------------------------rabu--------------------------------------------*/
 $(function()
 		{	
 		    $(document)
@@ -221,3 +310,6 @@ $(function()
 			});
 
 		});
+
+
+

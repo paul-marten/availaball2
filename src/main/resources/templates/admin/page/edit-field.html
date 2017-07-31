@@ -65,7 +65,7 @@
                         <div class="col-lg-4 map2 lefted" id="map" style="margin-top: -9px;padding-right: unset;" >
                            <label class="label-color lefted"> -6.19152212312</label>
                            <a th:href="@{/admin/picklocation}">
-                           <img src="/img/map.jpg" class="map-icons">
+                           <img src="/img/map.jpg" class="map-icons" onclick="removeHidden()">
                            </a>
                            
 
@@ -93,8 +93,11 @@
 												<div class="entry input-group col-lg-4"
 													style="width: 205px;">
 													<div class="bound">
-														<input class="form-control" name="fields[]" type="text"
-															id="fields-round" placeholder="Phone Number" />
+														<input class="form-control" name="fields[]" type="tel" pattern="[0-9]{14}"
+															id="phone_no" placeholder="Phone Number" maxlength="14"
+													
+
+															/>
 													</div>
 													<span class="input-group-btn ">
 														<button class="btn btn-success btn-add" type="button"
@@ -151,14 +154,14 @@
 								
 									<div class="control-group" id="fields">
 										<div class="col-lg-6">
-											<label class="control-label" for="field1">  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Selasa</label>
+											<label class="control-label" for="field1">  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox" id="senin">Senin</label>
 
-										</div>
-										<div class="senin">
-											<form autocomplete="off">
-											<div class="entry" style="float:left;     padding-left: 23px;">
+										</div >
+										<div class="senin" >
+											<form autocomplete="off" >
+											<div class="entry" style="float:left;     padding-left: 23px;" id="entry">
 										
-												<select class="time">
+												<select class="time" id="start_senin" disabled="disabled">
 													<option value="a">08.00</option>
 													<option value="b">09.00</option>
 													<option value="c">10.00</option>
@@ -176,7 +179,7 @@
 													<option value="o">22.00</option>
 													<option value="p">23.00</option>
 													<option value="q">24.00</option>
-												</select> <select class="timed">
+												</select> <select class="timed" id="end_senin" disabled="disabled">
 													<option value="a">24.00</option>
 													<option value="b">23.00</option>
 													<option value="c">22.00</option>
@@ -197,10 +200,10 @@
 												</select>
 												<div class=" input-group " style="float:right">
 														<label class="rp" > Rp </label>
-														<input class="field-harga" name="fields[]" type="text"
-															id="fields-round" placeholder="Harga" style="float:left"/>
+														<input class="field-harga" name="fields[1]" type="text"
+															id="fields-round" placeholder="Harga" style="float:left" disabled="disabled" />
 															<button class="btn btn-success btn-add_2" type="button"
-													id="green-round_2" >
+													id="green-round_2" disabled="disabled" >
 													<span class="icon_add" style="float:right" ></span>
 												</button>
 											</div>
@@ -212,7 +215,7 @@
 					</div>
 		
 								<div class="lefted" >
-									<div class="control-group" id="fields">
+									<div class="control-group" id="selasa">
 										<div class="col-lg-6">
 											<label class="control-label" for="field1">  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox">Selasa</label>
 										</div>
@@ -220,7 +223,7 @@
 											<form autocomplete="off">
 											<div class="entry" style="float:left;     padding-left: 23px;">
 										
-												<select class="time">
+												<select class="time" id="start_selasa" disabled="disabled">
 													<option value="a">08.00</option>
 													<option value="b">09.00</option>
 													<option value="c">10.00</option>
@@ -238,7 +241,7 @@
 													<option value="o">22.00</option>
 													<option value="p">23.00</option>
 													<option value="q">24.00</option>
-												</select> <select class="timed">
+												</select> <select class="timed" id="end_selasa" disabled="disabled">
 													<option value="a">24.00</option>
 													<option value="b">23.00</option>
 													<option value="c">22.00</option>
@@ -260,9 +263,9 @@
 												<div class=" input-group " style="float:right">
 														<label class="rp" > Rp </label>
 														<input class="field-harga" name="fields[]" type="text"
-															id="fields-round" placeholder="Harga" style="float:left"/>
+															id="field_selasa" placeholder="Harga" style="float:left" disabled="disabled"/>
 															<button class="btn btn-success btn-add_3" type="button"
-													id="green-round_3" >
+													id="green-round_3" disabled="disabled">
 													<span class="icon_add" style="float:right" ></span>
 												</button>
 											</div>
@@ -283,7 +286,7 @@
 										</div>
 										<div class="rabu">
 											<form autocomplete="off">
-											<div class="entry" style="float:left;     padding-left: 23px;">
+											<div class="entry" style="float:left;     padding-left: 23px;" id="entry">
 										
 												<select class="time">
 													<option value="a">08.00</option>
@@ -603,7 +606,7 @@
 							</div>
                         
                         <!-- end of harga -->
-                        	<a href="#" id="button-save" class="btn btn-primary btn-default">Simpan</a>
+                        	<a href="#" id="button-save" type="submit" class="btn btn-primary btn-default">Simpan</a>
                     </div>
             </div>
 
@@ -613,4 +616,6 @@
         <!-- /#page-wrapper -->
 
 </body>
+
+
 </html>

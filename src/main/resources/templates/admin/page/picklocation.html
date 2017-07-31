@@ -20,7 +20,7 @@
                    <div id="map-container" class="col-lg-12">
                     <div class="col-lg-12" style="padding-bottom: 30px; padding-top: unset; padding-left: unset;">
                           <div class="col-md-6" style="float: left; padding-top:unset;padding-left: unset;">
-                           <a href="" style="padding-left: unset;"><i class="fa fa-long-arrow-left" style="padding-left: unset;"></i>Back </a>
+                           <a th:href="@{/admin/edit-field/10}" style="padding-left: unset;"><i class="fa fa-long-arrow-left" style="padding-left: unset;"></i>Back </a>
                       </div>
                       <div class="col-md-6" style=" padding-top: unset; padding-left: unset;">
                         <label>Pick Location</label>                          
@@ -49,6 +49,7 @@
                     position: new google.maps.LatLng(-25.363, 131.004),
                     visible: true
                 });
+
                 var boxText = document.createElement("div");
                 boxText.style.cssText = "background-color: transparent; border: 2px solid #transparent;border-radius: 25px;cursor: pointer; margin-bottom: 22px;text-align: center;";
                 boxText.innerHTML = '<button class="btn pick-location" id="pick-location">Pick Location</button>';
@@ -67,10 +68,9 @@
                     ,infoBoxClearance: new google.maps.Size(1, 1)
                     ,isHidden: false
                     ,pane: "floatPane"
-                    ,enableEventPropagation: false
+                    ,position: new google.maps.LatLng(-25.363, 131.004)
                 };
-                google.maps.event.addListener(marker, "click", function (e) {
-                   
+                google.maps.event.addListener(myOptions, "click", function (e) {
                     ib.open(theMap, this);
                      alert(this.position);
                 });
