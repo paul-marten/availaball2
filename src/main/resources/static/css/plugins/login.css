@@ -3,8 +3,8 @@ background-color: #262626!important;
 font-family: Open Sans!important;
 }
 .card-container.card {
-    max-width: 350px;
-    padding: 37px 33px;
+    max-width: 300px;
+    padding: 37px 22px;
     margin-right: 428px;
     margin-top: 135px;
 }
@@ -32,14 +32,14 @@ font-family: Open Sans!important;
     width: 86px;
     height: 33px;
     text-align: center;
-    padding-bottom: 32px;
-    padding-top: 6px;
+    padding-bottom: 29px;
+    padding-top: 3px;
     font-family:Open Sans!important;
     font-weight: light;
 }
 .logo-img {
-    width: 174px;
-    height: 56px;
+    width: 145px;
+    height: 42px;
     margin: 0 auto 10px;
     display: block;
     margin-bottom: 40px;
@@ -52,7 +52,7 @@ font-size:12px;
 .form-signin #inputEmail,
 .form-signin #inputPassword {
     direction: ltr;
-    height: 44px;
+    height: 40px;
     font-size: 16px;
 }
 #inputEmail{
@@ -75,11 +75,11 @@ font-size:12px;
 }
 #filled{
     margin-bottom: 20px;
-        background-color: #4d4d4d;
-     border-radius: 4px;
+    background-color: #4d4d4d;
+    border-radius: 4px;
     border-color: #b3b3b3;
     color:#FFFFFF;
-        font-style:normal!important;
+     font-style:normal!important;
  
  
 }
@@ -120,5 +120,19 @@ font-size:12px;
     border-color: rgb(104, 145, 162);
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 0px rgb(104, 145, 162);
+}
+
+#error-alert{
+    margin-top: 30px;
+   background-color: #F85151!important; 
+   border-color: #F85151!important;
+   border-radius:0px;
+   color:#FFFFFF!important;
+   font-family: Open Sans;
+   font-size: 12px;
+   height: 29px;
+   width: 100%;
+   text-align: center;
+   padding-top: 4px;
 }
