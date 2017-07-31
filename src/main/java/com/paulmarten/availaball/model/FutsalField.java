@@ -1,22 +1,16 @@
 package com.paulmarten.availaball.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
-
-import com.fasterxml.jackson.annotation.JsonView;
 
 /**
  * Created by paulms on 6/15/2017.
@@ -28,7 +22,6 @@ public class FutsalField implements Serializable {
 
     private int idFutsalField;
     private String fieldName;
-    private String phoneNumber;
     private String location;
     private String detailLocation;
     private int numberOfField;
@@ -39,42 +32,17 @@ public class FutsalField implements Serializable {
     private String photo;
     private Date latestUpdate;
     private Account account;
+    private String days;
     private Set<DetailPrice> detailPrices = new HashSet<DetailPrice>(0);
     private String latitude;
     private String longitud;
+    private Object objectField;
     
     public FutsalField() {
         super();
     }
     
 
-<<<<<<< HEAD
-=======
-	public FutsalField(int idFutsalField, String fieldName,String phoneNumber, String location, String detailLocation, int numberOfField,
-			Time openingHours, Time closingHours, String price, String photo, Date latestUpdate, Account account,
-			Set<FutsalFieldPhone> futsalFieldPhones, Set<DetailPrice> detailPrices, String latitude, String longitud) {
-		super();
-		this.idFutsalField = idFutsalField;
-		this.fieldName = fieldName;
-		this.phoneNumber = phoneNumber;
-		this.location = location;
-		this.detailLocation = detailLocation;
-		this.numberOfField = numberOfField;
-		this.openingHours = openingHours;
-		this.closingHours = closingHours;
-		this.price = price;
-		this.photo = photo;
-		this.latestUpdate = latestUpdate;
-		this.account = account;
-		this.futsalFieldPhones = futsalFieldPhones;
-		this.detailPrices = detailPrices;
-		this.latitude = latitude;
-		this.longitud = longitud;
-	}
-
-
-
->>>>>>> addednew
 	@JsonView(DataTablesOutput.View.class)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -95,16 +63,6 @@ public class FutsalField implements Serializable {
 
     public void setFieldName(String fieldName) {
         this.fieldName = fieldName;
-    }
-    
-    @JsonView(DataTablesOutput.View.class)
-    @Column (name = "phoneNumber")
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 
     @JsonView(DataTablesOutput.View.class)
@@ -243,6 +201,29 @@ public class FutsalField implements Serializable {
 	public void setLongitud(String longitud) {
 		this.longitud = longitud;
 	}
+	
+	@JsonView(DataTablesOutput.View.class)
+	@Transient
+	public Object getObjectField() {
+		return objectField;
+	}
+
+
+	public void setObjectField(Object objectField) {
+		this.objectField = objectField;
+	}
+	
+	@JsonView(DataTablesOutput.View.class)
+	@Transient
+	public String getDays() {
+		return days;
+	}
+
+
+	public void setDays(String days) {
+		this.days = days;
+	}
+	
 	
 	
 }
