@@ -26,11 +26,6 @@ public class AuthController {
         return "login";
     }
 
-    @RequestMapping(path="/test", method= RequestMethod.GET)
-    public String test(){
-        return "/test";
-    }
-
     @RequestMapping(value = "/register", method= RequestMethod.GET)
     ModelAndView register(ModelAndView modelAndView, Model model){
 

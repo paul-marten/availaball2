@@ -1,8 +1,8 @@
 package com.paulmarten.availaball.controller;
 
-import com.paulmarten.availaball.ResponseMessage;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.paulmarten.availaball.ResponseMessage;
 import com.paulmarten.availaball.ViewJSON;
 import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.FutsalField;
@@ -68,5 +70,30 @@ public class SurveyerController {
 	@RequestMapping(value = "/create-futsal-field", method = RequestMethod.POST)
 	public void createField(@ModelAttribute FutsalField futsalField) {
 		futsalFieldService.saveField(futsalField);
+	}
+	
+	@RequestMapping(value = "/upload-photo", method = RequestMethod.POST)
+	private String uploadPhoto(@RequestParam("file") MultipartFile imageField){
+		java.util.Date today = new java.util.Date();
+		String name;
+		String fullName;
+		if (!imageField.isEmpty()) {
+			Long date = today.getTime();
+			name = imageField.getOriginalFilename();
+			fullName = date +"_"+ name;
+			try {
+				byte[] bytes = imageField.getBytes();
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("D:/GVM/" + fullName)));
+				stream.write(bytes);
+				stream.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("null");
+			}
+			return fullName;
+		}
+		else{
+			return "null";
+		}
 	}
 }

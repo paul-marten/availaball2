@@ -32,9 +32,11 @@ public class FutsalField implements Serializable {
     private String photo;
     private Date latestUpdate;
     private Account account;
+    private String days;
     private Set<DetailPrice> detailPrices = new HashSet<DetailPrice>(0);
     private String latitude;
     private String longitud;
+    private Object objectField;
     
     public FutsalField() {
         super();
@@ -199,6 +201,29 @@ public class FutsalField implements Serializable {
 	public void setLongitud(String longitud) {
 		this.longitud = longitud;
 	}
+	
+	@JsonView(DataTablesOutput.View.class)
+	@Transient
+	public Object getObjectField() {
+		return objectField;
+	}
+
+
+	public void setObjectField(Object objectField) {
+		this.objectField = objectField;
+	}
+	
+	@JsonView(DataTablesOutput.View.class)
+	@Transient
+	public String getDays() {
+		return days;
+	}
+
+
+	public void setDays(String days) {
+		this.days = days;
+	}
+	
 	
 	
 }

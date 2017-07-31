@@ -1,5 +1,6 @@
 package com.paulmarten.availaball.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -53,9 +54,9 @@ public class AdminRestController {
 	@JsonView(DataTablesOutput.View.class)
 	@RequestMapping(value = "/delete-field", method = RequestMethod.POST, headers = "Accept=application/json")
 	public void deletefield(@ModelAttribute FutsalField futsalField) {
-		System.out.println(futsalField.getIdFutsalField());
 		futsalFieldService.deleteFutsalField(futsalField.getIdFutsalField());
 	}
+	
 	//@formatter:off
 
 	//@formatter:on

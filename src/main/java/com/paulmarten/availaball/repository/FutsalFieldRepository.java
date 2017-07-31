@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.datatables.repository.DataTablesRepository;
 import org.springframework.stereotype.Repository;
 
+import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.FutsalField;
 
 /**
@@ -16,5 +17,6 @@ import com.paulmarten.availaball.model.FutsalField;
 public interface FutsalFieldRepository extends DataTablesRepository<FutsalField, Integer> {
 	List<FutsalField>findTop10ByIdFutsalFieldLessThanOrderByIdFutsalFieldDesc(int id);
 	Page<FutsalField>findAllByOrderByIdFutsalFieldDesc(Pageable pageable);
+	FutsalField findTopByAccountOrderByIdFutsalFieldDesc(Account account);
 }
 
