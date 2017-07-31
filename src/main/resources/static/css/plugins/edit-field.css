@@ -83,7 +83,7 @@ input[type="tel"]:focus {
     padding: 10px 12px!important;
     position: absolute!important;
     right: 27px!important;
-    bottom: 18px!important;
+    bottom: 23px!important;
     border-radius: 4px;
     border:1px solid white!important;
     background-color: rgba(0, 0, 0, 0.58)!important;
@@ -124,8 +124,9 @@ input:disabled:-ms-input-placeholder { /* Internet Explorer 10+ */
     border-bottom: 1px solid #c7c7c7;
     margin-bottom: 30px;
     overflow: hidden;
-    margin-top: 60px;
-    margin-left: 5px;
+   
+    margin-left: unset;
+    
 }
 .disabledbutton {
     pointer-events: none;
@@ -134,7 +135,22 @@ input:disabled:-ms-input-placeholder { /* Internet Explorer 10+ */
 #fields-round{
 	    border-radius: 4px;
 }
-#field_selasa{
+#selasa-round{
+     border-radius: 4px;
+}
+#rabu-round{
+     border-radius: 4px;
+}
+#kamis-round{
+     border-radius: 4px;
+}
+#jumat-round{
+     border-radius: 4px;
+}
+#sabtu-round{
+     border-radius: 4px;
+}
+#minggu-round{
      border-radius: 4px;
 }
 #phone_no{

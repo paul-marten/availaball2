@@ -90,7 +90,7 @@ $(document).ready( function () {
                 "orderable": false,
                 "createdCell" : function (td, cellData, rowData, row, col) {
                 	
-			          var btngroup = $('<div>',{'class':'btn-group'});
+			          var btngroup = $('<div>',{'class':'btn-group' });
 			    	  var dropdowntoggle =$('<a>',{'class':'dropdown-toggle','data-toggle':'dropdown'});
 			    	  var icon = $('<i>',{'class':'icon-gear '});
 			    	  var dropdownmenu = $('<ul>',{'class':'dropdown-menu pull-right ', 'id':'dropdown_action'});
