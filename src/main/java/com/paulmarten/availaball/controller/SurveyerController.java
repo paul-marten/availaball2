@@ -80,10 +80,10 @@ public class SurveyerController {
 		if (!imageField.isEmpty()) {
 			Long date = today.getTime();
 			name = imageField.getOriginalFilename();
-			fullName = date +"_"+ name;
+			fullName = "D:/GVM/"+ date +"_"+ name;
 			try {
 				byte[] bytes = imageField.getBytes();
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("D:/GVM/" + fullName)));
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullName)));
 				stream.write(bytes);
 				stream.close();
 			} catch (Exception e) {

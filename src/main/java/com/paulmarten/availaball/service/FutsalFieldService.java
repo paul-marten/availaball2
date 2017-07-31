@@ -79,15 +79,12 @@ public class FutsalFieldService {
 		if (futsalFieldRepository.save(futsalFieldSave) != null) {
 			FutsalField futsalFieldIdAfterSave = new FutsalField();
 			futsalFieldIdAfterSave = futsalFieldRepository.findTopByAccountOrderByIdFutsalFieldDesc(accountSaveFutsalField);
-//			System.out.println(futsalFieldIdAfterSave.getIdFutsalField());
 			int totalFutsalField = accountSaveFutsalField.getTotalField() + 1;
 			accountSaveFutsalField.setTotalField(totalFutsalField);
 			if(accountRepository.save(accountSaveFutsalField)!= null){
-				DetailPrice detailPrice = new DetailPrice();
 				String[]days = futsalField.getDays().split(",");
-				System.out.println(days.length);
 				for(int index = 0; index < days.length ; index ++){
-					System.out.println(days[index]);
+					DetailPrice detailPrice = new DetailPrice();
 					detailPrice.setEndTime(futsalField.getClosingHours().toString());
 					detailPrice.setStartTime(futsalField.getOpeningHours().toString());
 					detailPrice.setPrice(futsalField.getPrice());
