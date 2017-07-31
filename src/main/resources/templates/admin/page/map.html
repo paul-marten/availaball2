@@ -2,8 +2,6 @@
 <html layout:decorator="/admin/layout"
 	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<meta charset="utf-8">
 <title>Map</title>
 <style>
 #map {
@@ -36,17 +34,6 @@
 			<div class="map-box">
 				<div id="map"></div>
 				<div class="form-box collapse">
-</head>
-<body>
-
-		<th:block layout:fragment="content">
-
-			<div  style="height:100%;position:relative">
-				<div id="map"></div>
-
-
-				<div class="form-box collapse">
-
 					<div class="row">
 						<div id="md12" class="col-lg-12">
 							<div id="" class="col-lg-12">
@@ -70,15 +57,6 @@
 								<img src="/img/aa.jpg" height="150" width="280">
 							</div>
 							<!--end of field img-->
-
-								</div>
-							</div>
-
-							<div class="col-md-6 mdtop6">
-								<img src="/img/aa.jpg" height="168" width="360">
-							</div>
-							<!--end of field img-->
-
 							<div class="col-lg-12">
 								<!-- detail -->
 								<div class="col-md-6 mdtop2 "></div>
@@ -97,21 +75,6 @@
 										</div>
 									</div>
 									<!-- end of number of field -->
-								</div>
-
-									</div>
-									<!-- end of phone number-->
-
-									<!-- number of field -->
-									<div class="col-md-3 mdtop4">
-
-										<div>
-											<label class="labels">Jumlah Lapangan</label>
-										</div>
-
-									</div>
-									<!-- end of number of field -->
-
 								</div>
 								<!-- jam buka -->
 								<div class="col-md-12 mdtop5">
@@ -137,7 +100,6 @@
 						</div>
 						<div class="col-lg-12"></div>
 					</div>
-
 		
 
 					<script>
@@ -175,9 +137,11 @@
 						
 						function setMarkers(map) {
 							var image = {
-								url : 'https://image.ibb.co/hT57Zk/app_icon.png',
+								url : 'https://image.ibb.co/dznXH5/pointer.png',
 								
-							//	url : 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+								//url : 'https://image.ibb.co/kytxH5/selected_map.png',
+								
+							// Base-->	url : 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
 								
 								size : new google.maps.Size(50, 56),
 								//20, 32
@@ -234,16 +198,5 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>
-				</div>
-		<script th:src="@{/js/map.js}"></script>
-		<script async defer
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiqWonUwIc3h-5FEvMJMIMvCKdMv7yZy0&callback=initMap">
-			
-		</script>
-			</div>
-</div>   
-		</th:block>
 </body>
 </html>

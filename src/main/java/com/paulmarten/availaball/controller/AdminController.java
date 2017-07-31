@@ -80,7 +80,7 @@ public class AdminController {
 		return "/admin/page/view-lapangan";
 	}
 
-	@RequestMapping(value = "/edit-field/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/edit-field/{id}", method = RequestMethod.GET)
 	public String editField(@PathVariable int id, Model model) {
 		model.addAttribute("view", futsalFieldService.findFutsalFieldById(id));
 		return "/admin/page/edit-field";
