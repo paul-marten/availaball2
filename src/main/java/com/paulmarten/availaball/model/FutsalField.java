@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
@@ -21,36 +23,27 @@ public class FutsalField implements Serializable {
     private int idFutsalField;
     private String fieldName;
     private String location;
-    private String phoneNumber;
+    private String detailLocation;
     private int numberOfField;
     private Time openingHours;
     private Time closingHours;
+    private String phone;
     private String price;
     private String photo;
     private Date latestUpdate;
     private Account account;
+    private String days;
     private Set<DetailPrice> detailPrices = new HashSet<DetailPrice>(0);
-
+    private String latitude;
+    private String longitud;
+    private Object objectField;
+    
     public FutsalField() {
         super();
     }
+    
 
-    public FutsalField(int idFutsalField, String fieldName, String location, String phoneNumber, int numberOfField, Time openingHours, Time closingHours, String price, String photo, Date latestUpdate, Account account, Set<DetailPrice> detailPrices) {
-        this.idFutsalField = idFutsalField;
-        this.fieldName = fieldName;
-        this.location = location;
-        this.phoneNumber = phoneNumber;
-        this.numberOfField = numberOfField;
-        this.openingHours = openingHours;
-        this.closingHours = closingHours;
-        this.price = price;
-        this.photo = photo;
-        this.latestUpdate = latestUpdate;
-        this.account = account;
-        this.detailPrices = detailPrices;
-    }
-
-    @JsonView(DataTablesOutput.View.class)
+	@JsonView(DataTablesOutput.View.class)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -81,18 +74,20 @@ public class FutsalField implements Serializable {
     public void setLocation(String location) {
         this.location = location;
     }
-
+    
     @JsonView(DataTablesOutput.View.class)
-    @Column (name = "phone_number")
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+    @Column (name = "detailLocation")
+	public String getDetailLocation() {
+		return detailLocation;
+	}
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
 
-    @JsonView(DataTablesOutput.View.class)
+	public void setDetailLocation(String detailLocation) {
+		this.detailLocation = detailLocation;
+	}
+
+
+	@JsonView(DataTablesOutput.View.class)
     @Column (name = "number_of_field")
     public int getNumberOfField() {
         return numberOfField;
@@ -133,6 +128,7 @@ public class FutsalField implements Serializable {
     }
 
     @JsonView(DataTablesOutput.View.class)
+    @Column (name = "photo")
     public String getPhoto() {
         return photo;
     }
@@ -142,15 +138,28 @@ public class FutsalField implements Serializable {
     }
 
     @JsonView(DataTablesOutput.View.class)
-    public Date getLatestUpdate() {
-        return latestUpdate;
-    }
+    @Column (name = "lates_update")
+	public Date getLatestUpdate() {
+		return latestUpdate;
+	}
 
-    public void setLatestUpdate(Date latestUpdate) {
-        this.latestUpdate = latestUpdate;
-    }
-
+	public void setLatestUpdate(Date latestUpdate) {
+		this.latestUpdate = latestUpdate;
+	}
+    
+    
     @JsonView(DataTablesOutput.View.class)
+    @Column(name = "phone")
+    public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
+	@JsonView(DataTablesOutput.View.class)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_account")
     public Account getAccount() {
@@ -160,13 +169,61 @@ public class FutsalField implements Serializable {
     public void setAccount(Account account) {
         this.account = account;
     }
-
+    
+//    @JsonView(DataTablesOutput.View.class)
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "futsalField")
     public Set<DetailPrice> getDetailPrices() {
         return detailPrices;
     }
-
+    
     public void setDetailPrices(Set<DetailPrice> detailPrices) {
         this.detailPrices = detailPrices;
     }
+    
+	@JsonView(DataTablesOutput.View.class)
+	@Column (name = "latitude")
+	public String getLatitude() {
+		return latitude;
+	}
+
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	@JsonView(DataTablesOutput.View.class)
+	@Column (name = "longitude")
+	public String getLongitud() {
+		return longitud;
+	}
+
+
+	public void setLongitud(String longitud) {
+		this.longitud = longitud;
+	}
+	
+	@JsonView(DataTablesOutput.View.class)
+	@Transient
+	public Object getObjectField() {
+		return objectField;
+	}
+
+
+	public void setObjectField(Object objectField) {
+		this.objectField = objectField;
+	}
+	
+	@JsonView(DataTablesOutput.View.class)
+	@Transient
+	public String getDays() {
+		return days;
+	}
+
+
+	public void setDays(String days) {
+		this.days = days;
+	}
+	
+	
+	
 }

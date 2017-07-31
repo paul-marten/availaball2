@@ -1,6 +1,9 @@
 package com.paulmarten.availaball.controller;
 
-import com.paulmarten.availaball.ResponseMessage;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
@@ -11,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.paulmarten.availaball.ResponseMessage;
 import com.paulmarten.availaball.ViewJSON;
 import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.FutsalField;
@@ -43,20 +48,6 @@ public class SurveyerController {
 		return surveyerService.checkAccount(username, password);
 	}
 
-	// @JsonView(DataTablesOutput.View.class)
-	// @RequestMapping(value="/get-all-futsal-field", method = RequestMethod.GET
-	// , headers="Accept=application/json")
-	// public ResponseMessage getAllFutsalField(@RequestParam(required = false,
-	// defaultValue = "1") int page){
-	// ResponseMessage responseMessage = new ResponseMessage();
-	// Page <FutsalField> futsalField =
-	// futsalFieldService.findAllFutsalField(page);
-	// responseMessage.setObject(futsalField.getContent());
-	// responseMessage.setCurrentPage(futsalField.getNumber()+1);
-	// responseMessage.setTotalPage(futsalField.getTotalPages());
-	// return responseMessage;
-	// }
-
 	@JsonView(DataTablesOutput.View.class)
 	@RequestMapping(value = "/get-all-futsal-field", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseMessage getAllFutsalField(@RequestParam(required = false, defaultValue = "1") int page) {
@@ -73,5 +64,36 @@ public class SurveyerController {
 	public Account viewId(@ModelAttribute Account account) {
 		System.out.println(account.getId());
 		return surveyerService.getAccount(account.getId());
+	}
+	
+	@JsonView(DataTablesOutput.View.class)
+	@RequestMapping(value = "/create-futsal-field", method = RequestMethod.POST)
+	public void createField(@ModelAttribute FutsalField futsalField) {
+		futsalFieldService.saveField(futsalField);
+	}
+	
+	@RequestMapping(value = "/upload-photo", method = RequestMethod.POST)
+	private String uploadPhoto(@RequestParam("file") MultipartFile imageField){
+		java.util.Date today = new java.util.Date();
+		String name;
+		String fullName;
+		if (!imageField.isEmpty()) {
+			Long date = today.getTime();
+			name = imageField.getOriginalFilename();
+			fullName = "D:/GVM/"+ date +"_"+ name;
+			try {
+				byte[] bytes = imageField.getBytes();
+				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullName)));
+				stream.write(bytes);
+				stream.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("null");
+			}
+			return fullName;
+		}
+		else{
+			return "null";
+		}
 	}
 }

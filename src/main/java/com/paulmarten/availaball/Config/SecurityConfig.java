@@ -44,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout().permitAll();
+        	http.httpBasic();
     }
     /*
      * Only Needed for inmemory authentication. Remove this code after implementing the real user in database
