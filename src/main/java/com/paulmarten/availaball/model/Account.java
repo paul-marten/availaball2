@@ -38,7 +38,6 @@ public class Account implements Serializable {
 		super();
 	}
 	
-
 	public Account(int id, String username, String password, String role, Set<FutsalField> futsalFields,
 			String plainPassword, String repeatPassword, String name, String phone, int totalField,
 			Date latestUpdate) {
