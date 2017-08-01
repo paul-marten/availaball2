@@ -14,9 +14,10 @@
 }
 
 #page-wrapper {
-    padding: 5px !important;
-    padding-left: 71px !important;
-} 
+	padding: 0px !important;
+	padding-left: 71px !important;
+}
+
 .map-box {
 	height: 640px;
 	width: 100%;
@@ -41,125 +42,122 @@
 			<div class="map-box">
 				<div id="map"></div>
 				<div class="form-box collapse">
-			
-				<div class="row">
-					<div id="md12" class="col-lg-12">
-
-						<div id="" class="col-lg-12">
-							<!-- last update -->
-							<div class="col-md-2 mdtop1">
-								<div>
-									<label class="labels"> Latest update </label>
+					<div class="row">
+						<div id="md12" class="col-lg-12">
+							<!-- <div class="col-md-6" style="float: left; padding-top:unset;padding-left: unset;">
+                           <a th:href="@{/admin/edit-field/10}" style="padding-left: unset;"><i class="fa fa-long-arrow-left" style="padding-left: unset;"></i>Back </a>
+                      </div> -->
+							<div id="" class="col-lg-12">
+								<!-- last update -->
+								<div class="col-md-2 mdtop1">
+									<div>
+										<label class="labels"> Latest update </label>
+									</div>
+									<div>
+										<label class="text"> 05/04/2017 15:03 </label>
+									</div>
 								</div>
-								<div>
-									<label class="text"> 05/04/2017 15:03 </label>
-								</div>
-
-							</div>
-							<!-- end of last update -->
-
-
-							<!-- Surveyer name-->
-							<div class="col-md-2 mdtop1">
-								<div>
-									<label class="labels"> Surveyer </label>
-								</div>
-								<!-- <div>
+								<!-- end of last update -->
+								<!-- Surveyer name-->
+								<div class="col-md-2 mdtop1">
+									<div>
+										<label class="labels"> Surveyer </label>
+									</div>
+									<!-- <div>
 									<label class="text"> <span
 										th:text="${view.fieldName}"></span>
 									</label>
 								</div> -->
+								</div>
+								<!-- end of surveyer name-->
+								<div class="col-md-6 mdtop1" style="padding-right: unset;">
+									<div class="dropdown" style="float: right; right: 0;">
+										<a id="dLabel" role="button" data-toggle="dropdown"
+											class="btn btn-primary" data-target="#" href="/page.html">
+											<i class="icon-gear"></i> Action <span class="caret"></span>
+										</a>
+										<ul class="dropdown-menu multi-level" role="menu"
+											aria-labelledby="dropdownMenu" id="dropdown_action">
+											<li><a th:href="@{/admin/edit-field/10}">Edit</a></li>
+											<li><a href="#" onclick="centerModal(10)">Delete</a></li>
+										</ul>
+									</div>
+								</div>
 							</div>
-							<!-- end of surveyer name-->
-							<div class="col-md-6 mdtop1" style="padding-right: unset;">
-							<div class="dropdown" style="float: right; right:0;" >
-						            <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="/page.html">
-						               <i class="icon-gear"></i> Action <span class="caret"></span>
-						            </a>
-						    		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" id="dropdown_action" >
-						              <li><a th:href="@{/admin/edit-field/10}">Edit</a></li>
-						              <li><a href="#" onclick="centerModal(10)">Delete</a></li>
-	       
-						            </ul>
-						        </div>								
+							<!-- Field img -->
+							<div class="col-md-6 mdtop6">
+								<img src="/img/aa.jpg" height="150" width="290">
 							</div>
-						</div>
-						<!-- Field img -->
-						<div class="col-md-6 mdtop6">
-							<img src="/img/aa.jpg" height="150" width="280">
-						</div>
-						<!--end of field img-->
-						<div class="col-lg-12">
-							<!-- detail -->
-							<div class="col-md-6 mdtop2 ">
-								<!-- <div>
+							<!--end of field img-->
+							<div class="col-lg-12">
+								<!-- detail -->
+								<div class="col-md-6 mdtop2 ">
+									<!-- <div>
 									<label class="titles"><span th:text="${view.fieldName}"></span></label>
 								</div> -->
-								<!-- <div class="labels">
+									<!-- <div class="labels">
 									<span th:text="${view.location}"></span>
 								</div> -->
-							</div>
-							<!-- end of detail-->
-							<div class="col-lg-12 mdtop3">
-								<!-- phone number -->
-								<div class="col-md-2 mdtop4">
-									<div>
-										<label class="labels">Telepon </label>
-									</div>
-									<!-- <div>
+								</div>
+								<!-- end of detail-->
+								<div class="col-lg-12 mdtop3">
+									<!-- phone number -->
+									<div class="col-md-2 mdtop4">
+										<div>
+											<label class="labels">Telepon </label>
+										</div>
+										<!-- <div>
 										<span th:text="${phone}"></span>
 									</div> -->
-								</div>
-								<!-- end of phone number-->
-
-								<!-- number of field -->
-								<div class="col-md-3 mdtop4">
-
-									<div>
-										<label class="labels">Jumlah Lapangan</label>
 									</div>
-									<!-- <div>
+									<!-- end of phone number-->
+									<!-- number of field -->
+									<div class="col-md-3 mdtop4">
+										<div>
+											<label class="labels">Jumlah Lapangan</label>
+										</div>
+										<!-- <div>
 										<span th:text="${view.numberOfField}"></span>
 									</div> -->
+									</div>
+									<!-- end of number of field -->
 								</div>
-								<!-- end of number of field -->
-							</div>
 
-							<!-- jam buka -->
-							<div class="col-md-12 mdtop5">
-								<div>
-									<label class="labels">Jam Buka</label>
+								<!-- jam buka -->
+								<div class="col-md-12 mdtop5">
+									<div>
+										<label class="labels">Jam Buka</label>
+									</div>
+									<div>
+										<label class="texts">Senin-Sabtu</label>
+									</div>
+									<div>
+										<label class="textes">08:00-20:00</label>
+									</div>
 								</div>
-								<div>
-									<label class="texts">Senin-Sabtu</label>
-								</div>
-								<div>
-									<label class="textes">08:00-20:00</label>
-								</div>
-							</div>
-							<!-- end of jam buka-->
-							<!-- harga-->
-							<div class="col-md-12 mdtop5">
-								<div>
-									<label class="labels">Harga Normal Per Jam</label>
-								</div>
-								<!-- <div class="textes">
+								<!-- end of jam buka-->
+								<!-- harga-->
+								<div class="col-md-12 mdtop5">
+									<div>
+										<label class="labels">Harga Normal Per Jam</label>
+									</div>
+									<!-- <div class="textes">
 									<span th:text="${view.price}"></span>
 								</div> -->
 
+								</div>
+								<!-- end of harga-->
 							</div>
-							<!-- end of harga-->
 						</div>
+						<div class="col-lg-12"></div>
 					</div>
-					<div class="col-lg-12"></div>
-				</div>
-		
+
 					<script>
 						function initMap() {
 							var map = new google.maps.Map(document
 									.getElementById('map'), {
-								zoom : 13,
-								disableDefaultUI: true,
+								zoom : 14,
+								//disableDefaultUI: true,
 								center : {
 									lat : -6.197180299999999,
 									lng : 106.84686999999997
@@ -187,17 +185,27 @@
 								[
 										'Jl. Raya Serpong Km 7, Kompleks Multi Guna Blok B2 No. 8, Tangerang',
 										-6.212711, 106.68357609999998, 6 ],
-								['Jl. Mangga Besar XI No.2, Tangki, Tamansari, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11170', -6.148039000000001,106.82568800000001, 7 ],
-								['RSCM, Kenari, Central Jakarta City, Jakarta, Indonesia', -6.197180299999999, 106.84686999999997, 8],
-								['Futsal Monas', -6.174511, 106.82896089999997, 9],
-								['Universitas Negeri Jakarta', -6.1946737, 106.87822979999999, 10]
-								];
-						
+								[
+										'Jl. Mangga Besar XI No.2, Tangki, Tamansari, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11170',
+										-6.148039000000001, 106.82568800000001,
+										7 ],
+								[
+										'RSCM, Kenari, Central Jakarta City, Jakarta, Indonesia',
+										-6.197180299999999, 106.84686999999997,
+										8 ],
+								[ 'Futsal Monas', -6.174511,
+										106.82896089999997, 9 ],
+								[ 'Universitas Negeri Jakarta', -6.1946737,
+										106.87822979999999, 10 ],
+								[ 'Gedung Pertemuan Pertamina', -6.178196,
+										106.867705, 11 ] ];
+
 						function setMarkers(map) {
 							var image = {
 								url : 'https://image.ibb.co/dznXH5/pointer.png',
-								
+
 								//url : 'https://image.ibb.co/kytxH5/selected_map.png',	
+								// Image When Click and Show Detail of Field
 								size : new google.maps.Size(50, 56),
 								origin : new google.maps.Point(0, 0),
 								anchor : new google.maps.Point(0, 50)
@@ -215,25 +223,60 @@
 										lng : locations[2]
 									},
 									map : map,
-									icon: image,
+									icon : image,
 									shape : shape,
 									title : locations[0],
 									zIndex : locations[3]
 								});
+								
 								google.maps.event.addListener(marker, 'click',
 										function() {
 											map.setCenter(this.getPosition());
-											$(".form-box").removeClass("collapse");
+											$(".form-box").removeClass(
+													"collapse");
 											$(this).addClass("collapse");
 										});
+/* 
+												$(document).on('change', '#senin', function(){
+
+											    if($('#senin').prop('checked')){
+											       $('#start_senin').removeAttr('disabled');
+											            $('#end_senin').removeAttr('disabled');
+											                 $('#fields-round').removeAttr('disabled');
+											                 $('#green-round_2').removeAttr('disabled');
+											                 $('#red-round_2').removeAttr('disabled');
+											    } else {
+											       
+											   			var Form1 = $('#entry form:not(:last)'),
+											            curEntry = $(this).parents('#entry form:first '),
+											            nEntry = $(Form1.clone()).appendTo(curEntry);
+														console.log(Form1);
+
+											         if ($('#entry :not(:last-child)')) {
+
+											         	$('#entry:not(:last-child)').remove();
+											         }
+											        
+
+											       		$('#start_senin').attr('disabled','disabled');
+											            $('#end_senin').attr('disabled','disabled');
+											                 $('#fields-round').attr('disabled','disabled');
+											                 $('#green-round_2').attr('disabled','disabled');
+											                 $('#red-round_2').attr('disabled','disabled');
+
+											           		    }
+											});
+ */
+
+									
 								
 								
-								
+
 								/*	google.maps.event.addListener(marker,'click', function() {
 										map.setCenter(this.getPosition());
 										$(".form-box").addClass("collapse");	
 									});	
-						$(function(){
+								$(function(){
 								$('#content').load('bio.html .content'); // fill #content when page loads
 								$('#heading li').each(function() {
 								$('a', this).click(function(e){
@@ -250,8 +293,9 @@
 					</script>
 					<script async defer
 						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDByR5Y8ovC_QFWCQnHcdGYGYzqLZfZ1ew&callback=initMap">
-    </script>
-    <script src="/js/futsalfield.js"></script>
+						
+					</script>
+					<script src="/js/futsalfield.js"></script>
 				</div>
 			</div>
 		</div>
