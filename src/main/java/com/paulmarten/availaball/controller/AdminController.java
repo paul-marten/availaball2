@@ -77,7 +77,7 @@ public class AdminController {
         model.addAttribute("view",futsalFieldService.findFutsalFieldById(id));
         String number = futsalFieldService.findFutsalFieldById(id).getPhone();
         String[] result = number.split(",");
-        model.addAttribute("phone", result[0]);
+        model.addAttribute("phone", result);
         return "/admin/page/view-lapangan";
     }
 

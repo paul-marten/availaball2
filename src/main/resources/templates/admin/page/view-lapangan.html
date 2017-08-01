@@ -85,8 +85,8 @@
 									<div>
 										<label class="labels">Telepon </label>
 									</div>
-									<div>
-										<span th:text="${phone}"></span>
+									<div th:each="phn : ${phone}">
+										<span th:text="${phn}"></span>
 									</div>
 								</div>
 								<!-- end of phone number-->

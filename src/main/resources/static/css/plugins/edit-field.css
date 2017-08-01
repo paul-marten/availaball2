@@ -9,7 +9,9 @@ input[type="tel"]:focus {
 #font{
 	font-family:Open Sans!important;
 }
-
+.hide-map{
+  display: none;
+}
 .title{
 	font-size:24px!important;
 	color:#332604!important;
@@ -45,7 +47,7 @@ input[type="tel"]:focus {
 .map-icons{
   width: 30px;
   height: 30px;
-
+  cursor: pointer;
 }
 .map2{
      float: right;
@@ -210,10 +212,6 @@ label.control-label{
 
 /* Map */
 
-.map{
-	width: 100%;
-	height: 500px;
-}
 
 
 /* Edit Waktu*/
