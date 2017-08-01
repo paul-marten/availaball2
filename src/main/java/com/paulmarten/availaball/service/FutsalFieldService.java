@@ -40,6 +40,10 @@ public class FutsalFieldService {
 		return futsalFieldRepository.findOne(id);
 	}
 
+	public Iterable<FutsalField> findAllFutsalFieldMap(){
+		return futsalFieldRepository.findAll();
+	}
+	
 	public Page<FutsalField> findAllFutsalField(int page) {
 		return futsalFieldRepository.findAllByOrderByIdFutsalFieldDesc(new PageRequest(page - 1, 10));
 	}
@@ -57,9 +61,11 @@ public class FutsalFieldService {
 
 	}
 	
-	public void saveField(FutsalField futsalField) {
+	public String saveField(FutsalField futsalField) {
 		java.util.Date today = new java.util.Date();
-
+		
+		String message = "";
+		
 		FutsalField futsalFieldSave = new FutsalField();
 		futsalFieldSave.setFieldName(futsalField.getFieldName());
 		futsalFieldSave.setDetailLocation(futsalField.getDetailLocation());
@@ -92,8 +98,16 @@ public class FutsalFieldService {
 					detailPrice.setFutsalField(futsalFieldIdAfterSave);
 					insert(detailPrice);
 				}
+				message = "Success, Status 200 OK";
+			}
+			else{
+				message = "Error";
 			}
 		}
+		else{
+			message = "Error";
+		}
+		return message;
 	}
 	
 	@Transactional
