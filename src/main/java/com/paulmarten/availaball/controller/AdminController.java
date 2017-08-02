@@ -62,6 +62,7 @@ public class AdminController {
     	Iterable<FutsalField> futsalField = futsalFieldService.findAllFutsalFieldMap();
     	for (FutsalField ff : futsalField) {
 			System.out.println(ff.getFieldName());
+			System.out.println(ff.getDetailLocation());
 		}
     	return "/admin/page/map";
     }

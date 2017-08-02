@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.paulmarten.availaball.ViewJSON;
 import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.FutsalField;
 import com.paulmarten.availaball.repository.FutsalFieldRepository;
@@ -39,13 +40,13 @@ public class AdminRestController {
 	@Autowired
 	private AccountService accountService;
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.FutsalField.class)
 	@RequestMapping(value = "/futsalfields", method = RequestMethod.GET)
 	public DataTablesOutput<FutsalField> getFutsalFields(@Valid DataTablesInput input) {
 		return futsalFieldService.findAllFutsalFieldAdmin(input);
 	}
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.Account.class)
 	@RequestMapping(value = "/surveyers", method = RequestMethod.GET)
 	public DataTablesOutput<Account> getAllSurveyer(@Valid DataTablesInput input) {
 		return accountService.findAllSurveyer(input);
