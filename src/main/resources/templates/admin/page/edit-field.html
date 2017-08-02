@@ -42,19 +42,22 @@
 
     <script type="text/javascript">
 	var latLng = new google.maps.LatLng(-6.205119831877469,106.82968864194243);
-	var geocoder = geocoder = new google.maps.Geocoder();
+	var geocoder = new google.maps.Geocoder();
 	function updateMarkerPosition(latLng) {
 	document.getElementById('latitude').value = [latLng.lat()]
     $("#longitude").html(document.getElementById('longitude').value = [latLng.lng()]);
 	}
 
 	function back(){
+
 	 $('#map-container').hide();
+	 $('#button-save').show();
 	 $("#edit").show();
-	 google.maps.event.trigger(map, 'resize');
+
 	}
 
 	function showmap() {
+
 	var secheltLoc = new google.maps.LatLng(-6.205119831877469,106.82968864194243);
     var myMapOptions = {
                      zoom: 15
@@ -93,28 +96,13 @@
 		updateMarkerPosition(latLng);
 		google.maps.event.addListener(marker, 'dragend', function() {
 	    updateMarkerPosition(marker.getPosition());
-	 	   showInfo(this.position);
+	 	  
 	 	});
 
 
     
-    function showInfo(latlng) {
-      geocoder.geocode({
-        'latLng': latLng
-      }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          if (results[1]) {
-            // here assign the data to asp lables
-            document.getElementById('alamat').value = results[1].formatted_address;
-          } else {
-            alert('No results found');
-          }
-        } else {
-          alert('Geocoder failed due to: ' + status);
-        }
-      });
-    }
-    console.log(showInfo);
+  
+  
 	 	
 
         var ib = new InfoBox(myOptions);
@@ -122,16 +110,19 @@
 
 	   $('#map-container').show();
 	   $("#edit").hide();
-
+	     $('#button-save').hide();
 		window.dispatchEvent(new Event('resize'));
+	
 }
 
 		var latInput = document.getElementById('lat');
 		var longInput = document.getElementById('long');
 
 		function pick(){
+			 $('#button-save').show();
 		 $('#map-container').hide();
 		 $("#edit").show();
+		 
 		window.dispatchEvent(new Event('resize'));
 		}
 
@@ -175,7 +166,7 @@ console.log(pick);
                             <div class="col-lg-6 lefted">
                              <label class="field-nama label-color">Nama</label>
                     
-                         <input type="text"  class="form-control" name="nama"  size="35"   placeholder="Nama Lapangan">
+                         <input type="text"  class="form-control" name="nama"  size="35"   placeholder="Nama Lapangan" th:field="${view.fieldName}">
                         
                                  </div>
                         </div>
@@ -206,7 +197,7 @@ console.log(pick);
                         <!-- end of Map Icon  -->
 
 
-                         <textarea class="form-control"  size="35"  id="alamat" placeholder="Alamat" value=""  style=" resize: none;"></textarea>
+                         <textarea class="form-control"  size="35"  id="alamat" placeholder="Alamat" value=""  style=" resize: none;" th:field="${view.detailLocation}"></textarea>
                         
            
                              </div>
@@ -226,11 +217,11 @@ console.log(pick);
 												<div class="entry input-group col-lg-4"
 													style="width: 205px;">
 													<div class="bound">
-														<input class="form-control" name="fields[]" type="tel" pattern="[0-9]{14}"
+														<input class="form-control" name="fields[]" type="tel" pattern="[0-9]{14}" th:field="${view.phone}"
 															id="phone_no" placeholder="Phone Number" maxlength="14"
 													
 
-															/>
+															/>	
 													</div>
 													<span class="input-group-btn ">
 														<button class="btn btn-success btn-add" type="button"
@@ -244,6 +235,8 @@ console.log(pick);
 									</div>
 						
 
+										
+								
 
                         <!-- end of Phone -->
 
@@ -739,14 +732,19 @@ console.log(pick);
 
 
 							</div>
-							                       
+
                         <!-- end of harga -->
 							</div>
 
-                       
+                       </div>		<a href="#" id="button-save" type="submit" class="btn btn-primary btn-default">Simpan</a> 
+                       </div>
+                       </div>
+                       </div>
+			      
                     </div>
-     	<a href="#" id="button-save" type="submit" class="btn btn-primary btn-default">Simpan</a>       </div>
+       </div>
 </div>
+
             </div>
 
 			</div>

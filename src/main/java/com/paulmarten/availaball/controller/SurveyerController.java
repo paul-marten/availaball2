@@ -68,8 +68,10 @@ public class SurveyerController {
 	
 	@JsonView(DataTablesOutput.View.class)
 	@RequestMapping(value = "/create-futsal-field", method = RequestMethod.POST)
-	public void createField(@ModelAttribute FutsalField futsalField) {
-		futsalFieldService.saveField(futsalField);
+	public ResponseMessage createField(@ModelAttribute FutsalField futsalField) {
+		ResponseMessage responseMessage = new ResponseMessage();
+	/*	responseMessage.setMessage(futsalFieldService.saveField(futsalField));*/
+		return responseMessage;
 	}
 	
 	@RequestMapping(value = "/upload-photo", method = RequestMethod.POST)

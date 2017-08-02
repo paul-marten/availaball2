@@ -92,3 +92,92 @@ padding-right: 40px;
 .divB {
    order: 1;
 }
+
+#button_delete {
+	background-color:#fb4343!important;
+	text-decoration-color:white!important;
+	border: 0px solid transparent!important;
+	border-color: transparent!important; 
+     padding: 6px 18px!important;
+    font-size:12px!important;}
+
+#button_delete btn-primary:active:hover {
+	background-color:#fb4343!important;
+	border: 0px solid transparent!important;
+	text-decoration-color:white!important;
+	border-color: #transparent!important; 
+	     padding: 6px 18px!important;
+    font-size:12px!important;
+}
+
+#button_delete btn-primary {
+	background-color:#fb4343!important;
+	border: 0px solid transparent!important;
+	text-decoration-color:black!important;
+	border-color:transparent!important;
+ 	padding: 6px 18px!important;
+    font-size:12px!important;
+}
+#button_cancel{
+	background-color:#bababa!important;
+	text-decoration-color:black!important;
+	border: 0px solid transparent!important;
+	border-color: transparent!important; 
+	 padding: 6px 18px!important;
+    font-size:12px!important;
+
+}
+
+#button_cancel btn-default {
+	background-color:#bababa!important;
+	border: 0px solid transparent!important;
+	text-decoration-color:white!important;
+	border-color:transparent!important;
+	     padding: 6px 18px!important;
+    font-size:12px!important;
+}
+
+#button_cancel btn{
+
+}
+#modal_footer {
+margin-left:auto!important;
+margin-right:auto!important;
+border-top:none!important;
+    border-bottom-right-radius: 7px!important;
+    border-bottom-left-radius: 7px!important;
+}
+
+#modal_content{
+	width:255px!important;
+	border-color:white!important;
+	position: relative!important;
+    margin: 0 auto!important;
+    top: 50%!important;
+
+}
+
+#modal_header{
+		border-bottom:none!important;
+	padding-top: 21px!important;
+    padding-bottom: 4px!important;
+    padding-left: 14px!important;
+		padding-right:15px!important;
+	 border-top-right-radius: 7px!important;
+    border-top-left-radius: 7px!important;	
+}
+
+#modal_lables  {
+	text-align:center!important;
+	font-family:Open Sans;
+	font-size:14px;
+}
+
+.button_c_d{
+	    padding-right: 40px;
+}
+
+#myModal modal-open {
+	overflow-x: auto!important;
+    overflow-y: auto!important;
+}
