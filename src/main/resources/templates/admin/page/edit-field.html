@@ -8,9 +8,12 @@
        <script th:src="@{/js/date.min.js}"></script>
        <link rel="stylesheet" th:href="@{/css/plugins/picklocation.css}" />
       <script 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCegjS81MOvtXounku2rnlJlggMKv0tv9w&callback=initMap">
-  
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCegjS81MOvtXounku2rnlJlggMKv0tv9w&callback=showmap">
     </script>
+    <script src="js/OpenLayers.js"></script>
+
+
+    <script src="js/jquery-position-picker.debug.js"></script>
 <script type="text/javascript" src="/js/infobox.js"></script>
 </head>
 
@@ -28,49 +31,49 @@
                    
                     <div class="col-lg-12" style="padding-bottom: 30px; padding-top: unset; padding-left: unset;">
                           <div class="col-md-6" style="float: left; padding-top:unset;padding-left: unset;">
-                           <a  style="padding-left: unset; cursor: pointer;"><i class="fa fa-long-arrow-left" style="padding-left: unset;"></i>Back </a>
+                           <a onclick="back()" style="padding-left: unset; cursor: pointer;"><i class="fa fa-long-arrow-left" style="padding-left: unset;"></i>Back </a>
                       </div>
                       <div class="col-md-6" style=" padding-top: unset; padding-left: unset;">
                         <label>Pick Location</label>                          
                       </div>
                        <div id="map"></div>
                       </div>
-                   
-                    <div id="marker-tooltip"></div>
-                    
-
-
-
-    <div id="map_canvas"></div>   
+			    <div id="map_canvas"></div>   
 
     <script type="text/javascript">
-      <!-- Display Map -->
-      function back(){
+	var latLng = new google.maps.LatLng(-6.205119831877469,106.82968864194243);
+	var geocoder = geocoder = new google.maps.Geocoder();
+	function updateMarkerPosition(latLng) {
+	document.getElementById('latitude').value = [latLng.lat()]
+    $("#longitude").html(document.getElementById('longitude').value = [latLng.lng()]);
+	}
+
+	function back(){
 	 $('#map-container').hide();
-    $("#edit").show();
-}
+	 $("#edit").show();
+	 google.maps.event.trigger(map, 'resize');
+	}
 
 	function showmap() {
-		var secheltLoc = new google.maps.LatLng(49.47216, -123.76307);
+	var secheltLoc = new google.maps.LatLng(-6.205119831877469,106.82968864194243);
     var myMapOptions = {
                      zoom: 15
-                    ,center: secheltLoc
+                    ,center: latLng
                     ,mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-var theMap = new google.maps.Map(document.getElementById("map"), myMapOptions);
-              
-                var marker = new google.maps.Marker({
+                		};
+	var theMap = new google.maps.Map(document.getElementById("map"), myMapOptions);
+    var marker = new google.maps.Marker({
                     map: theMap,
                     draggable: true,
-                    position: new google.maps.LatLng(-25.363, 131.004),
+                    position: new google.maps.LatLng(-6.205119831877469,106.82968864194243),
                     visible: true
                 });
 
-        var boxText = document.createElement("div");
+    var boxText = document.createElement("div");
                 boxText.style.cssText = "background-color: transparent; border: 2px solid #transparent;border-radius: 25px;cursor: pointer; margin-bottom: 22px;text-align: center;";
-                boxText.innerHTML = '<button class="btn pick-location" id="pick-location">Pick Location</button>';  
+                boxText.innerHTML = '<button class="btn pick-location" id="pick-location" onClick="pick()">Pick Location</button>';  
                 
-        var myOptions = {
+    var myOptions = {
                      content: boxText
                     ,disableAutoPan: false
                     ,maxWidth: 0
@@ -85,52 +88,56 @@ var theMap = new google.maps.Map(document.getElementById("map"), myMapOptions);
                     ,infoBoxClearance: new google.maps.Size(1, 1)
                     ,isHidden: false
                     ,pane: "floatPane"
-                    ,position: new google.maps.LatLng(-25.363, 131.004)
-                };
-                google.maps.event.addListener(myOptions, "click", function (e) {
-                    ib.open(theMap, this);
-                     alert(this.position);
-                });
+                    ,position: new google.maps.LatLng(-6.205119831877469,106.82968864194243)
+    };
+		updateMarkerPosition(latLng);
+		google.maps.event.addListener(marker, 'dragend', function() {
+	    updateMarkerPosition(marker.getPosition());
+	 	   showInfo(this.position);
+	 	});
 
 
-        var myOptions = {
-                     content: boxText
-                    ,disableAutoPan: false
-                    ,maxWidth: 0
-                    ,pixelOffset: new google.maps.Size( -140,-140)
-                    ,zIndex: null
-                    ,boxStyle: { 
-                      background: ""
-                      ,opacity: 0.75
-                      ,width: "280px"
-                     }
-                    ,closeBoxURL: ""
-                    ,infoBoxClearance: new google.maps.Size(1, 1)
-                    ,isHidden: false
-                    ,pane: "floatPane"
-                    ,position: new google.maps.LatLng(-25.363, 131.004)
-                };
-                google.maps.event.addListener(myOptions, "click", function (e) {
-                    ib.open(theMap, this);
-                     alert(this.position);
-                });
+    
+    function showInfo(latlng) {
+      geocoder.geocode({
+        'latLng': latLng
+      }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[1]) {
+            // here assign the data to asp lables
+            document.getElementById('alamat').value = results[1].formatted_address;
+          } else {
+            alert('No results found');
+          }
+        } else {
+          alert('Geocoder failed due to: ' + status);
+        }
+      });
+    }
+    console.log(showInfo);
+	 	
 
-                var ib = new InfoBox(myOptions);
-                ib.open(theMap, marker);
+        var ib = new InfoBox(myOptions);
+	    ib.open(theMap, marker);
 
+	   $('#map-container').show();
+	   $("#edit").hide();
 
-
-   $('#map-container').show();
-    $("#edit").hide();
-
-
-
+		window.dispatchEvent(new Event('resize'));
 }
 
+		var latInput = document.getElementById('lat');
+		var longInput = document.getElementById('long');
+
+		function pick(){
+		 $('#map-container').hide();
+		 $("#edit").show();
+		window.dispatchEvent(new Event('resize'));
+		}
+
+
+console.log(pick);
     </script> 
- 
-                    
-  
             </div>
 
 
@@ -184,7 +191,13 @@ var theMap = new google.maps.Map(document.getElementById("map"), myMapOptions);
 
                                   <!-- Map icon -->
                         <div class="col-lg-4 map2 lefted" id="maps" style="margin-top: -9px;padding-right: unset;" >
-                           <label class="label-color lefted"> -6.19152212312</label>
+
+<input type="text" name='nama_lokasi' id='nama_lokasi'  hidden="hidden">
+ 
+<input type="text" name='latitude' id='latitude' hidden="hidden">
+
+<label name='longitude' id='longitude' value=""></label> 
+
 
                           <a type="button" onClick="showmap()">
                           	<img src="/img/map.jpg" class="map-icons">
@@ -193,7 +206,7 @@ var theMap = new google.maps.Map(document.getElementById("map"), myMapOptions);
                         <!-- end of Map Icon  -->
 
 
-                         <textarea  class="form-control"  size="35"   placeholder="Alamat"></textarea>
+                         <textarea class="form-control"  size="35"  id="alamat" placeholder="Alamat" value=""  style=" resize: none;"></textarea>
                         
            
                              </div>
@@ -735,7 +748,7 @@ var theMap = new google.maps.Map(document.getElementById("map"), myMapOptions);
      	<a href="#" id="button-save" type="submit" class="btn btn-primary btn-default">Simpan</a>       </div>
 </div>
             </div>
-            	  
+
 			</div>
 
         </div>
