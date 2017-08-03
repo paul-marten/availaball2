@@ -37,7 +37,7 @@ public class FutsalField implements Serializable {
     private String days;
     private Set<DetailPrice> detailPrices = new HashSet<DetailPrice>(0);
     private String latitude;
-    private String longitud;
+    private String longitude;
     private Object objectField;
     
     public FutsalField() {
@@ -195,13 +195,13 @@ public class FutsalField implements Serializable {
 
 	@JsonView(ViewJSON.FutsalFieldMap.class)
 	@Column (name = "longitude")
-	public String getLongitud() {
-		return longitud;
+	public String getLongitude() {
+		return longitude;
 	}
 
 
-	public void setLongitud(String longitud) {
-		this.longitud = longitud;
+	public void setLongitude(String longitud) {
+		this.longitude = longitud;
 	}
 	
 	@JsonView(DataTablesOutput.View.class)
