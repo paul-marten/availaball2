@@ -47,9 +47,6 @@
 									<div>
 										<label class="labels"> Latest update </label>
 									</div>
-									<div>
-										<label class="text"> 05/04/2017 15:03 </label>
-									</div>
 								</div>
 								<!-- end of last update -->
 								<!-- Surveyer name-->
@@ -58,9 +55,8 @@
 										<label class="labels"> Surveyer </label>
 									</div>
 									<div>
-									<label class="text" id="fieldname">
-									</label>
-								</div> 
+										<label id="surveyername" value=""></label>
+									</div> 
 								</div>
 								<!-- end of surveyer name-->
 								<div class="col-md-6 mdtop1" style="padding-right: unset;">
@@ -84,20 +80,18 @@
 							<!--end of field img-->
 							<div class="col-lg-12">
 								<!-- detail -->
-								<div class="col-md-6 mdtop2 ">
-									 <div class="labels" id="location">
-								</div> 
+								<div class="col-md-6 mdtop2" id="title">
+									 <div></div> 
 								</div>
 								<!-- end of detail-->
 								<div class="col-lg-12 mdtop3">
 									<!-- phone number -->
 									<div class="col-md-2 mdtop4">
 										<div>
-											<label class="labels">Telepon </label>
+											<label class="labels">Telepon</label>
 										</div>
 										<div>
-										<span th:text="${phone}"></span>
-									</div> 
+										</div> 
 									</div>
 									<!-- end of phone number-->
 									<!-- number of field -->
@@ -105,9 +99,9 @@
 										<div>
 											<label class="labels">Jumlah Lapangan</label>
 										</div>
-										<div>
+										<!-- <div>
 										<span th:text="${view.numberOfField}"></span>
-									</div> 
+									</div> --> 
 									</div>
 									<!-- end of number of field -->
 								</div>
@@ -129,9 +123,9 @@
 									<div>
 										<label class="labels">Harga Normal Per Jam</label>
 									</div>		
-									 <div class="textes">
+									<!--  <div class="textes">
 									<span th:text="${view.price}"></span>
-								</div> 
+								</div> --> 
 								</div>			
 								<!-- <a onclick="back()" style="padding-left: 20px;"><i class="fa fa-long-arrow-left"></i>Back</a>
 								end of harga -->
@@ -247,40 +241,26 @@
 											console.log(this.id)
 											map.setCenter(this.getPosition());
 											$(".form-box").removeClass("collapse");
-											map.open(map,marker)
+											test(this.title);
 									
-											$('#fieldname').html(this.title);
-											$('#location').html(this.position);
 								});
 								}
 							} 
-						 }			
-							 /* var title, address, phone;
-						 title = this.title
-						 address = this.address;
-						 phone = this.phone;
+						 }		
 						 
-						 $('#formbox .title').html(title);
-						 $('#formbox .address').html(address);
-						 $('#formbox .phone').html(phone);
-						
-						  */
-						 
+						 function test(title){
+							 $('#surveyername').html(title);
+						 }
 						 
 						//	console.log("id", "name", "latitude", "longitude");
 			  	</script>
 					 <script 
 						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDByR5Y8ovC_QFWCQnHcdGYGYzqLZfZ1ew&callback=initMap">	
-					</script> -->
+					</script> 
 					
-					<script>
-					
-						
-					
+					<script>	
 					</script>
-					
-					
-					<script src="/js/futsalfield.js"></script>
+				<script src="/js/futsalfield.js"></script>
 				</div>
 			</div>
 		</div>

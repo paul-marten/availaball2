@@ -15,7 +15,7 @@ import com.paulmarten.availaball.model.FutsalField;
  */
 @Repository("futsalFieldRepository")
 public interface FutsalFieldRepository extends DataTablesRepository<FutsalField, Integer> {
-	List<FutsalField>findTop20ByIdFutsalField();
+	
 	List<FutsalField>findTop10ByIdFutsalFieldLessThanOrderByIdFutsalFieldDesc(int id);
 	Page<FutsalField>findAllByOrderByIdFutsalFieldDesc(Pageable pageable);
 	FutsalField findTopByAccountOrderByIdFutsalFieldDesc(Account account);
