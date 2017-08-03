@@ -77,7 +77,7 @@ public class FutsalField implements Serializable {
         this.location = location;
     }
     
-    @JsonView(ViewJSON.FutsalFieldMap.class)
+    @JsonView(ViewJSON.FutsalField.class)
     @Column (name = "detailLocation")
 	public String getDetailLocation() {
 		return detailLocation;

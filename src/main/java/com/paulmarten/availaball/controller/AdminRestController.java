@@ -52,10 +52,16 @@ public class AdminRestController {
 		return accountService.findAllSurveyer(input);
 	}
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.FutsalField.class)
 	@RequestMapping(value = "/delete-field", method = RequestMethod.POST, headers = "Accept=application/json")
 	public void deletefield(@ModelAttribute FutsalField futsalField) {
 		futsalFieldService.deleteFutsalField(futsalField.getIdFutsalField());
+	}
+	
+	@JsonView(ViewJSON.FutsalFieldMap.class)
+	@RequestMapping(value = "/maps", method = RequestMethod.GET)
+	public Iterable<FutsalField> maps() {
+		return futsalFieldService.findAllFutsalFieldMap();
 	}
 	
 	//@formatter:off
