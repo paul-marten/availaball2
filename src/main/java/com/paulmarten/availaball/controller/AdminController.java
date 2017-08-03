@@ -58,8 +58,7 @@ public class AdminController {
     public String goUser(){
         return "/admin/page/user";
     }
-    
-    @JsonView(ViewJSON.FutsalFieldMap.class)
+        
     @RequestMapping(path="/map", method= RequestMethod.GET)
     public String goMap(Model model){
     	Iterable<FutsalField> futsalField = futsalFieldService.findAllFutsalFieldMap();

@@ -64,6 +64,12 @@ public class AdminRestController {
 		return futsalFieldService.findAllFutsalFieldMap();
 	}
 	
+	@JsonView(ViewJSON.FutsalField.class)
+	@RequestMapping(value = "/detail-field-map", method = RequestMethod.POST, headers = "Accept=application/json")
+	public FutsalField detailfieldMap(@ModelAttribute FutsalField futsalField) {
+		return futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
+	}
+	
 	//@formatter:off
 
 	//@formatter:on
