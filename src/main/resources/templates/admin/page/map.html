@@ -47,6 +47,9 @@
 									<div>
 										<label class="labels"> Latest update </label>
 									</div>
+									<div>
+										<label id="latestupdate" value=""></label>
+									</div>
 								</div>
 								<!-- end of last update -->
 								<!-- Surveyer name-->
@@ -89,21 +92,20 @@
 									<div class="col-md-2 mdtop4">
 										<div>
 											<label class="labels">Telepon</label>
-										</div>
+										</div>										
 										<div>
+											<label id="telepon" value=""></label>
 										</div> 
 									</div>
-									<!-- end of phone number-->
-									<!-- number of field -->
 									<div class="col-md-3 mdtop4">
 										<div>
 											<label class="labels">Jumlah Lapangan</label>
+										</div> 
+										<div>
+											<label id="jumlahlapangan" value=""></label>
 										</div>
-										<!-- <div>
-										<span th:text="${view.numberOfField}"></span>
-									</div> --> 
 									</div>
-									<!-- end of number of field -->
+									
 								</div>
 								<!-- jam buka -->
 								<div class="col-md-12 mdtop5">
@@ -111,24 +113,26 @@
 										<label class="labels">Jam Buka</label>
 									</div>
 									<div>
+										<label id="jam_buka" value=""></label>
+									</div>
+									<!-- <div>
 										<label class="texts">Senin-Sabtu</label>
-									</div>
-									<div>
+									</div> -->
+									<!-- <div>
 										<label class="textes">08:00-20:00</label>
-									</div>
+									</div> -->
 								</div>
 								<!-- end of jam buka-->
 								<!-- harga-->
 								<div class="col-md-12 mdtop5">
 									<div>
 										<label class="labels">Harga Normal Per Jam</label>
+									</div>	
+									<div>
+										<label id="harga" value=""></label>
 									</div>		
-									<!--  <div class="textes">
-									<span th:text="${view.price}"></span>
-								</div> --> 
 								</div>			
-								<!-- <a onclick="back()" style="padding-left: 20px;"><i class="fa fa-long-arrow-left"></i>Back</a>
-								end of harga -->
+
 							</div>
 						</div>
 						<div class="col-lg-12"></div>
@@ -137,66 +141,77 @@
 					var loc = [
 						{
 							"id ": "1",
+							"latest_update":" 01 Agustus 2017",
 							"name": "jl. palmerah barat no. 4, jakarta pusat",
 							"lat": "-6.208116299999999",
 							"lng": "106.7926943"
 						},
 						{
 							"id": "2",
+							"latest_update": "02 Agustus 2017",
 							"name": "jl. asia afrika pintu ix, gelora senayan, jakarta pusat 10270",
 							"lat": "-6.224614400000001",
 							"lng": "106.79716540000004"
 						},
 						{
 							"id": "3",
+							"latest_update": "11 Agustus 2017",
 							"name": "jl. raya kebayoran baru (komplek hankam), jakarta selatan",
 							"lat": "-6.2272487",
 							"lng": "106.77768279999998"
 						},
 						{
 							"id": "4",
+							"latest_update": "10 Agustus 2017",
 							"name": "jl. raden inten ii no. 46, duren sawit, jakarta timur 13440",
 							"lat": "-6.246799299999999", 
 							"lng": "106.91970630000003"
 						},
 						{
 							"id": "5",
+							"latest_update": "09 Agustus 2017",
 							"name": "jl. danau sunter barat, blok a4 no. 8-10, jakarta utara",
 							"lat": "-6.1421",
 							"lng": "106.85725400000001"
 						},
 						{
 							"id": "6",
+							"latest_update": "08 Agustus 2017",
 							"name": "jl. raya serpong km 7, kompleks multi guna blok b2 no. 8, tangerang",
 							"lat": "-6.212711",
 							"lng": "106.68357609999998"
 						},
 						{
 							"id": "7",
+							"latest_update": "07 Agustus 2017",
 							"name": "jl. mangga besar xi no.2, tangki, tamansari, kota jakarta barat, daerah khusus ibukota jakarta 11170",
 							"lat": "-6.148039000000001",
 							"lng":"106.82568800000001"
 						},
 						{
 							"id": "8",
+							"latest_update": "06 Agustus 2017",
 							"name": "rscm, kenari, central jakarta city, jakarta, indonesia",
 							"lat": "-6.197180299999999",
 							"lng": "106.84686999999997"
 						},
 						{
 							"id": "9",
+							"latest_update": "05 Agustus 2017",
 							"name": "futsal monas",
 							"lat": "-6.174511",
 							"lng": "106.82896089999997"
 						},
 						{
 							"id": "10",
+							"latest_update": "04 Agustus 2017",
 							"name": "universitas negeri jakarta",
 							"lat": "-6.1946737",
 							"lng": "106.87822979999999"
 						},
 						{
 							"id": "11",
+							"latest_update": "03 Agustus 2017",
 							"name": "gedung pertemuan pertamina",
 							"lat": "-6.178196",
 							"lng": "106.867705"
@@ -223,7 +238,6 @@
 								coords : [ 1, 1, 1, 50, 48, 50, 48, 1 ],
 								type : 'poly'
 								};			
-							
 								for (var i = 0; i < loc.length; i++) {
 									var locations = loc[i];
 									var latLng = new google.maps.LatLng(locations.lat, locations.lng);
@@ -233,26 +247,27 @@
 										icon : image,
 										shape : shape,
 										title : locations.name,
-										id: locations.id
-									});
-									
+										id: locations.id,
+										latest_update:locations.latest_update
+									});					
 								google.maps.event.addListener(marker, 'click', function() {
 											console.log(this.title)
 											console.log(this.id)
 											map.setCenter(this.getPosition());
 											$(".form-box").removeClass("collapse");
-											test(this.title);
-									
+											test(this.title, this.id, this.latest_update);	
 								});
 								}
 							} 
-						 }		
-						 
-						 function test(title){
+						 }		 
+						 function test(title,id, latest_update){
 							 $('#surveyername').html(title);
+							 $('#latestupdate').html(latest_update);
+							 $('#telepon').html(id);
+							 $('#jumlahlapangan').html(id);
+							 $('#jam_buka').html(id);
+							 $('#harga').html(id);
 						 }
-						 
-						//	console.log("id", "name", "latitude", "longitude");
 			  	</script>
 					 <script 
 						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDByR5Y8ovC_QFWCQnHcdGYGYzqLZfZ1ew&callback=initMap">	
