@@ -161,7 +161,7 @@ public class Account implements Serializable {
 		this.totalField = totalField;
 	}
 	
-	@JsonView(ViewJSON.Account.class)
+	@JsonView(ViewJSON.DetailAccount.class)
 	@Column(name = "latest_update")
 	public Date getLatestUpdate() {
 		return latestUpdate;

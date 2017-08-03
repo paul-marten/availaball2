@@ -41,7 +41,7 @@ public class FutsalFieldService {
 	}
 
 	public Iterable<FutsalField> findAllFutsalFieldMap(){
-		return futsalFieldRepository.findAll();
+		return futsalFieldRepository.findTop20ByIdFutsalField();
 	}
 	
 	public Page<FutsalField> findAllFutsalField(int page) {

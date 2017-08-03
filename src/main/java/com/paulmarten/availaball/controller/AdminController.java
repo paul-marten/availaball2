@@ -60,6 +60,7 @@ public class AdminController {
     @RequestMapping(path="/map", method= RequestMethod.GET)
     public String goMap(Model model){
     	Iterable<FutsalField> futsalField = futsalFieldService.findAllFutsalFieldMap();
+    	model.addAttribute("futsalField",futsalField);
     	for (FutsalField ff : futsalField) {
 			System.out.println(ff.getFieldName());
 			System.out.println(ff.getDetailLocation());
@@ -100,7 +101,6 @@ public class AdminController {
     public String editField(@PathVariable int id, Model model){
     	FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
         model.addAttribute("view",futsalFieldEdit);
-        
         List<DetailPrice> detailPrices = detailPriceService.findByFutsalField(futsalFieldEdit);
 //        System.out.println(detailPrices.get(1).getIdDetailPrice());
         model.addAttribute("detailPrice", detailPrices);

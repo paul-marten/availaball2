@@ -46,7 +46,7 @@ public class AdminRestController {
 		return futsalFieldService.findAllFutsalFieldAdmin(input);
 	}
 
-	@JsonView(ViewJSON.Account.class)
+	@JsonView(ViewJSON.DetailAccount.class)
 	@RequestMapping(value = "/surveyers", method = RequestMethod.GET)
 	public DataTablesOutput<Account> getAllSurveyer(@Valid DataTablesInput input) {
 		return accountService.findAllSurveyer(input);

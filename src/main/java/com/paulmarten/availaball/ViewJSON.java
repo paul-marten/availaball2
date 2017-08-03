@@ -11,5 +11,5 @@ public class ViewJSON {
     public interface FutsalFieldMap{}
     public interface DetailAccount extends Account{}
     public interface Base extends FutsalField{}
-    public interface Account{}
+    public interface Account extends DataTablesOutput.View{}
 }
