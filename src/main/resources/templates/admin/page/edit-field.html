@@ -49,7 +49,7 @@
                             <div class="col-lg-6 lefted">
                              <label class="field-nama label-color">Nama</label>
                     
-                         <input type="text"  class="form-control" name="nama"  size="35"   placeholder="Nama Lapangan">
+                         <input type="text"  class="form-control" name="nama"  size="35" th:field="${view.fieldName}"  placeholder="Nama Lapangan">
                         
                                  </div>
                         </div>
@@ -75,7 +75,7 @@
                         <!-- end of Map Icon  -->
 
 
-                         <textarea  class="form-control"  size="35"   placeholder="Alamat"></textarea>
+                         <textarea  class="form-control" size="35" th:field="${view.detailLocation}" placeholder="Alamat"></textarea>
                         
            
                              </div>
@@ -97,6 +97,8 @@
 													<div class="bound">
 														<input class="form-control" name="fields[]" type="tel" pattern="[0-9]{14}"
 															id="phone_no" placeholder="Phone Number" maxlength="14"
+													
+
 															/>
 													</div>
 													<span class="input-group-btn ">
@@ -109,6 +111,8 @@
 											</form>
 										</div>
 									</div>
+						
+
 
                         <!-- end of Phone -->
 

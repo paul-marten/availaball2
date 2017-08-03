@@ -7,11 +7,22 @@ import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
  * Created by paulms on 7/18/2017.
  */
 public class ResponseMessage {
+	private String code;
+	private String message;
     private int currentPage;
     private int totalPage;
     private Object object;
+    
+    @JsonView(ViewJSON.Base.class)
+    public String getCode() {
+		return code;
+	}
 
-    @JsonView(DataTablesOutput.View.class)
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	@JsonView(ViewJSON.Base.class)
     public int getCurrentPage() {
         return currentPage;
     }
@@ -20,7 +31,7 @@ public class ResponseMessage {
         this.currentPage = currentPage;
     }
 
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.Base.class)
     public int getTotalPage() {
         return totalPage;
     }
@@ -29,7 +40,7 @@ public class ResponseMessage {
         this.totalPage = totalPage;
     }
 
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.Base.class)
     public Object getObject() {
         return object;
     }
@@ -37,4 +48,12 @@ public class ResponseMessage {
     public void setObject(Object object) {
         this.object = object;
     }
+    
+    @JsonView(ViewJSON.Base.class)
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
 }

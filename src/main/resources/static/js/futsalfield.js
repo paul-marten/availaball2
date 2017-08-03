@@ -70,7 +70,7 @@ $(document).ready( function () {
                 "orderable": false,
             },
             {
-                "data" : 'account.id',
+                "data" : 'account.name',
                 "sClass": "user",
                 "orderable": false,
                 render: function (data, type, row) {

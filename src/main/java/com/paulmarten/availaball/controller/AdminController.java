@@ -6,8 +6,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
+import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.paulmarten.availaball.model.Account;
+import com.paulmarten.availaball.model.DetailPrice;
+import com.paulmarten.availaball.model.FutsalField;
 import com.paulmarten.availaball.service.AccountService;
+import com.paulmarten.availaball.service.DetailPriceService;
 import com.paulmarten.availaball.service.FutsalFieldService;
 
 /**
@@ -32,70 +38,83 @@ public class AdminController {
 	@Autowired
 	private AccountService accountService;
 
-	@RequestMapping(path = "/index", method = RequestMethod.GET)
-	public String goIndex(Model model, Principal principal, HttpSession session) {
-		Account account = accountService.findAccountByUsername(principal.getName());
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy");
-		LocalDate localDate = LocalDate.now();
-		session.setAttribute("mySessionAttributeAccount", account);
-		session.setAttribute("mySessionAttributeTime", dtf.format(localDate));
-		return "/admin/page/index";
-	}
+	
+	@Autowired
+	private DetailPriceService detailPriceService;
+	
+    @RequestMapping(path="/index", method= RequestMethod.GET)
+    public String goIndex(Model model,Principal principal, HttpSession session){
+    	Account account = accountService.findAccountByUsername(principal.getName());
+    	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+    	LocalDate localDate = LocalDate.now();
+    	session.setAttribute("mySessionAttributeAccount", account);
+    	session.setAttribute("mySessionAttributeTime", dtf.format(localDate));
+        return "/admin/page/index";
+    }
 
-	@RequestMapping(path = "/user", method = RequestMethod.GET)
-	public String goUser() {
-		return "/admin/page/user";
-	}
+    @RequestMapping(path="/user", method= RequestMethod.GET)
+    public String goUser(){
+        return "/admin/page/user";
+    }
+    
+    @RequestMapping(path="/map", method= RequestMethod.GET)
+    public String goMap(Model model){
+    	Iterable<FutsalField> futsalField = futsalFieldService.findAllFutsalFieldMap();
+    	model.addAttribute("futsalField",futsalField);
+    	for (FutsalField ff : futsalField) {
+			System.out.println(ff.getFieldName());
+			System.out.println(ff.getDetailLocation());
+		}
+    	return "/admin/page/map";
+    }
+    
+    //create user 
+    @RequestMapping(path="/create/user", method = RequestMethod.POST)
+    String createUser(@ModelAttribute Account account){
+    	accountService.saveUser(account);
+    	return "redirect:/admin/user";
+    }
+    
+    //edit user
+    @RequestMapping(path="/edit/user", method = RequestMethod.POST)
+    String editUser(@ModelAttribute Account account){
+    	accountService.saveUser(account);
+    	return "redirect:/admin/user";
+    }
+    
+    @RequestMapping(value = {"/logout"}, method = RequestMethod.POST)
+    public String logout(){
+        return "redirect:/";
+    }
+    
+    @RequestMapping(value = "/view-lapangan/{id}", method = RequestMethod.GET)
+    public String viewField(@PathVariable int id, Model model){
+    	FutsalField futsalFieldView = futsalFieldService.findFutsalFieldById(id);
+        model.addAttribute("view",futsalFieldView);
+        String number = futsalFieldView.getPhone();
+        String[] result = number.split(",");
+        model.addAttribute("phone", result[0]);
+        return "/admin/page/view-lapangan";
+    }
 
-	@RequestMapping(path = "/map", method = RequestMethod.GET)
-	public String goMap(Model model) {
-		model.addAttribute("view", futsalFieldService.findFutsalFieldById(2));
-		return "/admin/page/map";
-	}
+    @RequestMapping(value = "/edit-field/{id}", method = RequestMethod.GET)
+    public String editField(@PathVariable int id, Model model){
+    	FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
+        model.addAttribute("view",futsalFieldEdit);
+        List<DetailPrice> detailPrices = detailPriceService.findByFutsalField(futsalFieldEdit);
+//        System.out.println(detailPrices.get(1).getIdDetailPrice());
+        model.addAttribute("detailPrice", detailPrices);
+        return "/admin/page/edit-field";
+    }
+    
+    @RequestMapping(value = "/current-map/{id}")
+    public String viewMap(@PathVariable int id, Model model){
+        model.addAttribute("edit",futsalFieldService.findFutsalFieldById(id));
+        return "/admin/page/current-map";
+    }
 
-	// create user
-	@RequestMapping(path = "/create/user", method = RequestMethod.POST)
-	String createUser(@ModelAttribute Account account) {
-		accountService.saveUser(account);
-		return "redirect:/admin/user";
-	}
-
-	// edit user
-	@RequestMapping(path = "/edit/user", method = RequestMethod.POST)
-	String editUser(@ModelAttribute Account account) {
-		accountService.saveUser(account);
-		return "redirect:/admin/user";
-	}
-
-	@RequestMapping(value = { "/logout" }, method = RequestMethod.POST)
-	public String logout() {
-		return "redirect:/";
-	}
-
-	@RequestMapping(value = "/view-lapangan/{id}", method = RequestMethod.GET)
-	public String viewField(@PathVariable int id, Model model) {
-		model.addAttribute("view", futsalFieldService.findFutsalFieldById(id));
-		String number = futsalFieldService.findFutsalFieldById(id).getPhone();
-		String[] result = number.split(",");
-		model.addAttribute("phone", result[0]);
-		return "/admin/page/view-lapangan";
-	}
-
-	@RequestMapping(value = "/edit-field/{id}", method = RequestMethod.GET)
-	public String editField(@PathVariable int id, Model model) {
-		model.addAttribute("view", futsalFieldService.findFutsalFieldById(id));
-		return "/admin/page/edit-field";
-	}
-
-	@RequestMapping(value = "/picklocation")
-	public String blank() {
-		return "/admin/page/picklocation";
-	}
-
-	@RequestMapping(value = "/current-map/{id}")
-	public String viewMap(@PathVariable int id, Model model) {
-		model.addAttribute("edit", futsalFieldService.findFutsalFieldById(id));
-		return "/admin/page/current-map";
-
-	}
+    @RequestMapping(value = "/picklocation")
+    public String blank(){
+        return "/admin/page/picklocation";
+    }
 }
