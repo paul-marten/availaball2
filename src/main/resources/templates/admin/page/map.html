@@ -4,31 +4,27 @@
 <head>
 <title>Map</title>
 <link rel="stylesheet" th:href="@{/css/plugins/view-field.css}" />
-
 <style>
 #map {
-	height: 640px;
+	height: 660px;
 	width: 100%;
 	position: static;
 	z-index: 0;
 }
-
 #page-wrapper {
 	padding: 0px !important;
 	padding-left: 71px !important;
 }
-
 .map-box {
-	height: 640px;
+	height: 660px;
 	width: 100%;
 	position: relative;
 }
-
 .form-box {
 	position: absolute;
 	top: 0;
-	height: 650px;
-	width: 30%;
+	height: 660px;
+	width: 33%;
 	right: 0px;
 	background-color: rgba(255, 255, 255, 0.8);
 	z-index: 10;
@@ -41,12 +37,10 @@
 		<div class="padding-md content content-list" layout:fragment="content">
 			<div class="map-box">
 				<div id="map"></div>
+				
 				<div class="form-box collapse">
 					<div class="row">
-						<div id="md12" class="col-lg-12">
-							<!-- <div class="col-md-6" style="float: left; padding-top:unset;padding-left: unset;">
-                           <a th:href="@{/admin/edit-field/10}" style="padding-left: unset;"><i class="fa fa-long-arrow-left" style="padding-left: unset;"></i>Back </a>
-                      </div> -->
+						<div id="md12" class="col-lg-12">       
 							<div id="" class="col-lg-12">
 								<!-- last update -->
 								<div class="col-md-2 mdtop1">
@@ -63,11 +57,10 @@
 									<div>
 										<label class="labels"> Surveyer </label>
 									</div>
-									<!-- <div>
-									<label class="text"> <span
-										th:text="${view.fieldName}"></span>
+									<div>
+									<label class="text" id="fieldname">
 									</label>
-								</div> -->
+								</div> 
 								</div>
 								<!-- end of surveyer name-->
 								<div class="col-md-6 mdtop1" style="padding-right: unset;">
@@ -86,18 +79,14 @@
 							</div>
 							<!-- Field img -->
 							<div class="col-md-6 mdtop6">
-								<img src="/img/aa.jpg" height="150" width="290">
+								<img src="/img/aa.jpg" height="150" width="320">
 							</div>
 							<!--end of field img-->
 							<div class="col-lg-12">
 								<!-- detail -->
 								<div class="col-md-6 mdtop2 ">
-									<!-- <div>
-									<label class="titles"><span th:text="${view.fieldName}"></span></label>
-								</div> -->
-									<!-- <div class="labels">
-									<span th:text="${view.location}"></span>
-								</div> -->
+									 <div class="labels" id="location">
+								</div> 
 								</div>
 								<!-- end of detail-->
 								<div class="col-lg-12 mdtop3">
@@ -106,9 +95,9 @@
 										<div>
 											<label class="labels">Telepon </label>
 										</div>
-										<!-- <div>
+										<div>
 										<span th:text="${phone}"></span>
-									</div> -->
+									</div> 
 									</div>
 									<!-- end of phone number-->
 									<!-- number of field -->
@@ -116,13 +105,12 @@
 										<div>
 											<label class="labels">Jumlah Lapangan</label>
 										</div>
-										<!-- <div>
+										<div>
 										<span th:text="${view.numberOfField}"></span>
-									</div> -->
+									</div> 
 									</div>
 									<!-- end of number of field -->
 								</div>
-
 								<!-- jam buka -->
 								<div class="col-md-12 mdtop5">
 									<div>
@@ -140,161 +128,158 @@
 								<div class="col-md-12 mdtop5">
 									<div>
 										<label class="labels">Harga Normal Per Jam</label>
-									</div>
-									<!-- <div class="textes">
+									</div>		
+									 <div class="textes">
 									<span th:text="${view.price}"></span>
-								</div> -->
-
-								</div>
-								<!-- end of harga-->
+								</div> 
+								</div>			
+								<!-- <a onclick="back()" style="padding-left: 20px;"><i class="fa fa-long-arrow-left"></i>Back</a>
+								end of harga -->
 							</div>
 						</div>
 						<div class="col-lg-12"></div>
 					</div>
-
-					<script>
-						function initMap() {
-							var map = new google.maps.Map(document
-									.getElementById('map'), {
-								zoom : 14,
-								//disableDefaultUI: true,
-								center : {
-									lat : -6.197180299999999,
-									lng : 106.84686999999997
-								}
+					<script>		
+					var loc = [
+						{
+							"id ": "1",
+							"name": "jl. palmerah barat no. 4, jakarta pusat",
+							"lat": "-6.208116299999999",
+							"lng": "106.7926943"
+						},
+						{
+							"id": "2",
+							"name": "jl. asia afrika pintu ix, gelora senayan, jakarta pusat 10270",
+							"lat": "-6.224614400000001",
+							"lng": "106.79716540000004"
+						},
+						{
+							"id": "3",
+							"name": "jl. raya kebayoran baru (komplek hankam), jakarta selatan",
+							"lat": "-6.2272487",
+							"lng": "106.77768279999998"
+						},
+						{
+							"id": "4",
+							"name": "jl. raden inten ii no. 46, duren sawit, jakarta timur 13440",
+							"lat": "-6.246799299999999", 
+							"lng": "106.91970630000003"
+						},
+						{
+							"id": "5",
+							"name": "jl. danau sunter barat, blok a4 no. 8-10, jakarta utara",
+							"lat": "-6.1421",
+							"lng": "106.85725400000001"
+						},
+						{
+							"id": "6",
+							"name": "jl. raya serpong km 7, kompleks multi guna blok b2 no. 8, tangerang",
+							"lat": "-6.212711",
+							"lng": "106.68357609999998"
+						},
+						{
+							"id": "7",
+							"name": "jl. mangga besar xi no.2, tangki, tamansari, kota jakarta barat, daerah khusus ibukota jakarta 11170",
+							"lat": "-6.148039000000001",
+							"lng":"106.82568800000001"
+						},
+						{
+							"id": "8",
+							"name": "rscm, kenari, central jakarta city, jakarta, indonesia",
+							"lat": "-6.197180299999999",
+							"lng": "106.84686999999997"
+						},
+						{
+							"id": "9",
+							"name": "futsal monas",
+							"lat": "-6.174511",
+							"lng": "106.82896089999997"
+						},
+						{
+							"id": "10",
+							"name": "universitas negeri jakarta",
+							"lat": "-6.1946737",
+							"lng": "106.87822979999999"
+						},
+						{
+							"id": "11",
+							"name": "gedung pertemuan pertamina",
+							"lat": "-6.178196",
+							"lng": "106.867705"
+						}]; 
+					
+						 function initMap() {
+							var map = new google.maps.Map(document.getElementById('map'), {
+								zoom : 13,
+								center : {lat : -6.197180299999999, lng : 106.84686999999997}
 							});
-							setMarkers(map);
-						}
-						var loc = [
-								[ 'Jl. Palmerah Barat No. 4, Jakarta Pusat',
-										-6.208116299999999, 106.7926943, 3 ],
-								[
-										'Jl. Asia Afrika Pintu IX, Gelora Senayan, Jakarta Pusat 10270',
-										-6.224614400000001, 106.79716540000004,
-										2 ],
-								[
-										'Jl. Raya Kebayoran Baru (Komplek Hankam), Jakarta Selatan',
-										-6.2272487, 106.77768279999998, 1 ],
-								[
-										'Jl. Raden Inten II No. 46, Duren Sawit, Jakarta Timur 13440',
-										-6.246799299999999, 106.91970630000003,
-										4 ],
-								[
-										'Jl. Danau Sunter Barat, Blok A4 No. 8-10, Jakarta Utara',
-										-6.1421, 106.85725400000001, 5 ],
-								[
-										'Jl. Raya Serpong Km 7, Kompleks Multi Guna Blok B2 No. 8, Tangerang',
-										-6.212711, 106.68357609999998, 6 ],
-								[
-										'Jl. Mangga Besar XI No.2, Tangki, Tamansari, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11170',
-										-6.148039000000001, 106.82568800000001,
-										7 ],
-								[
-										'RSCM, Kenari, Central Jakarta City, Jakarta, Indonesia',
-										-6.197180299999999, 106.84686999999997,
-										8 ],
-								[ 'Futsal Monas', -6.174511,
-										106.82896089999997, 9 ],
-								[ 'Universitas Negeri Jakarta', -6.1946737,
-										106.87822979999999, 10 ],
-								[ 'Gedung Pertemuan Pertamina', -6.178196,
-										106.867705, 11 ] ];
-
-						function setMarkers(map) {
-							var image = {
-								url : 'https://image.ibb.co/dznXH5/pointer.png',
-
-								//url : 'https://image.ibb.co/kytxH5/selected_map.png',	
-								// Image When Click and Show Detail of Field
-								size : new google.maps.Size(50, 56),
-								origin : new google.maps.Point(0, 0),
-								anchor : new google.maps.Point(0, 50)
-							};
-
-							var shape = {
+							
+							setMarkers(map);	
+							function setMarkers(map) {
+								var image = {
+									url : 'https://image.ibb.co/dznXH5/pointer.png',
+									//url : 'https://image.ibb.co/kytxH5/selected_map.png',	
+									// Image When Click and Show Detail of Field
+									size : new google.maps.Size(50, 56),
+									origin : new google.maps.Point(0, 0),
+									anchor : new google.maps.Point(0, 50)
+								};
+								
+								var shape = {
 								coords : [ 1, 1, 1, 50, 48, 50, 48, 1 ],
 								type : 'poly'
-							};
-							for (var i = 0; i < loc.length; i++) {
-								var locations = loc[i];
-								var marker = new google.maps.Marker({
-									position : {
-										lat : locations[1],
-										lng : locations[2]
-									},
-									map : map,
-									icon : image,
-									shape : shape,
-									title : locations[0],
-									zIndex : locations[3]
-								});
-								
-								google.maps.event.addListener(marker, 'click',
-										function() {
-											map.setCenter(this.getPosition());
-											$(".form-box").removeClass(
-													"collapse");
-											$(this).addClass("collapse");
-										});
-/* 
-												$(document).on('change', '#senin', function(){
-
-											    if($('#senin').prop('checked')){
-											       $('#start_senin').removeAttr('disabled');
-											            $('#end_senin').removeAttr('disabled');
-											                 $('#fields-round').removeAttr('disabled');
-											                 $('#green-round_2').removeAttr('disabled');
-											                 $('#red-round_2').removeAttr('disabled');
-											    } else {
-											       
-											   			var Form1 = $('#entry form:not(:last)'),
-											            curEntry = $(this).parents('#entry form:first '),
-											            nEntry = $(Form1.clone()).appendTo(curEntry);
-														console.log(Form1);
-
-											         if ($('#entry :not(:last-child)')) {
-
-											         	$('#entry:not(:last-child)').remove();
-											         }
-											        
-
-											       		$('#start_senin').attr('disabled','disabled');
-											            $('#end_senin').attr('disabled','disabled');
-											                 $('#fields-round').attr('disabled','disabled');
-											                 $('#green-round_2').attr('disabled','disabled');
-											                 $('#red-round_2').attr('disabled','disabled');
-
-											           		    }
-											});
- */
-
+								};			
+							
+								for (var i = 0; i < loc.length; i++) {
+									var locations = loc[i];
+									var latLng = new google.maps.LatLng(locations.lat, locations.lng);
+									var marker = new google.maps.Marker({
+										position : latLng,
+										map : map,
+										icon : image,
+										shape : shape,
+										title : locations.name,
+										id: locations.id
+									});
 									
-								
-								
-
-								/*	google.maps.event.addListener(marker,'click', function() {
-										map.setCenter(this.getPosition());
-										$(".form-box").addClass("collapse");	
-									});	
-								$(function(){
-								$('#content').load('bio.html .content'); // fill #content when page loads
-								$('#heading li').each(function() {
-								$('a', this).click(function(e){
-								e.preventDefault();
-								$('#content').load( $(this).attr('href') + ' .content' );
-								$('#heading li a').removeClass('selected');
-								$(this).addClass('selected');
+								google.maps.event.addListener(marker, 'click', function() {
+											console.log(this.title)
+											console.log(this.id)
+											map.setCenter(this.getPosition());
+											$(".form-box").removeClass("collapse");
+											map.open(map,marker)
+									
+											$('#fieldname').html(this.title);
+											$('#location').html(this.position);
 								});
-								});
-								});
-								 */
-							}
-						}
-					</script>
-					<script async defer
-						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDByR5Y8ovC_QFWCQnHcdGYGYzqLZfZ1ew&callback=initMap">
+								}
+							} 
+						 }			
+							 /* var title, address, phone;
+						 title = this.title
+						 address = this.address;
+						 phone = this.phone;
+						 
+						 $('#formbox .title').html(title);
+						 $('#formbox .address').html(address);
+						 $('#formbox .phone').html(phone);
 						
+						  */
+						 
+						 
+						//	console.log("id", "name", "latitude", "longitude");
+			  	</script>
+					 <script 
+						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDByR5Y8ovC_QFWCQnHcdGYGYzqLZfZ1ew&callback=initMap">	
+					</script> -->
+					
+					<script>
+					
+						
+					
 					</script>
+					
+					
 					<script src="/js/futsalfield.js"></script>
 				</div>
 			</div>

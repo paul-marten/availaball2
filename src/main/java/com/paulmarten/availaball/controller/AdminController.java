@@ -48,7 +48,8 @@ public class AdminController {
 	}
 
 	@RequestMapping(path = "/map", method = RequestMethod.GET)
-	public String goMap() {
+	public String goMap(Model model) {
+		model.addAttribute("view", futsalFieldService.findFutsalFieldById(2));
 		return "/admin/page/map";
 	}
 
