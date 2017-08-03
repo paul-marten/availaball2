@@ -58,11 +58,11 @@ public class AdminRestController {
 		futsalFieldService.deleteFutsalField(futsalField.getIdFutsalField());
 	}
 	
-	@JsonView(ViewJSON.FutsalFieldMap.class)
-	@RequestMapping(value = "/maps", method = RequestMethod.GET)
-	public Iterable<FutsalField> maps() {
-		return futsalFieldService.findAllFutsalFieldMap();
-	}
+//	@JsonView(ViewJSON.FutsalFieldMap.class)
+//	@RequestMapping(value = "/maps", method = RequestMethod.GET)
+//	public Iterable<FutsalField> maps() {
+//		return futsalFieldService.findAllFutsalFieldMap();
+//	}
 	
 	@JsonView(ViewJSON.FutsalField.class)
 	@RequestMapping(value = "/detail-field-map", method = RequestMethod.POST, headers = "Accept=application/json")

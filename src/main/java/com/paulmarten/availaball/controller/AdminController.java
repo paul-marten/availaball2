@@ -6,11 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
-import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,11 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.paulmarten.availaball.ViewJSON;
 import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.DetailPrice;
 import com.paulmarten.availaball.model.FutsalField;
+import com.paulmarten.availaball.model.FutsalFieldMap;
 import com.paulmarten.availaball.service.AccountService;
 import com.paulmarten.availaball.service.DetailPriceService;
 import com.paulmarten.availaball.service.FutsalFieldService;
@@ -61,11 +57,12 @@ public class AdminController {
         
     @RequestMapping(path="/map", method= RequestMethod.GET)
     public String goMap(Model model){
-    	Iterable<FutsalField> futsalField = futsalFieldService.findAllFutsalFieldMap();
-    	model.addAttribute("futsalField",futsalField);
-    	for (FutsalField ff : futsalField) {
+    	List<FutsalFieldMap> futsalFieldMap = futsalFieldService.findAllFutsalFieldMap();
+    	model.addAttribute("futsalField",futsalFieldMap);
+    	for (FutsalFieldMap ff : futsalFieldMap) {
 			System.out.println(ff.getFieldName());
-			System.out.println(ff.getDetailLocation());
+			System.out.println(ff.getLatitude());
+//			System.out.println(ff.getDetailLocation());
 		}
     	return "/admin/page/map";
     }
