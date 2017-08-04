@@ -6,7 +6,6 @@ function centerModal(id) {
        $('#button_delete').on('click', function(event){
     	   var futsalField = {};
     	   futsalField.idFutsalField = id;
-    	   var idFutsalField = id;
     	   $.ajax({
     		   	 type: "POST",
 	             url: "/delete-field",
