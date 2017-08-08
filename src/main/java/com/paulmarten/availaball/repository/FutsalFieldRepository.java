@@ -20,6 +20,5 @@ public interface FutsalFieldRepository extends DataTablesRepository<FutsalField,
 	Page<FutsalField>findAllByOrderByIdFutsalFieldDesc(Pageable pageable);
 	FutsalField findTopByAccountOrderByIdFutsalFieldDesc(Account account);
 	List<FutsalFieldMap>findAllByOrderByIdFutsalField();
-//	List<FutsalField>
 }
 

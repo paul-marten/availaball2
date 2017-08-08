@@ -43,7 +43,6 @@ public class FutsalField implements Serializable {
     public FutsalField() {
         super();
     }
-    
 
 	@JsonView(ViewJSON.FutsalFieldMap.class)
     @Id

@@ -60,9 +60,9 @@ public class AdminController {
     	List<FutsalFieldMap> futsalFieldMap = futsalFieldService.findAllFutsalFieldMap();
     	model.addAttribute("futsalField",futsalFieldMap);
     	for (FutsalFieldMap ff : futsalFieldMap) {
+			System.out.println(ff.getIdFutsalField());
 			System.out.println(ff.getFieldName());
 			System.out.println(ff.getLatitude());
-//			System.out.println(ff.getDetailLocation());
 		}
     	return "/admin/page/map";
     }
