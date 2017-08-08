@@ -30,7 +30,7 @@ public class FutsalField implements Serializable {
     private Time openingHours;
     private Time closingHours;
     private String phone;
-    private String price;
+    private String price; 
     private String photo;
     private Date latestUpdate;
     private Account account;

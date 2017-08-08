@@ -51,30 +51,41 @@
     border-image-outset: initial;
     border-image-repeat: initial;
 }
+/* Style For Surveyer*/
 .labelss {
     text-decoration-color: #808080!important;
     font-size: 12px;
     font-weight: normal;
-    margin-left:60px;
-    margin-top: 0px;
 }
+/* Style For Surveyer*/
 .labelsb{
 	text-decoration-color: #808080!important;
     font-size: 12px;
     font-weight: normal;
 }
+/* Style For Surveyer*/
 .texted {
     margin-left:60px !important;
 }
+/* Style For Surveyer*/
 .textes{
 	
 }
+/* Style For Surveyer*/
 .labelsa {
     text-decoration-color: #808080!important;
     font-size: 12px;
     font-weight: normal;
 }
+/* Style For Latest Update*/
 .labelst{
+	text-decoration-color: #808080!important;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 30px;
+}
+/* Style For Surveyer*/
+.labelsh{
 	text-decoration-color: #808080!important;
     font-size: 12px;
     font-weight: normal;
@@ -92,23 +103,26 @@
 						<div id="md12" class="col-lg-12">
 							<div id="" class="col-lg-12">
 								<!-- last update -->
-								<div class="col-md-2 mdtop1">
+								<div class="">
 									<div>
 										<label class="labelst"> Latest Update </label>
 									</div>
 									<div>
 										 <label id="latestupdate" value=""></label>  
 									</div>
+									
+									
+									
 								</div> 
 								<!-- end of last update -->
 								
 								<!-- Surveyer name-->
-								<div class="col-md-3 mdtop1">
+								<div class="">
 									<div>
 										<label class="labelss"> Surveyer </label>
 									</div>
 									<div>
-										 <label class="texted" id="surveyer" value=""></label>			
+										 <label id="surveyer" value=""></label>			
 									</div>								
 				<!-- Untuk ambil data yang dikirim controller -->
 				<div class="listFieldMap" th:each="ffmap,iterasi : ${futsalField}">
@@ -120,7 +134,7 @@
 								</div>
 								<!-- end of Latest Update-->
 								<!-- end of surveyer name-->
-								<div class="col-md-6 mdtop1" style="left: 92px;">
+								<div class="col-md-2 mdtop1" style="">
 									<div class="dropdown" style="">
 										<a id="dMap" role="button" data-toggle="dropdown"
 											class="btn btn-primary" data-target="#" href="/page.html">
@@ -129,14 +143,14 @@
 										<ul class="dropdown-menu multi-level" role="menu"
 											aria-labelledby="dropdownMenu" id="dropdown_action">
 											<li><a th:href="@{/admin/edit-field/10}">Edit</a></li>
-											<li><a href="#" onclick="centerModal(10)">Cancel</a></li>
+											<li><a href="#" onclick="centerModal(10)">Delete</a></li>
 										</ul>
 									</div>
 								</div>
 							</div>
 							<!-- Field img -->
 							<div class="col-md-6 mdtop6">
-								<img src="/img/aa.jpg" height="150" width="320">
+								<img id="photo" value="" src="/img/aa.jpg" height="150" width="320">
 							</div>
 							<!--end of field img-->
 							<div class="col-lg-12">
@@ -158,11 +172,10 @@
 									
 									<div class="col-md-2 mdtop4">
 										<div>
-											<label class="labelst">Telepon</label>
+											<label class="labelsh">Telepon</label>
 										</div>
 										<div>
-											<label id="telepon" value=""></label> 
-											
+											<label id="telepon" value=""></label> 											
 										</div>
 									</div>
 									
@@ -312,25 +325,20 @@
 											map.setCenter(latLng);
 											$(".form-box").removeClass("collapse");													                 	
 											$('#surveyer').html(data.fieldName);
+											$('#photo').html(data.photo);
 											$('#location').html(data.detailLocation);
-											 $('#latestupdate').html(data.latestUpdate); 
+											$('#latestupdate').html(data.latestUpdate); 
 											$('#telepon').html(data.phone);
 											$('#jumlahlapangan').html(data.numberOfField); 
 											$('#jam_buka').html(data.openingHours);
 											$('#harga').html(data.price);
 											},
 											error: function (e) {
-											   console.log("gagal");}
-											  });
-														
-											//Untuk Bind Data Marker dengan Page yang dihasilkan
-											/* bind(
-											this.title,
-											this.id
-											); */
+											   console.log("ERROR");}
+});
 											for (var j = 0; j < markers.length; j++) {
 											markers[j].setIcon("https://image.ibb.co/dznXH5/pointer.png");}
-											marker.setIcon("https://image.ibb.co/kytxH5/selected_map.png");});
+											marker.setIcon("https://image.ibb.co/kzvaWa/Webp_net_resizeimage_1.png");});
 								}
 							}
 						}			
@@ -341,7 +349,7 @@
 							$('#telepon').html(idFutsalField);
 							$('#jumlahlapangan').html(idFutsalField); 
 							$('#jam_buka').html(idFutsalField);
-							$('#harga').html(idFutsalField);
+							$('#harga').html(idFutsalField);							
 						} */
 					</script>
 					<script
