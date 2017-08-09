@@ -101,8 +101,10 @@ public class AdminController {
     	FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
         model.addAttribute("view",futsalFieldEdit);
         List<DetailPrice> detailPrices = detailPriceService.findByFutsalField(futsalFieldEdit);
-//        System.out.println(detailPrices.get(1).getIdDetailPrice());
         model.addAttribute("detailPrice", detailPrices);
+        String number = futsalFieldEdit.getPhone();
+        String[] result = number.split(",");
+        model.addAttribute("phone", result[0]);
         return "/admin/page/edit-field";
     }
     
