@@ -56,6 +56,14 @@
     text-decoration-color: #808080!important;
     font-size: 12px;
     font-weight: normal;
+    margin-left: 100px;
+    margin-top:10px;
+}
+.labelssu{
+	text-decoration-color: #808080!important;
+    font-size: 12px;
+    font-weight: normal;	
+    margin-top: 30px;
 }
 /* Style For Surveyer*/
 .labelsb{
@@ -74,8 +82,9 @@
 /* Style For Surveyer*/
 .labelsa {
     text-decoration-color: #808080!important;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: normal;
+    font-family: roboto !important;
 }
 /* Style For Latest Update*/
 .labelst{
@@ -83,12 +92,68 @@
     font-size: 12px;
     font-weight: normal;
     margin-top: 30px;
+    font-family: roboto !important;
+    margin-left: -15px;
+}
+
+.dropdown{
+	margin-top: 30px !important;
+}
+
+.labellt{
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-left: -15px;
+
+}
+.labelsn{
+	text-decoration-color: #808080!important;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: roboto !important;
+     margin-top:12px;
+}
+
+.labelsb{
+	text-decoration-color: #808080!important;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: roboto !important;
+     margin-top:10px;
+	
+}
+.labelsj{
+	font-size: 13px;
+    font-weight: bold;
+    margin-left: 100px;	
+    font-family: roboto !important;
+}
+
+.survey{
+	font-size: 22px;
+    font-weight: bold;	
+    font-family: roboto !important;
+}
+.labelslo{
+	text-decoration-color: #808080!important;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: roboto !important;
+	
 }
 /* Style For Surveyer*/
 .labelsh{
 	text-decoration-color: #808080!important;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: normal;
+    font-family: roboto !important;
+    margin-top:10px;
+}
+.image{
+	vertical-align: middle !important;
+	margin-top: 15px !important;
 }
 </style>
 </head>
@@ -100,26 +165,24 @@
 
 				<div class="form-box collapse">
 					<div class="row">
-						<div id="md12" class="col-lg-12">
+						<div id="md11" class="col-lg-12">
 							<div id="" class="col-lg-12">
 								<!-- last update -->
-								<div class="">
+								<div class="col-md-4 mdtop0">
 									<div>
 										<label class="labelst"> Latest Update </label>
 									</div>
 									<div>
-										 <label id="latestupdate" value=""></label>  
+										 <label class="labellt" id="latestupdate" value=""></label>  
 									</div>
-									
-									
-									
+			
 								</div> 
 								<!-- end of last update -->
 								
 								<!-- Surveyer name-->
-								<div class="">
+								<div class="col-md-4 mdtop0">
 									<div>
-										<label class="labelss"> Surveyer </label>
+										<label class="labelssu"> Surveyer </label>
 									</div>
 									<div>
 										 <label id="surveyer" value=""></label>			
@@ -134,7 +197,8 @@
 								</div>
 								<!-- end of Latest Update-->
 								<!-- end of surveyer name-->
-								<div class="col-md-2 mdtop1" style="">
+								
+								<div class="col-md-4 mdtop0" style="">
 									<div class="dropdown" style="">
 										<a id="dMap" role="button" data-toggle="dropdown"
 											class="btn btn-primary" data-target="#" href="/page.html">
@@ -146,31 +210,32 @@
 											<li><a href="#" onclick="centerModal(10)">Delete</a></li>
 										</ul>
 									</div>
+								</div>  
+										
 								</div>
-							</div>
 							<!-- Field img -->
 							<div class="col-md-6 mdtop6">
-								<img id="photo" value="" src="/img/aa.jpg" height="150" width="320">
+								<img class="image" id="photo" value="" src="/img/aa.jpg" height="150" width="325">
 							</div>
 							<!--end of field img-->
 							<div class="col-lg-12">
 								<!-- detail -->
-								<div class="col-md-6 mdtop2">
-									<!-- <div class="titles">
-											<label id="surveyer" value=""></label>	
-									</div> -->
-									<div class="labelsb">
-                  						<label id="location" value=""></label> 
+								<div class="">
+									<div class="survey">
+										 <label id="surveyer1" value=""></label>			
+									</div> 
+									<div>
+                  						<label class="labelslo" id="location" value=""></label> 
                 					</div>
 								</div>
 								
 								<!-- end of detail-->
 								
-								<div class="col-lg-12 mdtop3">
+								<div class="col-lg-12 mdtop2">
 								
 									<!-- phone number -->
 									
-									<div class="col-md-2 mdtop4">
+									<div class="col-md-2 mdtop3">
 										<div>
 											<label class="labelsh">Telepon</label>
 										</div>
@@ -183,20 +248,20 @@
 
                						 <!-- number of field -->
 									
-									<div class="col-md-3 mdtop4">
+									<div class="col-md-0 mdtop3">
 										<div>
 											<label class="labelss">Jumlah Lapangan</label>
 										</div>
 										<div>
-											<label class="labelss" id="jumlahlapangan" value=""></label> 									
+											<label class="labelsj" id="jumlahlapangan" value=""></label> 									
 										</div>
 									</div>
 									<!-- end of number of field -->
 								</div>
 								<!-- jam buka -->
-								<div class="col-md-12 mdtop5">
+								<div class="col-md-13 mdtop5">
 									<div>
-										<label class="labelst">Jam Buka</label>
+										<label class="labelsb">Jam Buka</label>
 									</div>
 									<div>
 										<label id="jam_buka" value=""></label>
@@ -204,15 +269,15 @@
 									 <div>
 										<label class="texts">Senin-Sabtu</label>
 									</div> 
-									<div>
+									<!-- <div>
 										<label class="textes">08:00-20:00</label>
-									</div>
+									</div> -->
 									</div>
 								<!-- end of jam buka-->
 								<!-- harga-->
-								<div class="col-md-12 mdtop5">
+								<div class="col-md-13 mdtop3">
 									<div>
-										<label class="labelst">Harga Normal Per Jam</label>
+										<label class="labelsn">Harga Normal Per Jam</label>
 									</div>
 									<div class="textes">
                   						<label id="harga" value=""></label>
@@ -221,7 +286,6 @@
 								<!-- end of harga-->
 							</div>
 						</div>
-						<div class="col-lg-12"></div>
 					</div>
 					<script>
 					
@@ -311,6 +375,9 @@
 										location: locations.location
 									});
 									google.maps.event.addListener(marker,'click',function(){
+										
+										
+										
 										var futsalField = {};
 										/* console.log(this.id);  */
 										futsalField.idFutsalField = this.id;
@@ -325,6 +392,7 @@
 											map.setCenter(latLng);
 											$(".form-box").removeClass("collapse");													                 	
 											$('#surveyer').html(data.fieldName);
+											$('#surveyer1').html(data.fieldName);
 											$('#photo').html(data.photo);
 											$('#location').html(data.detailLocation);
 											$('#latestupdate').html(data.latestUpdate); 
