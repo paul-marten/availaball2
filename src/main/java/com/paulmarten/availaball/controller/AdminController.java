@@ -92,7 +92,7 @@ public class AdminController {
         model.addAttribute("view",futsalFieldView);
         String number = futsalFieldView.getPhone();
         String[] result = number.split(",");
-        model.addAttribute("phone", result[0]);
+        model.addAttribute("phone", result);
         return "/admin/page/view-lapangan";
     }
 
@@ -104,7 +104,7 @@ public class AdminController {
         model.addAttribute("detailPrice", detailPrices);
         String number = futsalFieldEdit.getPhone();
         String[] result = number.split(",");
-        model.addAttribute("phone", result[0]);
+        model.addAttribute("phone", result);
         return "/admin/page/edit-field";
     }
     

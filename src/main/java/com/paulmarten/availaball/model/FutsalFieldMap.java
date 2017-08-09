@@ -5,5 +5,4 @@ public interface FutsalFieldMap {
 	String getFieldName();
 	String getLatitude();
 	String getLongitude();
-	
 }

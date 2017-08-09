@@ -7,7 +7,7 @@ import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
  */
 public class ViewJSON {
     public interface AccountInFutsalFieldView{}
-    public interface FutsalField extends Account,ListFutsalFieldAndroid,DataTablesOutput.View{}
+    public interface FutsalField extends Base,Account,ListFutsalFieldAndroid,DataTablesOutput.View{}
     public interface ListFutsalFieldAndroid extends Base{}
     public interface DetailAccount extends Account{}
     public interface Base{}

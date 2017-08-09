@@ -104,9 +104,20 @@ public class SurveyerController {
 		}
 	}
 	
+//	@JsonView(ViewJSON.FutsalField.class)
+//	@RequestMapping(value = "/detail-field", method = RequestMethod.POST , headers = "Accept=application/json")
+//	public FutsalField viewDetailFutsal(@ModelAttribute FutsalField futsalField) {
+//		return futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
+//	}
+	
 	@JsonView(ViewJSON.FutsalField.class)
-	@RequestMapping(value = "/detail-field", method = RequestMethod.POST)
-	public FutsalField viewDetailFutsal(@ModelAttribute FutsalField futsalField) {
-		return futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
+	@RequestMapping(value = "/detail-field", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseMessage viewDetailFutsal(@RequestParam int idFutsalField) {
+		ResponseMessage responseMessage = new ResponseMessage();
+		responseMessage.setObject(futsalFieldService.findFutsalFieldById(idFutsalField));
+		responseMessage.setMessage("Success");
+		responseMessage.setCode("600");
+		return responseMessage;
 	}
+	
 }
