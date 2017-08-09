@@ -38,14 +38,13 @@ public class FutsalField implements Serializable {
     private Set<DetailPrice> detailPrices = new HashSet<DetailPrice>(0);
     private String latitude;
     private String longitude;
-    private Object objectField;
     
     public FutsalField() {
         super();
     }
     
 
-	@JsonView(ViewJSON.FutsalFieldMap.class)
+	@JsonView(ViewJSON.ListFutsalFieldAndroid.class)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -57,7 +56,7 @@ public class FutsalField implements Serializable {
         this.idFutsalField = idFutsalField;
     }
 
-    @JsonView(ViewJSON.FutsalFieldMap.class)
+    @JsonView(ViewJSON.ListFutsalFieldAndroid.class)
     @Column (name = "field_name")
     public String getFieldName() {
         return fieldName;
@@ -67,7 +66,7 @@ public class FutsalField implements Serializable {
         this.fieldName = fieldName;
     }
 
-    @JsonView(ViewJSON.FutsalField.class)
+    @JsonView(ViewJSON.ListFutsalFieldAndroid.class)
     @Column (name = "location")
     public String getLocation() {
         return location;
@@ -182,7 +181,7 @@ public class FutsalField implements Serializable {
         this.detailPrices = detailPrices;
     }
     
-	@JsonView(ViewJSON.FutsalFieldMap.class)
+	@JsonView(ViewJSON.FutsalField.class)
 	@Column (name = "latitude")
 	public String getLatitude() {
 		return latitude;
@@ -193,7 +192,7 @@ public class FutsalField implements Serializable {
 		this.latitude = latitude;
 	}
 
-	@JsonView(ViewJSON.FutsalFieldMap.class)
+	@JsonView(ViewJSON.FutsalField.class)
 	@Column (name = "longitude")
 	public String getLongitude() {
 		return longitude;
@@ -202,17 +201,6 @@ public class FutsalField implements Serializable {
 
 	public void setLongitude(String longitud) {
 		this.longitude = longitud;
-	}
-	
-	@JsonView(DataTablesOutput.View.class)
-	@Transient
-	public Object getObjectField() {
-		return objectField;
-	}
-
-
-	public void setObjectField(Object objectField) {
-		this.objectField = objectField;
 	}
 	
 	@JsonView(ViewJSON.FutsalField.class)

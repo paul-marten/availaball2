@@ -48,7 +48,7 @@ public class SurveyerController {
 		return surveyerService.checkAccount(username, password);
 	}
 
-	@JsonView(ViewJSON.Base.class)
+	@JsonView(ViewJSON.ListFutsalFieldAndroid.class)
 	@RequestMapping(value = "/get-all-futsal-field", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseMessage getAllFutsalField(@RequestParam(required = false, defaultValue = "1") int page) {
 		ResponseMessage responseMessage = new ResponseMessage();
@@ -102,5 +102,11 @@ public class SurveyerController {
 		else{
 			return "null";
 		}
+	}
+	
+	@JsonView(ViewJSON.FutsalField.class)
+	@RequestMapping(value = "/detail-field", method = RequestMethod.POST)
+	public FutsalField viewDetailFutsal(@ModelAttribute FutsalField futsalField) {
+		return futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
 	}
 }

@@ -55,13 +55,12 @@ public class FutsalFieldService {
 		FutsalField futsalFieldAccount = new FutsalField();
 		Account accountSave = new Account();
 		futsalFieldAccount = futsalFieldRepository.findOne(id);
-		accountSave = accountRepository.findOne(futsalFieldAccount.getAccount().getId());
+		accountSave = accountRepository.findOne(futsalFieldAccount.getAccount().getId());		
 		int totalField = accountSave.getTotalField();
 		accountSave.setTotalField(totalField - 1);
-		if (accountRepository.save(accountSave) != null) {
+		if(accountRepository.save(accountSave)!= null){
 			futsalFieldRepository.delete(id);
-		}
-
+		};
 	}
 	
 	public String saveField(FutsalField futsalField) {
