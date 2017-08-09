@@ -1,5 +1,7 @@
 package com.paulmarten.availaball.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.DetailPrice;
 import com.paulmarten.availaball.model.FutsalField;
+import com.paulmarten.availaball.model.FutsalFieldMap;
 import com.paulmarten.availaball.repository.AccountRepository;
 import com.paulmarten.availaball.repository.DetailPriceRepository;
 import com.paulmarten.availaball.repository.FutsalFieldRepository;
@@ -40,8 +43,8 @@ public class FutsalFieldService {
 		return futsalFieldRepository.findOne(id);
 	}
 
-	public Iterable<FutsalField> findAllFutsalFieldMap(){
-		return futsalFieldRepository.findAll();
+	public List<FutsalFieldMap> findAllFutsalFieldMap(){
+		return futsalFieldRepository.findAllByOrderByIdFutsalField();
 	}
 	
 	public Page<FutsalField> findAllFutsalField(int page) {
@@ -52,13 +55,12 @@ public class FutsalFieldService {
 		FutsalField futsalFieldAccount = new FutsalField();
 		Account accountSave = new Account();
 		futsalFieldAccount = futsalFieldRepository.findOne(id);
-		accountSave = accountRepository.findOne(futsalFieldAccount.getAccount().getId());
+		accountSave = accountRepository.findOne(futsalFieldAccount.getAccount().getId());		
 		int totalField = accountSave.getTotalField();
 		accountSave.setTotalField(totalField - 1);
-		if (accountRepository.save(accountSave) != null) {
+		if(accountRepository.save(accountSave)!= null){
 			futsalFieldRepository.delete(id);
-		}
-
+		};
 	}
 	
 	public String saveField(FutsalField futsalField) {

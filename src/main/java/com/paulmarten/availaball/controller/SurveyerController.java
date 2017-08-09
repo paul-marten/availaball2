@@ -36,7 +36,7 @@ public class SurveyerController {
 	@Autowired
 	private FutsalFieldService futsalFieldService;
 
-	@JsonView(ViewJSON.AccountView.class)
+	@JsonView(ViewJSON.Account.class)
 	@RequestMapping(value = "/getid/{id}", method = RequestMethod.POST)
 	public Account getId(@PathVariable int id) {
 		return surveyerService.getAccount(id);
@@ -48,14 +48,18 @@ public class SurveyerController {
 		return surveyerService.checkAccount(username, password);
 	}
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.ListFutsalFieldAndroid.class)
 	@RequestMapping(value = "/get-all-futsal-field", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseMessage getAllFutsalField(@RequestParam(required = false, defaultValue = "1") int page) {
 		ResponseMessage responseMessage = new ResponseMessage();
+		
 		Page<FutsalField> futsalField = futsalFieldService.findAllFutsalField(page);
+		responseMessage.setCode("600");
+		responseMessage.setMessage("Success");
 		responseMessage.setObject(futsalField.getContent());
 		responseMessage.setCurrentPage(futsalField.getNumber() + 1);
 		responseMessage.setTotalPage(futsalField.getTotalPages());
+		
 		return responseMessage;
 	}
 
@@ -66,10 +70,11 @@ public class SurveyerController {
 		return surveyerService.getAccount(account.getId());
 	}
 	
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.Base.class)
 	@RequestMapping(value = "/create-futsal-field", method = RequestMethod.POST)
 	public ResponseMessage createField(@ModelAttribute FutsalField futsalField) {
 		ResponseMessage responseMessage = new ResponseMessage();
+		responseMessage.setCode("600");
 		responseMessage.setMessage(futsalFieldService.saveField(futsalField));
 		return responseMessage;
 	}
@@ -97,5 +102,11 @@ public class SurveyerController {
 		else{
 			return "null";
 		}
+	}
+	
+	@JsonView(ViewJSON.FutsalField.class)
+	@RequestMapping(value = "/detail-field", method = RequestMethod.POST)
+	public FutsalField viewDetailFutsal(@ModelAttribute FutsalField futsalField) {
+		return futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
 	}
 }
