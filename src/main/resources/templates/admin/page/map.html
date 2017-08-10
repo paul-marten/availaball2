@@ -51,7 +51,7 @@
     border-image-outset: initial;
     border-image-repeat: initial;
 }
-/* Style For Surveyer*/
+/* */
 .labelss {
     text-decoration-color: #808080!important;
     font-size: 12px;
@@ -63,30 +63,28 @@
 	text-decoration-color: #808080!important;
     font-size: 12px;
     font-weight: normal;	
-    margin-top: 30px;
+    margin-top: 15px;
+    font-family: roboto !important;
 }
-/* Style For Surveyer*/
+/* */
 .labelsb{
 	text-decoration-color: #808080!important;
     font-size: 12px;
     font-weight: normal;
+    margin-top: 5px;
 }
-/* Style For Surveyer*/
+/* */
 .texted {
     margin-left:60px !important;
 }
-/* Style For Surveyer*/
-.textes{
-	
-}
-/* Style For Surveyer*/
+/* */
 .labelsa {
     text-decoration-color: #808080!important;
     font-size: 13px;
     font-weight: normal;
     font-family: roboto !important;
 }
-/* Style For Latest Update*/
+/* */
 .labelst{
 	text-decoration-color: #808080!important;
     font-size: 12px;
@@ -95,18 +93,16 @@
     font-family: roboto !important;
     margin-left: -15px;
 }
-
-.dropdown{
+.dropdowns{
 	margin-top: 30px !important;
+	margin-left: 104px;
 }
-
 .labellt{
     display: inline-block;
     max-width: 100%;
     margin-bottom: 5px;
     font-weight: bold;
     margin-left: -15px;
-
 }
 .labelsn{
 	text-decoration-color: #808080!important;
@@ -115,14 +111,12 @@
     font-family: roboto !important;
      margin-top:12px;
 }
-
 .labelsb{
 	text-decoration-color: #808080!important;
     font-size: 12px;
     font-weight: normal;
     font-family: roboto !important;
-     margin-top:10px;
-	
+     margin-top:10px;	
 }
 .labelsj{
 	font-size: 13px;
@@ -130,7 +124,6 @@
     margin-left: 100px;	
     font-family: roboto !important;
 }
-
 .survey{
 	font-size: 22px;
     font-weight: bold;	
@@ -140,8 +133,7 @@
 	text-decoration-color: #808080!important;
     font-size: 13px;
     font-weight: normal;
-    font-family: roboto !important;
-	
+    font-family: roboto !important;	
 }
 /* Style For Surveyer*/
 .labelsh{
@@ -162,7 +154,6 @@
 		<div class="padding-md content content-list" layout:fragment="content">
 			<div class="map-box">
 				<div id="map"></div>
-
 				<div class="form-box collapse">
 					<div class="row">
 						<div id="md11" class="col-lg-12">
@@ -174,19 +165,11 @@
 									</div>
 									<div>
 										 <label class="labellt" id="latestupdate" value=""></label>  
-									</div>
-			
+									</div>			
 								</div> 
 								<!-- end of last update -->
 								
-								<!-- Surveyer name-->
-								<div class="col-md-4 mdtop0">
-									<div>
-										<label class="labelssu"> Surveyer </label>
-									</div>
-									<div>
-										 <label id="surveyer" value=""></label>			
-									</div>								
+															
 				<!-- Untuk ambil data yang dikirim controller -->
 				<div class="listFieldMap" th:each="ffmap,iterasi : ${futsalField}">
 					<span hidden id="idFutsalField" name="idFutsalField" value="" class="idFutsalField" th:text="${ffmap.idFutsalField}"></span>
@@ -194,12 +177,12 @@
 					<span hidden id="latitude" name="latitude" value="" class="latitude" th:text="${ffmap.latitude}"></span> 
 					<span hidden id="longitude" name="longitude" value="" class="longitude" th:text="${ffmap.longitude}"></span>
 				</div>
-								</div>
+								
 								<!-- end of Latest Update-->
 								<!-- end of surveyer name-->
 								
 								<div class="col-md-4 mdtop0" style="">
-									<div class="dropdown" style="">
+									<div class="dropdowns" style="">
 										<a id="dMap" role="button" data-toggle="dropdown"
 											class="btn btn-primary" data-target="#" href="/page.html">
 											<i class="icon-gear"></i> Action <span class="caret"></span>
@@ -213,6 +196,18 @@
 								</div>  
 										
 								</div>
+								
+								<!-- Surveyer name-->
+								<div class="col-lg-12">
+									<div>
+										<label class="labelssu"> Surveyer </label>
+									</div>
+									<div>
+										 <label id="surveyer" value=""></label>			
+									</div>	
+									
+									</div>
+								
 							<!-- Field img -->
 							<div class="col-md-6 mdtop6">
 								<img class="image" id="photo" value="" src="/img/aa.jpg" height="150" width="325">
@@ -287,8 +282,7 @@
 							</div>
 						</div>
 					</div>
-					<script>
-					
+					<script>				
 					var textVal = [];
 					var fillLoc = [];
 					var countIndex = 0;
@@ -350,18 +344,12 @@
 							setMarkers(map);
 							var markers = [];
 							function setMarkers(map) {
-								var image = {
-									url : 'https://image.ibb.co/dznXH5/pointer.png',
-									//url : 'https://image.ibb.co/kytxH5/selected_map.png',	
-									// Image When Click and Show Detail of Field
-									size : new google.maps.Size(50, 56),
-									origin : new google.maps.Point(0, 0),
-									anchor : new google.maps.Point(0, 50)
-								};
+								var image = { url : 'https://image.ibb.co/dznXH5/pointer.png'};
 								var shape = {
 									coords : [ 1, 1, 1, 50, 48, 50, 48, 1 ],
 									type : 'poly'
 								};
+								var markerLocation = [];
 								for (var i = 0; i < loc.length; i++) {
 									var locations = loc[i];
 									var latLng = new google.maps.LatLng(locations.latitude, locations.longitude);
@@ -374,10 +362,20 @@
 										id : locations.idFutsalField,
 										location: locations.location
 									});
+									markerLocation[i] = marker;
 									google.maps.event.addListener(marker,'click',function(){
+										for(var j=0;j<markerLocation.length;j++){
+											markerLocation[j].setIcon("https://image.ibb.co/dznXH5/pointer.png");
+										}
+										this.setIcon("https://image.ibb.co/kzvaWa/Webp_net_resizeimage_1.png");
 										
+										/* if($(".form-box").hasClass("collapse")){
+									        $(".form-box").removeClass("collapse").addClass("Gagal");
+									    }else{
+									        $(".form-box").addClass("collapse");
+									    } */
 										
-										
+										$(".form-box").removeClass("collapse");
 										var futsalField = {};
 										/* console.log(this.id);  */
 										futsalField.idFutsalField = this.id;
@@ -390,7 +388,7 @@
 										 success: function (data) { 									
 											var latLng = new google.maps.LatLng(data.latitude, data.longitude);
 											map.setCenter(latLng);
-											$(".form-box").removeClass("collapse");													                 	
+																							                 	
 											$('#surveyer').html(data.fieldName);
 											$('#surveyer1').html(data.fieldName);
 											$('#photo').html(data.photo);
@@ -403,10 +401,8 @@
 											},
 											error: function (e) {
 											   console.log("ERROR");}
-});
-											for (var j = 0; j < markers.length; j++) {
-											markers[j].setIcon("https://image.ibb.co/dznXH5/pointer.png");}
-											marker.setIcon("https://image.ibb.co/kzvaWa/Webp_net_resizeimage_1.png");});
+											});
+											});
 								}
 							}
 						}			
