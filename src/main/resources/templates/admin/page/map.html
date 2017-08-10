@@ -135,7 +135,7 @@
     font-weight: normal;
     font-family: roboto !important;	
 }
-/* Style For Surveyer*/
+/* /
 .labelsh{
 	text-decoration-color: #808080!important;
     font-size: 13px;
@@ -170,7 +170,7 @@
 								<!-- end of last update -->
 								
 															
-				<!-- Untuk ambil data yang dikirim controller -->
+				<!-- To get data had send by controller -->
 				<div class="listFieldMap" th:each="ffmap,iterasi : ${futsalField}">
 					<span hidden id="idFutsalField" name="idFutsalField" value="" class="idFutsalField" th:text="${ffmap.idFutsalField}"></span>
 					<span hidden id="fieldName" name="fieldName" value="" class="fieldName" th:text="${ffmap.fieldName}"></span> 
@@ -181,22 +181,19 @@
 								<!-- end of Latest Update-->
 								<!-- end of surveyer name-->
 								
-								<div class="col-md-4 mdtop0" style="">
+							<!-- Dropdown Edit and Delete -->	
+							<div class="col-md-4 mdtop0" style="">
 									<div class="dropdowns" style="">
-										<a id="dMap" role="button" data-toggle="dropdown"
-											class="btn btn-primary" data-target="#" href="/page.html">
-											<i class="icon-gear"></i> Action <span class="caret"></span>
-										</a>
-										<ul class="dropdown-menu multi-level" role="menu"
-											aria-labelledby="dropdownMenu" id="dropdown_action">
+										<a id="dMap" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="/page.html"> <i class="icon-gear"></i> Action <span class="caret"></span></a>
+										<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" id="dropdown_action">
 											<li><a th:href="@{/admin/edit-field/10}">Edit</a></li>
 											<li><a href="#" onclick="centerModal(10)">Delete</a></li>
 										</ul>
 									</div>
-								</div>  
-										
+								</div> 	
+								<!-- End of Dropdown Edit and Delete -->
+								 		
 								</div>
-								
 								<!-- Surveyer name-->
 								<div class="col-lg-12">
 									<div>
@@ -310,32 +307,7 @@
 								countListMap++;
 							}
 							 loc.push({idFutsalField: idFutsalField, fieldName: fieldName, latitude: latitude, longitude : longitude});
-						});
-					/* var obj = JSON.parse(loc[1]); */
-					//console.log(listMapObject);
-					//console.log(loc);
-				/* var loc = [
-						{
-							"idFutsalField": $('#idFutsalField').html(),
-							"surveyer": $('#fieldName').html(),
-							"latitude": $('#latitude').html(),
-							"longitude": $('#longitude').html()					
-						}
-						]; 									
-				        // Memunculkan semua data yang dibuat di var loc        
-				      $.each(loc, function(){
-				    	 $.each(this, function (name, value){
-				    		 console.log(name + '=' + value);
-				    	 }); 
-				     }); */  
-				     
-				      // Memunculkan semua data yang dibuat di database
-					/*  $.each(loc, function(){
-						 $.each($('.listFieldMap'),function(index, value) {
-										console.log(index + ':' + $(value).text());
-									});   
-				     }); */
-
+						});				 
 						function initMap(){
 							var map = new google.maps.Map(document.getElementById('map'), {
 								zoom : 13,
@@ -367,17 +339,9 @@
 										for(var j=0;j<markerLocation.length;j++){
 											markerLocation[j].setIcon("https://image.ibb.co/dznXH5/pointer.png");
 										}
-										this.setIcon("https://image.ibb.co/kzvaWa/Webp_net_resizeimage_1.png");
-										
-										/* if($(".form-box").hasClass("collapse")){
-									        $(".form-box").removeClass("collapse").addClass("Gagal");
-									    }else{
-									        $(".form-box").addClass("collapse");
-									    } */
-										
+										this.setIcon("https://image.ibb.co/kzvaWa/Webp_net_resizeimage_1.png");										
 										$(".form-box").removeClass("collapse");
 										var futsalField = {};
-										/* console.log(this.id);  */
 										futsalField.idFutsalField = this.id;
 										futsalField.fieldNeme = this.fieldName;
 										$.ajax({
@@ -387,8 +351,7 @@
 										 timeout: 600000,
 										 success: function (data) { 									
 											var latLng = new google.maps.LatLng(data.latitude, data.longitude);
-											map.setCenter(latLng);
-																							                 	
+											map.setCenter(latLng);																						                 	
 											$('#surveyer').html(data.fieldName);
 											$('#surveyer1').html(data.fieldName);
 											$('#photo').html(data.photo);
@@ -406,21 +369,8 @@
 								}
 							}
 						}			
-				     	// Untuk Bind Data Marker dengan Page yang dihasilkan
-						/* function bind(title, idFutsalField) {
-							$('#surveyername').html(title);
-							$('#latestupdate').html(title);
-							$('#telepon').html(idFutsalField);
-							$('#jumlahlapangan').html(idFutsalField); 
-							$('#jam_buka').html(idFutsalField);
-							$('#harga').html(idFutsalField);							
-						} */
 					</script>
-					<script
-						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDByR5Y8ovC_QFWCQnHcdGYGYzqLZfZ1ew&callback=initMap">	
-					</script>
-					<script>	
-					</script>				
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDByR5Y8ovC_QFWCQnHcdGYGYzqLZfZ1ew&callback=initMap"></script>				
 				</div>
 			</div>
 		</div>
