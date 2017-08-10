@@ -11,5 +11,6 @@ public class ViewJSON {
     public interface ListFutsalFieldAndroid extends Base{}
     public interface DetailAccount extends Account{}
     public interface Base{}
+    public interface Location extends Base{}
     public interface Account extends DataTablesOutput.View{}
 }

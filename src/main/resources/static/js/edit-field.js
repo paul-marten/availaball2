@@ -6,8 +6,12 @@ $(function()
     $(document)
     	
 	    .on('click', '.btn-add', function(e)
-	    {
-	        e.preventDefault();
+	    {	
+//	    	console.log(jQuery(".controls > .bound").first().children("input").length); 
+	    	//var c = document.getElementById("myDIV").children.length;
+	    	console.log('a');
+	    	console.log($('.bound').length);
+	    	/*e.preventDefault();
 	        console.log(x);
 				var controlForm = $('.controls form:first'),
 				currentEntry = $(this).parents('.entry:first');
@@ -25,8 +29,8 @@ $(function()
 	        
 
 	        	x++;
-	        	console.log(x);
-	        }
+	        	console.log(x);*/
+/*	        }
 	        else if( x < max_button){
 	        
 	        	var lastEntry = $(currentEntry.clone()).appendTo(controlForm);
@@ -46,7 +50,7 @@ $(function()
 		        	$("#green-round").prop('id', 'red-round');
 	        	}
 	        	x++;
-	        }
+	        }*/
 	       
 	        	
 	    	}      

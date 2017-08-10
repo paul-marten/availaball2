@@ -19,9 +19,11 @@ import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.DetailPrice;
 import com.paulmarten.availaball.model.FutsalField;
 import com.paulmarten.availaball.model.FutsalFieldMap;
+import com.paulmarten.availaball.model.Location;
 import com.paulmarten.availaball.service.AccountService;
 import com.paulmarten.availaball.service.DetailPriceService;
 import com.paulmarten.availaball.service.FutsalFieldService;
+import com.paulmarten.availaball.service.LocationService;
 
 /**
  * Created by paulms on 6/14/2017.
@@ -35,10 +37,12 @@ public class AdminController {
 
 	@Autowired
 	private AccountService accountService;
-
 	
 	@Autowired
 	private DetailPriceService detailPriceService;
+	
+	@Autowired
+	private LocationService locationService;
 	
     @RequestMapping(path="/index", method= RequestMethod.GET)
     public String goIndex(Model model,Principal principal, HttpSession session){
@@ -100,11 +104,16 @@ public class AdminController {
     public String editField(@PathVariable int id, Model model){
     	FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
         model.addAttribute("view",futsalFieldEdit);
+        
         List<DetailPrice> detailPrices = detailPriceService.findByFutsalField(futsalFieldEdit);
         model.addAttribute("detailPrice", detailPrices);
+        
         String number = futsalFieldEdit.getPhone();
         String[] result = number.split(",");
         model.addAttribute("phone", result);
+        
+        List<Location> listLocation = locationService.viewAllField();
+        model.addAttribute("location", listLocation);
         return "/admin/page/edit-field";
     }
     

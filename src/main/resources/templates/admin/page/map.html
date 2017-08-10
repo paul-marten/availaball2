@@ -161,38 +161,11 @@
 					var loc2 = [];
 					var countListMap = 0;
 					var key=["idFutsalField","fieldName","latitude", "longitude"];
-					/* var listMapObject = new Object();
-					listMapObject.firstName = "John";
-					listMapObject.lastName = "Doe";
-					listMapObject.age = 50;
-					listMapObject.eyeColor = "blue"; */
 					$( "span" ).each( function( index, element ){
 					     textVal[index] = $(this).text();
 					     countIndex ++;
 					})
 					var loc = [];
-					/* $.each($('.listFieldMap'),function(index, value) {
-						var stringMap  = "";
-						for(var x = 0 ; x < 4 ; x ++){
-								if(x == 0) {
-									stringMap = stringMap + '{ "idFutsalField":'+textVal[countListMap] + ',';
-								}
-								else if(x == 1){
-									stringMap = stringMap + '"fieldName":'+ textVal[countListMap] + ',';
-								}
-								else if(x == 2){
-									stringMap = stringMap + '"latitude":'+ textVal[countListMap] + ',';
-								}
-								else{
-									stringMap = stringMap + '"longitude":'+ textVal[countListMap] + '},';
-								}
-								
-							countListMap++;
-						}
-						//fillLoc[index] = '{ "idFutsalField": , "fieldName": ,"latitude": , "longtitude":},';
-						fillLoc[index] = stringMap;
-						loc2[index] = stringMap;
-					}); */
 					
 					 $.each($('.listFieldMap'),function(index, value) {
 						 	var idFutsalField, fieldName, latitude, longitude;

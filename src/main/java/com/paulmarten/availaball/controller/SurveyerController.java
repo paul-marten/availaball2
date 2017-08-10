@@ -22,6 +22,7 @@ import com.paulmarten.availaball.ViewJSON;
 import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.FutsalField;
 import com.paulmarten.availaball.service.FutsalFieldService;
+import com.paulmarten.availaball.service.LocationService;
 import com.paulmarten.availaball.service.SurveyerService;
 
 /**
@@ -35,7 +36,10 @@ public class SurveyerController {
 
 	@Autowired
 	private FutsalFieldService futsalFieldService;
-
+	
+	@Autowired
+	private LocationService locationService;
+	
 	@JsonView(ViewJSON.Account.class)
 	@RequestMapping(value = "/getid/{id}", method = RequestMethod.POST)
 	public Account getId(@PathVariable int id) {
@@ -119,5 +123,17 @@ public class SurveyerController {
 		responseMessage.setCode("600");
 		return responseMessage;
 	}
+	
+	@JsonView(ViewJSON.Location.class)
+	@RequestMapping(value = "/location", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseMessage viewAllLocation() {
+		ResponseMessage responseMessage = new ResponseMessage();
+		responseMessage.setObject(locationService.viewAllField());
+		responseMessage.setMessage("Success");
+		responseMessage.setCode("600");
+		return responseMessage;
+	}
+	
+	
 	
 }

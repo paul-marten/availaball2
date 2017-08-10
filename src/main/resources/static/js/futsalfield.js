@@ -21,6 +21,7 @@ function centerModal(id) {
 		 });
        });				          
 }
+
 $(document).ready( function () {
     var table = $('#futsalfieldsTable').DataTable({
         "ajax": "/futsalfields",

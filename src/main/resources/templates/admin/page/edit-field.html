@@ -301,30 +301,20 @@ $(document).on('change','#update-img' , function(){
 										
 										<div class="controls" th:each="phn, iterStat : ${phone}">
 											<form role="form" autocomplete="off">
-												<div class="entry input-group col-lg-4 in"
-													style="width: 200px;">
-									
-												<div class="bound"  id="field_telepon">
-												
+												<div class="entry input-group col-lg-4 in" style="width: 200px;">
+												<div class="bound" id="field_telepon">												
 														<input class="form-control" name="result[0]"  type="tel" pattern="[0-9]{14}"
 															id="phone_no" placeholder="Phone Number" maxlength="14" th:value="${phn}" />	
 
-														
-													<span class="input-group-btn ">
-														<button class="btn btn-success btn-add button_1" type="button"
-															id="green-round">
-															<span th:if="${iterStat.last and iterStat.index < 2}" class="icon_add"></span>
-															<!-- <span th:if="${iterStat.last}" class="icon_add"></span> -->
-															<span th:if="not ${iterStat.last}" class="icon_minus"></span>
-															<span th:if="${iterStat.index == 2}" class="icon_minus"></span>
-														</button>
-													</span>
-
-
-													</div>
-	
-
-													
+														<span class="input-group-btn ">
+															<button class="btn btn-success btn-add button_1" type="button" id="green-round">
+																<span th:if="${iterStat.last and iterStat.index < 2}" class="icon_add"></span>
+																<!-- <span th:if="${iterStat.last}" class="icon_add"></span> -->
+																<span th:if="not ${iterStat.last}" class="icon_minus btn-remove"></span>
+																<span th:if="${iterStat.index == 2}" class="icon_minus btn-remove"></span>
+															</button>
+														</span>
+												</div>													
 												</div>
 											</form>
 										</div>
