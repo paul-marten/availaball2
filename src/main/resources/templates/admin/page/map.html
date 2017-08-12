@@ -5,7 +5,7 @@
 <title>Map</title>
 <style>
 #map {
-	height: 680px;
+	height: 650px;
 	width: 100%;
 	position: static;
 	z-index: 0;
@@ -15,14 +15,14 @@
 	padding-left: 71px !important;
 }
 .map-box {
-	height: 680px;
+	height: 650px;
 	width: 100%;
 	position: relative;
 }
 .form-box {
 	position: absolute;
 	top: 0;
-	height: 680px;
+	height: 650px;
 	width: 33%;
 	right: 0px;
 	background-color: rgba(255, 255, 255, 0.8);
@@ -95,7 +95,7 @@
 }
 .dropdowns{
 	margin-top: 30px !important;
-	margin-left: 104px;
+	margin-left: 85px;
 }
 .labellt{
     display: inline-block;
@@ -129,6 +129,14 @@
     font-weight: bold;	
     font-family: roboto !important;
 }
+
+.surveyer{
+	cursor: default;
+	display: inline-block;
+    max-width: 100%;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
 .labelslo{
 	text-decoration-color: #808080!important;
     font-size: 13px;
@@ -159,7 +167,7 @@
 						<div id="md11" class="col-lg-12">
 							<div id="" class="col-lg-12">
 								<!-- last update -->
-								<div class="col-md-4 mdtop0">
+								<div class="col-md-5 mdtop0">
 									<div>
 										<label class="labelst"> Latest Update </label>
 									</div>
@@ -200,7 +208,7 @@
 										<label class="labelssu"> Surveyer </label>
 									</div>
 									<div>
-										 <label id="surveyer" value=""></label>			
+										 <label class="surveyer" id="surveyer" value=""></label>			
 									</div>	
 									
 									</div>
@@ -337,7 +345,7 @@
 									markerLocation[i] = marker;
 									google.maps.event.addListener(marker,'click',function(){
 										for(var j=0;j<markerLocation.length;j++){
-											markerLocation[j].setIcon("https://image.ibb.co/dznXH5/pointer.png");
+											markerLocation[j].setIcon("https://image.ibb.co/fDi8ma/pointer_opacity.png");
 										}
 										this.setIcon("https://image.ibb.co/kzvaWa/Webp_net_resizeimage_1.png");										
 										$(".form-box").removeClass("collapse");
