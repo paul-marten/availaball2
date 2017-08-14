@@ -1,6 +1,8 @@
 package com.paulmarten.availaball.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.paulmarten.availaball.ViewJSON;
+
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 
 import javax.persistence.*;
@@ -22,8 +24,8 @@ public class DetailPrice implements Serializable{
     private String endTime;
     private String price;
 
+    @JsonView(ViewJSON.DetailPrice.class)
     @Id
-    @JsonView(DataTablesOutput.View.class)
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "id")
     public int getIdDetailPrice() {
@@ -36,7 +38,7 @@ public class DetailPrice implements Serializable{
 
     //Relation mapping from detail price to futsalfield
 
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.DetailFutsalField.class)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_futsal_field")
     public FutsalField getFutsalField() {
@@ -46,9 +48,9 @@ public class DetailPrice implements Serializable{
     public void setFutsalField(FutsalField futsalField) {
         this.futsalField = futsalField;
     }
-
+    
+    @JsonView(ViewJSON.DetailPrice.class)
     @Column (name = "day")
-    @JsonView(DataTablesOutput.View.class)
     public String getDay() {
         return day;
     }
@@ -56,9 +58,9 @@ public class DetailPrice implements Serializable{
     public void setDay(String day) {
         this.day = day;
     }
-
+    
+  @JsonView(ViewJSON.DetailPrice.class)
     @Column (name = "start_time")
-    @JsonView(DataTablesOutput.View.class)
     public String getStartTime() {
         return startTime;
     }
@@ -66,9 +68,9 @@ public class DetailPrice implements Serializable{
     public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
-
+    
+  @JsonView(ViewJSON.DetailPrice.class)
     @Column (name = "end_time")
-    @JsonView(DataTablesOutput.View.class)
     public String getEndTime() {
         return endTime;
     }
@@ -76,9 +78,9 @@ public class DetailPrice implements Serializable{
     public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
-
+    
+  @JsonView(ViewJSON.DetailPrice.class)
     @Column (name = "price")
-    @JsonView(DataTablesOutput.View.class)
     public String getPrice() {
         return price;
     }

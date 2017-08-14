@@ -12,7 +12,10 @@ import com.paulmarten.availaball.repository.DetailPriceRepository;
 /**
  * Created by paulms on 6/14/2017.
  */
-@Service
+
+
+@Service("detailPriceService")
+
 public class DetailPriceService {
 
     @Autowired
@@ -21,4 +24,10 @@ public class DetailPriceService {
     public List<DetailPrice> findByFutsalField(FutsalField futsalField){
     	return detailPriceRepository.findAllByFutsalField(futsalField);
     }
+
+    
+    public List<DetailPrice> findByIdFutsalField(FutsalField futsalField){
+    	return detailPriceRepository.findByFutsalField(futsalField);
+    }
+
 }

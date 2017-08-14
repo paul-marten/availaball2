@@ -57,7 +57,7 @@ public class Account implements Serializable {
 
 
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.Account.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)
@@ -69,7 +69,7 @@ public class Account implements Serializable {
 		this.id = idSurveyer;
 	}
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.Account.class)
 	@NotEmpty
 	@Column(name = "username", unique = true)
 	public String getUsername() {
@@ -80,7 +80,7 @@ public class Account implements Serializable {
 		this.username = username;
 	}
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.DetailAccount.class)
 	@NotEmpty
 	@Column(name = "password")
 	public String getPassword() {
@@ -101,7 +101,7 @@ public class Account implements Serializable {
 		this.futsalFields = futsalFields;
 	}
 	
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.DetailAccount.class)
 	@Column(name = "role")
 	public String getRole() {
 		return role;
@@ -130,7 +130,7 @@ public class Account implements Serializable {
 		this.repeatPassword = repeatPassword;
 	}
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.Account.class)
 	@NotEmpty
 	@Column(name = "name")
 	public String getName() {
@@ -141,7 +141,7 @@ public class Account implements Serializable {
 		this.name = name;
 	}
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.Account.class)
 	@Column(name = "phone", unique = true)
 	public String getPhone() {
 		return phone;
@@ -151,7 +151,7 @@ public class Account implements Serializable {
 		this.phone = phone;
 	}
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.Account.class)
 	@Column(name = "total_field")
 	public int getTotalField() {
 		return totalField;
@@ -160,8 +160,8 @@ public class Account implements Serializable {
 	public void setTotalField(int totalField) {
 		this.totalField = totalField;
 	}
-
-	@JsonView(DataTablesOutput.View.class)
+	
+	@JsonView(ViewJSON.DetailAccount.class)
 	@Column(name = "latest_update")
 	public Date getLatestUpdate() {
 		return latestUpdate;

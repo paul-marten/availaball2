@@ -1,6 +1,9 @@
 package com.paulmarten.availaball.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.paulmarten.availaball.ViewJSON;
+
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 
 import javax.persistence.*;
@@ -35,15 +38,14 @@ public class FutsalField implements Serializable {
     private String days;
     private Set<DetailPrice> detailPrices = new HashSet<DetailPrice>(0);
     private String latitude;
-    private String longitud;
-    private Object objectField;
+    private String longitude;
     
     public FutsalField() {
         super();
     }
     
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.ListFutsalFieldAndroid.class)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -55,7 +57,7 @@ public class FutsalField implements Serializable {
         this.idFutsalField = idFutsalField;
     }
 
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.ListFutsalFieldAndroid.class)
     @Column (name = "field_name")
     public String getFieldName() {
         return fieldName;
@@ -65,7 +67,7 @@ public class FutsalField implements Serializable {
         this.fieldName = fieldName;
     }
 
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.ListFutsalFieldAndroid.class)
     @Column (name = "location")
     public String getLocation() {
         return location;
@@ -75,7 +77,7 @@ public class FutsalField implements Serializable {
         this.location = location;
     }
     
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.FutsalField.class)
     @Column (name = "detailLocation")
 	public String getDetailLocation() {
 		return detailLocation;
@@ -87,7 +89,7 @@ public class FutsalField implements Serializable {
 	}
 
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.FutsalField.class)
     @Column (name = "number_of_field")
     public int getNumberOfField() {
         return numberOfField;
@@ -97,7 +99,7 @@ public class FutsalField implements Serializable {
         this.numberOfField = numberOfField;
     }
 
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.FutsalField.class)
     @Column (name = "opening_hours")
     public Time getOpeningHours() {
         return openingHours;
@@ -107,7 +109,7 @@ public class FutsalField implements Serializable {
         this.openingHours = openingHours;
     }
 
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.FutsalField.class)
     @Column (name = "closing_hours")
     public Time getClosingHours() {
         return closingHours;
@@ -117,7 +119,7 @@ public class FutsalField implements Serializable {
         this.closingHours = closingHours;
     }
 
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.FutsalField.class)
     @Column (name = "price")
     public String getPrice() {
         return price;
@@ -127,7 +129,7 @@ public class FutsalField implements Serializable {
         this.price = price;
     }
 
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.FutsalField.class)
     @Column (name = "photo")
     public String getPhoto() {
         return photo;
@@ -137,7 +139,7 @@ public class FutsalField implements Serializable {
         this.photo = photo;
     }
 
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.FutsalField.class)
     @Column (name = "lates_update")
 	public Date getLatestUpdate() {
 		return latestUpdate;
@@ -148,7 +150,7 @@ public class FutsalField implements Serializable {
 	}
     
     
-    @JsonView(DataTablesOutput.View.class)
+    @JsonView(ViewJSON.FutsalField.class)
     @Column(name = "phone")
     public String getPhone() {
 		return phone;
@@ -159,7 +161,7 @@ public class FutsalField implements Serializable {
 	}
 
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.Account.class)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_account")
     public Account getAccount() {
@@ -180,7 +182,7 @@ public class FutsalField implements Serializable {
         this.detailPrices = detailPrices;
     }
     
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.FutsalField.class)
 	@Column (name = "latitude")
 	public String getLatitude() {
 		return latitude;
@@ -191,29 +193,19 @@ public class FutsalField implements Serializable {
 		this.latitude = latitude;
 	}
 
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.FutsalField.class)
 	@Column (name = "longitude")
-	public String getLongitud() {
-		return longitud;
+	public String getLongitude() {
+		return longitude;
 	}
 
 
-	public void setLongitud(String longitud) {
-		this.longitud = longitud;
-	}
-	
-	@JsonView(DataTablesOutput.View.class)
-	@Transient
-	public Object getObjectField() {
-		return objectField;
-	}
-
-
-	public void setObjectField(Object objectField) {
-		this.objectField = objectField;
+	public void setLongitude(String longitud) {
+		this.longitude = longitud;
 	}
 	
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.FutsalField.class)
+	@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 	@Transient
 	public String getDays() {
 		return days;

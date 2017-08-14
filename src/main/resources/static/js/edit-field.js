@@ -2,6 +2,7 @@
 
 $(function()
 {	 
+
     $(document).on('click', '.btn-add', function(e)
     {
     	var btn = $('.in').length
@@ -33,6 +34,65 @@ $(function()
 
     {	
     	var remove = $('.in').length
+
+	var max_button = 3; 
+	var x=1;
+    $(document)
+    	
+	    .on('click', '.btn-add', function(e)
+	    {	
+//	    	console.log(jQuery(".controls > .bound").first().children("input").length); 
+	    	//var c = document.getElementById("myDIV").children.length;
+	    	console.log('a');
+	    	console.log($('.bound').length);
+	    	
+	    	/*e.preventDefault();
+	        console.log(x);
+				var controlForm = $('.controls form:first'),
+				currentEntry = $(this).parents('.entry:first');
+	            
+	        if(x<2){
+
+	            var newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+		        newEntry.find('input').val('');
+		        controlForm.find('.entry:not(:last) .btn-add')
+	            .removeClass('btn-add').addClass('btn-remove')
+	            .removeClass('btn-success').addClass('btn-danger')
+	            .html('<span class="icon_minus"></span>');
+	        	$("#green-round").prop('id', 'red-round');
+	        
+
+	        	x++;
+	        	console.log(x);*/
+/*	        }
+	        else if( x < max_button){
+	        
+	        	var lastEntry = $(currentEntry.clone()).appendTo(controlForm);
+	        	lastEntry.find('input').val('');
+	        	controlForm.find('.entry:not(:last) .btn-add')
+	            .removeClass('btn-add').addClass('btn-remove')
+	            .removeClass('btn-success').addClass('btn-danger')
+	            .html('<span class="icon_minus"></span>');
+	        	$("#green-round").prop('id', 'red-round');
+
+	        	console.log(x);
+	        	if(x = 2){
+	        		controlForm.find('.entry:last .btn-add')
+		            .removeClass('btn-add').addClass('btn-remove')
+		            .removeClass('btn-success').addClass('btn-danger')
+		            .html('<span class="icon_minus"></span>');
+		        	$("#green-round").prop('id', 'red-round');
+	        	}
+	        	x++;
+	        }*/
+	       
+	        	
+	    	}      
+	    )
+	    
+    .on('click', '.btn-remove', function(e){
+
     	var controlForm = $('.controls form:first'),
 		currentEntry = $(this).parents('.entry:first');
 		if(remove == 3){

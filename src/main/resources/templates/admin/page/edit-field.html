@@ -11,7 +11,9 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCegjS81MOvtXounku2rnlJlggMKv0tv9w&callback=showmap">
     </script>
     <script src="js/OpenLayers.js"></script>
+
     <script src="js/date.min.js"></script>
+
 
     <script src="js/jquery-position-picker.debug.js"></script>
 <script type="text/javascript" src="/js/infobox.js"></script>
@@ -263,8 +265,13 @@ $(document).on('change','#update-img' , function(){
 <input type="text" name='latitude' id='latitude' hidden="hidden">
 
 <label name='longitude' id='longitude' value=""></label> 
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> d61895029fb9d6e54579a3beeb613a06f3f1b15c
                           <a type="button" onClick="showmap()">
                           	<img src="/img/map.jpg" class="map-icons">
                           </a>
@@ -299,6 +306,7 @@ $(document).on('change','#update-img' , function(){
 							<div class="control-group" id="fields">
 										<label class="control-label label-color" for="field1">Telepon</label>
 										
+<<<<<<< HEAD
 										<div class="controls" >
 											<form role="form" autocomplete="off">
 												<div class="entry input-group col-lg-4 in" th:each="phn, iterStat : ${phone}" style="width: 200px;" onclick="input()">
@@ -380,6 +388,28 @@ console.log(inputValues)
 
 
 </script>
+=======
+										<div class="controls" th:each="phn, iterStat : ${phone}">
+											<form role="form" autocomplete="off">
+												<div class="entry input-group col-lg-4 in" style="width: 200px;">
+												<div class="bound" id="field_telepon">												
+														<input class="form-control" name="result[0]"  type="tel" pattern="[0-9]{14}"
+															id="phone_no" placeholder="Phone Number" maxlength="14" th:value="${phn}" />	
+
+														<span class="input-group-btn ">
+															<button class="btn btn-success btn-add button_1" type="button" id="green-round">
+																<span th:if="${iterStat.last and iterStat.index < 2}" class="icon_add"></span>
+																<!-- <span th:if="${iterStat.last}" class="icon_add"></span> -->
+																<span th:if="not ${iterStat.last}" class="icon_minus btn-remove"></span>
+																<span th:if="${iterStat.index == 2}" class="icon_minus btn-remove"></span>
+															</button>
+														</span>
+												</div>													
+												</div>
+											</form>
+										</div>
+										<input type="text" th:value="${view.phone}" size="50" >
+>>>>>>> d61895029fb9d6e54579a3beeb613a06f3f1b15c
 
 									</div>
 						
@@ -411,6 +441,10 @@ console.log(inputValues)
                     </div>
             
 
+<<<<<<< HEAD
+=======
+						
+>>>>>>> d61895029fb9d6e54579a3beeb613a06f3f1b15c
              </div>
                   
              

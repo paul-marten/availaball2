@@ -6,11 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
-import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.DetailPrice;
 import com.paulmarten.availaball.model.FutsalField;
+import com.paulmarten.availaball.model.FutsalFieldMap;
+import com.paulmarten.availaball.model.Location;
 import com.paulmarten.availaball.service.AccountService;
 import com.paulmarten.availaball.service.DetailPriceService;
 import com.paulmarten.availaball.service.FutsalFieldService;
+import com.paulmarten.availaball.service.LocationService;
 
 /**
  * Created by paulms on 6/14/2017.
@@ -37,10 +37,12 @@ public class AdminController {
 
 	@Autowired
 	private AccountService accountService;
-
 	
 	@Autowired
 	private DetailPriceService detailPriceService;
+	
+	@Autowired
+	private LocationService locationService;
 	
     @RequestMapping(path="/index", method= RequestMethod.GET)
     public String goIndex(Model model,Principal principal, HttpSession session){
@@ -56,13 +58,16 @@ public class AdminController {
     public String goUser(){
         return "/admin/page/user";
     }
-    
+        
     @RequestMapping(path="/map", method= RequestMethod.GET)
     public String goMap(Model model){
-    	Iterable<FutsalField> futsalField = futsalFieldService.findAllFutsalFieldMap();
-    	for (FutsalField ff : futsalField) {
-			System.out.println(ff.getFieldName());
-		}
+    	List<FutsalFieldMap> futsalFieldMap = futsalFieldService.findAllFutsalFieldMap();
+    	model.addAttribute("futsalField",futsalFieldMap);
+//    	for (FutsalFieldMap ff : futsalFieldMap) {
+//			System.out.println(ff.getFieldName());
+//			System.out.println(ff.getLatitude());
+////			System.out.println(ff.getDetailLocation());
+//		}
     	return "/admin/page/map";
     }
     
@@ -99,14 +104,16 @@ public class AdminController {
     public String editField(@PathVariable int id, Model model){
     	FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
         model.addAttribute("view",futsalFieldEdit);
+        
+        List<DetailPrice> detailPrices = detailPriceService.findByFutsalField(futsalFieldEdit);
+        model.addAttribute("detailPrice", detailPrices);
+        
         String number = futsalFieldEdit.getPhone();
         String[] result = number.split(",");
         model.addAttribute("phone", result);
-        int numberOfField = futsalFieldEdit.getNumberOfField();
-        model.addAttribute("numberOfField",numberOfField);
-        System.out.println(futsalFieldEdit.getNumberOfField());
-        List<DetailPrice> detailPrices = detailPriceService.findByFutsalField(futsalFieldEdit);
-        model.addAttribute("detailPrice", detailPrices);
+        
+        List<Location> listLocation = locationService.viewAllField();
+        model.addAttribute("location", listLocation);
         return "/admin/page/edit-field";
     }
     
