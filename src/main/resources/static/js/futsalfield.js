@@ -129,6 +129,10 @@ $(document).ready( function () {
 			.search(this.value)
 			.draw();
 	});
+$("#lokasi").on('change', function() {
+    //filter by selected value on second column
+    table.column(2).search($(this).val()).draw();
+});    
 	
 	$('#searchLocation').ready(function() {
 		 $('#futsalFieldsTable').DataTable( {
