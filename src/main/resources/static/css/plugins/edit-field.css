@@ -37,7 +37,7 @@ input[type="tel"]:focus {
 }
 .image-edit{
   width: 360px;
-  height: 180px;
+  height: 168px;
 }
 
 .nama-edit{
@@ -176,6 +176,11 @@ label.control-label{
     border: 1px solid #ccc;
 }
 
+#select-kota{
+width:160px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
 .field-harga{
 	display: inline;
     width: 150px;
@@ -257,18 +262,20 @@ label.control-label{
 	/*button add remove*/
     #green-round
 {
-font-size:20px!important;
-background-color:white;
-border-color:white;
-box-shadow:none !important;
- outline: none;
- padding-top: 3px!important;
-     margin-left: 8px;
-    margin-top: 1px;
+    font-size: 20px!important;
+    background-color: white;
+    border-color: white;
+    box-shadow: none !important;
+    outline: none;
+    padding-top: 3px!important;
+    margin-left: -170px;
+    margin-top: -1px;
     margin-bottom: 18px;
     padding-left: 0;
     /* padding-top: 0; */
     padding-bottom: 0;
+    float: right;
+    margin-right: -43px;
 }
 
 
@@ -279,12 +286,14 @@ box-shadow:none !important;
         box-shadow:none !important;
          outline: none;
  padding-top: 3px!important;
-     margin-left: 8px;
-    margin-top: 1px;
+       margin-left: -170px;
+    margin-top: -1px;
     margin-bottom: 18px;
     padding-left: 0;
     /* padding-top: 0; */
     padding-bottom: 0;
+       float: right;
+    margin-right: -43px;
  
 }
 
@@ -538,4 +547,13 @@ box-shadow:none !important;
     padding-top: 9px;
     font-size: 10px;
     font-family: Roboto;
+}
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }

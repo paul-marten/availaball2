@@ -91,7 +91,7 @@ public class AdminController {
         model.addAttribute("view",futsalFieldView);
         String number = futsalFieldView.getPhone();
         String[] result = number.split(",");
-        model.addAttribute("phone", result[0]);
+        model.addAttribute("phone", result);
         return "/admin/page/view-lapangan";
     }
 
@@ -99,9 +99,13 @@ public class AdminController {
     public String editField(@PathVariable int id, Model model){
     	FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
         model.addAttribute("view",futsalFieldEdit);
-        
+        String number = futsalFieldEdit.getPhone();
+        String[] result = number.split(",");
+        model.addAttribute("phone", result);
+        int numberOfField = futsalFieldEdit.getNumberOfField();
+        model.addAttribute("numberOfField",numberOfField);
+        System.out.println(futsalFieldEdit.getNumberOfField());
         List<DetailPrice> detailPrices = detailPriceService.findByFutsalField(futsalFieldEdit);
-//        System.out.println(detailPrices.get(1).getIdDetailPrice());
         model.addAttribute("detailPrice", detailPrices);
         return "/admin/page/edit-field";
     }

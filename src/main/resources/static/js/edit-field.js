@@ -1,84 +1,76 @@
-//Phone
+
+
 $(function()
 {	 
-	var max_button = 3; 
-	var x=1;
-    $(document)
-    	
-	    .on('click', '.btn-add', function(e)
-	    {
-	        e.preventDefault();
-	        console.log(x);
-				var controlForm = $('.controls form:first'),
-				currentEntry = $(this).parents('.entry:first');
-	            
-	        if(x<2){
+    $(document).on('click', '.btn-add', function(e)
+    {
+    	var btn = $('.in').length
+        e.preventDefault();
 
-	            var newEntry = $(currentEntry.clone()).appendTo(controlForm);
+        var controlForm = $('.controls form:first'),
+            currentEntry = $(this).parents('.entry:first'),
+            newEntry = $(currentEntry.clone()).appendTo(controlForm);	        
+	     if (btn<2) {
+			controlForm.find('.entry:not(:last) .btn-add')
+		    .removeClass('btn-add').addClass('btn-remove')
+		    .removeClass('btn-success').addClass('btn-danger remove')
+		    .html('<span class="icon_minus"></span>');
+		    $("#green-round").prop('id', 'red-round');
+		    newEntry.find('input').val('');
+	     }
 
-		        newEntry.find('input').val('');
-		        controlForm.find('.entry:not(:last) .btn-add')
-	            .removeClass('btn-add').addClass('btn-remove')
-	            .removeClass('btn-success').addClass('btn-danger')
-	            .html('<span class="icon_minus"></span>');
-	        	$("#green-round").prop('id', 'red-round');
-	        
+	     else if(btn<3){
+	     	controlForm.find('.entry .btn-add')
+		    .removeClass('btn-add').addClass('btn-remove')
+		    .removeClass('btn-success').addClass('btn-danger remove')
+		    .html('<span class="icon_minus"></span>');
+		    $("#green-round").prop('id', 'red-round');
+		    newEntry.find('input').val('');
+	     }
+	     console.log(btn)
 
-	        	x++;
-	        	console.log(x);
-	        }
-	        else if( x < max_button){
-	        
-	        	var lastEntry = $(currentEntry.clone()).appendTo(controlForm);
-	        	lastEntry.find('input').val('');
-	        	controlForm.find('.entry:not(:last) .btn-add')
-	            .removeClass('btn-add').addClass('btn-remove')
-	            .removeClass('btn-success').addClass('btn-danger')
-	            .html('<span class="icon_minus"></span>');
-	        	$("#green-round").prop('id', 'red-round');
+    }).on('click', '.btn-remove', function(e)
 
-	        	console.log(x);
-	        	if(x = 2){
-	        		controlForm.find('.entry:last .btn-add')
-		            .removeClass('btn-add').addClass('btn-remove')
-		            .removeClass('btn-success').addClass('btn-danger')
-		            .html('<span class="icon_minus"></span>');
-		        	$("#green-round").prop('id', 'red-round');
-	        	}
-	        	x++;
-	        }
-	       
-	        	
-	    	}      
-	    )
-	    
-    .on('click', '.btn-remove', function(e){
+    {	
+    	var remove = $('.in').length
     	var controlForm = $('.controls form:first'),
 		currentEntry = $(this).parents('.entry:first');
-    	if(x == 3){
-    		x--;
+		if(remove == 3){
+    		
     		$(this).parents('.entry:first').remove();
 
     		controlForm.find('.entry:not(:first) .btn-remove')
     		.removeClass('btn-remove').addClass('btn-add')
-		    .removeClass('btn-danger').addClass('btn-success')
+		    .removeClass('btn-danger remove').addClass('btn-success')
             .html('<span class="icon_add"></span>');
          	$("#green-round").prop('id', 'red-round');
+var inputValues = $('.input').map(function() {
+    return $(this).val();
+}).toArray();
+
+
+
+   $('#output').val(inputValues)
     	}
     	else{	
-    		x--;
+    	
 	    	$(this).parents('.entry:first').remove();
+var inputValues = $('.input').map(function() {
+    return $(this).val();
+}).toArray();
+console.log(inputValues)
 
+
+
+   $('#output').val(inputValues)
 	    }
-		e.preventDefault();
-		console.log(x);	
-		return false;		
+	 
+		return false;
 	});
 
+
+
 });
-
-
-
 
 
 /*--------------------------------------senin--------------------------------------------*/
@@ -528,4 +520,64 @@ $(function()
 
 
 		});
-/*---------------------------------Map Init-----------------------------------*/
+/*---------------------------------Price Validation-----------------------------------*/
+$(document).ready(function(){
+  $('input.field-harga').keyup(function(event){
+      // skip for arrow keys
+      if(event.which >= 10 && event.which <= 10){
+          event.preventDefault();
+      }
+      var $this = $(this);
+      var num = $this.val().replace(/,/gi, "").split("").reverse().join("");
+      
+      var num2 = RemoveRougeChar(num.replace(/(.{3})/g,"$1,").split("").reverse().join(""));
+      
+      console.log(num2);
+      
+      
+      // the following line has been simplified. Revision history contains original.
+      $this.val(num2);
+  });
+});
+
+function RemoveRougeChar(convertString){
+    
+    
+    if(convertString.substring(0,1) == ","){
+        
+        return convertString.substring(1, convertString.length)            
+        
+    }
+    return convertString;
+    
+}
+
+
+$(document).ready(function(){
+    // Based off of http://stackoverflow.com/questions/9156390/add-commas-for-a-number-in-input-field-while-typing
+    
+    function RemoveRougeChar(convertString){
+        if(convertString.substring(0,1) == ","){
+            return convertString.substring(1, convertString.length)                  
+        }
+        return convertString; 
+    }
+    
+    $('input.field-harga')
+  
+    .on("focus",function(e){
+        var $this = $(this);
+        var num = $this.val().replace(/,/g,"");
+        $this.val(num);
+        
+    }).on("blur", function(e){
+        var $this = $(this);
+        var num = $this.val().replace(/[^0-9]+/g, '').replace(/,/gi, "").split("").reverse().join("");     
+        var num2 = RemoveRougeChar(num.replace(/(.{3})/g,"$1,").split("").reverse().join(""));
+        $this.val(num2);
+    });
+    
+});
+
+
+
