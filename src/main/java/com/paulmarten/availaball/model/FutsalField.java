@@ -1,5 +1,6 @@
 package com.paulmarten.availaball.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.paulmarten.availaball.ViewJSON;
 
@@ -204,6 +205,7 @@ public class FutsalField implements Serializable {
 	}
 	
 	@JsonView(ViewJSON.FutsalField.class)
+	@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 	@Transient
 	public String getDays() {
 		return days;

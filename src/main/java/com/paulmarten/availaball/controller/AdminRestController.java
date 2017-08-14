@@ -37,7 +37,7 @@ public class AdminRestController {
 	@Autowired
 	private AccountService accountService;
 
-	@JsonView(ViewJSON.FutsalField.class)
+	@JsonView(ViewJSON.DetailFutsalField.class)
 	@RequestMapping(value = "/futsalfields", method = RequestMethod.GET)
 	public DataTablesOutput<FutsalField> getFutsalFields(@Valid DataTablesInput input) {
 		return futsalFieldService.findAllFutsalFieldAdmin(input);

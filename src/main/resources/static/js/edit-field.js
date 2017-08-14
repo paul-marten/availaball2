@@ -11,6 +11,7 @@ $(function()
 	    	//var c = document.getElementById("myDIV").children.length;
 	    	console.log('a');
 	    	console.log($('.bound').length);
+	    	
 	    	/*e.preventDefault();
 	        console.log(x);
 				var controlForm = $('.controls form:first'),

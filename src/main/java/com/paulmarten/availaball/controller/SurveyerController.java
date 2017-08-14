@@ -3,6 +3,8 @@ package com.paulmarten.availaball.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,7 +22,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.paulmarten.availaball.ResponseMessage;
 import com.paulmarten.availaball.ViewJSON;
 import com.paulmarten.availaball.model.Account;
+import com.paulmarten.availaball.model.DetailPrice;
 import com.paulmarten.availaball.model.FutsalField;
+import com.paulmarten.availaball.service.DetailPriceService;
 import com.paulmarten.availaball.service.FutsalFieldService;
 import com.paulmarten.availaball.service.LocationService;
 import com.paulmarten.availaball.service.SurveyerService;
@@ -39,6 +43,9 @@ public class SurveyerController {
 	
 	@Autowired
 	private LocationService locationService;
+	
+	@Autowired
+	private DetailPriceService detailPriceService;
 	
 	@JsonView(ViewJSON.Account.class)
 	@RequestMapping(value = "/getid/{id}", method = RequestMethod.POST)
@@ -118,9 +125,24 @@ public class SurveyerController {
 	@RequestMapping(value = "/detail-field", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseMessage viewDetailFutsal(@RequestParam int idFutsalField) {
 		ResponseMessage responseMessage = new ResponseMessage();
-		responseMessage.setObject(futsalFieldService.findFutsalFieldById(idFutsalField));
+		FutsalField futsalFieldSentObject =  new FutsalField();
+		futsalFieldSentObject = futsalFieldService.findFutsalFieldById(idFutsalField);
+		responseMessage.setObject(futsalFieldSentObject);
 		responseMessage.setMessage("Success");
 		responseMessage.setCode("600");
+		return responseMessage;
+	}
+	
+	@JsonView(ViewJSON.DetailPrice.class)
+	@RequestMapping(value = "/detail-field-price", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseMessage viewDetailFutsalPrice(@RequestParam int idFutsalField) {
+		ResponseMessage responseMessage = new ResponseMessage();
+		List<DetailPrice> detailPrices = new ArrayList<DetailPrice>();
+		FutsalField futsalFieldSentObject = futsalFieldService.findFutsalFieldById(idFutsalField);
+		detailPrices = detailPriceService.findByIdFutsalField(futsalFieldSentObject);
+		responseMessage.setMessage("Success");
+		responseMessage.setCode("600");
+		responseMessage.setObject(detailPrices);
 		return responseMessage;
 	}
 	
@@ -134,6 +156,10 @@ public class SurveyerController {
 		return responseMessage;
 	}
 	
-	
+	@JsonView(ViewJSON.FutsalField.class)
+	@RequestMapping(value = "/maps", method = RequestMethod.GET, headers = "Accept=application/json")
+	public List<FutsalField> maps() {
+		return futsalFieldService.findAllFutsalFieldApi();
+	}
 	
 }

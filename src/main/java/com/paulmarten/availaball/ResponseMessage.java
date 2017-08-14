@@ -1,11 +1,15 @@
 package com.paulmarten.availaball;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonView;
-import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 
 /**
  * Created by paulms on 7/18/2017.
  */
+
+
+
 public class ResponseMessage {
 	private String code;
 	private String message;
@@ -23,6 +27,7 @@ public class ResponseMessage {
 	}
 
 	@JsonView(ViewJSON.Base.class)
+	@JsonInclude(JsonInclude.Include.NON_DEFAULT)
     public int getCurrentPage() {
         return currentPage;
     }
@@ -32,6 +37,7 @@ public class ResponseMessage {
     }
 
     @JsonView(ViewJSON.Base.class)
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
     public int getTotalPage() {
         return totalPage;
     }
@@ -41,6 +47,7 @@ public class ResponseMessage {
     }
 
     @JsonView(ViewJSON.Base.class)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     public Object getObject() {
         return object;
     }
