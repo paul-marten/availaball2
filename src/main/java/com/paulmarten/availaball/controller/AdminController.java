@@ -42,7 +42,6 @@ public class AdminController {
 	@Autowired
 	private AccountService accountService;
 
-	
 	@Autowired
 	private DetailPriceService detailPriceService;
 	
@@ -61,18 +60,14 @@ public class AdminController {
         return "/admin/page/user";
     }
         
-    @RequestMapping(path="/map", method= RequestMethod.GET)
+    RequestMapping(path="/map", method= RequestMethod.GET)
     public String goMap(Model model){
-
     	List<FutsalFieldMap> futsalFieldMap = futsalFieldService.findAllFutsalFieldMap();
     	model.addAttribute("futsalField",futsalFieldMap);
     	for (FutsalFieldMap ff : futsalFieldMap) {
 			System.out.println(ff.getIdFutsalField());
 			System.out.println(ff.getFieldName());
 			System.out.println(ff.getLatitude());
-    	Iterable<FutsalField> futsalField = futsalFieldService.findAllFutsalFieldMap();
-    	for (FutsalField ff : futsalField) {
-			System.out.println(ff.getFieldName());
 		}
     	return "/admin/page/map";
     }
@@ -110,17 +105,15 @@ public class AdminController {
     public String editField(@PathVariable int id, Model model){
     	FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
         model.addAttribute("view",futsalFieldEdit);
-
         List<DetailPrice> detailPrices = detailPriceService.findByFutsalField(futsalFieldEdit);
-//        System.out.println(detailPrices.get(1).getIdDetailPrice());
         String number = futsalFieldEdit.getPhone();
         String[] result = number.split(",");
         model.addAttribute("phone", result);
         int numberOfField = futsalFieldEdit.getNumberOfField();
         model.addAttribute("numberOfField",numberOfField);
         System.out.println(futsalFieldEdit.getNumberOfField());
-        List<DetailPrice> detailPrices = detailPriceService.findByFutsalField(futsalFieldEdit);
-        model.addAttribute("detailPrice", detailPrices);
+        List<DetailPrice> detailPrices1 = detailPriceService.findByFutsalField(futsalFieldEdit);
+        model.addAttribute("detailPrice", detailPrices1);
         return "/admin/page/edit-field";
     }
     

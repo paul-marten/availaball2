@@ -44,8 +44,9 @@ public class FutsalFieldService {
 	}
 
 
-	public List<FutsalFieldMap> findAllFutsalFieldMap(){
+	public List<FutsalFieldMap> findAllFutsalFieldMap1(){
 		return futsalFieldRepository.findAllByOrderByIdFutsalField();
+		}
 
 	public Iterable<FutsalField> findAllFutsalFieldMap(){
 		return futsalFieldRepository.findAll();
@@ -113,14 +114,7 @@ public class FutsalFieldService {
 				message = "Error";
 
 			}
-			else{
-				message = "Error";
-			}
 		}
-		else{
-			message = "Error";
-		}
-
 		else{
 			message = "Error";
 		}
