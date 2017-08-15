@@ -7,7 +7,7 @@
 <script type="text/javascript" src="/js/infobox.js"></script>
 
 </head>
-<body onload="initialize()">
+<body >
 
 
  <div id="page-wrapper"  layout:fragment="content" style="padding-left:unset;padding-right:unset;">
@@ -39,15 +39,14 @@
                     ,center: secheltLoc
                     ,mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
-             var theMap = new google.maps.Map(document.getElementById("map"), myMapOptions);
-            
+                var theMap = new google.maps.Map(document.getElementById("map"), myMapOptions);
+              
                 var marker = new google.maps.Marker({
                     map: theMap,
                     draggable: true,
                     position: new google.maps.LatLng(-25.363, 131.004),
                     visible: true
                 });
-
                 var boxText = document.createElement("div");
                 boxText.style.cssText = "background-color: transparent; border: 2px solid #transparent;border-radius: 25px;cursor: pointer; margin-bottom: 22px;text-align: center;";
                 boxText.innerHTML = '<button class="btn pick-location" id="pick-location">Pick Location</button>';
@@ -72,14 +71,9 @@
                     ib.open(theMap, this);
                      alert(this.position);
                 });
-
                 var ib = new InfoBox(myOptions);
                 ib.open(theMap, marker);
-
             }
-
-
-
         </script>      
   
             </div>
@@ -90,6 +84,3 @@
 
 </body>
 </html>
-
-
-

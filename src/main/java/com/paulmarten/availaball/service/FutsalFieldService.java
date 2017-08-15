@@ -43,8 +43,13 @@ public class FutsalFieldService {
 		return futsalFieldRepository.findOne(id);
 	}
 
+
 	public List<FutsalFieldMap> findAllFutsalFieldMap(){
 		return futsalFieldRepository.findAllByOrderByIdFutsalField();
+
+	public Iterable<FutsalField> findAllFutsalFieldMap(){
+		return futsalFieldRepository.findAll();
+
 	}
 	
 	public Page<FutsalField> findAllFutsalField(int page) {
@@ -102,6 +107,11 @@ public class FutsalFieldService {
 					insert(detailPrice);
 				}
 				message = "Success, Status 200 OK";
+
+			}
+			else{
+				message = "Error";
+
 			}
 			else{
 				message = "Error";
@@ -110,6 +120,11 @@ public class FutsalFieldService {
 		else{
 			message = "Error";
 		}
+
+		else{
+			message = "Error";
+		}
+
 		return message;
 	}
 	

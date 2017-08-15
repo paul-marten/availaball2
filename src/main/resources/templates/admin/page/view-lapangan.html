@@ -3,6 +3,8 @@
 <head>
 <title>Availaball</title>
 <link rel="stylesheet" th:href="@{/css/plugins/view-field.css}" />
+    	<script src="https://cdn.datatables.net/s/bs/jqc-1.11.3,dt-1.10.10/datatables.min.js"></script>
+    	
 </head>
 <body>
 
@@ -45,12 +47,74 @@
 						               <i class="icon-gear"></i> Action <span class="caret"></span>
 						            </a>
 						    		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" id="dropdown_action" >
+
 						              <li><a th:href="@{/admin/edit-field/10}">Edit</a></li>
 						              <li><a href="#" onclick="centerModal(10)">Delete</a></li>
+
+						              <li><a th:href="@{/admin/edit-field/{id}(id=${view.idFutsalField})}">Edit</a></li>
+						              <li><a href="#" onclick="delete()" data-toggle="modal" data-target="#myModal" >Delete</a></li>
+
 						            </ul>
 						        </div>								
 							</div>
 						</div>
+									<div class="modal fade" id="myModal" tabindex="-1"
+										role="dialog" aria-labelledby="myModalLabel"
+										aria-hidden="true">
+										<div class="modal-dialog"
+											style="margin-top: 148.5px !important;">
+											<div class="modal-content" id="modal_content">
+												<div class="modal-header" id="modal_header">
+													<!--   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> -->
+													<p class="modal-title " id="modal_lables">Are you sure
+														want to delete it?</p>
+												</div>
+
+												<div class="modal-footer" id="modal_footer">
+													<div class="button_c_d">
+														<button type="button" id="button_delete"
+															class="btn btn-primary">Delete</button>
+														<button type="button" id="button_cancel"
+															class="btn btn-default" data-dismiss="modal" onclick="delete(10)">Cancel</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+						<script type="text/javascript">
+						function delete(id) {
+							console.log(id);
+						    $(this).css('display', 'block');
+						    var $dialog = $(this).find(".modal-dialog");
+						    var offset = ($(window).height() - $dialog.height()) / 2;
+						    // Center modal vertically in window
+						    $dialog.css("margin-top", offset);
+							 $('#button_delete').on('click', function(event){
+							    	   var futsalField = {};
+							    	   futsalField.idFutsalField = id;
+							    	   var idFutsalField = id;
+							    	   $.ajax({
+							    		   	 type: "POST",
+								             url: "/delete-field",
+								             data: futsalField,
+								             timeout: 600000,
+								             success: function (data) {
+								                 console.log("sukses");
+								                 window.location.href="/admin/index/";
+								             },
+								             error: function (e) {
+								                 console.log("gagal");
+								             }
+									 });
+							       });									    
+						}
+
+						$('.modal').on('show.bs.modal', delete);
+						$(window).on("resize", function () {
+						    $('.modal:visible').each(delete);
+						});							
+						</script>
+
 						<!-- Field img -->
 						<div class="col-md-6 mdtop6">
 							<img src="/img/aa.jpg" height="168" width="360">
@@ -76,8 +140,8 @@
 									<div>
 										<label class="labels">Telepon </label>
 									</div>
-									<div>
-										<span th:text="${phone}"></span>
+									<div th:each="phn : ${phone}">
+										<span th:text="${phn}"></span>
 									</div>
 								</div>
 								<!-- end of phone number-->
@@ -122,6 +186,7 @@
 						</div>
 					</div>
 					<div class="col-lg-12"></div>
+
 				</div>
 			</div>
 		</div>

@@ -74,8 +74,12 @@ public class SurveyerController {
 	@RequestMapping(value = "/create-futsal-field", method = RequestMethod.POST)
 	public ResponseMessage createField(@ModelAttribute FutsalField futsalField) {
 		ResponseMessage responseMessage = new ResponseMessage();
+
 		responseMessage.setCode("600");
 		responseMessage.setMessage(futsalFieldService.saveField(futsalField));
+
+	/*	responseMessage.setMessage(futsalFieldService.saveField(futsalField));*/
+
 		return responseMessage;
 	}
 	

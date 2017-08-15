@@ -6,18 +6,140 @@
     <link rel="stylesheet" th:href="@{/css/fonts/icon-edit/style.css}" />
      <script th:src="@{/js/edit-field.js}"></script>
        <script th:src="@{/js/date.min.js}"></script>
-   
+       <link rel="stylesheet" th:href="@{/css/plugins/picklocation.css}" />
+      <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCegjS81MOvtXounku2rnlJlggMKv0tv9w&callback=showmap">
+    </script>
+    <script src="js/OpenLayers.js"></script>
+
+
+    <script src="js/jquery-position-picker.debug.js"></script>
+<script type="text/javascript" src="/js/infobox.js"></script>
 </head>
 
-<body>
+<body >
 	 <div id="page-wrapper">
 				<div layout:fragment="content">
             <div class="container-fluid">
 
                 <!-- Page Heading -->
 						<div class="row">
+
+
+
+                   <div id="map-container" class="col-lg-12 " style="display: none;">
+                   
+                    <div class="col-lg-12" style="padding-bottom: 30px; padding-top: unset; padding-left: unset;">
+                          <div class="col-md-6" style="float: left; padding-top:unset;padding-left: unset;">
+                           <a onclick="back()" style="padding-left: unset; cursor: pointer;"><i class="fa fa-long-arrow-left" style="padding-left: unset;"></i>Back </a>
+                      </div>
+                      <div class="col-md-6" style=" padding-top: unset; padding-left: unset;">
+                        <label>Pick Location</label>                          
+                      </div>
+                       <div id="map"></div>
+                      </div>
+			    <div id="map_canvas"></div>   
+
+						    <script type="text/javascript">
+							var latLng = new google.maps.LatLng(-6.205119831877469,106.82968864194243);
+							var geocoder = new google.maps.Geocoder();
+							function updateMarkerPosition(latLng) {
+							document.getElementById('latitude').value = [latLng.lat()]
+						    $("#longitude").html(document.getElementById('longitude').value = [latLng.lng()]);
+							}
+							function back(){
+							 $('#map-container').hide();
+							 $('#button-save').show();
+							 $("#edit").show();
+							}
+							function showmap() {
+							var secheltLoc = new google.maps.LatLng(-6.205119831877469,106.82968864194243);
+						    var myMapOptions = {
+						                     zoom: 15
+						                    ,center: latLng
+						                    ,mapTypeId: google.maps.MapTypeId.ROADMAP,
+						                    disableDoubleClickZoom: true
+						                		};
+							var theMap = new google.maps.Map(document.getElementById("map"), myMapOptions);
+						    var marker = new google.maps.Marker({
+						                    map: theMap,
+						                    draggable: true,
+						                    position: new google.maps.LatLng(-6.205119831877469,106.82968864194243),
+						                    visible: true,
+						                     animation: google.maps.Animation.DROP
+						                });
+						    
+						    var boxText = document.createElement("div");
+						                boxText.style.cssText = "background-color: transparent; border: 2px solid #transparent;border-radius: 25px;cursor: pointer; margin-bottom: 22px;text-align: center;";
+						                boxText.innerHTML = '<button class="btn pick-location" id="pick-location" onClick="pick()">Pick Location</button>';  
+						                
+						    var myOptions = {
+						                     content: boxText
+						                    ,disableAutoPan: false
+						                    ,maxWidth: 0
+						                    ,pixelOffset: new google.maps.Size( -140,-140)
+						                    ,zIndex: null
+						                    ,boxStyle: { 
+						                      background: ""
+						                      ,opacity: 100
+						                      ,width: "280px",
+						                     animation: google.maps.Animation.BOUNCE
+						                     }
+						                    ,closeBoxURL: ""
+						                    ,infoBoxClearance: new google.maps.Size(1, 1)
+						                    ,isHidden: false
+						                    ,pane: "floatPane"
+						                    ,position: new google.maps.LatLng(-6.205119831877469,106.82968864194243)
+						    };
+								updateMarkerPosition(latLng);
+								google.maps.event.addListener(marker, 'dragend', function() {
+							    updateMarkerPosition(marker.getPosition());
+							 	  console.log("success");
+							 	});
+						  
+							 	theMap.addListener('dblclick', function(e) {
+						          placeMarkerAndPanTo(e.latLng, theMap);
+						           updateMarkerPosition(marker.getPosition());
+						            console.log("click success");
+						        });
+						      
+						      function placeMarkerAndPanTo(latLng, theMap) {
+						        theMap.panTo(latLng);
+						    	marker.setPosition(latLng);
+						    }
+/*						    theMap.addListener('center_changed', function() {
+					          // immidietly after the center of the map has changed, pan back to the
+					          // marker.
+					          window.setTimeout(function() {
+					            theMap.panTo(marker.getPosition());
+					          }, 3000);
+					          console.log('set center');
+					        });*/
+						        var ib = new InfoBox(myOptions);
+							    ib.open(theMap, marker);
+							   $('#map-container').show();
+							   $("#edit").hide();
+							     $('#button-save').hide();
+								window.dispatchEvent(new Event('resize'));
+							
+						}
+								var latInput = document.getElementById('lat');
+								var longInput = document.getElementById('long');
+								function pick(){
+									 $('#button-save').show();
+								 $('#map-container').hide();
+								 $("#edit").show();
+								 
+								window.dispatchEvent(new Event('resize'));
+								}
+						console.log(pick);
+    </script> 
+            </div>
+
+
+<div id="edit" style="margin-top: 40px;">
                     <div  class="col-lg-12" id="font">
-                       
+                        
                         <!-- Title -->
                         <div class="col-lg-3 lefted">
                         <h4 class="title">EDIT</h4>
@@ -29,13 +151,55 @@
                         <div class="col-lg-12 lefted">
                         
 			       		 <div class="show-image lefted">
-			          	<img src="/img/blank.jpg" style="  width: 360px;  height: 180px;" onchange="readURL(this);" id="field-img">   
-			         
+			          	<img src="/img/blank.jpg" style="  width: 360px;  height: 180px;"  id="field-img">   
+			         	<script type="text/javascript"></script>
 			            <div class="button-edit " id="button-edit">
-			            <input  type="file" class="update ">
+			            <input  type="file" class="update " id="update-img" accept="image/jpg,image/png,image/jpeg,image/gif">
+			            <label id="error-image"> </label>
 			            <i class="icon-edit_icon"></i>
+
 			            </div>
-	
+						<script type="text/javascript">
+						    function readURL(input) {
+						        if (input.files && input.files[0]) {
+						            var reader = new FileReader();
+						            
+						            reader.onload = function (e) {
+						                $('#field-img').attr('src', e.target.result);
+						            }
+						            
+						            reader.readAsDataURL(input.files[0]);
+						        }
+						    }
+						    
+						    $("#update-img").change(function(){
+						    	var oFile = document.getElementById("update-img").files[0]; 
+					            if (oFile.size > 200000 && oFile.size > 10000) 
+					            {
+					          
+					                return;
+					            }
+						        readURL(this);
+						    });		
+var _URL = window.URL || window.webkitURL;
+$(document).on('change','#update-img' , function(){    
+    var file, img;
+    if ((file = this.files[0])) {
+        img = new Image();
+        img.onload = function () {
+        	if(this.width>360 && this.height>180){
+        	
+        		$("#field-img").attr("src","/img/blank.jpg");
+        	       alert("Ukuran gambar melebihi 360 x 180");
+        	}
+        	else{
+        	}
+     
+        };
+        img.src = _URL.createObjectURL(file);
+    }
+});
+												</script>
 			        </div>
 
                         </div>
@@ -49,7 +213,7 @@
                             <div class="col-lg-6 lefted">
                              <label class="field-nama label-color">Nama</label>
                     
-                         <input type="text"  class="form-control" name="nama"  size="35" th:field="${view.fieldName}"  placeholder="Nama Lapangan">
+                         <input type="text"  class="form-control" name="nama"  size="35"   placeholder="Nama Lapangan" th:field="${view.fieldName}">
                         
                                  </div>
                         </div>
@@ -64,18 +228,23 @@
                               <label class="label-color lefted">Alamat</label>
 
                                   <!-- Map icon -->
-                        <div class="col-lg-4 map2 lefted" id="map" style="margin-top: -9px;padding-right: unset;" >
-                           <label class="label-color lefted"> -6.19152212312</label>
-                           <a th:href="@{/admin/picklocation}">
-                           <img src="/img/map.jpg" class="map-icons" onclick="removeHidden()">
-                           </a>
-                           
+                        <div class="col-lg-4 map2 lefted" id="maps" style="margin-top: -9px;padding-right: unset;" >
 
+<input type="text" name='nama_lokasi' id='nama_lokasi'  hidden="hidden">
+ 
+<input type="text" name='latitude' id='latitude' hidden="hidden">
+
+<label name='longitude' id='longitude' value=""></label> 
+
+
+                          <a type="button" onClick="showmap()">
+                          	<img src="/img/map.jpg" class="map-icons">
+                          </a>
                         </div>
                         <!-- end of Map Icon  -->
 
 
-                         <textarea  class="form-control" size="35" th:field="${view.detailLocation}" placeholder="Alamat"></textarea>
+                         <textarea class="form-control"  size="35"  id="alamat" placeholder="Alamat" value=""  style=" resize: none;" th:field="${view.detailLocation}"></textarea>
                         
            
                              </div>
@@ -84,35 +253,100 @@
 
                         <!-- Phone & number Of field -->
                         <!-- Phone -->
-                     
+                        	<div class="col-lg-6 lefted" >
+                        	<label class="label-color">Kota</label>
+            
+                        	 <select class="form-control selectpicker" id="select-kota">
+							  <option>Pilih Kota</option>
+							  <option>Jakarta Barat</option>
+							  <option>Jakarta Selatan</option>
+							  <option>Jakarta Utara</option>
+							  <option>Jakarta Timur</option>
+
+                        	</div>
+              
                       		<div class="col-lg-12  field-telpon lefted">
                             <div class="col-lg-6 lefted">
                         
 							<div class="control-group" id="fields">
 										<label class="control-label label-color" for="field1">Telepon</label>
-										<div class="controls">
+										
+										<div class="controls" >
 											<form role="form" autocomplete="off">
-												<div class="entry input-group col-lg-4"
-													style="width: 205px;">
-													<div class="bound">
-														<input class="form-control" name="fields[]" type="tel" pattern="[0-9]{14}"
-															id="phone_no" placeholder="Phone Number" maxlength="14"
-													
-
-															/>
-													</div>
-													<span class="input-group-btn ">
+												<div class="entry input-group col-lg-4 in" th:each="phn, iterStat : ${phone}" style="width: 200px;" onclick="input()">
+									
+												<div class="bound input_telepon"  id="field_telepon">
+												
+														<input class="form-control input" name="result[0]"   pattern="[0-9]{14}"
+															id="phone_no" placeholder="Phone Number" maxlength="14" th:value="${phn}"  />	
+<div style="padding-right: 2px">
+												</div>		
+													<span th:if="${iterStat.last and iterStat.index < 2}" class="input-group-btn ">
 														<button class="btn btn-success btn-add" type="button"
 															id="green-round">
 															<span class="icon_add"></span>
 														</button>
 													</span>
+													<span th:if="not ${iterStat.last}" class="input-group-btn ">
+														<button class="btn btn-danger btn-remove remove" type="button"
+															id="green-round">
+															<span class="icon_minus"></span>
+														</button>
+													</span>
+													<span th:if="${iterStat.index == 2 and iterStat.last}" class="input-group-btn ">
+														<button class="btn btn-danger btn-remove remove" type="button"
+															id="green-round">
+															<span class="icon_minus"></span>
+														</button>
+													</span>
+												</div>
+													
+	
+
+													
 												</div>
 											</form>
 										</div>
+										<input type="text" th:value="${view.phone}" size="50" id="output">
+									
+
+										<script type="text/javascript">
+									     	
+											
+var $output = $('#output');
+ function input (){  
+$('.input').keyup(function(){
+$('#output').val(
+  $('.input')
+  .not('#output')
+  .map(
+    function(){
+    	// console.log($(this).val());
+      return $(this).val();
+    })
+  .get()
+  .join(',')
+);
+});		
+/*var str = $('#output').val()
+var array = str.split(",");
+*/
+/*
+$('.in').parent().click(function(){
+var inputValues = $('.input').map(function() {
+    return $(this).val();
+}).toArray();
+console.log(inputValues)
+   $('#output').val(inputValues)
+});	*/
+}	
+</script>
+
 									</div>
 						
 
+										
+								
 
                         <!-- end of Phone -->
 
@@ -124,27 +358,21 @@
                         <div class="col-lg-6"> 
                      
                             <div class="col-lg-6"     style="    margin-left: -151px;">
-                              <label class="label-color">Jumlah Lapangan</label>
-            
-                        	 <select class="form-control selectpicker" style="width:60px;">
-							  <option>1</option>
-							  <option>2</option>
-							  <option>3</option>
-							  <option>4</option>
-							  <option>5</option>
-							  <option>6</option>
-							</select>
 
-                             </div>
+                            <label class="label-color">Jumlah Lapangan</label>
 
+							<select th:field="*{numberOfField}" class="form-control select">
+							    <option th:value="${numberOfField}" th:text="${numberOfField}"/>
+							    
+                            </select>
+
+							</div>	
                         </div>
                         <!-- end of Number of field -->
                     </div>
             
-   
 
-						
-                        </div>
+             </div>
                   
              
                         <!-- Harga -->
@@ -206,7 +434,7 @@
 														<input class="field-harga" name="fields[1]" type="text"
 															id="fields-round" placeholder="Harga" style="float:left" disabled="disabled" />
 															<button class="btn btn-success btn-add_2" type="button"
-													id="green-round_2" disabled="disabled" >
+													id="green-round_2" disabled="disabled" maxlength="10">
 													<span class="icon_add" style="float:right" ></span>
 												</button>
 											</div>
@@ -608,16 +836,23 @@
 
 
 							</div>
-								
-							</div>
-                        
+
                         <!-- end of harga -->
-                        	<a href="#" id="button-save" type="submit" class="btn btn-primary btn-default">Simpan</a>
+							</div>
+
+                       </div>		<a href="#" id="button-save" type="submit" class="btn btn-primary btn-default">Simpan</a> 
+                       </div>
+                       </div>
+                       </div>
+			      
                     </div>
-            </div>
+       </div>
+</div>
 
             </div>
-			
+
+			</div>
+
         </div>
         <!-- /#page-wrapper -->
 
