@@ -80,8 +80,9 @@ display :none;
 .col{
 	padding-right:unset;
 }
-.buts{
-		width:7%!important;
+.buts {
+    width: 7%!important;
+    height: 60px!important;
 }
 .drop{
 	width:5%!important;
