@@ -47,8 +47,6 @@ var inputValues = $('.input').map(function() {
     return $(this).val();
 }).toArray();
 
-
-
    $('#output').val(inputValues)
     	}
     	else{	
@@ -573,24 +571,41 @@ $(document).ready(function(){
     
 });
 
-
-
 /*---------------------------Jam--------------------------------------------------*/
 /*$('.time').on('change', function(e) {
 var from_time = Date.parse($(this).val());
+
 var from_time_adj = new Date();
 from_time_adj.setTime(from_time.getTime() + (60 * 60 * 1000));
+
+var from_time_adj = new Date();
+from_time_adj.setTime(from_time.getTime() + (60 * 60 * 1000));
+
+>>>>>>> 4fe264e6fbb1ab93fc6ee4f6cd0660a71d984bc5
 $('.time option').each(function(index, el) {
 var to_time = Date.parse($(el).val());
   if (to_time < from_time_adj) {
       $(el).attr('disabled', true);
    }
+
 });
 console.log(this)
 });
 $('.timed').on('change', function(e) {
 var to_time = Date.parse($(this).val());
 var to_time_adj = new Date();
+
+
+});
+console.log(this)
+});
+
+$('.timed').on('change', function(e) {
+
+var to_time = Date.parse($(this).val());
+var to_time_adj = new Date();
+
+
 to_time_adj.setTime(to_time.getTime() - (60 * 60 * 1000));
 $('.timed option').each(function(index, el) {
 var from_time = Date.parse($(el).val());

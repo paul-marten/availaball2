@@ -3,6 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Availaball</title>
+<!--   -->
+<!-- <th:block th:replace="/admin/layout :: head"></th:block> -->
 <link rel="stylesheet" th:href="@{/css/plugins/list-field.css}" />
 <link rel="stylesheet" th:href="@{/css/plugins/customs.css}" />
 <link rel="stylesheet" th:href="@{/css/plugins/main.css}" />
@@ -31,7 +33,7 @@
 
 											<input type="text" id="searchName"
 												class="form-control countrycode"
-												style="border-radius: 4px; width: 268px; font-style: italic; font-size: 13px; font-family: roboto; opacity:0.6;"
+												Style="border-radius: 4px; width: 268px; font-style: italic; font-size: 13px; opacity: 0.6;"
 												placeholder="Nama Lapangan" /> <span
 												class="input-group-btn"> </span>
 										</div>
@@ -43,8 +45,9 @@
 											style="margin-top: 148.5px !important;">
 											<div class="modal-content" id="modal_content">
 												<div class="modal-header" id="modal_header">
-												<p class="modal-title " id="modal_lables">Are you sure
-														want to delete it?</p>
+													<!--   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> -->
+													<p class="modal-title " id="modal_lables">Are you sure
+														want to delete it ?</p>
 												</div>
 
 												<div class="modal-footer" id="modal_footer">
@@ -53,7 +56,6 @@
 															class="btn btn-primary">Delete</button>
 														<button type="button" id="button_cancel"
 															class="btn btn-default" data-dismiss="modal">Cancel</button>
-																		
 													</div>
 												</div>
 											</div>
@@ -62,32 +64,32 @@
 								</div>
 
 								<div class="col-md-4 " id="searchLocation"
-                                    style="padding-top: 30px; margin-left: -141px;">
-<!--                                     <div class="input-group dropdown">
-                                        <input type="text"
-                                            class="form-control countrycode dropdown-toggle"
-                                            placeholder="Lokasi"
-                                            style="width: 177px; border-radius: 4px; margin-left: 115px;" />
-                                            <ul class="dropdown-menu">
-                                            <li><a href="#" data-value="Jakarta Barat">Jakarta
-                                                    Barat</a></li>
-                                            <li><a href="#" data-value="Jakarta">Jakarta</a></li>
-                                            <li><a href="#" data-value="Jakarta Utara">Jakarta
-                                                    Utara</a></li>
-                                        </ul>
-                                    </div> -->
-                                <select class="form-control countrycode dropdown-toggle" style="width: 177px; border-radius: 4px; opacity: 0.6; font-size: 13px; margin-left: 115px;" id="lokasi" placeholder="Lokasi">
-                                    <option selected="" disabled selected hidden >Location</option>
-                                    <option>Jakarta Barat</option>
-                                    <option>Jakarta Utara</option>
-                                    <option>Jakarta Timur</option>
-                                    <option>Jakarta Pusat</option>
-                                    <option>Jakarta Selatan</option>
-                                    <option>Tangerang</option>
-                                    <option>Depok</option>
-                                    <option>Bogor</option>
-                                </select>
-                                </div>
+									style="padding-top: 30px; margin-left: -141px;">
+<!-- 									<div class="input-group dropdown">
+										<input type="text"
+											class="form-control countrycode dropdown-toggle"
+											placeholder="Lokasi"
+											style="width: 177px; border-radius: 4px; margin-left: 115px;" />
+											<ul class="dropdown-menu">
+											<li><a href="#" data-value="Jakarta Barat">Jakarta
+													Barat</a></li>
+											<li><a href="#" data-value="Jakarta">Jakarta</a></li>
+											<li><a href="#" data-value="Jakarta Utara">Jakarta
+													Utara</a></li>
+										</ul>
+									</div> -->
+								<select class="form-control countrycode dropdown-toggle" style="width: 177px; border-radius: 4px; margin-left: 115px; font-size: 13px; font-style: italic; opacity: 0.6;" id="lokasi" placeholder="Lokasi">
+									<option selected="" disabled selected hidden >Location</option>
+									<option>Jakarta Barat</option>
+									<option>Jakarta Utara</option>
+									<option>Jakarta Timur</option>
+									<option>Jakarta Pusat</option>
+									<option>Jakarta Selatan</option>
+									<option>Tangerang</option>
+									<option>Depok</option>
+									<option>Bogor</option>
+								</select>
+								</div>
 							</div>
 							<div class="col-lg-12 ">
 								<div class="table-responsive">
