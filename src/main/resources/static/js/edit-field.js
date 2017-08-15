@@ -29,37 +29,29 @@ $(function()
 	     console.log(btn)
 
     }).on('click', '.btn-remove', function(e)
-
     {	
     	var remove = $('.in').length
     	var controlForm = $('.controls form:first'),
 		currentEntry = $(this).parents('.entry:first');
 		if(remove == 3){
-    		
     		$(this).parents('.entry:first').remove();
-
     		controlForm.find('.entry:not(:first) .btn-remove')
     		.removeClass('btn-remove').addClass('btn-add')
 		    .removeClass('btn-danger remove').addClass('btn-success')
             .html('<span class="icon_add"></span>');
          	$("#green-round").prop('id', 'red-round');
-var inputValues = $('.input').map(function() {
-    return $(this).val();
-}).toArray();
-
-   $('#output').val(inputValues)
-    	}
-    	else{	
-    	
+         	var inputValues = $('.input').map(function() {
+         		return $(this).val();
+         	}).toArray();
+			$('#output').val(inputValues)
+		}
+    	else{	    	
 	    	$(this).parents('.entry:first').remove();
-var inputValues = $('.input').map(function() {
-    return $(this).val();
-}).toArray();
-console.log(inputValues)
-
-
-
-   $('#output').val(inputValues)
+			var inputValues = $('.input').map(function() {
+			    return $(this).val();
+			}).toArray();
+			console.log(inputValues)
+   			$('#output').val(inputValues)
 	    }
 	 
 		return false;
