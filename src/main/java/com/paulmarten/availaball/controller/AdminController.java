@@ -77,12 +77,18 @@ public class AdminController {
     	accountService.saveUser(account);
     	return "redirect:/admin/user";
     }
+  //create user 
+    @RequestMapping(path="/create/field", method = RequestMethod.POST)
+    String createField(@ModelAttribute FutsalField futsalField){
+    	futsalFieldService.saveField(futsalField);
+    	return "redirect:/admin/user";
+    }
     
-    //edit user
-    @RequestMapping(path="/edit/user", method = RequestMethod.POST)
+    //edit field
+    @RequestMapping(path="/edit-field", method = RequestMethod.POST)
     String editUser(@ModelAttribute Account account){
     	accountService.saveUser(account);
-    	return "redirect:/admin/user";
+    	return "redirect:/admin/page/view-lapangan";
     }
     
     @RequestMapping(value = {"/logout"}, method = RequestMethod.POST)
@@ -107,24 +113,17 @@ public class AdminController {
         
         List<DetailPrice> detailPrices = detailPriceService.findByFutsalField(futsalFieldEdit);
         model.addAttribute("detailPrice", detailPrices);
-        
+        model.addAttribute("futsalField", new FutsalField());
         String number = futsalFieldEdit.getPhone();
         String[] result = number.split(",");
         model.addAttribute("phone", result);
         
-        List<Location> listLocation = locationService.viewAllField();
-        model.addAttribute("location", listLocation);
+        model.addAttribute("location",locationService.viewAllField());
+
+        
+//        List<Location> listLocation = locationService.viewAllField();
+//        model.addAttribute("location", listLocation);
         return "/admin/page/edit-field";
     }
-    
-    @RequestMapping(value = "/current-map/{id}")
-    public String viewMap(@PathVariable int id, Model model){
-        model.addAttribute("edit",futsalFieldService.findFutsalFieldById(id));
-        return "/admin/page/current-map";
-    }
 
-    @RequestMapping(value = "/picklocation")
-    public String blank(){
-        return "/admin/page/picklocation";
-    }
 }

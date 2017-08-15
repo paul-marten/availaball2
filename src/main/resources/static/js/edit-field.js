@@ -7,7 +7,7 @@ $(function()
     	var btn = $('.in').length
         e.preventDefault();
 
-        var controlForm = $('.controls form:first'),
+        var controlForm = $('#multi-phone'),
             currentEntry = $(this).parents('.entry:first'),
             newEntry = $(currentEntry.clone()).appendTo(controlForm);	        
 	     if (btn<2) {
@@ -33,7 +33,7 @@ $(function()
 
     {	
     	var remove = $('.in').length
-    	var controlForm = $('.controls form:first'),
+    	var controlForm = $('#multi-phone'),
 		currentEntry = $(this).parents('.entry:first');
 		if(remove == 3){
     		
@@ -81,7 +81,7 @@ $(function()
 			    .on('click', '.btn-add_2', function(e)
 			    {
 			      
-			        var Form1 = $('.senin form:first'),
+			        var Form1 = $('.senin '),
 			            curEntry = $(this).parents('.entry:first'),
 			            nEntry = $(curEntry.clone()).appendTo(Form1);
 	
@@ -110,8 +110,8 @@ $(function()
 			                 $('#red-round_2').removeAttr('disabled');
 			    } else {
 			       
-			   			var Form1 = $('#entry form:not(:last)'),
-			            curEntry = $(this).parents('#entry form:first '),
+			   			var Form1 = $('#entry :not(:last)'),
+			            curEntry = $(this).parents('#entry :first '),
 			            nEntry = $(Form1.clone()).appendTo(curEntry);
 						console.log(Form1);
 
@@ -171,7 +171,7 @@ $(function()
 			    .on('click', '.btn-add_3', function(e)
 			    {
 			      
-			        var Form2= $('.selasa form:first'),
+			        var Form2= $('.selasa '),
 			            current_selasa = $(this).parents('.entry:first'),
 			            new_selasa = $(current_selasa.clone()).appendTo(Form2);
 	
@@ -200,8 +200,8 @@ $(function()
 			                 $('#red-round_3').removeAttr('disabled');
 			    } else {
 			       
-			   			var Form2 = $('#entry_selasa form:not(:last)'),
-			            current_selasa = $(this).parents('#entry_selasa form:first '),
+			   			var Form2 = $('#entry_selasa :not(:last)'),
+			            current_selasa = $(this).parents('#entry_selasa :first '),
 			            new_selasa = $(Form2.clone()).appendTo(current_selasa);
 						console.log(Form2);
 
@@ -231,7 +231,7 @@ $(function()
 			    .on('click', '.btn-add_4', function(e)
 			    {
 			      
-			        var Form3= $('.rabu form:first'),
+			        var Form3= $('.rabu '),
 			            current_rabu = $(this).parents('.entry:first'),
 			            new_rabu = $(current_rabu.clone()).appendTo(Form3);
 	
@@ -260,8 +260,8 @@ $(function()
 			                 $('#red-round_4').removeAttr('disabled');
 			    } else {
 			       
-			   			var Form3 = $('#entry_rabu form:not(:last)'),
-			            current_rabu = $(this).parents('#entry_rabu form:first'),
+			   			var Form3 = $('#entry_rabu :not(:last)'),
+			            current_rabu = $(this).parents('#entry_rabu :first'),
 			            new_rabu = $(Form3.clone()).appendTo(current_rabu);
 						console.log(Form3);
 
@@ -291,7 +291,7 @@ $(function()
 			    .on('click', '.btn-add_5', function(e)
 			    {
 			      
-			        var Form4= $('.kamis form:first'),
+			        var Form4= $('.kamis '),
 			            current_kamis = $(this).parents('.entry:first'),
 			            new_kamis = $(current_kamis.clone()).appendTo(Form4);
 	
@@ -320,8 +320,8 @@ $(function()
 			                 $('#red-round_5').removeAttr('disabled');
 			    } else {
 			       
-			   			var Form4 = $('#entry_kamis form:not(:last)'),
-			            current_kamis = $(this).parents('#entry_kamis form:first'),
+			   			var Form4 = $('#entry_kamis :not(:last)'),
+			            current_kamis = $(this).parents('#entry_kamis :first'),
 			            new_kamis = $(Form4.clone()).appendTo(current_kamis);
 						console.log(Form4);
 
@@ -350,7 +350,7 @@ $(function()
 			    .on('click', '.btn-add_6', function(e)
 			    {
 			      
-			        var Form5= $('.jumat form:first'),
+			        var Form5= $('.jumat'),
 			            current_jumat = $(this).parents('.entry:first'),
 			            new_jumat = $(current_jumat.clone()).appendTo(Form5);
 	
@@ -379,8 +379,8 @@ $(function()
 			                 $('#red-round_6').removeAttr('disabled');
 			    } else {
 			       
-			   			var Form5 = $('#entry_jumat form:not(:last)'),
-			            current_jumat = $(this).parents('#entry_jumat form:first'),
+			   			var Form5 = $('#entry_jumat :not(:last)'),
+			            current_jumat = $(this).parents('#entry_jumat :first'),
 			            new_jumat = $(Form5.clone()).appendTo(current_jumat);
 						console.log(Form5);
 
@@ -410,7 +410,7 @@ $(function()
 			    .on('click', '.btn-add_7', function(e)
 			    {
 			      
-			        var Form5= $('.sabtu form:first'),
+			        var Form5= $('.sabtu'),
 			            current_sabtu = $(this).parents('.entry:first'),
 			            new_sabtu = $(current_sabtu.clone()).appendTo(Form5);
 	
@@ -439,8 +439,8 @@ $(function()
 			                 $('#red-round_7').removeAttr('disabled');
 			    } else {
 			       
-			   			var Form5 = $('#entry_sabtu form:not(:last)'),
-			            current_sabtu = $(this).parents('#entry_sabtu form:first'),
+			   			var Form5 = $('#entry_sabtu :not(:last)'),
+			            current_sabtu = $(this).parents('#entry_sabtu :first'),
 			            new_sabtu = $(Form5.clone()).appendTo(current_sabtu);
 						console.log(Form5);
 
@@ -469,7 +469,7 @@ $(function()
 			    .on('click', '.btn-add_8', function(e)
 			    {
 			      
-			        var Form6= $('.minggu form:first'),
+			        var Form6= $('.minggu '),
 			            current_minggu = $(this).parents('.entry:first'),
 			            new_minggu = $(current_minggu.clone()).appendTo(Form6);
 	
@@ -498,8 +498,8 @@ $(function()
 			                 $('#red-round_8').removeAttr('disabled');
 			    } else {
 			       
-			   			var Form6 = $('#entry_minggu form:not(:last)'),
-			            current_minggu = $(this).parents('#entry_minggu form:first'),
+			   			var Form6 = $('#entry_minggu :not(:last)'),
+			            current_minggu = $(this).parents('#entry_minggu :first'),
 			            new_minggu = $(Form6.clone()).appendTo(current_minggu);
 						console.log(Form6);
 
@@ -581,31 +581,5 @@ $(document).ready(function(){
 
 
 
-/*---------------------------Jam--------------------------------------------------*/
-$('.time').on('change', function(e) {
-var from_time = Date.parse($(this).val());
 
-var from_time_adj = new Date();
-from_time_adj.setTime(from_time.getTime() + (60 * 60 * 1000));
 
-$('.to option').each(function(index, el) {
-var to_time = Date.parse($(el).val());
-  if (to_time < from_time_adj) {
-      $(el).attr('disabled', true);
-   }
-});
-});
-
-$('.timed').on('change', function(e) {
-
-var to_time = Date.parse($(this).val());
-var to_time_adj = new Date();
-
-to_time_adj.setTime(to_time.getTime() - (60 * 60 * 1000));
-$('.from option').each(function(index, el) {
-var from_time = Date.parse($(el).val());
-  if (from_time > to_time_adj) {
-      $(el).attr('disabled', true);
-   }
-});
-});

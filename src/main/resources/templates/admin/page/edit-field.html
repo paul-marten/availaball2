@@ -2,436 +2,478 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Availaball</title>
-    <link rel="stylesheet" th:href="@{/css/plugins/edit-field.css}" />
-    <link rel="stylesheet" th:href="@{/css/fonts/icon-edit/style.css}" />
-     <script th:src="@{/js/edit-field.js}"></script>
-       <script th:src="@{/js/date.min.js}"></script>
-       <link rel="stylesheet" th:href="@{/css/plugins/picklocation.css}" />
-      <script 
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCegjS81MOvtXounku2rnlJlggMKv0tv9w&callback=showmap">
-    </script>
-    <script src="js/OpenLayers.js"></script>
+<link rel="stylesheet" th:href="@{/css/plugins/edit-field.css}" />
+<link rel="stylesheet" th:href="@{/css/fonts/icon-edit/style.css}" />
+<script th:src="@{/js/edit-field.js}"></script>
+<script th:src="@{/js/date.min.js}"></script>
+<link rel="stylesheet" th:href="@{/css/plugins/picklocation.css}" />
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCegjS81MOvtXounku2rnlJlggMKv0tv9w&callback=showmap">
+	
+</script>
+<script src="js/OpenLayers.js"></script>
 
-    <script src="js/date.min.js"></script>
+<script src="js/date.min.js"></script>
 
 
-    <script src="js/jquery-position-picker.debug.js"></script>
+<script src="js/jquery-position-picker.debug.js"></script>
 <script type="text/javascript" src="/js/infobox.js"></script>
 </head>
 
-<body >
-	 <div id="page-wrapper">
-				<div layout:fragment="content">
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-						<div class="row">
+<body>
+	<div id="page-wrapper">
+		<div layout:fragment="content">
+			<div class="container-fluid">
 
 
+<form method="post">
+				<!-- Page Heading -->
+				<div class="row">
 
-                   <div id="map-container" class="col-lg-12 " style="display: none;">
-                   
-                    <div class="col-lg-12" style="padding-bottom: 30px; padding-top: unset; padding-left: unset;">
-                          <div class="col-md-6" style="float: left; padding-top:unset;padding-left: unset;">
-                           <a onclick="back()" style="padding-left: unset; cursor: pointer;"><i class="fa fa-long-arrow-left" style="padding-left: unset;"></i>Back </a>
-                      </div>
-                      <div class="col-md-6" style=" padding-top: unset; padding-left: unset;">
-                        <label>Pick Location</label>                          
-                      </div>
-                       <div id="map"></div>
-                      </div>
-			    <div id="map_canvas"></div>   
 
-						    <script type="text/javascript">
-							var latLng = new google.maps.LatLng(-6.205119831877469,106.82968864194243);
+
+					<div id="map-container" class="col-lg-12 " style="display: none;">
+
+						<div class="col-lg-12"
+							style="padding-bottom: 30px; padding-top: unset; padding-left: unset;">
+							<div class="col-md-6"
+								style="float: left; padding-top: unset; padding-left: unset;">
+								<a onclick="back()"
+									style="padding-left: unset; cursor: pointer;"><i
+									class="fa fa-long-arrow-left" style="padding-left: unset;"></i>Back
+								</a>
+							</div>
+							<div class="col-md-6"
+								style="padding-top: unset; padding-left: unset;">
+								<label>Pick Location</label>
+							</div>
+							<div id="map"></div>
+						</div>
+						<div id="map_canvas"></div>
+
+						<script type="text/javascript">
+							var latLng = new google.maps.LatLng(
+									-6.205119831877469, 106.82968864194243);
 							var geocoder = new google.maps.Geocoder();
 							function updateMarkerPosition(latLng) {
-							document.getElementById('latitude').value = [latLng.lat()]
-						    $("#longitude").html(document.getElementById('longitude').value = [latLng.lng()]);
+								document.getElementById('latitude').value = [ latLng
+										.lat() ]
+								$("#longitude")
+										.html(
+												document
+														.getElementById('longitude').value = [ latLng
+														.lng() ]);
 							}
 
-							function back(){
+							function back() {
 
-							 $('#map-container').hide();
-							 $('#button-save').show();
-							 $("#edit").show();
+								$('#map-container').hide();
+								$('#button-save').show();
+								$("#edit").show();
 
 							}
 
 							function showmap() {
 
-							var secheltLoc = new google.maps.LatLng(-6.205119831877469,106.82968864194243);
-						    var myMapOptions = {
-						                     zoom: 15
-						                    ,center: latLng
-						                    ,mapTypeId: google.maps.MapTypeId.ROADMAP,
-						                    disableDoubleClickZoom: true
-						                		};
-							var theMap = new google.maps.Map(document.getElementById("map"), myMapOptions);
-						    var marker = new google.maps.Marker({
-						                    map: theMap,
-						                    draggable: true,
-						                    position: new google.maps.LatLng(-6.205119831877469,106.82968864194243),
-						                    visible: true,
-						                     animation: google.maps.Animation.DROP
-						                });
+								var secheltLoc = new google.maps.LatLng(
+										-6.205119831877469, 106.82968864194243);
+								var myMapOptions = {
+									zoom : 15,
+									center : latLng,
+									mapTypeId : google.maps.MapTypeId.ROADMAP,
+									disableDoubleClickZoom : true
+								};
+								var theMap = new google.maps.Map(document
+										.getElementById("map"), myMapOptions);
+								var marker = new google.maps.Marker({
+									map : theMap,
+									draggable : true,
+									position : new google.maps.LatLng(
+											-6.205119831877469,
+											106.82968864194243),
+									visible : true,
+									animation : google.maps.Animation.DROP
+								});
 
+								var boxText = document.createElement("div");
+								boxText.style.cssText = "background-color: transparent; border: 2px solid #transparent;border-radius: 25px;cursor: pointer; margin-bottom: 22px;text-align: center;";
+								boxText.innerHTML = '<button class="btn pick-location" id="pick-location" onClick="pick()">Pick Location</button>';
 
-
-						    
-
-						    var boxText = document.createElement("div");
-						                boxText.style.cssText = "background-color: transparent; border: 2px solid #transparent;border-radius: 25px;cursor: pointer; margin-bottom: 22px;text-align: center;";
-						                boxText.innerHTML = '<button class="btn pick-location" id="pick-location" onClick="pick()">Pick Location</button>';  
-						                
-						    var myOptions = {
-						                     content: boxText
-						                    ,disableAutoPan: false
-						                    ,maxWidth: 0
-						                    ,pixelOffset: new google.maps.Size( -140,-140)
-						                    ,zIndex: null
-						                    ,boxStyle: { 
-						                      background: ""
-						                      ,opacity: 100
-						                      ,width: "280px",
-						                     animation: google.maps.Animation.BOUNCE
-						                     }
-						                    ,closeBoxURL: ""
-						                    ,infoBoxClearance: new google.maps.Size(1, 1)
-						                    ,isHidden: false
-						                    ,pane: "floatPane"
-						                    ,position: new google.maps.LatLng(-6.205119831877469,106.82968864194243)
-						    };
+								var myOptions = {
+									content : boxText,
+									disableAutoPan : false,
+									maxWidth : 0,
+									pixelOffset : new google.maps.Size(-140,
+											-140),
+									zIndex : null,
+									boxStyle : {
+										background : "",
+										opacity : 100,
+										width : "280px",
+										animation : google.maps.Animation.BOUNCE
+									},
+									closeBoxURL : "",
+									infoBoxClearance : new google.maps.Size(1,
+											1),
+									isHidden : false,
+									pane : "floatPane",
+									position : new google.maps.LatLng(
+											-6.205119831877469,
+											106.82968864194243)
+								};
 								updateMarkerPosition(latLng);
-								google.maps.event.addListener(marker, 'dragend', function() {
-							    updateMarkerPosition(marker.getPosition());
-							 	  console.log("success");
-							 	});
+								google.maps.event.addListener(marker,
+										'dragend', function() {
+											updateMarkerPosition(marker
+													.getPosition());
+											console.log("success");
+										});
 
+								theMap.addListener('dblclick', function(e) {
+									placeMarkerAndPanTo(e.latLng, theMap);
+									updateMarkerPosition(marker.getPosition());
+									console.log("click success");
+								});
 
-						  
-							 	theMap.addListener('dblclick', function(e) {
-						          placeMarkerAndPanTo(e.latLng, theMap);
-						           updateMarkerPosition(marker.getPosition());
-						            console.log("click success");
-						        });
-						      
-						      function placeMarkerAndPanTo(latLng, theMap) {
+								function placeMarkerAndPanTo(latLng, theMap) {
 
-						        theMap.panTo(latLng);
-						    	marker.setPosition(latLng);
-						    }
-/*						    theMap.addListener('center_changed', function() {
-					          // immidietly after the center of the map has changed, pan back to the
-					          // marker.
-					          window.setTimeout(function() {
-					            theMap.panTo(marker.getPosition());
-					          }, 3000);
-					          console.log('set center');
-					        });*/
-
-						        var ib = new InfoBox(myOptions);
-							    ib.open(theMap, marker);
-
-							   $('#map-container').show();
-							   $("#edit").hide();
-							     $('#button-save').hide();
-								window.dispatchEvent(new Event('resize'));
-							
-						}
-
-								var latInput = document.getElementById('lat');
-								var longInput = document.getElementById('long');
-
-								function pick(){
-									 $('#button-save').show();
-								 $('#map-container').hide();
-								 $("#edit").show();
-								 
-								window.dispatchEvent(new Event('resize'));
+									theMap.panTo(latLng);
+									marker.setPosition(latLng);
 								}
+								/*						    theMap.addListener('center_changed', function() {
+								 // immidietly after the center of the map has changed, pan back to the
+								 // marker.
+								 window.setTimeout(function() {
+								 theMap.panTo(marker.getPosition());
+								 }, 3000);
+								 console.log('set center');
+								 });*/
+
+								var ib = new InfoBox(myOptions);
+								ib.open(theMap, marker);
+
+								$('#map-container').show();
+								$("#edit").hide();
+								$('#button-save').hide();
+								window.dispatchEvent(new Event('resize'));
+
+							}
+
+							var latInput = document.getElementById('lat');
+							var longInput = document.getElementById('long');
+
+							function pick() {
+								$('#button-save').show();
+								$('#map-container').hide();
+								$("#edit").show();
+
+								window.dispatchEvent(new Event('resize'));
+							}
+
+							console.log(pick);
+						</script>
+					</div>
 
 
-						console.log(pick);
-    </script> 
-            </div>
+					<div id="edit" style="margin-top: 40px;">
+						<div class="col-lg-12" id="font">
+
+							<!-- Title -->
+							<div class="col-lg-3 lefted">
+								<h4 class="title">EDIT</h4>
+							</div>
+							<!-- end of title -->
+							<br>
+
+							<!-- Image -->
+							<div class="col-lg-12 lefted">
+
+								<div class="show-image lefted">
+									<img src="/img/blank.jpg" style="width: 360px; height: 180px;"
+										id="field-img">
+									<script type="text/javascript"></script>
+									<div class="button-edit " id="button-edit">
+										<input type="file" class="update " id="update-img"
+											accept="image/jpg,image/png,image/jpeg,image/gif"> <label
+											id="error-image"> </label> <i class="icon-edit_icon"></i>
+
+									</div>
+									<script type="text/javascript">
+										function readURL(input) {
+											if (input.files && input.files[0]) {
+												var reader = new FileReader();
+
+												reader.onload = function(e) {
+													$('#field-img').attr('src',
+															e.target.result);
+
+												}
+
+												reader
+														.readAsDataURL(input.files[0]);
+											}
+										}
+
+										$("#update-img")
+												.change(
+														function() {
+															var oFile = document
+																	.getElementById("update-img").files[0];
+
+															if (oFile.size > 200000
+																	&& oFile.size > 10000) {
+
+																return;
+															}
+															readURL(this);
+
+														});
+
+										var _URL = window.URL
+												|| window.webkitURL;
+										$(document)
+												.on(
+														'change',
+														'#update-img',
+														function() {
+															var file, img;
+															if ((file = this.files[0])) {
+																img = new Image();
+
+																img.onload = function() {
+																	if (this.width > 360
+																			&& this.height > 180) {
+
+																		$(
+																				"#field-img")
+																				.attr(
+																						"src",
+																						"/img/blank.jpg");
+																		alert("Ukuran gambar melebihi 360 x 180");
+																	} else {
+
+																	}
+
+																};
+																img.src = _URL
+																		.createObjectURL(file);
+															}
+														});
+									</script>
+								</div>
+
+							</div>
+							<!-- end of Image -->
+
+							<!-- Field Name -->
+
+							<div class="col-lg-12 lefted">
 
 
-<div id="edit" style="margin-top: 40px;">
-                    <div  class="col-lg-12" id="font">
-                        
-                        <!-- Title -->
-                        <div class="col-lg-3 lefted">
-                        <h4 class="title">EDIT</h4>
-                        </div>
-                        <!-- end of title -->
-                        <br>
+								<div class="col-lg-6 lefted">
+									<label class="field-nama label-color">Nama</label> <input
+										type="text" class="form-control" name="nama" size="35"
+										placeholder="Nama Lapangan" th:field="*{view.fieldName}">
 
-                        <!-- Image -->
-                        <div class="col-lg-12 lefted">
-                        
-			       		 <div class="show-image lefted">
-			          	<img src="/img/blank.jpg" style="  width: 360px;  height: 180px;"  id="field-img">   
-			         	<script type="text/javascript"></script>
-			            <div class="button-edit " id="button-edit">
-			            <input  type="file" class="update " id="update-img" accept="image/jpg,image/png,image/jpeg,image/gif">
-			            <label id="error-image"> </label>
-			            <i class="icon-edit_icon"></i>
+								</div>
+							</div>
+							<!-- end of Field Name -->
 
-			            </div>
-						<script type="text/javascript">
-						    function readURL(input) {
-						        if (input.files && input.files[0]) {
-						            var reader = new FileReader();
-						            
-						            reader.onload = function (e) {
-						                $('#field-img').attr('src', e.target.result);
+							<!-- Address -->
+							<div class="col-lg-12 lefted">
 
-						            }
-						            
-						            reader.readAsDataURL(input.files[0]);
-						        }
-						    }
-						    
-						    $("#update-img").change(function(){
-						    	var oFile = document.getElementById("update-img").files[0]; 
-
-					            if (oFile.size > 200000 && oFile.size > 10000) 
-					            {
-					          
-					                return;
-					            }
-						        readURL(this);
-
-						    });		
+								<div class="col-lg-6 field-alamat lefted">
 
 
+									<label class="label-color lefted">Alamat</label>
 
-var _URL = window.URL || window.webkitURL;
-$(document).on('change','#update-img' , function(){    
-    var file, img;
-    if ((file = this.files[0])) {
-        img = new Image();
+									<!-- Map icon -->
+									<div class="col-lg-4 map2 lefted" id="maps"
+										style="margin-top: -9px; padding-right: unset;">
 
-        img.onload = function () {
-        	if(this.width>360 && this.height>180){
-        	
-        		$("#field-img").attr("src","/img/blank.jpg");
-        	       alert("Ukuran gambar melebihi 360 x 180");
-        	}
-        	else{
-
-        	}
-     
-        };
-        img.src = _URL.createObjectURL(file);
-    }
-});
+										<input type="text" name='nama_lokasi' id='nama_lokasi'
+											hidden="hidden"> <input type="text" name='latitude'
+											id='latitude' hidden="hidden"> <label
+											name='longitude' id='longitude' value=""></label> <a
+											type="button" onClick="showmap()"> <img
+											src="/img/map.jpg" class="map-icons">
+										</a>
+									</div>
+									<!-- end of Map Icon  -->
 
 
-												</script>
-			        </div>
-
-                        </div>
-                        <!-- end of Image -->
-
-                        <!-- Field Name -->
-
-                        <div class="col-lg-12 lefted">
-                       
-                            
-                            <div class="col-lg-6 lefted">
-                             <label class="field-nama label-color">Nama</label>
-                    
-                         <input type="text"  class="form-control" name="nama"  size="35"   placeholder="Nama Lapangan" th:field="${view.fieldName}">
-                        
-                                 </div>
-                        </div>
-                        <!-- end of Field Name -->
-
-                        <!-- Address -->
-                        <div class="col-lg-12 lefted">
-                      
-                            <div class="col-lg-6 field-alamat lefted">
+									<textarea class="form-control" size="35" id="alamat"
+										placeholder="Alamat" value="" style="resize: none;"
+										th:field="${view.detailLocation}"></textarea>
 
 
-                              <label class="label-color lefted">Alamat</label>
-
-                                  <!-- Map icon -->
-                        <div class="col-lg-4 map2 lefted" id="maps" style="margin-top: -9px;padding-right: unset;" >
-
-<input type="text" name='nama_lokasi' id='nama_lokasi'  hidden="hidden">
- 
-<input type="text" name='latitude' id='latitude' hidden="hidden">
-
-<label name='longitude' id='longitude' value=""></label> 
-
-                          <a type="button" onClick="showmap()">
-                          	<img src="/img/map.jpg" class="map-icons">
-                          </a>
-                        </div>
-                        <!-- end of Map Icon  -->
+								</div>
+							</div>
+							<!-- end of Address -->
 
 
-                         <textarea class="form-control"  size="35"  id="alamat" placeholder="Alamat" value=""  style=" resize: none;" th:field="${view.detailLocation}"></textarea>
-                        
-           
-                             </div>
-                        </div>
-                        <!-- end of Address -->
+							<!-- Phone & number Of field -->
+							<!-- Phone -->
+							<div class="col-lg-6 lefted">
 
-                        <!-- Phone & number Of field -->
-                        <!-- Phone -->
-                        	<div class="col-lg-6 lefted" >
-                        	<label class="label-color">Kota</label>
-            
-                        	 <select class="form-control selectpicker" id="select-kota">
-							  <option>Pilih Kota</option>
-							  <option>Jakarta Barat</option>
-							  <option>Jakarta Selatan</option>
-							  <option>Jakarta Utara</option>
-							  <option>Jakarta Timur</option>
+								<label class="label-color ">Kota</label> 
+								<select class="form-control select-kota" id="location" value="location">
+									<option th:each="loc : ${location} " 
+											th:value="${loc.location}"
+										    th:text="${loc.location}" th:selected="${location.contains(loc.location)}"></option>
+							</div>
 
-                        	</div>
-              
-                      		<div class="col-lg-12  field-telpon lefted">
-                            <div class="col-lg-6 lefted">
-                        
-							<div class="control-group" id="fields">
+							<div class="col-lg-12  field-telpon lefted">
+								<div class="col-lg-6 lefted">
+
+									<div class="control-group" id="fields">
 										<label class="control-label label-color" for="field1">Telepon</label>
-										
-										<div class="controls" >
-											<form role="form" autocomplete="off">
-												<div class="entry input-group col-lg-4 in" th:each="phn, iterStat : ${phone}" style="width: 200px;" onclick="input()">
-									
-												<div class="bound input_telepon"  id="field_telepon">
-												
-														<input class="form-control input" name="result[0]"   pattern="[0-9]{14}"
-															id="phone_no" placeholder="Phone Number" maxlength="14" th:value="${phn}"  />	
-<div style="padding-right: 2px">
-												</div>		
-													<span th:if="${iterStat.last and iterStat.index < 2}" class="input-group-btn ">
-														<button class="btn btn-success btn-add" type="button"
-															id="green-round">
-															<span class="icon_add"></span>
-														</button>
-													</span>
-													<span th:if="not ${iterStat.last}" class="input-group-btn ">
-														<button class="btn btn-danger btn-remove remove" type="button"
-															id="green-round">
-															<span class="icon_minus"></span>
-														</button>
-													</span>
-													<span th:if="${iterStat.index == 2 and iterStat.last}" class="input-group-btn ">
-														<button class="btn btn-danger btn-remove remove" type="button"
-															id="green-round">
-															<span class="icon_minus"></span>
-														</button>
-													</span>
-												</div>
-													
-	
 
-													
+										<div class="controls" id="multi-phone">
+										
+												<div class="entry input-group col-lg-4 in"
+													th:each="phn, iterStat : ${phone}" style="width: 200px;"
+													onclick="input()">
+
+													<div class="bound input_telepon" id="field_telepon">
+
+														<input class="form-control input" name="result[0]"
+															pattern="[0-9]{14}" id="phone_no"
+															placeholder="Phone Number" maxlength="14"
+															th:value="${phn}" />
+														<div style="padding-right: 2px"></div>
+														<span th:if="${iterStat.last and iterStat.index < 2}"
+															class="input-group-btn ">
+															<button class="btn btn-success btn-add"
+																id="green-round">
+																<span class="icon_add"></span>
+															</button>
+														</span> <span th:if="not ${iterStat.last}"
+															class="input-group-btn ">
+															<button class="btn btn-danger btn-remove remove"
+																 id="green-round">
+																<span class="icon_minus"></span>
+															</button>
+														</span> <span th:if="${iterStat.index == 2 and iterStat.last}"
+															class="input-group-btn ">
+															<button class="btn btn-danger btn-remove remove"
+																 id="green-round">
+																<span class="icon_minus"></span>
+															</button>
+														</span>
+													</div>
+
+
+
+
 												</div>
-											</form>
+										
 										</div>
-										<input type="text" th:value="${view.phone}" size="50" id="output">
-									
+										<input type="text" th:value="${view.phone}" size="50"
+											id="output" hidden="hidden">
+
 
 										<script type="text/javascript">
-									     	
+											var $output = $('#output');
+
+											function input() {
+												$('.input')
+														.keyup(
+																function() {
+																	$('#output')
+																			.val(
+																					$(
+																							'.input')
+																							.not(
+																									'#output')
+																							.map(
+																									function() {
+																										// console.log($(this).val());
+																										return $(
+																												this)
+																												.val();
+																									})
+																							.get()
+																							.join(
+																									','));
+																});
+												/*var str = $('#output').val()
+												 var array = str.split(",");
+
+												 */
+												/*
+												 $('.in').parent().click(function(){
+
+												 var inputValues = $('.input').map(function() {
+												 return $(this).val();
+												 }).toArray();
+												 console.log(inputValues)
 
 
-											
-var $output = $('#output');
 
- function input (){  
-$('.input').keyup(function(){
-$('#output').val(
-  $('.input')
-  .not('#output')
-  .map(
-    function(){
-    	// console.log($(this).val());
-      return $(this).val();
-    })
-  .get()
-  .join(',')
-);
-});		
-/*var str = $('#output').val()
-var array = str.split(",");
+												 $('#output').val(inputValues)
+												 });	*/
 
-*/
-/*
-$('.in').parent().click(function(){
+											}
+										</script>
 
-var inputValues = $('.input').map(function() {
-    return $(this).val();
-}).toArray();
-console.log(inputValues)
-
-
-
-   $('#output').val(inputValues)
-});	*/
-
-}	
-
-
-</script>
-								
 									</div>
-						
 
-										
-								
 
-                        <!-- end of Phone -->
 
-                 
-                        <!-- end of Phone & number Of field -->
-              
-                    </div>
-                             <!-- number of field -->
-                        <div class="col-lg-6"> 
-                     
-                            <div class="col-lg-6"     style="    margin-left: -151px;">
 
-                            <label class="label-color">Jumlah Lapangan</label>
 
-							<select th:field="*{view.numberOfField}" class="form-control select">
-							    <option th:value="${view.numberOfField}" th:text="${view.numberOfField}"/>
-							    
-                            </select>
+									<!-- end of Phone -->
 
-							</div>	
-                        </div>
-                        <!-- end of Number of field -->
-                    </div>
-            
 
-             </div>
-                  
-             
-                        <!-- Harga -->
-                             <div class="col-lg-12" style="padding-bottom: 20px;">
-                                <div class="horizontal-line lefted" ></div>  
-								<label class="label-color">Harga</label>
+									<!-- end of Phone & number Of field -->
+
+								</div>
+								<!-- number of field -->
+								<div class="col-lg-6">
+
+									<div class="col-lg-6" style="margin-left: -151px;">
+
+										<label class="label-color" >Jumlah Lapangan</label> <select
+											th:field="*{view.numberOfField}" class="form-control select" style="width: 100px">
+											<option th:each="i: ${#numbers.sequence(1,20)}" th:value=${i} th:text="${i}" th:selected="${i == view.numberOfField}"></option>
+										</select>
+
+									</div>
+								</div>
+								<!-- end of Number of field -->
 							</div>
-								<div class="col-lg-6" style="float: left;">
-										<div class="">
-								
-									<div class="control-group" id="fields">
-										<div class="col-lg-6">
-											<label class="control-label" for="field1">  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox" id="senin">Senin</label>
 
-										</div >
-										<div class="senin" >
-											<form autocomplete="off" >
-											<div class="entry" style="float:left;     padding-left: 23px;" id="entry">
-										
+
+						</div>
+
+
+						<!-- Harga -->
+						<div class="col-lg-12" style="padding-bottom: 20px;">
+							<div class="horizontal-line lefted"></div>
+							<label class="label-color">Harga</label>
+						</div>
+						<div class="col-lg-6" style="float: left;">
+							<div class="">
+
+								<div class="control-group" id="fields">
+									<div class="col-lg-6">
+										<label class="control-label" for="field1"> <input
+											class="day" name="day" value="day"
+											style="margin-right: 12px; margin-left: -16px;"
+											type="checkbox" id="senin">Senin
+										</label>
+
+									</div>
+
+
+
+
+									<div class="senin" >
+							
+											<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry">
+
 												<select class="time" id="start_senin" disabled="disabled">
 													<option value="08.00">08.00</option>
 													<option value="09.00">09.00</option>
@@ -469,32 +511,39 @@ console.log(inputValues)
 													<option value="23.00">23.00</option>
 													<option value="24.00">24.00</option>
 												</select>
-												<div class=" input-group " style="float:right">
-														<label class="rp" > Rp </label>
-														<input class="field-harga" name="fields[1]" type="text"
-															id="fields-round" placeholder="Harga" style="float:left" disabled="disabled" />
-															<button class="btn btn-success btn-add_2" type="button"
-													id="green-round_2" disabled="disabled" maxlength="10">
-													<span class="icon_add" style="float:right" ></span>
-												</button>
-											</div>
+												<div class=" input-group " style="float: right">
+													<label class="rp"> Rp </label> <input class="field-harga"
+														name="fields[1]" type="text" id="fields-round"
+														placeholder="Harga" style="float: left"
+														disabled="disabled" />
+													<button class="btn btn-success btn-add_2" type="button"
+														id="green-round_2" disabled="disabled" maxlength="10">
+														<span class="icon_add" style="float: right"></span>
+													</button>
 												</div>
-											</form>
-										</div>
-									</div>
-								
-					</div>
-		
-								<div class="lefted" >
-									<div class="control-group" >
-										<div class="col-lg-6">
-											<label class="control-label" >  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox" id="selasa">Selasa</label>
+											</div>
+									
 
-										</div >
-										<div class="selasa" >
-											<form autocomplete="off" >
-											<div class="entry" style="float:left;     padding-left: 23px;" id="entry_selasa">
-										
+									</div>
+								</div>
+
+							</div>
+
+							<div class="lefted">
+								<div class="control-group">
+									<div class="col-lg-6">
+										<label class="control-label"> <input class="day"
+											name="day" value="day"
+											style="margin-right: 12px; margin-left: -16px;"
+											type="checkbox" id="selasa">Selasa
+										</label>
+
+									</div>
+									<div class="selasa">
+									
+											<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_selasa">
+
 												<select class="time" id="start_selasa" disabled="disabled">
 													<option value="08.00">08.00</option>
 													<option value="09.00">09.00</option>
@@ -532,34 +581,40 @@ console.log(inputValues)
 													<option value="23.00">23.00</option>
 													<option value="24.00">24.00</option>
 												</select>
-												<div class=" input-group " style="float:right">
-														<label class="rp" > Rp </label>
-														<input class="field-harga" name="fields[2]" type="text"
-															id="selasa-round" placeholder="Harga" style="float:left" disabled="disabled" />
-															<button class="btn btn-success btn-add_3" type="button"
-													id="green-round_3" disabled="disabled" >
-													<span class="icon_add" style="float:right" ></span>
-												</button>
-											</div>
+												<div class=" input-group " style="float: right">
+													<label class="rp"> Rp </label> <input class="field-harga"
+														name="fields[2]" type="text" id="selasa-round"
+														placeholder="Harga" style="float: left"
+														disabled="disabled" />
+													<button class="btn btn-success btn-add_3" type="button"
+														id="green-round_3" disabled="disabled">
+														<span class="icon_add" style="float: right"></span>
+													</button>
 												</div>
-											</form>
-										</div>
+											</div>
+										
 									</div>
 								</div>
-							
+							</div>
 
 
-					
-								<div class="lefted">
-									<div class="control-group" >
-										<div class="col-lg-6">
-											<label class="control-label" >  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox" id="rabu">Rabu</label>
 
-										</div >
-										<div class="rabu" >
-											<form autocomplete="off" >
-											<div class="entry" style="float:left;     padding-left: 23px;" id="entry_rabu">
-										
+
+							<div class="lefted">
+								<div class="control-group">
+									<div class="col-lg-6">
+										<label class="control-label"> <input class="day"
+											name="day" value="day"
+											style="margin-right: 12px; margin-left: -16px;"
+											type="checkbox" id="rabu">Rabu
+										</label>
+
+									</div>
+									<div class="rabu">
+						
+											<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_rabu">
+
 												<select class="time" id="start_rabu" disabled="disabled">
 													<option value="08.00">08.00</option>
 													<option value="09.00">09.00</option>
@@ -597,33 +652,39 @@ console.log(inputValues)
 													<option value="23.00">23.00</option>
 													<option value="24.00">24.00</option>
 												</select>
-												<div class=" input-group " style="float:right">
-														<label class="rp" > Rp </label>
-														<input class="field-harga" name="fields[3]" type="text"
-															id="rabu-round" placeholder="Harga" style="float:left" disabled="disabled" />
-															<button class="btn btn-success btn-add_4" type="button"
-													id="green-round_4" disabled="disabled" >
-													<span class="icon_add" style="float:right" ></span>
-												</button>
-											</div>
+												<div class=" input-group " style="float: right">
+													<label class="rp"> Rp </label> <input class="field-harga"
+														name="fields[3]" type="text" id="rabu-round"
+														placeholder="Harga" style="float: left"
+														disabled="disabled" />
+													<button class="btn btn-success btn-add_4" type="button"
+														id="green-round_4" disabled="disabled">
+														<span class="icon_add" style="float: right"></span>
+													</button>
 												</div>
-											</form>
-										</div>
+											</div>
+									
 									</div>
 								</div>
+							</div>
 
 
 
-								<div class="lefted">
-									<div class="control-group" >
-										<div class="col-lg-6">
-											<label class="control-label" >  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox" id="kamis">Kamis</label>
+							<div class="lefted">
+								<div class="control-group">
+									<div class="col-lg-6">
+										<label class="control-label"> <input class="day"
+											name="day" value="day"
+											style="margin-right: 12px; margin-left: -16px;"
+											type="checkbox" id="kamis">Kamis
+										</label>
 
-										</div >
-										<div class="kamis" >
-											<form autocomplete="off" >
-											<div class="entry" style="float:left;     padding-left: 23px;" id="entry_kamis">
-										
+									</div>
+									<div class="kamis">
+								
+											<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_kamis">
+
 												<select class="time" id="start_kamis" disabled="disabled">
 													<option value="08.00">08.00</option>
 													<option value="09.00">09.00</option>
@@ -661,37 +722,43 @@ console.log(inputValues)
 													<option value="23.00">23.00</option>
 													<option value="24.00">24.00</option>
 												</select>
-												<div class=" input-group " style="float:right">
-														<label class="rp" > Rp </label>
-														<input class="field-harga" name="fields[4]" type="text"
-															id="kamis-round" placeholder="Harga" style="float:left" disabled="disabled" />
-															<button class="btn btn-success btn-add_5" type="button"
-													id="green-round_5" disabled="disabled" >
-													<span class="icon_add" style="float:right" ></span>
-												</button>
-											</div>
+												<div class=" input-group " style="float: right">
+													<label class="rp"> Rp </label> <input class="field-harga"
+														name="fields[4]" type="text" id="kamis-round"
+														placeholder="Harga" style="float: left"
+														disabled="disabled" />
+													<button class="btn btn-success btn-add_5" type="button"
+														id="green-round_5" disabled="disabled">
+														<span class="icon_add" style="float: right"></span>
+													</button>
 												</div>
-											</form>
-										</div>
+											</div>
+									
 									</div>
 								</div>
+							</div>
 
-</div>	
+						</div>
 
-<div class="col-lg-6 " style="  padding-bottom: 55px; float: right;">
-	
+						<div class="col-lg-6 " style="padding-bottom: 55px; float: right;">
+
 
 							<div class="">
-								
-									<div class="control-group" >
-										<div class="col-lg-6">
-											<label class="control-label" >  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox" id="jumat">Jumat</label>
 
-										</div >
-										<div class="jumat" >
-											<form autocomplete="off" >
-											<div class="entry" style="float:left;     padding-left: 23px;" id="entry_jumat">
-										
+								<div class="control-group">
+									<div class="col-lg-6">
+										<label class="control-label"> <input class="day"
+											name="day" value="day"
+											style="margin-right: 12px; margin-left: -16px;"
+											type="checkbox" id="jumat">Jumat
+										</label>
+
+									</div>
+									<div class="jumat">
+								
+											<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_jumat">
+
 												<select class="time" id="start_jumat" disabled="disabled">
 													<option value="08.00">08.00</option>
 													<option value="09.00">09.00</option>
@@ -729,32 +796,38 @@ console.log(inputValues)
 													<option value="23.00">23.00</option>
 													<option value="24.00">24.00</option>
 												</select>
-												<div class=" input-group " style="float:right">
-														<label class="rp" > Rp </label>
-														<input class="field-harga" name="fields[4]" type="text"
-															id="jumat-round" placeholder="Harga" style="float:left" disabled="disabled" />
-															<button class="btn btn-success btn-add_6" type="button"
-													id="green-round_6" disabled="disabled" >
-													<span class="icon_add" style="float:right" ></span>
-												</button>
-											</div>
+												<div class=" input-group " style="float: right">
+													<label class="rp"> Rp </label> <input class="field-harga"
+														name="fields[4]" type="text" id="jumat-round"
+														placeholder="Harga" style="float: left"
+														disabled="disabled" />
+													<button class="btn btn-success btn-add_6" type="button"
+														id="green-round_6" disabled="disabled">
+														<span class="icon_add" style="float: right"></span>
+													</button>
 												</div>
-											</form>
-										</div>
+											</div>
+									
 									</div>
-								
-						</div>
+								</div>
 
-								<div class=" lefted">
-									<div class="control-group" >
-										<div class="col-lg-6">
-											<label class="control-label" >  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox" id="sabtu">Sabtu</label>
+							</div>
 
-										</div >
-										<div class="sabtu" >
-											<form autocomplete="off" >
-											<div class="entry" style="float:left;     padding-left: 23px;" id="entry_sabtu">
-										
+							<div class=" lefted">
+								<div class="control-group">
+									<div class="col-lg-6">
+										<label class="control-label"> <input class="day"
+											name="day" value="day"
+											style="margin-right: 12px; margin-left: -16px;"
+											type="checkbox" id="sabtu">Sabtu
+										</label>
+
+									</div>
+									<div class="sabtu">
+							
+											<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_sabtu">
+
 												<select class="time" id="start_sabtu" disabled="disabled">
 													<option value="08.00">08.00</option>
 													<option value="09.00">09.00</option>
@@ -792,34 +865,40 @@ console.log(inputValues)
 													<option value="23.00">23.00</option>
 													<option value="24.00">24.00</option>
 												</select>
-												<div class=" input-group " style="float:right">
-														<label class="rp" > Rp </label>
-														<input class="field-harga" name="fields[4]" type="text"
-															id="sabtu-round" placeholder="Harga" style="float:left" disabled="disabled" />
-															<button class="btn btn-success btn-add_7" type="button"
-													id="green-round_7" disabled="disabled" >
-													<span class="icon_add" style="float:right" ></span>
-												</button>
-											</div>
+												<div class=" input-group " style="float: right">
+													<label class="rp"> Rp </label> <input class="field-harga"
+														name="fields[4]" type="text" id="sabtu-round"
+														placeholder="Harga" style="float: left"
+														disabled="disabled" />
+													<button class="btn btn-success btn-add_7" type="button"
+														id="green-round_7" disabled="disabled">
+														<span class="icon_add" style="float: right"></span>
+													</button>
 												</div>
-											</form>
-										</div>
+											</div>
+									
 									</div>
-								
 								</div>
 
+							</div>
 
 
-								<div class="lefted">
-							<div class="control-group" >
-										<div class="col-lg-6">
-											<label class="control-label" >  <input class="day" name="day" value="day" style="margin-right: 12px; margin-left: -16px;" type="checkbox" id="minggu">Minggu</label>
 
-										</div >
-										<div class="minggu" >
-											<form autocomplete="off" >
-											<div class="entry" style="float:left;     padding-left: 23px;" id="entry_minggu">
-										
+							<div class="lefted">
+								<div class="control-group">
+									<div class="col-lg-6">
+										<label class="control-label"> <input class="day"
+											name="day" value="day"
+											style="margin-right: 12px; margin-left: -16px;"
+											type="checkbox" id="minggu">Minggu
+										</label>
+
+									</div>
+									<div class="minggu">
+									
+											<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_minggu">
+
 												<select class="time" id="start_minggu" disabled="disabled">
 													<option value="08.00">08.00</option>
 													<option value="09.00">09.00</option>
@@ -857,44 +936,50 @@ console.log(inputValues)
 													<option value="23.00">23.00</option>
 													<option value="24.00">24.00</option>
 												</select>
-												<div class=" input-group " style="float:right">
-														<label class="rp" > Rp </label>
-														<input class="field-harga" name="fields[5]" type="text"
-															id="minggu-round" placeholder="Harga" style="float:left" disabled="disabled" />
-															<button class="btn btn-success btn-add_8" type="button"
-													id="green-round_8" disabled="disabled" >
-													<span class="icon_add" style="float:right" ></span>
-												</button>
-											</div>
+												<div class=" input-group " style="float: right">
+													<label class="rp"> Rp </label> <input class="field-harga"
+														name="fields[5]" type="text" id="minggu-round"
+														placeholder="Harga" style="float: left"
+														disabled="disabled" />
+													<button class="btn btn-success btn-add_8" type="button"
+														id="green-round_8" disabled="disabled">
+														<span class="icon_add" style="float: right"></span>
+													</button>
 												</div>
-											</form>
-										</div>
+											</div>
+									
 									</div>
-								
 								</div>
 
-
-
 							</div>
 
-                        <!-- end of harga -->
-							</div>
 
-                       </div>		<a href="#" id="button-save" type="submit" class="btn btn-primary btn-default">Simpan</a> 
-                       </div>
-                       </div>
-                       </div>
-			      
-                    </div>
-       </div>
-</div>
 
-            </div>
+						</div>
 
+						<!-- end of harga -->
+					</div>
+
+				</div>
+				<a href="#" id="button-save" type="submit"
+					class="btn btn-primary btn-default">Simpan</a>
+					
+				
+					</form>
 			</div>
+		</div>
+	</div>
 
-        </div>
-        <!-- /#page-wrapper -->
+	</div>
+	</div>
+	</div>
+
+	</div>
+
+	</div>
+
+	</div>
+	<!-- /#page-wrapper -->
 
 </body>
 
