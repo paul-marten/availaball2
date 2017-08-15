@@ -24,5 +24,4 @@ public class EditField {
 		this.phoneNumber = phoneNumber;
 	}
 	
-	
 }

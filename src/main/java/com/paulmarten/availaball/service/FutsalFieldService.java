@@ -1,5 +1,6 @@
 package com.paulmarten.availaball.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -35,22 +36,58 @@ public class FutsalFieldService {
 	@Autowired
 	private DetailPriceRepository detailPriceRepository;
 	
+	
 	public DataTablesOutput<FutsalField> findAllFutsalFieldAdmin(@Valid DataTablesInput input) {
 		return futsalFieldRepository.findAll(input);
 	}
 
 	public FutsalField findFutsalFieldById(int id) {
-		return futsalFieldRepository.findOne(id);
+		int senin = 0, selasa = 0, rabu = 0, kamis = 0, jumat = 0 , sabtu = 0, minggu = 0;
+		String days = "";
+		FutsalField futsalFieldSave = futsalFieldRepository.findOne(id);
+		List<DetailPrice> detailPrices = new ArrayList<DetailPrice>();
+		detailPrices = detailPriceRepository.findByFutsalField(futsalFieldSave);
+		for(int index = 0 ; index < detailPrices.size(); index++){
+			if(detailPrices.get(index).getDay().equals("senin") && senin == 0){
+				days = days + "senin,";
+				senin ++;
+			}
+			else if(detailPrices.get(index).getDay().equals("selasa") && selasa == 0){
+				days = days + "selasa,";
+				selasa ++;
+			}
+			else if(detailPrices.get(index).getDay().equals("rabu") && rabu == 0){
+				days = days + "rabu,";
+				rabu ++;
+			}
+			else if(detailPrices.get(index).getDay().equals("kamis") && kamis == 0){
+				days = days + "kamis,";
+				kamis ++;
+			}
+			else if(detailPrices.get(index).getDay().equals("jumat") && jumat == 0){
+				days = days + "jumat,";
+				jumat ++;
+			}
+			else if(detailPrices.get(index).getDay().equals("sabtu") && sabtu == 0){
+				days = days + "sabtu,";
+				sabtu ++;
+			}
+			else if(detailPrices.get(index).getDay().equals("minggu") && minggu == 0){
+				days = days + "minggu";
+				minggu ++;
+			}
+		}
+		futsalFieldSave.setDays(days);
+		return futsalFieldSave;
 	}
 
 
-	public List<FutsalFieldMap> findAllFutsalFieldMap1(){
+	public List<FutsalFieldMap> findAllFutsalFieldMap(){
 		return futsalFieldRepository.findAllByOrderByIdFutsalField();
 		}
-
-	public Iterable<FutsalField> findAllFutsalFieldMap(){
-		return futsalFieldRepository.findAll();
-
+	
+	public List<FutsalField> findAllFutsalFieldApi(){
+		return futsalFieldRepository.findTop10ByOrderByIdFutsalFieldDesc();
 	}
 	
 	public Page<FutsalField> findAllFutsalField(int page) {
@@ -61,13 +98,12 @@ public class FutsalFieldService {
 		FutsalField futsalFieldAccount = new FutsalField();
 		Account accountSave = new Account();
 		futsalFieldAccount = futsalFieldRepository.findOne(id);
-		accountSave = accountRepository.findOne(futsalFieldAccount.getAccount().getId());
+		accountSave = accountRepository.findOne(futsalFieldAccount.getAccount().getId());		
 		int totalField = accountSave.getTotalField();
 		accountSave.setTotalField(totalField - 1);
-		if (accountRepository.save(accountSave) != null) {
+		if(accountRepository.save(accountSave)!= null){
 			futsalFieldRepository.delete(id);
-		}
-
+		};
 	}
 	
 	public String saveField(FutsalField futsalField) {
@@ -85,6 +121,8 @@ public class FutsalFieldService {
 		futsalFieldSave.setPrice(futsalField.getPrice());
 		futsalFieldSave.setAccount(futsalField.getAccount());
 		futsalFieldSave.setLocation(futsalField.getLocation());
+		futsalFieldSave.setLongitude(futsalField.getLongitude());
+		futsalFieldSave.setLatitude(futsalField.getLatitude());
 		futsalFieldSave.setLatestUpdate(new java.sql.Timestamp(today.getTime()));
 		Account accountSaveFutsalField = new Account();
 		

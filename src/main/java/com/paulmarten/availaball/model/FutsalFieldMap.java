@@ -10,7 +10,7 @@ public interface FutsalFieldMap {
 	String getPrice();
 	String getLatitude();
 	String getLongitude();
-	
+
 	
 }
 

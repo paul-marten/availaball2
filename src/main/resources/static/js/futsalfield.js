@@ -6,7 +6,6 @@ function centerModal(id) {
        $('#button_delete').on('click', function(event){
     	   var futsalField = {};
     	   futsalField.idFutsalField = id;
-    	   var idFutsalField = id;
     	   $.ajax({
     		   	 type: "POST",
 	             url: "/delete-field",
@@ -22,6 +21,7 @@ function centerModal(id) {
 		 });
        });				          
 }
+
 $(document).ready( function () {
     var table = $('#futsalfieldsTable').DataTable({
         "ajax": "/futsalfields",
@@ -111,7 +111,6 @@ $(document).ready( function () {
                 }
             }]
     })
-    
     
 
 	table.on( 'draw.dt', function () {

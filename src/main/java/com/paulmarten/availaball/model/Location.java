@@ -7,6 +7,7 @@ import javax.persistence.*;
 import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.paulmarten.availaball.ViewJSON;
 
 @Entity
 @Table(name = "location")
@@ -14,7 +15,7 @@ public class Location implements Serializable {
 	private int id;
 	private String location;
 	
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.Location.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
@@ -24,7 +25,7 @@ public class Location implements Serializable {
 		this.id = id;
 	}
 	
-	@JsonView(DataTablesOutput.View.class)
+	@JsonView(ViewJSON.Location.class)
 	@Column(name = "location")
 	public String getLocation() {
 		return location;

@@ -25,9 +25,13 @@ import com.paulmarten.availaball.model.FutsalField;
 import com.paulmarten.availaball.model.FutsalFieldMap;
 
 
+
+import com.paulmarten.availaball.model.Location;
+
 import com.paulmarten.availaball.service.AccountService;
 import com.paulmarten.availaball.service.DetailPriceService;
 import com.paulmarten.availaball.service.FutsalFieldService;
+import com.paulmarten.availaball.service.LocationService;
 
 /**
  * Created by paulms on 6/14/2017.
@@ -41,9 +45,12 @@ public class AdminController {
 
 	@Autowired
 	private AccountService accountService;
-
+	
 	@Autowired
 	private DetailPriceService detailPriceService;
+	
+	@Autowired
+	private LocationService locationService;
 	
     @RequestMapping(path="/index", method= RequestMethod.GET)
     public String goIndex(Model model,Principal principal, HttpSession session){
@@ -60,15 +67,15 @@ public class AdminController {
         return "/admin/page/user";
     }
         
-    RequestMapping(path="/map", method= RequestMethod.GET)
+    @RequestMapping(path="/map", method= RequestMethod.GET)
     public String goMap(Model model){
     	List<FutsalFieldMap> futsalFieldMap = futsalFieldService.findAllFutsalFieldMap();
     	model.addAttribute("futsalField",futsalFieldMap);
-    	for (FutsalFieldMap ff : futsalFieldMap) {
-			System.out.println(ff.getIdFutsalField());
-			System.out.println(ff.getFieldName());
-			System.out.println(ff.getLatitude());
-		}
+//    	for (FutsalFieldMap ff : futsalFieldMap) {
+//			System.out.println(ff.getFieldName());
+//			System.out.println(ff.getLatitude());
+////			System.out.println(ff.getDetailLocation());
+//		}
     	return "/admin/page/map";
     }
     
@@ -105,15 +112,16 @@ public class AdminController {
     public String editField(@PathVariable int id, Model model){
     	FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
         model.addAttribute("view",futsalFieldEdit);
+        
         List<DetailPrice> detailPrices = detailPriceService.findByFutsalField(futsalFieldEdit);
+        model.addAttribute("detailPrice", detailPrices);
+        
         String number = futsalFieldEdit.getPhone();
         String[] result = number.split(",");
         model.addAttribute("phone", result);
-        int numberOfField = futsalFieldEdit.getNumberOfField();
-        model.addAttribute("numberOfField",numberOfField);
-        System.out.println(futsalFieldEdit.getNumberOfField());
-        List<DetailPrice> detailPrices1 = detailPriceService.findByFutsalField(futsalFieldEdit);
-        model.addAttribute("detailPrice", detailPrices1);
+        
+        List<Location> listLocation = locationService.viewAllField();
+        model.addAttribute("location", listLocation);
         return "/admin/page/edit-field";
     }
     

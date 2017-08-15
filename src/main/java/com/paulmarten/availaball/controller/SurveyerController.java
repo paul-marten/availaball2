@@ -3,6 +3,8 @@ package com.paulmarten.availaball.controller;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,8 +22,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.paulmarten.availaball.ResponseMessage;
 import com.paulmarten.availaball.ViewJSON;
 import com.paulmarten.availaball.model.Account;
+import com.paulmarten.availaball.model.DetailPrice;
 import com.paulmarten.availaball.model.FutsalField;
+import com.paulmarten.availaball.service.DetailPriceService;
 import com.paulmarten.availaball.service.FutsalFieldService;
+import com.paulmarten.availaball.service.LocationService;
 import com.paulmarten.availaball.service.SurveyerService;
 
 /**
@@ -35,7 +40,13 @@ public class SurveyerController {
 
 	@Autowired
 	private FutsalFieldService futsalFieldService;
-
+	
+	@Autowired
+	private LocationService locationService;
+	
+	@Autowired
+	private DetailPriceService detailPriceService;
+	
 	@JsonView(ViewJSON.Account.class)
 	@RequestMapping(value = "/getid/{id}", method = RequestMethod.POST)
 	public Account getId(@PathVariable int id) {
@@ -48,7 +59,7 @@ public class SurveyerController {
 		return surveyerService.checkAccount(username, password);
 	}
 
-	@JsonView(ViewJSON.Base.class)
+	@JsonView(ViewJSON.ListFutsalFieldAndroid.class)
 	@RequestMapping(value = "/get-all-futsal-field", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseMessage getAllFutsalField(@RequestParam(required = false, defaultValue = "1") int page) {
 		ResponseMessage responseMessage = new ResponseMessage();
@@ -107,4 +118,52 @@ public class SurveyerController {
 			return "null";
 		}
 	}
+	
+//	@JsonView(ViewJSON.FutsalField.class)
+//	@RequestMapping(value = "/detail-field", method = RequestMethod.POST , headers = "Accept=application/json")
+//	public FutsalField viewDetailFutsal(@ModelAttribute FutsalField futsalField) {
+//		return futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
+//	}
+	
+	@JsonView(ViewJSON.FutsalField.class)
+	@RequestMapping(value = "/detail-field", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseMessage viewDetailFutsal(@RequestParam int idFutsalField) {
+		ResponseMessage responseMessage = new ResponseMessage();
+		FutsalField futsalFieldSentObject =  new FutsalField();
+		futsalFieldSentObject = futsalFieldService.findFutsalFieldById(idFutsalField);
+		responseMessage.setObject(futsalFieldSentObject);
+		responseMessage.setMessage("Success");
+		responseMessage.setCode("600");
+		return responseMessage;
+	}
+	
+	@JsonView(ViewJSON.DetailPrice.class)
+	@RequestMapping(value = "/detail-field-price", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseMessage viewDetailFutsalPrice(@RequestParam int idFutsalField) {
+		ResponseMessage responseMessage = new ResponseMessage();
+		List<DetailPrice> detailPrices = new ArrayList<DetailPrice>();
+		FutsalField futsalFieldSentObject = futsalFieldService.findFutsalFieldById(idFutsalField);
+		detailPrices = detailPriceService.findByIdFutsalField(futsalFieldSentObject);
+		responseMessage.setMessage("Success");
+		responseMessage.setCode("600");
+		responseMessage.setObject(detailPrices);
+		return responseMessage;
+	}
+	
+	@JsonView(ViewJSON.Location.class)
+	@RequestMapping(value = "/location", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseMessage viewAllLocation() {
+		ResponseMessage responseMessage = new ResponseMessage();
+		responseMessage.setObject(locationService.viewAllField());
+		responseMessage.setMessage("Success");
+		responseMessage.setCode("600");
+		return responseMessage;
+	}
+	
+	@JsonView(ViewJSON.FutsalField.class)
+	@RequestMapping(value = "/maps", method = RequestMethod.GET, headers = "Accept=application/json")
+	public List<FutsalField> maps() {
+		return futsalFieldService.findAllFutsalFieldApi();
+	}
+	
 }
