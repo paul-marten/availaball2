@@ -47,6 +47,7 @@ public class SurveyerController {
 	@Autowired
 	private DetailPriceService detailPriceService;
 	
+	
 	@JsonView(ViewJSON.Account.class)
 	@RequestMapping(value = "/getid/{id}", method = RequestMethod.POST)
 	public Account getId(@PathVariable int id) {
@@ -86,10 +87,18 @@ public class SurveyerController {
 	public ResponseMessage createField(@ModelAttribute FutsalField futsalField) {
 		ResponseMessage responseMessage = new ResponseMessage();
 
+
 	/*	responseMessage.setMessage(futsalFieldService.saveField(futsalField));*/
 
 		responseMessage.setCode("600");
 		responseMessage.setMessage(futsalFieldService.saveField(futsalField));
+
+
+		responseMessage.setCode("600");
+		responseMessage.setMessage(futsalFieldService.saveField(futsalField));
+
+	/*	responseMessage.setMessage(futsalFieldService.saveField(futsalField));*/
+
 
 		return responseMessage;
 	}
@@ -143,7 +152,7 @@ public class SurveyerController {
 		ResponseMessage responseMessage = new ResponseMessage();
 		List<DetailPrice> detailPrices = new ArrayList<DetailPrice>();
 		FutsalField futsalFieldSentObject = futsalFieldService.findFutsalFieldById(idFutsalField);
-		detailPrices = detailPriceService.findByIdFutsalField(futsalFieldSentObject);
+	//	detailPrices = detailPriceService.findByIdFutsalField(futsalFieldSentObject);
 		responseMessage.setMessage("Success");
 		responseMessage.setCode("600");
 		responseMessage.setObject(detailPrices);
@@ -164,6 +173,29 @@ public class SurveyerController {
 	@RequestMapping(value = "/maps", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<FutsalField> maps() {
 		return futsalFieldService.findAllFutsalFieldApi();
+	}
+	
+	@JsonView(ViewJSON.Base.class)
+	@RequestMapping(value = "/edit-futsal-field", method = RequestMethod.POST)
+	public ResponseMessage editField(@ModelAttribute FutsalField futsalField) {
+		ResponseMessage responseMessage = new ResponseMessage();
+
+		responseMessage.setCode("600");
+		responseMessage.setMessage(futsalFieldService.saveField(futsalField));
+
+		return responseMessage;
+	}
+	
+	@JsonView(ViewJSON.Base.class)
+	@RequestMapping(value = "/edit-detail-price-futsal-field", method = RequestMethod.POST)
+	public ResponseMessage editDetailField(@ModelAttribute FutsalField futsalField) {
+		ResponseMessage responseMessage = new ResponseMessage();
+		
+		System.out.println(futsalField.getDetail().size());
+		responseMessage.setCode("600");
+//		responseMessage.setMessage(detailPriceService.saveDetailPrice(futsalField.getDetail()));
+
+		return responseMessage;
 	}
 	
 }

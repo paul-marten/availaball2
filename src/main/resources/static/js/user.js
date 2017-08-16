@@ -14,7 +14,6 @@ $(document)
 										"paging" : true,
 										"pageLength" : 10,
 										"ordering" : true,
-
 										"order" : [ [ 1, 'asc' ] ],
 										columns : [
 												{
@@ -75,7 +74,6 @@ $(document)
 																						icon));
 														$(td).html(edit);
 													}
-
 												} ]
 									})
 

@@ -1,5 +1,6 @@
 package com.paulmarten.availaball.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import com.paulmarten.availaball.repository.DetailPriceRepository;
 
 @Service("detailPriceService")
 
+
+ 
 public class DetailPriceService {
 
     @Autowired
@@ -25,9 +28,19 @@ public class DetailPriceService {
     	return detailPriceRepository.findAllByFutsalField(futsalField);
     }
 
+
+  
+
+
     
-    public List<DetailPrice> findByIdFutsalField(FutsalField futsalField){
-    	return detailPriceRepository.findByFutsalField(futsalField);
+    public String saveDetailPrice(DetailPrice detailPrice){
+    	String message = "";
+    	List<DetailPrice> removeDetailPrice = new ArrayList<DetailPrice>();
+    	return message;
+    }
+    
+    public List<DetailPrice> findByDayAndIdFutsalField(String day, FutsalField futsalField){
+    	return detailPriceRepository.findByDayAndFutsalField(day, futsalField);
     }
 
 }

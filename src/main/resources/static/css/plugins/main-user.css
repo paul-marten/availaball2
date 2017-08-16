@@ -75,7 +75,6 @@ html {
     vertical-align: middle;
     touch-action: manipulation;
     cursor: pointer;
-    -moz-user-select: none;
     background-image: none;
     border: 1px solid transparent;   
     border-radius: 15px;
@@ -85,7 +84,6 @@ html {
     background-color: #FFFFFF;
     border-color: #1BD679;
     color: #1BD679;
-    margin-left: 30px;
     height: 30px;
 }
 

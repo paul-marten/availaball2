@@ -268,7 +268,9 @@
 							<!-- Field Name -->
 
 							<div class="col-lg-12 lefted">
-
+								<div th:each="phn : ${senin}">
+								    <span th:text="${phn.startTime}"></span>
+								</div>
 
 								<div class="col-lg-6 lefted">
 									<label class="field-nama label-color">Nama</label> <input
@@ -434,7 +436,8 @@
 
 									<div class="col-lg-6" style="margin-left: -151px;">
 
-										<label class="label-color" >Jumlah Lapangan</label> <select
+										<label class="label-color" >Jumlah Lapangan</label> 
+										<select
 											th:field="*{view.numberOfField}" class="form-control select" style="width: 100px">
 											<option th:each="i: ${#numbers.sequence(1,20)}" th:value=${i} th:text="${i}" th:selected="${i == view.numberOfField}"></option>
 										</select>
@@ -465,57 +468,24 @@
 										</label>
 
 									</div>
-
-
-
-
-									<div class="senin" >
+							
+									<div class="senin" th:each="date, iterStat : ${viewDetailPrice}">
 							
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry">
 
-												<select class="time" id="start_senin" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+												<select class="time" id="start_senin" disabled="disabled" 
+											>
+													<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
+													
 												</select> <select class="timed" id="end_senin" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+													<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select>
 												<div class=" input-group " style="float: right">
 													<label class="rp"> Rp </label> <input class="field-harga"
 														name="fields[1]" type="text" id="fields-round"
 														placeholder="Harga" style="float: left"
-														disabled="disabled" />
+														disabled="disabled" th:value="${date.price}"/>
 													<button class="btn btn-success btn-add_2" type="button"
 														id="green-round_2" disabled="disabled" maxlength="10">
 														<span class="icon_add" style="float: right"></span>
@@ -545,41 +515,9 @@
 												id="entry_selasa">
 
 												<select class="time" id="start_selasa" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+													<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select> <select class="timed" id="end_selasa" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+													<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select>
 												<div class=" input-group " style="float: right">
 													<label class="rp"> Rp </label> <input class="field-harga"
@@ -616,41 +554,9 @@
 												id="entry_rabu">
 
 												<select class="time" id="start_rabu" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+													<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select> <select class="timed" id="end_rabu" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+													<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select>
 												<div class=" input-group " style="float: right">
 													<label class="rp"> Rp </label> <input class="field-harga"
@@ -686,41 +592,9 @@
 												id="entry_kamis">
 
 												<select class="time" id="start_kamis" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+													<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select> <select class="timed" id="end_kamis" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+												<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select>
 												<div class=" input-group " style="float: right">
 													<label class="rp"> Rp </label> <input class="field-harga"
@@ -760,41 +634,9 @@
 												id="entry_jumat">
 
 												<select class="time" id="start_jumat" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+													<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select> <select class="timed" id="end_jumat" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+													<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select>
 												<div class=" input-group " style="float: right">
 													<label class="rp"> Rp </label> <input class="field-harga"
@@ -829,41 +671,9 @@
 												id="entry_sabtu">
 
 												<select class="time" id="start_sabtu" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+												<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select> <select class="timed" id="end_sabtu" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+													<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select>
 												<div class=" input-group " style="float: right">
 													<label class="rp"> Rp </label> <input class="field-harga"
@@ -900,41 +710,9 @@
 												id="entry_minggu">
 
 												<select class="time" id="start_minggu" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+													<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select> <select class="timed" id="end_minggu" disabled="disabled">
-													<option value="08.00">08.00</option>
-													<option value="09.00">09.00</option>
-													<option value="10.00">10.00</option>
-													<option value="11.00">11.00</option>
-													<option value="12.00">12.00</option>
-													<option value="13.00">13.00</option>
-													<option value="14.00">14.00</option>
-													<option value="15.00">15.00</option>
-													<option value="16.00">16.00</option>
-													<option value="17.00">17.00</option>
-													<option value="18.00">18.00</option>
-													<option value="19.00">19.00</option>
-													<option value="20.00">20.00</option>
-													<option value="21.00">21.00</option>
-													<option value="22.00">22.00</option>
-													<option value="23.00">23.00</option>
-													<option value="24.00">24.00</option>
+												<option th:each="i: ${#numbers.sequence(6,24)}" th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 												</select>
 												<div class=" input-group " style="float: right">
 													<label class="rp"> Rp </label> <input class="field-harga"

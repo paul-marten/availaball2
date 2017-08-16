@@ -19,6 +19,7 @@ public interface DetailPriceRepository extends DataTablesRepository<DetailPrice,
 	List<DetailPrice>findAllByFutsalField(FutsalField futsalField);
 
 	List<DetailPrice>findByFutsalField(FutsalField futsalField);
+	List<DetailPrice>findByDayAndFutsalField(String day, FutsalField futsalField);
 //	List<DetailPrice>findDistinctDayByFutsalField(FutsalField futsalField);
 
 }

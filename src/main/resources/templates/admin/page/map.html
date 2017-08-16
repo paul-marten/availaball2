@@ -3,35 +3,156 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Map</title>
-<link rel="stylesheet" th:href="@{/css/plugins/view-field.css}" />
 <style>
 #map {
-	height: 660px;
+	height: 650px;
 	width: 100%;
 	position: static;
 	z-index: 0;
 }
-
 #page-wrapper {
 	padding: 0px !important;
 	padding-left: 71px !important;
 }
-
 .map-box {
-	height: 660px;
+	height: 650px;
 	width: 100%;
 	position: relative;
 }
-
 .form-box {
 	position: absolute;
 	top: 0;
-	height: 660px;
+	height: 650px;
 	width: 33%;
 	right: 0px;
 	background-color: rgba(255, 255, 255, 0.8);
 	z-index: 10;
 	padding-top: 0px;
+}
+#dMap {
+    background-color: white!important;
+    color: #545454!important;
+    border: 1px solid #898989;
+    border-top-color: rgb(137, 137, 137);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: rgb(137, 137, 137);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgb(137, 137, 137);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(137, 137, 137);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+}
+/* */
+.labelss {
+    text-decoration-color: #808080!important;
+    font-size: 12px;
+    font-weight: normal;
+    margin-left: 100px;
+    margin-top:10px;
+}
+.labelssu{
+	text-decoration-color: #808080!important;
+    font-size: 12px;
+    font-weight: normal;	
+    margin-top: 15px;
+    font-family: roboto !important;
+}
+/* */
+.labelsb{
+	text-decoration-color: #808080!important;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 5px;
+}
+/* */
+.texted {
+    margin-left:60px !important;
+}
+/* */
+.labelsa {
+    text-decoration-color: #808080!important;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: roboto !important;
+}
+/* */
+.labelst{
+	text-decoration-color: #808080!important;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 30px;
+    font-family: roboto !important;
+    margin-left: -15px;
+}
+.dropdowns{
+	margin-top: 30px !important;
+	margin-left: 85px;
+}
+.labellt{
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-left: -15px;
+}
+.labelsn{
+	text-decoration-color: #808080!important;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: roboto !important;
+     margin-top:12px;
+}
+.labelsb{
+	text-decoration-color: #808080!important;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: roboto !important;
+     margin-top:10px;	
+}
+.labelsj{
+	font-size: 13px;
+    font-weight: bold;
+    margin-left: 100px;	
+    font-family: roboto !important;
+}
+.survey{
+	font-size: 22px;
+    font-weight: bold;	
+    font-family: roboto !important;
+}
+.surveyer{
+	cursor: default;
+	display: inline-block;
+    max-width: 100%;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.labelslo{
+	text-decoration-color: #808080!important;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: roboto !important;	
+}
+/* /
+.labelsh{
+	text-decoration-color: #808080!important;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: roboto !important;
+    margin-top:10px;
+}
+.image{
+	vertical-align: middle !important;
+	margin-top: 15px !important;
 }
 </style>
 </head>
@@ -40,133 +161,140 @@
 		<div class="padding-md content content-list" layout:fragment="content">
 			<div class="map-box">
 				<div id="map"></div>
-
 				<div class="form-box collapse">
 					<div class="row">
-						<div id="md12" class="col-lg-12">
+						<div id="md11" class="col-lg-12">
 							<div id="" class="col-lg-12">
 								<!-- last update -->
-								<div class="col-md-2 mdtop1">
+								<div class="col-md-5 mdtop0">
 									<div>
-										<label class="labels"> Latest Update </label>
+										<label class="labelst"> Latest Update </label>
 									</div>
 									<div>
-										<label id="latestupdate" value=""></label>
-										<!-- <label class="text"> 05/04/2017 15:03 </label> -->
-									</div>
-								</div>
+										 <label class="labellt" id="latestupdate" value=""></label>  
+									</div>			
+								</div> 
 								<!-- end of last update -->
-								<!-- Surveyer name-->
-								<div class="col-md-2 mdtop1">
-									<div>
-										<label class="labels"> Surveyer </label>
-									</div>
-									<div>
-										<label id="surveyername" value=""></label>
-									</div>
-									<div id="listFieldMap" class="listFieldMap"
-										th:each="ffmap,iterasi : ${futsalField}">
-										<!-- <span hidden id="index" name="index" th:text="${iterasi.index}"></span> -->
-										<span hidden id="idFutsalField" name="idFutsalField"
-											class="idFutsalField" th:text="${ffmap.idFutsalField}"></span>
-										<span hidden id="fieldName" name="fieldName" class="fieldName"
-											th:text="${ffmap.fieldName}"></span> <span hidden
-											id="latitude" name="latitude" class="latitude"
-											th:text="${ffmap.latitude}"></span> <span hidden
-											id="longitude" name="longitude" class="longitude"
-											th:text="${ffmap.longitude}"></span>
-									</div>
-
-								</div>
+								
+															
+				<!-- To get data had send by controller -->
+				<div class="listFieldMap" th:each="ffmap,iterasi : ${futsalField}">
+					<span hidden id="idFutsalField" name="idFutsalField" value="" class="idFutsalField" th:text="${ffmap.idFutsalField}"></span>
+					<span hidden id="fieldName" name="fieldName" value="" class="fieldName" th:text="${ffmap.fieldName}"></span> 
+					<span hidden id="latitude" name="latitude" value="" class="latitude" th:text="${ffmap.latitude}"></span> 
+					<span hidden id="longitude" name="longitude" value="" class="longitude" th:text="${ffmap.longitude}"></span>
+				</div>
+								
+								<!-- end of Latest Update-->
 								<!-- end of surveyer name-->
-								<div class="col-md-6 mdtop1" style="padding-right: unset;">
-									<div class="dropdown" style="float: right; right: 0;">
-										<a id="dLabel" role="button" data-toggle="dropdown"
-											class="btn btn-primary" data-target="#" href="/page.html">
-											<i class="icon-gear"></i> Action <span class="caret"></span>
-										</a>
-										<ul class="dropdown-menu multi-level" role="menu"
-											aria-labelledby="dropdownMenu" id="dropdown_action">
+								
+							<!-- Dropdown Edit and Delete -->	
+							<div class="col-md-4 mdtop0" style="">
+									<div class="dropdowns" style="">
+										<a id="dMap" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="/page.html"> <i class="icon-gear"></i> Action <span class="caret"></span></a>
+										<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" id="dropdown_action">
 											<li><a th:href="@{/admin/edit-field/10}">Edit</a></li>
 											<li><a href="#" onclick="centerModal(10)">Delete</a></li>
 										</ul>
 									</div>
+								</div> 	
+								<!-- End of Dropdown Edit and Delete -->
+								 		
 								</div>
-							</div>
+								<!-- Surveyer name-->
+								<div class="col-lg-12">
+									<div>
+										<label class="labelssu"> Surveyer </label>
+									</div>
+									<div>
+										 <label class="surveyer" id="surveyer" value=""></label>			
+									</div>	
+									
+									</div>
+								
 							<!-- Field img -->
 							<div class="col-md-6 mdtop6">
-								<img src="/img/aa.jpg" height="150" width="320">
+								<img class="image" id="photo" value="" src="/img/aa.jpg" height="150" width="325">
 							</div>
 							<!--end of field img-->
 							<div class="col-lg-12">
 								<!-- detail -->
-								<div class="col-md-6 mdtop2" id="title">
-									<div></div>
+								<div class="">
+									<div class="survey">
+										 <label id="surveyer1" value=""></label>			
+									</div> 
+									<div>
+                  						<label class="labelslo" id="location" value=""></label> 
+                					</div>
 								</div>
+								
 								<!-- end of detail-->
-								<div class="col-lg-12 mdtop3">
+								
+								<div class="col-lg-12 mdtop2">
+								
 									<!-- phone number -->
-									<div class="col-md-2 mdtop4">
+									
+									<div class="col-md-2 mdtop3">
 										<div>
-											<label class="labels">Telepon</label>
+											<label class="labelsh">Telepon</label>
 										</div>
 										<div>
-											<label id="telepon" value=""></label>
-										</div>
-									</div>
-									<div class="col-md-3 mdtop4">
-										<div>
-											<label class="labels">Jumlah Lapangan</label>
-										</div>
-										<div>
-											<label id="jumlahlapangan" value=""></label>
+											<label id="telepon" value=""></label> 											
 										</div>
 									</div>
-
+									
+									<!-- end of phone number-->
+               						 <!-- number of field -->
+									
+									<div class="col-md-0 mdtop3">
+										<div>
+											<label class="labelss">Jumlah Lapangan</label>
+										</div>
+										<div>
+											<label class="labelsj" id="jumlahlapangan" value=""></label> 									
+										</div>
+									</div>
+									<!-- end of number of field -->
 								</div>
 								<!-- jam buka -->
-								<div class="col-md-12 mdtop5">
+								<div class="col-md-13 mdtop5">
 									<div>
-										<label class="labels">Jam Buka</label>
+										<label class="labelsb">Jam Buka</label>
 									</div>
 									<div>
 										<label id="jam_buka" value=""></label>
-									</div>
-									<!-- <div>
+									</div> 
+									 <div>
 										<label class="texts">Senin-Sabtu</label>
-									</div> -->
+									</div> 
 									<!-- <div>
 										<label class="textes">08:00-20:00</label>
 									</div> -->
-								</div>
+									</div>
 								<!-- end of jam buka-->
 								<!-- harga-->
-								<div class="col-md-12 mdtop5">
+								<div class="col-md-13 mdtop3">
 									<div>
-										<label class="labels">Harga Normal Per Jam</label>
+										<label class="labelsn">Harga Normal Per Jam</label>
 									</div>
-									<div>
-										<label id="harga" value=""></label>
-									</div>
+									<div class="textes">
+                  						<label id="harga" value=""></label>
+                					</div>
 								</div>
+								<!-- end of harga-->
 							</div>
 						</div>
-						<div class="col-lg-12"></div>
 					</div>
-
-					<script>
+					<script>				
 					var textVal = [];
 					var fillLoc = [];
 					var countIndex = 0;
-					var loc2 = [];
 					var countListMap = 0;
-					var key=["idFutsalField","fieldName","latitude", "longitude"];
 					$( "span" ).each( function( index, element ){
 					     textVal[index] = $(this).text();
 					     countIndex ++;
 					})
 					var loc = [];
-					
 					 $.each($('.listFieldMap'),function(index, value) {
 						 	var idFutsalField, fieldName, latitude, longitude;
 							for(var x = 0 ; x < 4 ; x ++){
@@ -185,119 +313,70 @@
 								countListMap++;
 							}
 							 loc.push({idFutsalField: idFutsalField, fieldName: fieldName, latitude: latitude, longitude : longitude});
-						});
-					
-				 	var loc2 = [	
-						 {
-							"idFutsalField": $('#idFutsalField').text(),
-							"fieldName": $('#fieldName').text(),
-							"latitude": $('#latitude').text(),
-							"longitude": $('#longitude').text()	
-						}
-					 ];
-					/* var obj = JSON.parse(loc[1]); */
-					//console.log(listMapObject);
-					console.log(loc2);
-					//console.log(fillLoc[8]);
-					//console.log(document.querySelector('span[name=fieldname]'));
-					/* $.each($('.listFieldMap'),function (index, value){
-					     //console.log($(value).html());
-					     console.log($(value).text())
-				    }); */
-					
-					/* $.each($('.listFieldMap'),function(index, value) {
-                        console.log(index + ':' + $(value).text());
-                    }); */					
-				        // Memunculkan semua data yang dibuat di var loc        
-				     /* $.each(loc, function(){
-				    	 $.each(this, function (name, value){
-				    		 console.log(name + '=' + value);;
-				    	 });
-				     }); */ 
-				      
-				      // Memunculkan semua data yang dibuat di database
-					/*  $.each(loc, function(){
-						 $.each($('.listFieldMap'),function(index, value) {
-										console.log(index + ':' + $(value).text());
-									});   
-				     }); */
-				     
-						function initMap() {
-							var map = new google.maps.Map(document
-									.getElementById('map'), {
+						});				 
+						function initMap(){
+							var map = new google.maps.Map(document.getElementById('map'), {
 								zoom : 13,
-								center : {
-									lat : -6.197180299999999,
-									lng : 106.84686999999997
-								}
+								center : {lat : -6.197180299999999,lng : 106.84686999999997}
 							});
 							setMarkers(map);
 							var markers = [];
 							function setMarkers(map) {
-								var image = {
-									url : 'https://image.ibb.co/dznXH5/pointer.png',
-									//url : 'https://image.ibb.co/kytxH5/selected_map.png',	
-									// Image When Click and Show Detail of Field
-									size : new google.maps.Size(50, 56),
-									origin : new google.maps.Point(0, 0),
-									anchor : new google.maps.Point(0, 50)
-								};
+								var image = { url : 'https://image.ibb.co/dznXH5/pointer.png'};
 								var shape = {
 									coords : [ 1, 1, 1, 50, 48, 50, 48, 1 ],
 									type : 'poly'
 								};
+								var markerLocation = [];
 								for (var i = 0; i < loc.length; i++) {
 									var locations = loc[i];
-									var latLng = new google.maps.LatLng(
-											locations.latitude, locations.longitude);
+									var latLng = new google.maps.LatLng(locations.latitude, locations.longitude);
 									var marker = new google.maps.Marker({
 										position : latLng,
-										map : map,
+										map : map, 
 										icon : image,
 										shape : shape,
 										title : locations.fieldName,
-										id : locations.idFutsalField
+										id : locations.idFutsalField,
+										location: locations.location
 									});
-									google.maps.event
-											.addListener(
-													marker,
-													'click',
-													function() {
-														console.log(this.title);
-														console.log(this.id);
-														map.setCenter(this.getPosition());
-														$(".form-box")
-																.removeClass(
-																		"collapse");
-														bind(
-																this.title,
-																this.id
-																);
-														for (var j = 0; j < markers.length; j++) {
-															markers[j]
-																	.setIcon("https://image.ibb.co/dznXH5/pointer.png");
-														}
-														marker
-																.setIcon("https://image.ibb.co/kytxH5/selected_map.png");
-													});
+									markerLocation[i] = marker;
+									google.maps.event.addListener(marker,'click',function(){
+										for(var j=0;j<markerLocation.length;j++){
+											markerLocation[j].setIcon("https://image.ibb.co/fDi8ma/pointer_opacity.png");
+										}
+										this.setIcon("https://image.ibb.co/kzvaWa/Webp_net_resizeimage_1.png");										
+										$(".form-box").removeClass("collapse");
+										var futsalField = {};
+										futsalField.idFutsalField = this.id;
+										futsalField.fieldNeme = this.fieldName;
+										$.ajax({
+										 type: "POST",
+										 url: "/detail-field-map",
+										 data: futsalField,
+										 timeout: 600000,
+										 success: function (data) { 									
+											var latLng = new google.maps.LatLng(data.latitude, data.longitude);
+											map.setCenter(latLng);																						                 	
+											$('#surveyer').html(data.fieldName);
+											$('#surveyer1').html(data.fieldName);
+											$('#photo').html(data.photo);
+											$('#location').html(data.detailLocation);
+											$('#latestupdate').html(data.latestUpdate); 
+											$('#telepon').html(data.phone);
+											$('#jumlahlapangan').html(data.numberOfField); 
+											$('#jam_buka').html(data.openingHours);
+											$('#harga').html(data.price);
+											},
+											error: function (e) {
+											   console.log("ERROR");}
+											});
+											});
 								}
 							}
-						}
-						function bind(title, idFutsalField) {
-							$('#surveyername').html(title);
-							$('#latestupdate').html(title);
-							$('#telepon').html(idFutsalField);
-							$('#jumlahlapangan').html(idFutsalField);
-							$('#jam_buka').html(idFutsalField);
-							$('#harga').html(idFutsalField);
-						}
+						}			
 					</script>
-					<script
-						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDByR5Y8ovC_QFWCQnHcdGYGYzqLZfZ1ew&callback=initMap">	
-					</script>
-					<script>	
-					</script>
-					<script src="/js/futsalfield.js"></script>
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDByR5Y8ovC_QFWCQnHcdGYGYzqLZfZ1ew&callback=initMap"></script>				
 				</div>
 			</div>
 		</div>

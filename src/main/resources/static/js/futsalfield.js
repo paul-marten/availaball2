@@ -6,6 +6,7 @@ function centerModal(id) {
        $('#button_delete').on('click', function(event){
     	   var futsalField = {};
     	   futsalField.idFutsalField = id;
+    	   var idFutsalField = id;
     	   $.ajax({
     		   	 type: "POST",
 	             url: "/delete-field",
@@ -111,8 +112,7 @@ $(document).ready( function () {
             }]
     })
     
-    
-
+   
 	table.on( 'draw.dt', function () {
 		table.column(0).nodes().each( function (cell, i) {
 	    // console.log(cell);

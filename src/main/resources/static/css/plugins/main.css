@@ -80,8 +80,9 @@ display :none;
 .col{
 	padding-right:unset;
 }
-.buts{
-		width:7%!important;
+.buts {
+    width: 7%!important;
+    height: 60px!important;
 }
 .drop{
 	width:5%!important;
@@ -95,14 +96,10 @@ display :none;
  .custs paginate_button{
 	color:red!important;
 }
-
 #searchLocation{
 	padding-right:unset!important;
 	padding-left:20px!important;
 }
-
-
-
 .paginate{position: fixed;}
 .pagination>li>a, .pagination>li>span {
   padding: 3px 10px;
@@ -112,8 +109,7 @@ display :none;
  color: #B3B3B3;
   background-color: #FFFFFF;
   border: 1px  solid #B3B3B3;;
-  font-size: 15px;
-  
+  font-size: 15px; 
 }
 .pagination > li > a:hover,
 .pagination > li > span:hover,
@@ -267,7 +263,7 @@ label-s {
     border: 1px solid #ccc;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    font-style: oblique;
+    font-style: italic;
 }
 
 

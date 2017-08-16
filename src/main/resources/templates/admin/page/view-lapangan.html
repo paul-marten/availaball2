@@ -7,13 +7,14 @@
     	
 </head>
 <body>
+
 	<div id="page-wrapper">
 		<div layout:fragment="content">
 			<div class="container-fluid">
 
+
 				<!-- Page Heading -->
 				<div class="row">
-
 					<div id="md12" class="col-lg-12">
 
 						<div id="" class="col-lg-12">
@@ -25,22 +26,19 @@
 								<div>
 									<label class="text"> 05/04/2017 15:03 </label>
 								</div>
-
 							</div>
 							<!-- end of last update -->
-
 
 							<!-- Surveyer name-->
 							<div class="col-md-2 mdtop1">
 								<div>
-									<label class="labels"> Surveyer </label>
+									<label class="labels">Surveyer</label>
 								</div>
 								<div>
-									<label class="text"> <span
-										th:text="${view.fieldName}"></span>
+									<label class="text"> 
+									<span th:text="${view.fieldName}"></span>
 									</label>
 								</div>
-
 							</div>
 							<!-- end of surveyer name-->
 							<div class="col-md-6 mdtop1" style="padding-right: unset;">
@@ -53,14 +51,11 @@
 						              <li><a th:href="@{/admin/edit-field/{id}(id=${view.idFutsalField})}">Edit</a></li>
 						              <li><a href="#" onclick="delete()" data-toggle="modal" data-target="#myModal" >Delete</a></li>
 						            
-						             
-
+					
 
 						            </ul>
 						        </div>								
-
 							</div>
-
 						</div>
 									<div class="modal fade" id="myModal" tabindex="-1"
 										role="dialog" aria-labelledby="myModalLabel"
@@ -177,7 +172,6 @@
 								</div>
 							</div>
 							<!-- end of jam buka-->
-
 							<!-- harga-->
 							<div class="col-md-12 mdtop5">
 								<div>
@@ -186,7 +180,6 @@
 								<div class="textes">
 									<span th:text="${view.price}"></span>
 								</div>
-
 							</div>
 							<!-- end of harga-->
 						</div>

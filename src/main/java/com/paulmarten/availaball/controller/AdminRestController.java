@@ -60,7 +60,7 @@ public class AdminRestController {
 //	public List<FutsalFieldMap> maps() {
 //		return futsalFieldService.findAllFutsalFieldMap();
 //	}
-	
+	 
 	@JsonView(ViewJSON.FutsalField.class)
 	@RequestMapping(value = "/detail-field-map", method = RequestMethod.POST, headers = "Accept=application/json")
 	public FutsalField detailfieldMap(@ModelAttribute FutsalField futsalField) {
@@ -68,6 +68,5 @@ public class AdminRestController {
 	}
 	
 	//@formatter:off
-
 	//@formatter:on
 }
