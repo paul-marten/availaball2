@@ -98,17 +98,6 @@ ol {
   font-size: 14px;
 }
 
-/*  .btned-default {
-    background-color: #999999;
-    color: #0475bc;
-}
-
-.btned-default:focus,
-.btned-default.focus {
-  color: #0475bc;
-} 
-} */
-
 .btned:hover{
 	color:#999999;
 	text-decoration: none;
