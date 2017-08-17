@@ -87,10 +87,18 @@ public class SurveyerController {
 	public ResponseMessage createField(@ModelAttribute FutsalField futsalField) {
 		ResponseMessage responseMessage = new ResponseMessage();
 
+
+	/*	responseMessage.setMessage(futsalFieldService.saveField(futsalField));*/
+
+		responseMessage.setCode("600");
+		responseMessage.setMessage(futsalFieldService.saveField(futsalField));
+
+
 		responseMessage.setCode("600");
 		responseMessage.setMessage(futsalFieldService.saveField(futsalField));
 
 	/*	responseMessage.setMessage(futsalFieldService.saveField(futsalField));*/
+
 
 		return responseMessage;
 	}
@@ -144,7 +152,7 @@ public class SurveyerController {
 		ResponseMessage responseMessage = new ResponseMessage();
 		List<DetailPrice> detailPrices = new ArrayList<DetailPrice>();
 		FutsalField futsalFieldSentObject = futsalFieldService.findFutsalFieldById(idFutsalField);
-		detailPrices = detailPriceService.findByIdFutsalField(futsalFieldSentObject);
+	//	detailPrices = detailPriceService.findByIdFutsalField(futsalFieldSentObject);
 		responseMessage.setMessage("Success");
 		responseMessage.setCode("600");
 		responseMessage.setObject(detailPrices);

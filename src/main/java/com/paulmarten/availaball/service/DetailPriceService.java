@@ -13,7 +13,12 @@ import com.paulmarten.availaball.repository.DetailPriceRepository;
 /**
  * Created by paulms on 6/14/2017.
  */
+
+
 @Service("detailPriceService")
+
+
+ 
 public class DetailPriceService {
 
     @Autowired
@@ -22,10 +27,11 @@ public class DetailPriceService {
     public List<DetailPrice> findByFutsalField(FutsalField futsalField){
     	return detailPriceRepository.findAllByFutsalField(futsalField);
     }
-    
-    public List<DetailPrice> findByIdFutsalField(FutsalField futsalField){
-    	return detailPriceRepository.findByFutsalField(futsalField);
-    }
+
+
+  
+
+
     
     public String saveDetailPrice(DetailPrice detailPrice){
     	String message = "";
@@ -36,4 +42,5 @@ public class DetailPriceService {
     public List<DetailPrice> findByDayAndIdFutsalField(String day, FutsalField futsalField){
     	return detailPriceRepository.findByDayAndFutsalField(day, futsalField);
     }
+
 }

@@ -6,11 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
-import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.DetailPrice;
 import com.paulmarten.availaball.model.FutsalField;
+
 
 import com.paulmarten.availaball.model.FutsalFieldMap;
 
@@ -43,6 +41,8 @@ public class AdminController {
 
 	@Autowired
 	private AccountService accountService;
+
+
 
 	@Autowired
 	private DetailPriceService detailPriceService;
@@ -113,11 +113,16 @@ public class AdminController {
 		FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
 		model.addAttribute("view", futsalFieldEdit);
 		
+		List<DetailPrice> detailPrice = detailPriceService.findByFutsalField(futsalFieldEdit);
+		model.addAttribute("viewDetailPrice", detailPrice);		
+		
 		for(int indexDay = 0; indexDay < days.length; indexDay ++){
 			String day = days[indexDay];
 			List<DetailPrice> detailPrices = detailPriceService.findByDayAndIdFutsalField(day, futsalFieldEdit);
 			model.addAttribute(day, detailPrices);
+			System.out.println(day);
 		}
+		
 		
 		String number = futsalFieldEdit.getPhone();
 		String[] result = number.split(",");
@@ -139,4 +144,5 @@ public class AdminController {
 	public String blank() {
 		return "/admin/page/picklocation";
 	}
+
 }
