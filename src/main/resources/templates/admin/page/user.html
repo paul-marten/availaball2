@@ -74,7 +74,7 @@ $(document).ready(function(){
 											<div class="form-group has-feedback" class="form-create">
 												<label-s style="margin-left: 30px;"> Email </label-s>
 												<input type="email" name="username" value="" 
-													placeholder="Ketik Email" class="form-controls" required data-parsley-type="email" data-parsley-trigger="keyup" id="username"
+													placeholder="Ketik Email" class="form-controls"  data-parsley-type="email" data-parsley-trigger="keyup" id="username"
 													 maxlength="80" size="30" style="font-style: italic; opacity:0.6;">
 											</div>
 
@@ -82,8 +82,7 @@ $(document).ready(function(){
 												<label-s style="margin-left: 30px;"> Nomor Telepon
 												</label-s>
 												<input type="text" name="phone" value=""
-													placeholder="Ketik Nomor Telepon" class="form-controls"
-													id="phone"  maxlength="80" size="30" style="font-style: italic; opacity:0.6;">
+													placeholder="Ketik Nomor Telepon" class="form-controls" data-parsley-pattern="^\d{4} \d{4} \d{4}$" id="phone"  maxlength="80" size="30" style="font-style: italic; opacity:0.6;">
 
 											</div>
 
