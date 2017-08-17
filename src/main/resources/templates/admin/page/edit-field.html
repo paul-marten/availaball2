@@ -208,7 +208,9 @@ $(document).on('change','#update-img' , function(){
                         <!-- Field Name -->
 
                         <div class="col-lg-12 lefted">
-                       
+                       	<!-- <div th:each="snn : ${senin}">
+							<span th:text="${snn.startTime}"></span>
+						</div> -->
                             
                             <div class="col-lg-6 lefted">
                              <label class="field-nama label-color">Nama</label>
@@ -264,7 +266,7 @@ $(document).on('change','#update-img' , function(){
 							  <option>Jakarta Timur</option>
 
                         	</div>
-              
+              			
                       		<div class="col-lg-12  field-telpon lefted">
                             <div class="col-lg-6 lefted">
                         
@@ -277,9 +279,9 @@ $(document).on('change','#update-img' , function(){
 									
 												<div class="bound input_telepon"  id="field_telepon">
 												
-														<input class="form-control input" name="result[0]"   pattern="[0-9]{14}"
+												<input class="form-control input" name="result[0]"   pattern="[0-9]{14}"
 															id="phone_no" placeholder="Phone Number" maxlength="14" th:value="${phn}"  />	
-<div style="padding-right: 2px">
+												<div style="padding-right: 2px">
 												</div>		
 													<span th:if="${iterStat.last and iterStat.index < 2}" class="input-group-btn ">
 														<button class="btn btn-success btn-add" type="button"

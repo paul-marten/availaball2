@@ -1,17 +1,26 @@
 package com.paulmarten.availaball.model;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.paulmarten.availaball.ViewJSON;
-import com.paulmarten.availaball.validators.PasswordMatch;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.fasterxml.jackson.annotation.JsonView;
+import com.paulmarten.availaball.ViewJSON;
 
 /**
  * Created by paulms on 6/14/2017.
@@ -71,6 +80,7 @@ public class Account implements Serializable {
 
 	@JsonView(ViewJSON.Account.class)
 	@NotEmpty
+	@Email
 	@Column(name = "username", unique = true)
 	public String getUsername() {
 		return username;

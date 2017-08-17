@@ -1,19 +1,27 @@
 package com.paulmarten.availaball.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonView;
-import com.paulmarten.availaball.ViewJSON;
-
-import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.paulmarten.availaball.ViewJSON;
 
 /**
  * Created by paulms on 6/15/2017.
@@ -37,6 +45,7 @@ public class FutsalField implements Serializable {
     private Account account;
     private String days;
     private Set<DetailPrice> detailPrices = new HashSet<DetailPrice>(0);
+    private List<DetailPrice> detail;
     private String latitude;
     private String longitude;
     
@@ -181,6 +190,16 @@ public class FutsalField implements Serializable {
         this.detailPrices = detailPrices;
     }
     
+    
+    @Transient
+	public List<DetailPrice> getDetail() {
+		return detail;
+	}
+
+	public void setDetail(List<DetailPrice> detail) {
+		this.detail = detail;
+	}
+
 	@JsonView(ViewJSON.FutsalField.class)
 	@Column (name = "latitude")
 	public String getLatitude() {

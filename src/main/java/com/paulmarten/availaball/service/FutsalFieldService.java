@@ -126,8 +126,6 @@ public class FutsalFieldService {
 		futsalFieldSave.setLatestUpdate(new java.sql.Timestamp(today.getTime()));
 		Account accountSaveFutsalField = new Account();
 		
-//		String[] days = futsalField.getDays().split(",");
-//		List<String> dayList = Arrays.asList(futsalField.getDays().split(","));
 		accountSaveFutsalField = accountRepository.findOne(futsalField.getAccount().getId());
 		if (futsalFieldRepository.save(futsalFieldSave) != null) {
 			FutsalField futsalFieldIdAfterSave = new FutsalField();
