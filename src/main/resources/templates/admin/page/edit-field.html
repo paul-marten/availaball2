@@ -26,11 +26,9 @@
 			<div class="container-fluid">
 
 
-				<form method="post">
+				<form method="post" th:action="@{/admin/save-edit-field}" >
 					<!-- Page Heading -->
 					<div class="row">
-
-
 
 						<div id="map-container" class="col-lg-12 " style="display: none;">
 
@@ -276,10 +274,10 @@
 								<div class="col-lg-12 lefted">
 
 
-
+								<input type=" text" name="idFutsalField"  th:value="${view.idFutsalField}" hidden="hidden">
 									<div class="col-lg-6 lefted">
 										<label class="field-nama label-color">Nama</label> <input
-											type="text" class="form-control" name="nama" size="35"
+											type="text" class="form-control" name="fieldName" size="35"
 											placeholder="Nama Lapangan" th:field="*{view.fieldName}">
 
 									</div>
@@ -297,9 +295,7 @@
 										<!-- Map icon -->
 										<div class="col-lg-4 map2 lefted" id="maps"
 											style="margin-top: -9px; padding-right: unset;">
-
-											<input type="text" name='nama_lokasi' id='nama_lokasi'
-												hidden="hidden"> <input type="text" name='latitude'
+												 <input type="text" name='latitude'
 												id='latitude' hidden="hidden"> <label
 												name='longitude' id='longitude' th:text="${view.longitude}"></label>
 											<a type="button" onClick="showmap()"> <img
@@ -310,7 +306,7 @@
 
 
 										<textarea class="form-control" size="35" id="alamat"
-											placeholder="Alamat" value="" style="resize: none;"
+											placeholder="Alamat" value="" style="resize: none;" name='detailLocation'
 											th:field="${view.detailLocation}"></textarea>
 
 
@@ -325,7 +321,7 @@
 
 									<label class="label-color ">Kota</label> <select
 										class="form-control select-kota" id="location"
-										value="location">
+										value="location" name="location">
 										<option th:each="loc : ${location} "
 											th:value="${loc.location}" th:text="${loc.location}"
 											th:selected="${loc.location == loc}"></option>
@@ -346,7 +342,7 @@
 													<div class="bound input_telepon" id="field_telepon">
 
 														<input class="form-control input" name="result[0]"
-															pattern="[0-9]{14}" id="phone_no"
+															 id="phone_no"
 															placeholder="Phone Number" maxlength="14"
 															th:value="${phn}" />
 														<div style="padding-right: 2px"></div>
@@ -377,7 +373,7 @@
 
 											</div>
 											<input type="text" th:value="${view.phone}" size="50"
-												id="output" hidden="hidden">
+												id="phone" name="phone" hidden="hidden">
 
 
 											<script type="text/javascript">
@@ -388,12 +384,12 @@
 															.keyup(
 																	function() {
 																		$(
-																				'#output')
+																				'#phone')
 																				.val(
 																						$(
 																								'.input')
 																								.not(
-																										'#output')
+																										'#phone')
 																								.map(
 																										function() {
 																											// console.log($(this).val());
@@ -429,7 +425,7 @@
 
 											<label class="label-color">Jumlah Lapangan</label> <select
 												th:field="*{view.numberOfField}" class="form-control select"
-												style="width: 100px">
+												style="width: 100px" name="numberOfField">
 												<option th:each="i: ${#numbers.sequence(1,20)}"
 													th:value=${i} th:text="${i}"
 													th:selected="${i == view.numberOfField}"></option>
@@ -457,7 +453,7 @@
 											<label class="control-label" for="field1"> <input
 												class="day" name="day" value="day"
 												style="margin-right: 12px; margin-left: -16px;"
-												type="checkbox" id="senin" th:checked="${senin} != null">Senin
+												type="checkbox" id="senin" th:checked="${#lists.size(senin)} >= 1">Senin
 											</label>
 
 
@@ -465,10 +461,10 @@
 
 										<div class="senin">
 											
-
+								<div th:if="${senin != null}" >
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry" th:each="senin, iterStat : ${senin}" >
-												<div th:if="${senin != null}" >
+												
 													<input hidden name="day[]" th:value= ${senin.day} class="detail">
 													<select class="time" id="start_senin" name="starttime[]">
 														<option th:each="i : ${#numbers.sequence(6,24)}"
@@ -501,9 +497,14 @@
 												
 												</div>
 
-												<div th:if="${senin == null}">
-													<input hidden name="day[]" value=""  class="detail">
-													<select class="time" id="start_senin" disabled="disabled"
+
+
+											</div>
+												<div th:unless="${#lists.size(senin)}>=1">
+													<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry"  >
+												<input hidden name="day[]" value=""  class="detail">
+													<select class="time " id="start_senin" disabled="disabled"
 														name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
@@ -522,10 +523,9 @@
 															<span class="icon_add" style="float: right"></span>
 														</button>
 													</div>
-												
 												</div>
-
-											</div>
+											
+												</div>
 
 
 
@@ -542,14 +542,17 @@
 											<label class="control-label"> <input class="day"
 												name="day" value="day"
 												style="margin-right: 12px; margin-left: -16px;"
-												type="checkbox" id="selasa" th:checked="${selasa} !=null">Selasa
+												type="checkbox" id="selasa"  th:checked="${#lists.size(selasa)} >= 1">Selasa
 											</label>
 
 										</div>
 										<div class="selasa">
+
+<div th:if="${selasa} != null">
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_selasa" th:each="selasa , iterStat : ${selasa}">
-												<div th:if="${selasa} != null">
+												
+
 												<input hidden name="day[]" th:value= ${selasa.day} class="detail">
 													<select class="time" id="start_selasa" name="starttime[]">
 
@@ -584,7 +587,14 @@
 													</div>
 												</div>
 
-												<span th:unless="${selasa} != null "> 
+
+											</div>
+												<div th:unless="${#lists.size(selasa)}>0"> 
+											<div div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_selasa">
+												
+
+											
 												<input hidden name="day[]"  class="detail">
 												<select
 													class="time" id="start_selasa" disabled="disabled"
@@ -608,8 +618,7 @@
 																disabled="disabled"> </span>
 														</button>
 													</div>
-												</span>
-
+												</div>
 											</div>
 
 
@@ -627,14 +636,15 @@
 											<label class="control-label"> <input class="day"
 												name="day" value="day"
 												style="margin-right: 12px; margin-left: -16px;"
-												type="checkbox" id="rabu" th:checked="${rabu} != null">Rabu
+												type="checkbox" id="rabu"  th:checked="${#lists.size(rabu)} >= 1">Rabu
 											</label>
 
 										</div>
 										<div class="rabu">
+												<div th:if="${rabu} != null" name="starttime[]">
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_rabu" th:each="rabu, iterStat : ${rabu}">
-												<div th:if="${rabu} != null" name="starttime[]">
+										
 												<input hidden name="day[]" th:value= ${rabu.day} class="detail">
 													<select class="time" id="start_rabu">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -665,42 +675,37 @@
 													</div>
 												</div>
 
-												<div th:unless="${rabu} != null">
-												<input hidden name="day[]"  class="detail">
+
+											</div>
+
+
+												<div th:unless="${#lists.size(rabu)}>0">
+												<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_rabu" >
+												<input hidden name="day[]"  class="detail" />
 													<select class="time" id="start_rabu" disabled="disabled"
 														name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
-															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
-															disabled="disabled"></option>
-													</select> <select class="timed" id="end_rabu" name="endtime[]">
+															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
+													</select> <select class="timed" id="end_rabu" disabled="disabled"
+														name="endtime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
-															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
-															disabled="disabled"></option>
+															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 													</select>
 													<div class=" input-group " style="float: right">
 														<label class="rp"> Rp </label> <input class="field-harga"
 															name="harga[0]" type="text" id="rabu-round"
 															placeholder="Harga" style="float: left"
-															disabled="disabled" /> <span th:if="${iterStat.last}">
-															<button class="btn btn-success btn-add_4" type="button"
-																id="green-round_4" disabled="disabled" maxlength="10">
-																<span class="icon_add" style="float: right"
-																	disabled="disabled"></span>
-															</button>
-														</span> <span th:if="not ${iterStat.last}"
-															class="input-group-btn ">
-															<button class="btn btn-danger btn-remove remove"
-																id="green-round" disabled="disabled">
-																<span class="icon_minus"></span>
-															</button>
-														</span>
+															disabled="disabled" />
+
+														<button class="btn btn-success btn-add_4" type="button"
+															id="green-round_4" maxlength="10">
+															<span class="icon_add" style="float: right"> </span>
+														</button>
+
 													</div>
 												</div>
-
-											</div>
-
-
-
+</div>
 										</div>
 									</div>
 								</div>
@@ -713,16 +718,16 @@
 											<label class="control-label"> <input class="day"
 												name="day" value="day"
 												style="margin-right: 12px; margin-left: -16px;"
-												type="checkbox" id="kamis" th:checked="${kamis} != null">Kamis
+												type="checkbox" id="kamis"  th:checked="${#lists.size(kamis)} >= 1">Kamis
 											</label>
 
 										</div>
 										<div class="kamis">
-
+										<div th:if="${kamis} != null">
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_kamis" th:each="kamis, iterStat : ${kamis}">
 
-												<div th:if="${kamis} != null">
+												
 												<input hidden name="day[]" th:value= ${kamis.day} class="detail">
 													<select class="time" id="start_kamis" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -752,8 +757,10 @@
 													</div>
 
 												</div>
-												<div th:unless="${kamis} != null">
-												<input hidden name="day[]"  class="detail">
+												<div th:unless="${#lists.size(kamis)}>0">
+												<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_kamis" >
+												<input hidden name="day[]"  class="detail" />
 													<select class="time" id="start_kamis" disabled="disabled"
 														name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -775,7 +782,7 @@
 														</button>
 
 													</div>
-
+</div>
 												</div>
 											</div>
 
@@ -796,16 +803,16 @@
 											<label class="control-label"> <input class="day"
 												name="day" value="day"
 												style="margin-right: 12px; margin-left: -16px;"
-												type="checkbox" id="jumat" th:checked="${jumat} != null">Jumat
+												type="checkbox" id="jumat"  th:checked="${#lists.size(jumat)} >= 1">Jumat
 											</label>
 
 										</div>
 										<div class="jumat">
-
+				<div th:if="${jumat != null}">
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_jumat" th:each="jumat, iterStat : ${jumat}">
 
-												<div th:unless="${jumat != null}">
+												
 												<input hidden name="day[]" th:value= ${jumat.day} class="detail">
 													<select class="time" id="start_jumat" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -835,7 +842,13 @@
 														</span>
 													</div>
 												</div>
-												<div th:unless="${jumat != null} ">
+
+											</div>
+									<div th:unless="${#lists.size(jumat)}>0">
+																	<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_jumat" >
+
+											
 													<input hidden name="day[]" class="detail">
 													<select class="time" id="start_jumat" disabled="disabled"
 														name="starttime[]">
@@ -857,8 +870,8 @@
 														</button>
 													</div>
 												</div>
-											</div>
-
+													</div>
+									
 										</div>
 									</div>
 
@@ -870,16 +883,16 @@
 											<label class="control-label"> <input class="day"
 												name="day" value="day"
 												style="margin-right: 12px; margin-left: -16px;"
-												type="checkbox" id="sabtu" th:checked="${sabtu}!= null">Sabtu
+												type="checkbox" id="sabtu"  th:checked="${#lists.size(sabtu)} >= 1">Sabtu
 											</label>
 
 										</div>
 										<div class="sabtu">
-
+					<div th:if="${sabtu != null}">
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_sabtu" th:each="sabtu, iterStat : ${sabtu}">
 
-												<div th:if="${sabtu != null}">
+											
 													<input hidden name="day[]" th:value= ${sabtu.day} class="detail">
 													<select class="time" id="start_sabtu" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -909,7 +922,12 @@
 														</span>
 													</div>
 												</div>
-												<div th:unless="${sabtu != null}">
+
+
+													<div th:unless="${#lists.size(sabtu)}>0">
+																	<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_sabtu" >
+
 													<input hidden name="day[]" class="detail">
 													<select class="time" id="start_sabtu" disabled="disabled"
 														name="starttime[]">
@@ -930,6 +948,7 @@
 															<span class="icon_add" style="float: right"></span>
 														</button>
 													</div>
+													</div>
 												</div>
 											</div>
 
@@ -946,15 +965,15 @@
 											<label class="control-label"> <input class="day"
 												name="day" value="day"
 												style="margin-right: 12px; margin-left: -16px;"
-												type="checkbox" id="minggu" th:checked="${minggu != null}">Minggu
+												type="checkbox" id="minggu"   th:checked="${#lists.size(minggu)} >= 1">Minggu
 											</label>
 
 										</div>
 										<div class="minggu">
-
+									<div th:if="${minggu} !=null">
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_minggu" th:each="minggu, iterStat : ${minggu}">
-												<div th:if="${minggu} !=null">
+												
 														<input hidden name="day[]" th:value= ${minggu.day} class="detail">
 													<select class="time" id="start_minggu" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -985,7 +1004,15 @@
 													</div>
 
 												</div>
-												<div th:unless="${minggu}!=null">
+
+											</div>
+												<div th:unless="${#lists.size(minggu)}>0">
+
+										<div class="entry" style="float: left; padding-left: 23px;"
+												id="entry_minggu" >
+												
+											
+
 														<input hidden name="day[]" class="detail">
 													<select class="time" id="start_minggu" disabled="disabled"
 														name="starttime[]">
@@ -1007,8 +1034,8 @@
 														</button>
 													</div>
 												</div>
-											</div>
 
+												</div>
 										</div>
 									</div>
 
@@ -1022,9 +1049,8 @@
 						</div>
 
 					</div>
-					<a href="#" id="button-save" type="submit"
-						class="btn btn-primary btn-default">Simpan</a>
-
+					<input id="button-save" type="submit"
+						class="btn btn-primary btn-default"/>
 
 				</form>
 			</div>

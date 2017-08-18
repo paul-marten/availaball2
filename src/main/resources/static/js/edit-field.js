@@ -147,10 +147,10 @@ $(function()
 
 				$(document).on('change', '#senin', function(){
 
-			    if($('#senin').prop('checked')){
+			    if($('input[type=checkbox]').prop('checked')){
 			       $('#start_senin').removeAttr('disabled');
 			            $('#end_senin').removeAttr('disabled');
-			                 $('#fields-round').removeAttr('disabled');
+			                 $('#senin-round').removeAttr('disabled');
 			                 $('#green-round_2').removeAttr('disabled');
 			                 $('#red-round_2').removeAttr('disabled');
 			    } else {
@@ -163,17 +163,19 @@ $(function()
 			      		 $('.senin .time').prop('selectedIndex',0);
 						console.log(Form1);
 
+ 					$('#start_senin').attr('disabled','disabled');
+			            $('#end_senin').attr('disabled','disabled');
+			                 $('#senin-round').attr('disabled','disabled');
+			                 $('#green-round_2').attr('disabled','disabled');
+			                 $('#red-round_2').attr('disabled','disabled');	
+
 			         if ($('#entry :not(:last-child)')) {
 
 			         	$('#entry:not(:last-child)').remove();
 			         }
 			        
 
-			       		$('#start_senin').attr('disabled','disabled');
-			            $('#end_senin').attr('disabled','disabled');
-			                 $('#fields-round').attr('disabled','disabled');
-			                 $('#green-round_2').attr('disabled','disabled');
-			                 $('#red-round_2').attr('disabled','disabled');
+			      
 
 			           		    }
 			});
@@ -817,64 +819,6 @@ $(function()
 
 
 		});
-/*---------------------------------Price Validation-----------------------------------*/
-$(document).ready(function(){
-  $('input.field-harga').keyup(function(event){
-      // skip for arrow keys
-      if(event.which >= 10 && event.which <= 10){
-          event.preventDefault();
-      }
-      var $this = $(this);
-      var num = $this.val().replace(/,/gi, "").split("").reverse().join("");
-      
-      var num2 = RemoveRougeChar(num.replace(/(.{3})/g,"$1,").split("").reverse().join(""));
-      
-      console.log(num2);
-      
-      
-      // the following line has been simplified. Revision history contains original.
-      $this.val(num2);
-  });
-});
-
-function RemoveRougeChar(convertString){
-    
-    
-    if(convertString.substring(0,1) == ","){
-        
-        return convertString.substring(1, convertString.length)            
-        
-    }
-    return convertString;
-    
-}
-
-
-$(document).ready(function(){
-    // Based off of http://stackoverflow.com/questions/9156390/add-commas-for-a-number-in-input-field-while-typing
-    
-    function RemoveRougeChar(convertString){
-        if(convertString.substring(0,1) == ","){
-            return convertString.substring(1, convertString.length)                  
-        }
-        return convertString; 
-    }
-    
-    $('input.field-harga')
-  
-    .on("focus",function(e){
-        var $this = $(this);
-        var num = $this.val().replace(/,/g,"");
-        $this.val(num);
-        
-    }).on("blur", function(e){
-        var $this = $(this);
-        var num = $this.val().replace(/[^0-9]+/g, '').replace(/,/gi, "").split("").reverse().join("");     
-        var num2 = RemoveRougeChar(num.replace(/(.{3})/g,"$1,").split("").reverse().join(""));
-        $this.val(num2);
-    });
-    
-});
 
 
 

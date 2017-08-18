@@ -119,17 +119,7 @@ public class AdminController {
 		for(int indexDay = 0; indexDay < days.length; indexDay ++){
 			String day = days[indexDay];
 			List<DetailPrice> detailPrices = detailPriceService.findByDayAndIdFutsalField(day, futsalFieldEdit);
-
 			model.addAttribute(day, detailPrices);
-			System.out.println(day);
-
-			if(detailPrices.size()>0){
-				model.addAttribute(day, detailPrices);
-			}
-			else{
-				model.addAttribute(day, null);
-			}
-
 		}
 		
 		
@@ -146,12 +136,12 @@ public class AdminController {
 	@RequestMapping(value = "/save-edit-field", method = RequestMethod.POST)
 	public String editField(@ModelAttribute FutsalField futsalField) {
 		FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
-		String message = futsalFieldService.updateFutsalField(futsalField);
-		detailPriceService.deleteDetailFutsalPrice(futsalFieldEdit);
-		if(message.equals("Success")){
-			message = detailPriceService.saveDetailPrice(futsalField);
-		}
-		return message;
+		futsalFieldService.updateFutsalField(futsalField);
+		// detailPriceService.deleteDetailFutsalPrice(futsalFieldEdit);
+		// if(message.equals("Success")){
+		// 	message = detailPriceService.saveDetailPrice(futsalField);
+		// }
+		return "redirect:/admin/index";
 	}
 	
 	@RequestMapping(value = "/current-map/{id}")
