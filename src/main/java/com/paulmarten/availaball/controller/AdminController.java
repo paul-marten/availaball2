@@ -128,7 +128,29 @@ public class AdminController {
 
 		return "/admin/page/edit-field";
 	}
+	
+	@RequestMapping(value = "/save-edit-field/{id}", method = RequestMethod.POST)
+	public String saveEditField(@PathVariable int id, Model model) {
+		String[] days = { "senin", "selasa", "rabu", "kamis", "jumat", "sabtu", "minggu" };
 
+		FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
+		model.addAttribute("view", futsalFieldEdit);
+		
+		for(int indexDay = 0; indexDay < days.length; indexDay ++){
+			String day = days[indexDay];
+			List<DetailPrice> detailPrices = detailPriceService.findByDayAndIdFutsalField(day, futsalFieldEdit);
+			model.addAttribute(day, detailPrices);
+		}
+		
+		String number = futsalFieldEdit.getPhone();
+		String[] result = number.split(",");
+		model.addAttribute("phone", result);
+
+		List<Location> listLocation = locationService.viewAllField();
+		model.addAttribute("location", listLocation);
+
+		return "/admin/page/edit-field";
+	}
 	@RequestMapping(value = "/current-map/{id}")
 	public String viewMap(@PathVariable int id, Model model) {
 		model.addAttribute("edit", futsalFieldService.findFutsalFieldById(id));
