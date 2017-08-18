@@ -112,18 +112,14 @@ public class AdminController {
 
 		FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
 		model.addAttribute("view", futsalFieldEdit);
-		
-		for(int indexDay = 0; indexDay < days.length; indexDay ++){
+
+		for (int indexDay = 0; indexDay < days.length; indexDay++) {
 			String day = days[indexDay];
 			List<DetailPrice> detailPrices = detailPriceService.findByDayAndIdFutsalField(day, futsalFieldEdit);
-			if(detailPrices.size()>0){
-				model.addAttribute(day, detailPrices);
-			}
-			else{
-				model.addAttribute(day, null);
-			}
+			System.out.println(detailPrices.size());
+			model.addAttribute(day, detailPrices);
 		}
-		
+
 		String number = futsalFieldEdit.getPhone();
 		String[] result = number.split(",");
 		model.addAttribute("phone", result);
@@ -133,18 +129,18 @@ public class AdminController {
 
 		return "/admin/page/edit-field";
 	}
-	
+
 	@RequestMapping(value = "/save-edit-field", method = RequestMethod.POST)
 	public String editField(@ModelAttribute FutsalField futsalField) {
 		FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
 		String message = futsalFieldService.updateFutsalField(futsalField);
 		detailPriceService.deleteDetailFutsalPrice(futsalFieldEdit);
-		if(message.equals("Success")){
+		if (message.equals("Success")) {
 			message = detailPriceService.saveDetailPrice(futsalField);
 		}
 		return message;
 	}
-	
+
 	@RequestMapping(value = "/current-map/{id}")
 	public String viewMap(@PathVariable int id, Model model) {
 		model.addAttribute("edit", futsalFieldService.findFutsalFieldById(id));

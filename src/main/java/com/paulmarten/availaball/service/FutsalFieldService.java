@@ -113,6 +113,7 @@ public class FutsalFieldService {
 		futsalFieldSave.setNumberOfField(futsalField.getNumberOfField());
 		futsalFieldSave.setPhone(futsalField.getPhone());
 		futsalFieldSave.setLatitude(futsalField.getLatitude());
+		futsalFieldSave.setLocation(futsalField.getLocation());
 		futsalFieldSave.setLongitude(futsalField.getLongitude());
 		futsalFieldSave.setDetailLocation(futsalField.getDetailLocation());
 		if(futsalFieldRepository.save(futsalFieldSave)!=null){
