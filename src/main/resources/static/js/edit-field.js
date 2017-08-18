@@ -92,10 +92,52 @@ $(function()
 			            .html('<span class="icon_minus" ></span>');
 			       		$("#green-round_2").prop('id', 'red-round_2');
 
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
+
+				    
 			    	}
 			    )    
 		    .on('click', '.btn-remove', function(e){		
 			    $(this).parents('.entry:first').remove();
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						     
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
+
 				e.preventDefault();
 				return false;		
 			});
@@ -113,6 +155,9 @@ $(function()
 			   			var Form1 = $('#entry :not(:last)'),
 			            curEntry = $(this).parents('#entry :first '),
 			            nEntry = $(Form1.clone()).appendTo(curEntry);
+			            $('.senin input[type=text]').val('')
+			            $('.senin .timed').prop('selectedIndex',0);
+			      		 $('.senin .time').prop('selectedIndex',0);
 						console.log(Form1);
 
 			         if ($('#entry :not(:last-child)')) {
@@ -133,34 +178,6 @@ $(function()
 
 		});
 
-/*
-$('.time').on('change', function(e) {
-var from_time = Date.parse($(this).val());
-
-var from_time_adj = new Date();
-from_time_adj.setTime(from_time.getTime() + (60 * 60));
-
-$('.to option').each(function(index, el) {
-var to_time = Date.parse($(el).val());
-  if (to_time < from_time_adj) {
-      $(el).attr('disabled', true);
-   }
-});
-});
-
-$('.timed').on('change', function(e) {
-
-var to_time = Date.parse($(this).val());
-var to_time_adj = new Date();
-
-to_time_adj.setTime(to_time.getTime() - (60 * 60 * 1000));
-$('.from option').each(function(index, el) {
-var from_time = Date.parse($(el).val());
-  if (from_time > to_time_adj) {
-      $(el).attr('disabled', true);
-   }
-});
-});*/
 
 /*--------------------------------------selasa--------------------------------------------*/
 
@@ -181,11 +198,50 @@ $(function()
 			            .removeClass('btn-success').addClass('btn-danger')
 			            .html('<span class="icon_minus" ></span>');
 			       		$("#green-round_3").prop('id', 'red-round_3');
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
 
 			    	}
 			    )    
 		    .on('click', '.btn-remove', function(e){		
 			    $(this).parents('.entry:first').remove();
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
+		    
 				e.preventDefault();
 				return false;		
 			});
@@ -216,6 +272,9 @@ $(function()
 			                 $('#selasa-round').attr('disabled','disabled');
 			                 $('#green-round_3').attr('disabled','disabled');
 			                 $('#red-round_3').attr('disabled','disabled');
+			            $('.selasa input[type=text]').val('')
+			            $('.selasa .timed').prop('selectedIndex',0);
+			      		 $('.selasa .time').prop('selectedIndex',0);
 
 			           		    }
 			});
@@ -241,11 +300,50 @@ $(function()
 			            .removeClass('btn-success').addClass('btn-danger')
 			            .html('<span class="icon_minus" ></span>');
 			       		$("#green-round_4").prop('id', 'red-round_4');
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
 
 			    	}
 			    )    
 		    .on('click', '.btn-remove', function(e){		
 			    $(this).parents('.entry:first').remove();
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
+
 				e.preventDefault();
 				return false;		
 			});
@@ -258,6 +356,7 @@ $(function()
 			                 $('#rabu-round').removeAttr('disabled');
 			                 $('#green-round_4').removeAttr('disabled');
 			                 $('#red-round_4').removeAttr('disabled');
+
 			    } else {
 			       
 			   			var Form3 = $('#entry_rabu :not(:last)'),
@@ -276,7 +375,9 @@ $(function()
 			                 $('#rabu-round').attr('disabled','disabled');
 			                 $('#green-round_4').attr('disabled','disabled');
 			                 $('#red-round_4').attr('disabled','disabled');
-
+			            $('.rabu input[type=text]').val('')
+			            $('.rabu .timed').prop('selectedIndex',0);
+			      		 $('.rabu .time').prop('selectedIndex',0);
 			           		    }
 			});
 
@@ -301,11 +402,50 @@ $(function()
 			            .removeClass('btn-success').addClass('btn-danger')
 			            .html('<span class="icon_minus" ></span>');
 			       		$("#green-round_5").prop('id', 'red-round_5');
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
 
 			    	}
 			    )    
 		    .on('click', '.btn-remove', function(e){		
 			    $(this).parents('.entry:first').remove();
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
+
 				e.preventDefault();
 				return false;		
 			});
@@ -336,7 +476,9 @@ $(function()
 			                 $('#kamis-round').attr('disabled','disabled');
 			                 $('#green-round_5').attr('disabled','disabled');
 			                 $('#red-round_5').attr('disabled','disabled');
-
+			            $('.kamis input[type=text]').val('')
+			            $('.kamis .timed').prop('selectedIndex',0);
+			      		 $('.kamis .time').prop('selectedIndex',0);
 			           		    }
 			});
 
@@ -360,11 +502,50 @@ $(function()
 			            .removeClass('btn-success').addClass('btn-danger')
 			            .html('<span class="icon_minus" ></span>');
 			       		$("#green-round_6").prop('id', 'red-round_6');
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
 
 			    	}
 			    )   
 		    .on('click', '.btn-remove', function(e){		
 			    $(this).parents('.entry:first').remove();
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
+	
 				e.preventDefault();
 				return false;		
 			});
@@ -395,7 +576,9 @@ $(function()
 			                 $('#jumat-round').attr('disabled','disabled');
 			                 $('#green-round_6').attr('disabled','disabled');
 			                 $('#red-round_6').attr('disabled','disabled');
-
+			            $('.jumat input[type=text]').val('')
+			            $('.jumat .timed').prop('selectedIndex',0);
+			      		 $('.jumat .time').prop('selectedIndex',0);			                 
 			           		    }
 			});
 
@@ -420,11 +603,50 @@ $(function()
 			            .removeClass('btn-success').addClass('btn-danger')
 			            .html('<span class="icon_minus" ></span>');
 			       		$("#green-round_7").prop('id', 'red-round_7');
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
 
 			    	}
 			    )   
 		    .on('click', '.btn-remove', function(e){		
 			    $(this).parents('.entry:first').remove();
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
+
 				e.preventDefault();
 				return false;		
 			});
@@ -455,7 +677,9 @@ $(function()
 			                 $('#sabtu-round').attr('disabled','disabled');
 			                 $('#green-round_7').attr('disabled','disabled');
 			                 $('#red-round_7').attr('disabled','disabled');
-
+			            $('.sabtu input[type=text]').val('')
+			            $('.sabtu .timed').prop('selectedIndex',0);
+			      		 $('.sabtu .time').prop('selectedIndex',0);
 			           		    }
 			});
 
@@ -480,10 +704,49 @@ $(function()
 			            .html('<span class="icon_minus" ></span>');
 			       		$("#green-round_8").prop('id', 'red-round_8');
 
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
+
 			    	}
 			    )   
 		    .on('click', '.btn-remove', function(e){		
 			    $(this).parents('.entry:first').remove();
+						
+						
+						$('.field-harga').each(function(index){
+						    $(this).attr('name','price[' + (index +1) + ']');   
+						     $(this).attr('id','price[' + (index +1) + ']');  
+						    });
+						$('.time').each(function(index){
+						    $(this).attr('name','startTime[' + (index +1) + ']');   
+						    $(this).attr('id','startTime[' + (index +1) + ']');   
+						    });
+						$('.timed').each(function(index){
+						    $(this).attr('name','endTime[' + (index +1) + ']');   
+						    $(this).attr('id','endTime[' + (index +1) + ']'); 
+						    });
+
+						$('.day').each(function(index){
+						    $(this).attr('name','day[' + (index +1) + ']');   
+						    $(this).attr('id','day[' + (index +1) + ']'); 
+						    });
+
 				e.preventDefault();
 				return false;		
 			});
@@ -514,7 +777,9 @@ $(function()
 			                 $('#minggu-round').attr('disabled','disabled');
 			                 $('#green-round_8').attr('disabled','disabled');
 			                 $('#red-round_8').attr('disabled','disabled');
-
+			            $('.minggu input[type=text]').val('')
+			            $('.minggu .timed').prop('selectedIndex',0);
+			      		 $('.minggu .time').prop('selectedIndex',0);
 			           		    }
 			});
 
@@ -581,5 +846,65 @@ $(document).ready(function(){
 
 
 
+/*----------------------------------element name ---------------------------------------------*/
+
+$(document).ready(function(){
+	
+$('.field-harga').each(function(index){
+    $(this).attr('name','price[' + (index +1) + ']');   
+     $(this).attr('id','price[' + (index +1) + ']');  
+
+	 var getName =    $(this)
+	  .map(function() {
+	    return $(this).val();  
+	  })
+	  .get()
+	  .join(',');
+
+	  $('#hidden').val(getName)
+
+    });
+$('.time').each(function(index){
+    $(this).attr('name','startTime[' + (index +1) + ']');   
+    $(this).attr('id','startTime[' + (index +1) + ']');   
+    });
+$('.timed').each(function(index){
+    $(this).attr('name','endTime[' + (index +1) + ']');   
+    $(this).attr('id','endTime[' + (index +1) + ']'); 
+    });
+
+$('.day').each(function(index){
+    $(this).attr('name','day[' + (index +1) + ']');   
+    $(this).attr('id','day[' + (index +1) + ']'); 
+    });
 
 
+})
+
+/*----------------------------------------------------------------------------*/
+
+									
+		(document).ready(function() {
+													$('.field-harga')
+															.keyup(
+																	function() {
+																		$(
+																				'#output')
+																				.val(
+																						$(
+																								'.input')
+																								.not(
+																										'#output')
+																								.map(
+																										function() {
+																											// console.log($(this).val());
+																											return $(
+																													this)
+																													.val();
+																										})
+																								.get()
+																								.join(
+																										','));
+																	});
+
+												})
