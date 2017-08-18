@@ -1,10 +1,10 @@
 package com.paulmarten.availaball.controller;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.paulmarten.availaball.ResponseMessage;
 import com.paulmarten.availaball.ViewJSON;
@@ -40,14 +42,51 @@ public class SurveyerController {
 
 	@Autowired
 	private FutsalFieldService futsalFieldService;
-	
+
 	@Autowired
 	private LocationService locationService;
-	
+
 	@Autowired
 	private DetailPriceService detailPriceService;
-	
-	
+
+	// Cloudinary cloud_name, API_Key and API_Secret
+	private static final String CLOUDINARY_CLOUD_NAME = "dpypp9pac";
+	private static final String CLOUDINARY_API_KEY = "416751586423259";
+	private static final String CLOUDINARY_API_SECRET = "XIV896NgHU6rIMqXUURieGQ37LwA";
+
+	private static Cloudinary getCloudinaryClient() {
+		return new Cloudinary(ObjectUtils.asMap("cloud_name", CLOUDINARY_CLOUD_NAME, "api_key", CLOUDINARY_API_KEY,
+				"api_secret", CLOUDINARY_API_SECRET, "secure", true));
+	}
+
+	private static File multipartToFile(MultipartFile image) throws IllegalStateException, IOException {
+		File convFile = new File(image.getOriginalFilename());
+		image.transferTo(convFile);
+		return convFile;
+	}
+
+	public static Map<String, Object> uploadToCloudinary(Cloudinary cloudinary, MultipartFile sourceFile)
+			throws IOException {
+
+		Map<String, Object> cloudinaryUrl = null;
+		Map params = ObjectUtils.asMap("public_id",
+				"mm_images/profile/" + sourceFile.getOriginalFilename().split("\\.", 3)[0]);
+
+		File convFile = multipartToFile(sourceFile);
+
+		try {
+			@SuppressWarnings("unchecked")
+			Map<String, Object> result = (Map<String, Object>) cloudinary.uploader().upload(convFile, params);
+			cloudinaryUrl = result;
+		} catch (IOException e) {
+			System.out.println("Could not upload file to Cloundinary from MultipartFile "
+					+ sourceFile.getOriginalFilename() + e.toString());
+			throw e;
+		}
+
+		return cloudinaryUrl;
+	}
+
 	@JsonView(ViewJSON.Account.class)
 	@RequestMapping(value = "/getid/{id}", method = RequestMethod.POST)
 	public Account getId(@PathVariable int id) {
@@ -64,14 +103,14 @@ public class SurveyerController {
 	@RequestMapping(value = "/get-all-futsal-field", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseMessage getAllFutsalField(@RequestParam(required = false, defaultValue = "1") int page) {
 		ResponseMessage responseMessage = new ResponseMessage();
-		
+
 		Page<FutsalField> futsalField = futsalFieldService.findAllFutsalField(page);
 		responseMessage.setCode("600");
 		responseMessage.setMessage("Success");
 		responseMessage.setObject(futsalField.getContent());
 		responseMessage.setCurrentPage(futsalField.getNumber() + 1);
 		responseMessage.setTotalPage(futsalField.getTotalPages());
-		
+
 		return responseMessage;
 	}
 
@@ -81,71 +120,70 @@ public class SurveyerController {
 		System.out.println(account.getId());
 		return surveyerService.getAccount(account.getId());
 	}
-	
-	@JsonView(ViewJSON.Base.class)
+
+	@JsonView(ViewJSON.FutsalField.class)
 	@RequestMapping(value = "/create-futsal-field", method = RequestMethod.POST)
 	public ResponseMessage createField(@ModelAttribute FutsalField futsalField) {
 		ResponseMessage responseMessage = new ResponseMessage();
 
-
-	/*	responseMessage.setMessage(futsalFieldService.saveField(futsalField));*/
-
-		responseMessage.setCode("600");
 		responseMessage.setMessage(futsalFieldService.saveField(futsalField));
-
-
-		responseMessage.setCode("600");
-		responseMessage.setMessage(futsalFieldService.saveField(futsalField));
-
-	/*	responseMessage.setMessage(futsalFieldService.saveField(futsalField));*/
-
+		if (responseMessage.getMessage().equals("Success, Status 200 OK")) {
+			responseMessage.setCode("600");
+			responseMessage.setObject(futsalFieldService.findTopFutsalField());
+		}
 
 		return responseMessage;
 	}
-	
+
 	@RequestMapping(value = "/upload-photo", method = RequestMethod.POST)
-	private String uploadPhoto(@RequestParam("file") MultipartFile imageField){
-		java.util.Date today = new java.util.Date();
-		String name;
-		String fullName;
-		if (!imageField.isEmpty()) {
-			Long date = today.getTime();
-			name = imageField.getOriginalFilename();
-			fullName = "D:/GVM/"+ date +"_"+ name;
-			try {
-				byte[] bytes = imageField.getBytes();
-				BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullName)));
-				stream.write(bytes);
-				stream.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("null");
-			}
-			return fullName;
+	private String uploadPhoto(@RequestParam("file") MultipartFile imageField) throws Exception {
+		Cloudinary cloudinary = getCloudinaryClient();
+		MultipartFile multipartFile = imageField;
+
+		Map<String, Object> cloudinaryURL = null;
+		String fileName = "";
+		if (multipartFile != null) {
+			fileName = multipartFile.getOriginalFilename();
+			cloudinaryURL = uploadToCloudinary(cloudinary, multipartFile);
+
 		}
-		else{
-			return "null";
-		}
+		return fileName;
+		// java.util.Date today = new java.util.Date();
+		// String name;
+		// String fullName;
+		// if (!imageField.isEmpty()) {
+		// Long date = today.getTime();
+		// name = imageField.getOriginalFilename();
+		// fullName = "D:/GVM/"+ date +"_"+ name;
+		// try {
+		// byte[] bytes = imageField.getBytes();
+		// BufferedOutputStream stream = new BufferedOutputStream(new
+		// FileOutputStream(new File(fullName)));
+		// stream.write(bytes);
+		// stream.close();
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// System.out.println("null");
+		// }
+		// return fullName;
+		// }
+		// else{
+		// return "null";
+		// }
 	}
-	
-//	@JsonView(ViewJSON.FutsalField.class)
-//	@RequestMapping(value = "/detail-field", method = RequestMethod.POST , headers = "Accept=application/json")
-//	public FutsalField viewDetailFutsal(@ModelAttribute FutsalField futsalField) {
-//		return futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
-//	}
-	
+
 	@JsonView(ViewJSON.FutsalField.class)
 	@RequestMapping(value = "/detail-field", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseMessage viewDetailFutsal(@RequestParam int idFutsalField) {
 		ResponseMessage responseMessage = new ResponseMessage();
-		FutsalField futsalFieldSentObject =  new FutsalField();
+		FutsalField futsalFieldSentObject = new FutsalField();
 		futsalFieldSentObject = futsalFieldService.findFutsalFieldById(idFutsalField);
 		responseMessage.setObject(futsalFieldSentObject);
 		responseMessage.setMessage("Success");
 		responseMessage.setCode("600");
 		return responseMessage;
 	}
-	
+
 	@JsonView(ViewJSON.DetailPrice.class)
 	@RequestMapping(value = "/detail-field-price", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseMessage viewDetailFutsalPrice(@RequestParam int idFutsalField) {
@@ -158,7 +196,7 @@ public class SurveyerController {
 		responseMessage.setObject(detailPrices);
 		return responseMessage;
 	}
-	
+
 	@JsonView(ViewJSON.Location.class)
 	@RequestMapping(value = "/location", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseMessage viewAllLocation() {
@@ -168,34 +206,34 @@ public class SurveyerController {
 		responseMessage.setCode("600");
 		return responseMessage;
 	}
-	
+
 	@JsonView(ViewJSON.FutsalField.class)
 	@RequestMapping(value = "/maps", method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<FutsalField> maps() {
 		return futsalFieldService.findAllFutsalFieldApi();
 	}
-	
-	@JsonView(ViewJSON.Base.class)
-	@RequestMapping(value = "/edit-futsal-field", method = RequestMethod.POST)
-	public ResponseMessage editField(@ModelAttribute FutsalField futsalField) {
-		ResponseMessage responseMessage = new ResponseMessage();
 
-		responseMessage.setCode("600");
-		responseMessage.setMessage(futsalFieldService.saveField(futsalField));
+//	@JsonView(ViewJSON.Base.class)
+//	@RequestMapping(value = "/edit-futsal-field", method = RequestMethod.POST)
+//	public ResponseMessage editField(@ModelAttribute FutsalField futsalField) {
+//		ResponseMessage responseMessage = new ResponseMessage();
+//
+//		responseMessage.setCode("600");
+//		responseMessage.setMessage(futsalFieldService.saveField(futsalField));
+//
+//		return responseMessage;
+//	}
 
-		return responseMessage;
-	}
-	
 	@JsonView(ViewJSON.Base.class)
 	@RequestMapping(value = "/edit-detail-price-futsal-field", method = RequestMethod.POST)
 	public ResponseMessage editDetailField(@ModelAttribute FutsalField futsalField) {
 		ResponseMessage responseMessage = new ResponseMessage();
-		
+
 		System.out.println(futsalField.getDetail().size());
 		responseMessage.setCode("600");
-//		responseMessage.setMessage(detailPriceService.saveDetailPrice(futsalField.getDetail()));
+		// responseMessage.setMessage(detailPriceService.saveDetailPrice(futsalField);
 
 		return responseMessage;
 	}
-	
+
 }

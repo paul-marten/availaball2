@@ -107,6 +107,32 @@ public class FutsalFieldService {
 		};
 	}
 	
+	public String updateFutsalField(FutsalField futsalField){
+		String message = "";
+		FutsalField futsalFieldSave = futsalFieldRepository.findOne(futsalField.getIdFutsalField());
+		futsalFieldSave.setFieldName(futsalField.getFieldName());
+		futsalFieldSave.setNumberOfField(futsalField.getNumberOfField());
+		futsalFieldSave.setPhone(futsalField.getPhone());
+		futsalFieldSave.setLatitude(futsalField.getLatitude());
+		futsalFieldSave.setLongitude(futsalField.getLongitude());
+		futsalFieldSave.setDetailLocation(futsalField.getDetailLocation());
+		if(futsalFieldRepository.save(futsalFieldSave)!=null){
+			message = "Success";
+		}
+		return message;
+	}
+	
+	public FutsalField findTopFutsalFieldByAccout(Account account){
+		FutsalField futsalField = futsalFieldRepository.findTopByAccountOrderByIdFutsalFieldDesc(account);
+		return futsalField;
+	}
+	
+	public FutsalField findTopFutsalField(){
+		FutsalField futsalField = futsalFieldRepository.findTop1ByOrderByIdFutsalFieldDesc();
+		System.out.println(futsalField.getIdFutsalField());
+		return futsalField;
+	}
+	
 	public String saveField(FutsalField futsalField) {
 		java.util.Date today = new java.util.Date();
 		

@@ -468,7 +468,7 @@
 
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry" th:each="senin, iterStat : ${senin}" >
-												<div th:if="${senin != null}">
+												<div th:if="${!senin.empty}">
 													<select class="time" id="start_senin" name="starttime[]">
 														<option th:each="i : ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -500,7 +500,7 @@
 												
 												</div>
 
-												<div th:unless="${senin != null}">
+												<div th:unless="${!senin.empty}">
 
 													<select class="time" id="start_senin" disabled="disabled"
 														name="starttime[]">

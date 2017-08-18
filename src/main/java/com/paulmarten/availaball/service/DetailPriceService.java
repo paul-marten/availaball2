@@ -33,9 +33,27 @@ public class DetailPriceService {
 
 
     
-    public String saveDetailPrice(DetailPrice detailPrice){
+    public void deleteDetailFutsalPrice(FutsalField futsalField){
+    	List<DetailPrice> detailPrices = detailPriceRepository.findByFutsalField(futsalField);
+    	for(int indexDetailPrice = 0; indexDetailPrice < detailPrices.size(); indexDetailPrice ++){
+    		detailPriceRepository.delete(detailPrices.get(indexDetailPrice));
+    	}
+    }
+    
+    public String saveDetailPrice(FutsalField futsalField){
     	String message = "";
-    	List<DetailPrice> removeDetailPrice = new ArrayList<DetailPrice>();
+    	for(int indexDetailPrice = 0; indexDetailPrice < futsalField.getDetail().size(); indexDetailPrice ++){
+    		DetailPrice detailPrice = new DetailPrice();
+    		detailPrice.setDay(futsalField.getDetail().get(indexDetailPrice).getDay());
+    		detailPrice.setStartTime(futsalField.getDetail().get(indexDetailPrice).getStartTime());
+    		detailPrice.setEndTime(futsalField.getDetail().get(indexDetailPrice).getEndTime());
+    		detailPrice.setPrice(futsalField.getDetail().get(indexDetailPrice).getPrice());
+    		detailPrice.setFutsalField(futsalField);
+    		if(detailPriceRepository.save(detailPrice)!= null){
+    			message = "Success status 200 OK";
+    		}
+    	}
+    	
     	return message;
     }
     

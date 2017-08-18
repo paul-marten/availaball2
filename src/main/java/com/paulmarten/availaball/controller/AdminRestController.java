@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.paulmarten.availaball.ViewJSON;
+import com.paulmarten.availaball.ViewJSON.DetailFutsalField;
 import com.paulmarten.availaball.model.Account;
+import com.paulmarten.availaball.model.DetailPrice;
 import com.paulmarten.availaball.model.FutsalField;
 import com.paulmarten.availaball.model.FutsalFieldMap;
 import com.paulmarten.availaball.repository.FutsalFieldRepository;
 import com.paulmarten.availaball.service.AccountService;
+import com.paulmarten.availaball.service.DetailPriceService;
 import com.paulmarten.availaball.service.FutsalFieldService;
 
 /**
@@ -33,7 +36,10 @@ public class AdminRestController {
 
 	@Autowired
 	private FutsalFieldService futsalFieldService;
-
+	
+	@Autowired
+	private DetailPriceService detailPriceService;
+	
 	@Autowired
 	private AccountService accountService;
 
@@ -65,6 +71,17 @@ public class AdminRestController {
 	@RequestMapping(value = "/detail-field-map", method = RequestMethod.POST, headers = "Accept=application/json")
 	public FutsalField detailfieldMap(@ModelAttribute FutsalField futsalField) {
 		return futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
+	}
+	@JsonView(ViewJSON.DetailFutsalField.class)
+	@RequestMapping(value = "/save-edit-field", method = RequestMethod.POST)
+	public String editField(@ModelAttribute FutsalField futsalField) {
+		FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
+		String message = futsalFieldService.updateFutsalField(futsalField);
+		detailPriceService.deleteDetailFutsalPrice(futsalFieldEdit);
+		if(message.equals("Success")){
+			message = detailPriceService.saveDetailPrice(futsalField);
+		}
+		return message;
 	}
 	
 	//@formatter:off

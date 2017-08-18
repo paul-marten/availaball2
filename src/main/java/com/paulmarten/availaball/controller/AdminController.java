@@ -107,7 +107,7 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/edit-field/{id}", method = RequestMethod.GET)
-	public String editField(@PathVariable int id, Model model) {
+	public String saveEditField(@PathVariable int id, Model model) {
 		String[] days = { "senin", "selasa", "rabu", "kamis", "jumat", "sabtu", "minggu" };
 
 		FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
@@ -119,8 +119,17 @@ public class AdminController {
 		for(int indexDay = 0; indexDay < days.length; indexDay ++){
 			String day = days[indexDay];
 			List<DetailPrice> detailPrices = detailPriceService.findByDayAndIdFutsalField(day, futsalFieldEdit);
+
 			model.addAttribute(day, detailPrices);
 			System.out.println(day);
+
+			if(detailPrices.size()>0){
+				model.addAttribute(day, detailPrices);
+			}
+			else{
+				model.addAttribute(day, null);
+			}
+
 		}
 		
 		
