@@ -464,11 +464,12 @@
 										</div>
 
 										<div class="senin">
-											<input type="text" name="hidden" id="hidden">
+											
 
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry" th:each="senin, iterStat : ${senin}" >
-												<div th:if="${!senin.empty}">
+												<div th:if="${senin != null}" >
+													<input hidden name="day[]" th:value= ${senin.day} class="detail">
 													<select class="time" id="start_senin" name="starttime[]">
 														<option th:each="i : ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -500,8 +501,8 @@
 												
 												</div>
 
-												<div th:unless="${!senin.empty}">
-
+												<div th:if="${senin == null}">
+													<input hidden name="day[]" value=""  class="detail">
 													<select class="time" id="start_senin" disabled="disabled"
 														name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -549,6 +550,7 @@
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_selasa" th:each="selasa , iterStat : ${selasa}">
 												<div th:if="${selasa} != null">
+												<input hidden name="day[]" th:value= ${selasa.day} class="detail">
 													<select class="time" id="start_selasa" name="starttime[]">
 
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -582,7 +584,9 @@
 													</div>
 												</div>
 
-												<span th:unless="${selasa} != null "> <select
+												<span th:unless="${selasa} != null "> 
+												<input hidden name="day[]"  class="detail">
+												<select
 													class="time" id="start_selasa" disabled="disabled"
 													name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -631,6 +635,7 @@
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_rabu" th:each="rabu, iterStat : ${rabu}">
 												<div th:if="${rabu} != null" name="starttime[]">
+												<input hidden name="day[]" th:value= ${rabu.day} class="detail">
 													<select class="time" id="start_rabu">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -661,7 +666,7 @@
 												</div>
 
 												<div th:unless="${rabu} != null">
-
+												<input hidden name="day[]"  class="detail">
 													<select class="time" id="start_rabu" disabled="disabled"
 														name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -718,7 +723,7 @@
 												id="entry_kamis" th:each="kamis, iterStat : ${kamis}">
 
 												<div th:if="${kamis} != null">
-
+												<input hidden name="day[]" th:value= ${kamis.day} class="detail">
 													<select class="time" id="start_kamis" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -748,7 +753,7 @@
 
 												</div>
 												<div th:unless="${kamis} != null">
-
+												<input hidden name="day[]"  class="detail">
 													<select class="time" id="start_kamis" disabled="disabled"
 														name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -800,7 +805,8 @@
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_jumat" th:each="jumat, iterStat : ${jumat}">
 
-												<div th:if="${iterStat.size>= 1}">
+												<div th:unless="${jumat != null}">
+												<input hidden name="day[]" th:value= ${jumat.day} class="detail">
 													<select class="time" id="start_jumat" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -829,7 +835,8 @@
 														</span>
 													</div>
 												</div>
-												<div th:if="${iterStat.size <1 } ">
+												<div th:unless="${jumat != null} ">
+													<input hidden name="day[]" class="detail">
 													<select class="time" id="start_jumat" disabled="disabled"
 														name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -873,6 +880,7 @@
 												id="entry_sabtu" th:each="sabtu, iterStat : ${sabtu}">
 
 												<div th:if="${sabtu != null}">
+													<input hidden name="day[]" th:value= ${sabtu.day} class="detail">
 													<select class="time" id="start_sabtu" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -901,7 +909,8 @@
 														</span>
 													</div>
 												</div>
-												<div th:if="${sabtu == null}">
+												<div th:unless="${sabtu != null}">
+													<input hidden name="day[]" class="detail">
 													<select class="time" id="start_sabtu" disabled="disabled"
 														name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -946,7 +955,7 @@
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_minggu" th:each="minggu, iterStat : ${minggu}">
 												<div th:if="${minggu} !=null">
-
+														<input hidden name="day[]" th:value= ${minggu.day} class="detail">
 													<select class="time" id="start_minggu" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -977,7 +986,7 @@
 
 												</div>
 												<div th:unless="${minggu}!=null">
-
+														<input hidden name="day[]" class="detail">
 													<select class="time" id="start_minggu" disabled="disabled"
 														name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"

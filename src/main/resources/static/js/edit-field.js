@@ -93,23 +93,26 @@ $(function()
 			       		$("#green-round_2").prop('id', 'red-round_2');
 
 						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 
 				    
 			    	}
@@ -117,26 +120,26 @@ $(function()
 		    .on('click', '.btn-remove', function(e){		
 			    $(this).parents('.entry:first').remove();
 						
-						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						     
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
+				$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 
 				e.preventDefault();
 				return false;		
@@ -199,48 +202,52 @@ $(function()
 			            .html('<span class="icon_minus" ></span>');
 			       		$("#green-round_3").prop('id', 'red-round_3');
 						
-						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
-
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 			    	}
 			    )    
 		    .on('click', '.btn-remove', function(e){		
 			    $(this).parents('.entry:first').remove();
 						
 						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 		    
 				e.preventDefault();
 				return false;		
@@ -301,24 +308,26 @@ $(function()
 			            .html('<span class="icon_minus" ></span>');
 			       		$("#green-round_4").prop('id', 'red-round_4');
 						
-						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 
 			    	}
 			    )    
@@ -326,23 +335,26 @@ $(function()
 			    $(this).parents('.entry:first').remove();
 						
 						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 
 				e.preventDefault();
 				return false;		
@@ -404,48 +416,52 @@ $(function()
 			       		$("#green-round_5").prop('id', 'red-round_5');
 						
 						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 
 			    	}
 			    )    
 		    .on('click', '.btn-remove', function(e){		
 			    $(this).parents('.entry:first').remove();
 						
-						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
-
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 				e.preventDefault();
 				return false;		
 			});
@@ -504,23 +520,26 @@ $(function()
 			       		$("#green-round_6").prop('id', 'red-round_6');
 						
 						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 
 			    	}
 			    )   
@@ -528,23 +547,26 @@ $(function()
 			    $(this).parents('.entry:first').remove();
 						
 						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 	
 				e.preventDefault();
 				return false;		
@@ -605,23 +627,26 @@ $(function()
 			       		$("#green-round_7").prop('id', 'red-round_7');
 						
 						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 
 			    	}
 			    )   
@@ -629,24 +654,26 @@ $(function()
 			    $(this).parents('.entry:first').remove();
 						
 						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
-
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 				e.preventDefault();
 				return false;		
 			});
@@ -704,24 +731,26 @@ $(function()
 			            .html('<span class="icon_minus" ></span>');
 			       		$("#green-round_8").prop('id', 'red-round_8');
 
-						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 
 			    	}
 			    )   
@@ -729,23 +758,26 @@ $(function()
 			    $(this).parents('.entry:first').remove();
 						
 						
-						$('.field-harga').each(function(index){
-						    $(this).attr('name','price[' + (index +1) + ']');   
-						     $(this).attr('id','price[' + (index +1) + ']');  
-						    });
-						$('.time').each(function(index){
-						    $(this).attr('name','startTime[' + (index +1) + ']');   
-						    $(this).attr('id','startTime[' + (index +1) + ']');   
-						    });
-						$('.timed').each(function(index){
-						    $(this).attr('name','endTime[' + (index +1) + ']');   
-						    $(this).attr('id','endTime[' + (index +1) + ']'); 
-						    });
-
-						$('.day').each(function(index){
-						    $(this).attr('name','day[' + (index +1) + ']');   
-						    $(this).attr('id','day[' + (index +1) + ']'); 
-						    });
+					$('.field-harga').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+				    index++;
+				    });
+				$('.time').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+				    index++;
+				    });
+				$('.timed').each(function(index){
+				    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+				    index++;
+				    });
+				$('.detail').each(function(index){
+				    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+				    index++;
+				    });
 
 				e.preventDefault();
 				return false;		
@@ -851,60 +883,26 @@ $(document).ready(function(){
 $(document).ready(function(){
 	
 $('.field-harga').each(function(index){
-    $(this).attr('name','price[' + (index +1) + ']');   
-     $(this).attr('id','price[' + (index +1) + ']');  
-
-	 var getName =    $(this)
-	  .map(function() {
-	    return $(this).val();  
-	  })
-	  .get()
-	  .join(',');
-
-	  $('#hidden').val(getName)
-
+    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+    index++;
     });
 $('.time').each(function(index){
-    $(this).attr('name','startTime[' + (index +1) + ']');   
-    $(this).attr('id','startTime[' + (index +1) + ']');   
+    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+    index++;
     });
 $('.timed').each(function(index){
-    $(this).attr('name','endTime[' + (index +1) + ']');   
-    $(this).attr('id','endTime[' + (index +1) + ']'); 
+    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+    index++;
     });
-
-$('.day').each(function(index){
-    $(this).attr('name','day[' + (index +1) + ']');   
-    $(this).attr('id','day[' + (index +1) + ']'); 
+$('.detail').each(function(index){
+    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+    index++;
     });
-
 
 })
 
 /*----------------------------------------------------------------------------*/
-
-									
-		(document).ready(function() {
-													$('.field-harga')
-															.keyup(
-																	function() {
-																		$(
-																				'#output')
-																				.val(
-																						$(
-																								'.input')
-																								.not(
-																										'#output')
-																								.map(
-																										function() {
-																											// console.log($(this).val());
-																											return $(
-																													this)
-																													.val();
-																										})
-																								.get()
-																								.join(
-																										','));
-																	});
-
-												})
