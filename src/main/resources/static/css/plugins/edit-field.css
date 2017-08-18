@@ -176,7 +176,7 @@ label.control-label{
     border: 1px solid #ccc;
 }
 
-#select-kota{
+.select-kota{
 width:160px;
     padding-bottom: 0px;
     padding-top: 0px;

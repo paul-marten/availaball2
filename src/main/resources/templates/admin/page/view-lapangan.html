@@ -48,8 +48,10 @@
 						            </a>
 						    		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" id="dropdown_action" >
 
-						              <li><a th:href="@{/admin/edit-field/10}">Edit</a></li>
-						              <li><a href="#" onclick="centerModal(10)">Delete</a></li>
+						              <li><a th:href="@{/admin/edit-field/{id}(id=${view.idFutsalField})}">Edit</a></li>
+						              <li><a href="#" onclick="delete()" data-toggle="modal" data-target="#myModal" >Delete</a></li>
+						            
+					
 
 						            </ul>
 						        </div>								

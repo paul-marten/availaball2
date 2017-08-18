@@ -6,11 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.datatables.mapping.DataTablesInput;
-import org.springframework.data.jpa.datatables.mapping.DataTablesOutput;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.paulmarten.availaball.model.Account;
 import com.paulmarten.availaball.model.DetailPrice;
 import com.paulmarten.availaball.model.FutsalField;
+
 
 import com.paulmarten.availaball.model.FutsalFieldMap;
 
@@ -43,6 +41,8 @@ public class AdminController {
 
 	@Autowired
 	private AccountService accountService;
+
+
 
 	@Autowired
 	private DetailPriceService detailPriceService;
@@ -69,11 +69,6 @@ public class AdminController {
 	public String goMap(Model model) {
 		List<FutsalFieldMap> futsalFieldMap = futsalFieldService.findAllFutsalFieldMap();
 		model.addAttribute("futsalField", futsalFieldMap);
-		// for (FutsalFieldMap ff : futsalFieldMap) {
-		// System.out.println(ff.getFieldName());
-		// System.out.println(ff.getLatitude());
-		//// System.out.println(ff.getDetailLocation());
-		// }
 		return "/admin/page/map";
 	}
 
@@ -112,14 +107,13 @@ public class AdminController {
 
 		FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
 		model.addAttribute("view", futsalFieldEdit);
-
-		for (int indexDay = 0; indexDay < days.length; indexDay++) {
+		
+		for(int indexDay = 0; indexDay < days.length; indexDay ++){
 			String day = days[indexDay];
 			List<DetailPrice> detailPrices = detailPriceService.findByDayAndIdFutsalField(day, futsalFieldEdit);
-			System.out.println(detailPrices.size());
 			model.addAttribute(day, detailPrices);
 		}
-
+		
 		String number = futsalFieldEdit.getPhone();
 		String[] result = number.split(",");
 		model.addAttribute("phone", result);
@@ -151,4 +145,5 @@ public class AdminController {
 	public String blank() {
 		return "/admin/page/picklocation";
 	}
+
 }

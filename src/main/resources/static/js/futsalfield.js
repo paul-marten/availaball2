@@ -81,7 +81,6 @@ $(document).ready( function () {
                     return '';
                 }
             },
-//@formatter:off
 
             {
                 "data" : 'idFutsalField',

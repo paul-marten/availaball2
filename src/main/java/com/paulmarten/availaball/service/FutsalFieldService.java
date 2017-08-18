@@ -88,6 +88,7 @@ public class FutsalFieldService {
 	
 	public List<FutsalField> findAllFutsalFieldApi(){
 		return futsalFieldRepository.findTop10ByOrderByIdFutsalFieldDesc();
+
 	}
 	
 	public Page<FutsalField> findAllFutsalField(int page) {
@@ -177,10 +178,9 @@ public class FutsalFieldService {
 				message = "Error";
 
 			}
+			
 		}
-		else{
-			message = "Error";
-		}
+
 
 		return message;
 	}
