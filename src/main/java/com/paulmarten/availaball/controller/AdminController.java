@@ -69,11 +69,6 @@ public class AdminController {
 	public String goMap(Model model) {
 		List<FutsalFieldMap> futsalFieldMap = futsalFieldService.findAllFutsalFieldMap();
 		model.addAttribute("futsalField", futsalFieldMap);
-		// for (FutsalFieldMap ff : futsalFieldMap) {
-		// System.out.println(ff.getFieldName());
-		// System.out.println(ff.getLatitude());
-		//// System.out.println(ff.getDetailLocation());
-		// }
 		return "/admin/page/map";
 	}
 
@@ -113,15 +108,11 @@ public class AdminController {
 		FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(id);
 		model.addAttribute("view", futsalFieldEdit);
 		
-		List<DetailPrice> detailPrice = detailPriceService.findByFutsalField(futsalFieldEdit);
-		model.addAttribute("viewDetailPrice", detailPrice);		
-		
 		for(int indexDay = 0; indexDay < days.length; indexDay ++){
 			String day = days[indexDay];
 			List<DetailPrice> detailPrices = detailPriceService.findByDayAndIdFutsalField(day, futsalFieldEdit);
 			model.addAttribute(day, detailPrices);
 		}
-		
 		
 		String number = futsalFieldEdit.getPhone();
 		String[] result = number.split(",");
@@ -132,18 +123,18 @@ public class AdminController {
 
 		return "/admin/page/edit-field";
 	}
-	
+
 	@RequestMapping(value = "/save-edit-field", method = RequestMethod.POST)
 	public String editField(@ModelAttribute FutsalField futsalField) {
 		FutsalField futsalFieldEdit = futsalFieldService.findFutsalFieldById(futsalField.getIdFutsalField());
-		futsalFieldService.updateFutsalField(futsalField);
-		// detailPriceService.deleteDetailFutsalPrice(futsalFieldEdit);
-		// if(message.equals("Success")){
-		// 	message = detailPriceService.saveDetailPrice(futsalField);
-		// }
-		return "redirect:/admin/index";
+		String message = futsalFieldService.updateFutsalField(futsalField);
+		detailPriceService.deleteDetailFutsalPrice(futsalFieldEdit);
+		if (message.equals("Success")) {
+			message = detailPriceService.saveDetailPrice(futsalField);
+		}
+		return message;
 	}
-	
+
 	@RequestMapping(value = "/current-map/{id}")
 	public String viewMap(@PathVariable int id, Model model) {
 		model.addAttribute("edit", futsalFieldService.findFutsalFieldById(id));
