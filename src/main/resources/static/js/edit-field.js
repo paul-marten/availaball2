@@ -75,25 +75,23 @@ console.log(inputValues)
 
 /*--------------------------------------senin--------------------------------------------*/
 $(function()
-		{	
-		    $(document)
-		    	
-			    .on('click', '.btn-add_2', function(e)
-			    {
-			      
-			        var Form1 = $('.senin '),
-			            curEntry = $(this).parents('.entry:first'),
-			            nEntry = $(curEntry.clone()).appendTo(Form1);
-	
-			        nEntry.find('input').val('');
-			        Form1.find('.entry:not(:last) .btn-add_2')
-			            .removeClass('btn-add_2').addClass('btn-remove')
-			            .removeClass('btn-success').addClass('btn-danger')
-			            .html('<span class="icon_minus" ></span>');
-			       		$("#green-round_2").prop('id', 'red-round_2');
+{
+    $(document).on('click', '.btn-add_2', function(e)
+    {
+        e.preventDefault();
 
-						
-					$('.field-harga').each(function(index){
+        var controlForm = $(".senin"),
+            currentEntry = $(this).parents('.entry:first'),
+            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+        newEntry.find('input').val('');
+        controlForm.find('.entry:not(:last) .btn-add_2')
+            .removeClass('btn-add_2').addClass('btn-remove')
+            .removeClass('btn-success').addClass('btn-danger')
+              .html('<span class="icon_minus" ></span>');
+			       		$("#green-round_3").prop('id', 'red-round_3');
+
+			       							$('.field-harga').each(function(index){
 				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
 				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
 				    index++;
@@ -113,14 +111,11 @@ $(function()
 				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
 				    index++;
 				    });
-
-				    
-			    	}
-			    )    
-		    .on('click', '.btn-remove', function(e){		
-			    $(this).parents('.entry:first').remove();
-						
-				$('.field-harga').each(function(index){
+        
+    }).on('click', '.btn-remove', function(e)
+    {
+		$(this).parents('.entry:first').remove();
+							$('.field-harga').each(function(index){
 				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
 				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
 				    index++;
@@ -140,50 +135,45 @@ $(function()
 				    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
 				    index++;
 				    });
+		e.preventDefault();
+		return false;
+	});
 
-				e.preventDefault();
-				return false;		
-			});
 
 				$(document).on('change', '#senin', function(){
 
-			    if($('input[type=checkbox]').prop('checked')){
+			    if($('#senin').prop('checked')){
 			       $('#start_senin').removeAttr('disabled');
 			            $('#end_senin').removeAttr('disabled');
-			                 $('#senin-round').removeAttr('disabled');
+			                 $('#fields-round').removeAttr('disabled');
 			                 $('#green-round_2').removeAttr('disabled');
 			                 $('#red-round_2').removeAttr('disabled');
+
 			    } else {
 			       
-			   			var Form1 = $('#entry :not(:last)'),
-			            curEntry = $(this).parents('#entry :first '),
-			            nEntry = $(Form1.clone()).appendTo(curEntry);
-			            $('.senin input[type=text]').val('')
-			            $('.senin .timed').prop('selectedIndex',0);
-			      		 $('.senin .time').prop('selectedIndex',0);
+			   			var Form1 = $('#entry_senin :not(:last)'),
+			            current_senin = $(this).parents('#entry_senin :first'),
+			            new_senin = $(Form1.clone()).appendTo(current_senin);
 						console.log(Form1);
 
- 					$('#start_senin').attr('disabled','disabled');
-			            $('#end_senin').attr('disabled','disabled');
-			                 $('#senin-round').attr('disabled','disabled');
-			                 $('#green-round_2').attr('disabled','disabled');
-			                 $('#red-round_2').attr('disabled','disabled');	
+			         if ($('#entry_senin :not(:last-child)')) {
 
-			         if ($('#entry :not(:last-child)')) {
-
-			         	$('#entry:not(:last-child)').remove();
+			         	$('#entry_senin:not(:last-child)').remove();
 			         }
 			        
 
-			      
-
+			       		$('#start_senin').attr('disabled','disabled');
+			            $('#end_senin').attr('disabled','disabled');
+			                 $('#senin-round').attr('disabled','disabled');
+			                 $('#green-round_2').attr('disabled','disabled');
+			                 $('#red-round_2').attr('disabled','disabled');
+			            $('.senin input[type=text]').val('')
+			            $('.senin .timed').prop('selectedIndex',0);
+			      		 $('.senin .time').prop('selectedIndex',0);
 			           		    }
 			});
 
-
-		});
-
-
+});
 /*--------------------------------------selasa--------------------------------------------*/
 
 $(function()
@@ -824,29 +814,98 @@ $(function()
 
 /*----------------------------------element name ---------------------------------------------*/
 
-$(document).ready(function(){
-	
-$('.field-harga').each(function(index){
-    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
-     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+
+
+/*----------------------------------------------------------------------------*/
+/*$(document).ready(function(){
+$('input:checkbox').change(function(){
+    if($(this).is(":checked")) {
+      $(this).parent().addClass("checked");
+
+	$('.field-harga').each(function(index){
+	    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+	     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+	    index++;
+	    });
+	$('.time').each(function(index){
+	    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
+	    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+	    index++;
+	    });
+	$('.timed').each(function(index){
+	    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
+	    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+	    index++;
+	    });
+	$('.detail').each(function(index){
+	    $(this).attr('name','detail[' + (index) + ']' + '.day');   
+	    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
+	    index++;
+	    });
+    } 
+else {
+        $(this).parent().removeClass("checked");
+        $('.detail').each(function(index){
+	    $('.detail').removeAttr('name','detail[' + (index) + ']' + '.day')  
+	   	$('.detail').removeAttr('id','detail[' + (index) + ']' + '.day')
+	    index++;
+    });
+    $('.field-harga').each(function(index){
+    $(this).removeAttr('name','detail[' + (index ) + ']' +'.price');   
+     $(this).removeAttr('id','detail[' + (index ) + ']' + '.price');  
     index++;
     });
 $('.time').each(function(index){
-    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
-    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
+    $(this).removeAttr('name','detail[' + (index ) + ']' + '.startTime');   
+    $(this).removeAttr('id','detail[' + (index ) + ']' + '.startTime');  
     index++;
     });
 $('.timed').each(function(index){
-    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
-    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
+    $(this).removeAttr('name','detail[' + (index ) + ']' + '.endTime');   
+    $(this).removeAttr('id','detail[' + (index ) + ']' + '.endTime'); 
     index++;
-    });
-$('.detail').each(function(index){
-    $(this).attr('name','detail[' + (index) + ']' + '.day');   
-    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
-    index++;
-    });
+    }); 
+    }
+});
 
+/*var hasClass = element.classList.contains('checked');*/
+
+
+
+
+//})
+
+$(document).ready(function(){
+   //  $('.checked').each(function(index){
+   //  $(".checked")[index].find("input .field-harga").each(function(index){
+	  //   $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+	  //    $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+	  //   index++;
+	  //   });
+   // });
+   var index = 0;  
+   var checked = document.getElementsByClassName("checked");
+   console.log(checked.length);
+   console.log(checked[0].getElementsByClassName("field-harga").length);
+   console.log("br");
+   console.log(checked[1].getElementsByClassName("field-harga").length);
+   console.log("br");
+   console.log(checked[2].getElementsByClassName("field-harga").length);
+   console.log("br");
+   console.log(checked[3].getElementsByClassName("field-harga").length);
+   for(var indexCheck = 0; indexCheck < checked.length; indexCheck ++){
+   		for(var indexChild = 0 ; indexChild < checked[indexCheck].getElementsByClassName("field-harga").length ; indexChild++){
+   			 checked[indexCheck].getElementsByClassName('field-harga')[indexChild].setAttribute('name' , 'detail['+(index)+']'+'.price');
+   			 checked[indexCheck].getElementsByClassName('field-harga')[indexChild].setAttribute('id' , 'detail['+(index)+']'+'.price');
+   			checked[indexCheck].getElementsByClassName('time')[indexChild].setAttribute('name' , 'detail['+index+']'+'.startTime');
+   			checked[indexCheck].getElementsByClassName('time')[indexChild].setAttribute('id' , 'detail['+index+']'+'.startTime');
+   			checked[indexCheck].getElementsByClassName('timed')[indexChild].setAttribute('name' , 'detail['+index+']'+'.endTime');
+   			checked[indexCheck].getElementsByClassName('timed')[indexChild].setAttribute('id' , 'detail['+index+']'+'.endTime');
+   			checked[indexCheck].getElementsByClassName('detail')[indexChild].setAttribute('name' , 'detail['+index+']'+'.day');
+   			checked[indexCheck].getElementsByClassName('detail')[index].setAttribute('id' , 'detail['+index+']'+'.day');
+   			console.log(index);
+   			index++;
+   			// console.log(index);
+   		}
+   }  
 })
-
-/*----------------------------------------------------------------------------*/
