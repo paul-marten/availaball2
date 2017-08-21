@@ -470,15 +470,15 @@
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry" th:each="senin, iterStat : ${senin}" >
 												
-													<input hidden name="day[]" th:value= ${senin.day} class="detail">
+													<input hidden name="" value="senin" class="detail">
 													<select class="time" id="start_senin" name="starttime[]">
 														<option th:each="i : ${#numbers.sequence(6,24)}"
-															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
+															th:value="${'' + i}" th:text="${'' + i+ ':00'}"
 															th:selected="${ '' + i + ':00' == senin.startTime}" ></option>
 
 													</select> <select class="timed" id="end_senin" name="endtime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
-															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
+															th:value="${'' + i}" th:text="${'' + i+ ':00'}"
 															th:selected="${ '' + i + ':00' == senin.endTime}"></option>
 													</select>
 													<div class=" input-group " style="float: right">
@@ -553,13 +553,13 @@
 										</div>
 										<div class="selasa">
 
-<div th:if="${selasa} != null">
-<div th:attr="class=${#lists.size(selasa)}>=1? 'checked' " id="checked"> 
-<div class="entry" style="float: left; padding-left: 23px;"
+												<div th:if="${selasa} != null">
+												<div th:attr="class=${#lists.size(selasa)}>=1? 'checked' " id="checked"> 
+												<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_selasa" th:each="selasa , iterStat : ${selasa}">
 												
 
-												<input hidden name="day[]" th:value= ${selasa.day} class="detail">
+												<input hidden name="" value="selasa" class="detail">
 													<select class="time" id="start_selasa" name="starttime[]">
 
 														<option th:each="i: ${#numbers.sequence(6,24)}"
@@ -604,20 +604,20 @@
 												
 
 											
-												<input hidden name="day[]"  class="detail">
+												<input hidden name="" value="selasa" class="detail">
 												<select
 													class="time" id="start_selasa" disabled="disabled"
-													name="starttime[]">
+													name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'' + i+ ':00'}"></option>
 												</select> <select class="timed" id="end_selasa" disabled="disabled"
-													name="endtime[]">
+													name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
-															th:value="${'' + i+ ':00'}"></option>
+															th:value="${'' +i+ ':00'}"></option>
 												</select>
 													<div class=" input-group " style="float: right">
 														<label class="rp"> Rp </label> <input class="field-harga"
-															name="harga[0]" type="text" id="selasa-round"
+															name="" type="text" id="selasa-round"
 															placeholder="Harga" style="float: left"
 															disabled="disabled" disabled="disabled" />
 
@@ -658,7 +658,7 @@
 										<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_rabu" th:each="rabu, iterStat : ${rabu}">
 										
-												<input hidden name="day[]" th:value= ${rabu.day} class="detail">
+												<input hidden name="" value="rabu" class="detail">
 													<select class="time" id="start_rabu">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -695,22 +695,22 @@
 											</div>
 
 
-												<div th:unless="${#lists.size(rabu)}>0">
+												<div th:unless="${#lists.size(rabu)}>0" id="checked">
 												<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_rabu" >
-												<input hidden name="day[]"  class="detail" />
+												<input hidden name="" value="rabu" class="detail">
 													<select class="time" id="start_rabu" disabled="disabled"
-														name="starttime[]">
+														name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 													</select> <select class="timed" id="end_rabu" disabled="disabled"
-														name="endtime[]">
+														name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 													</select>
 													<div class=" input-group " style="float: right">
 														<label class="rp"> Rp </label> <input class="field-harga"
-															name="harga[0]" type="text" id="rabu-round"
+															name="" type="text" id="rabu-round"
 															placeholder="Harga" style="float: left"
 															disabled="disabled" />
 
@@ -747,7 +747,7 @@
 												id="entry_kamis" th:each="kamis, iterStat : ${kamis}">
 
 												
-												<input hidden name="day[]" th:value= ${kamis.day} class="detail">
+												<input hidden name="" value="kamis" class="detail">
 													<select class="time" id="start_kamis" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -782,19 +782,19 @@
 												<div th:unless="${#lists.size(kamis)}>0">
 												<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_kamis" >
-												<input hidden name="day[]"  class="detail" />
+												<input hidden name="" value="kamis" class="detail">
 													<select class="time" id="start_kamis" disabled="disabled"
-														name="starttime[]">
+														name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 													</select> <select class="timed" id="end_kamis" disabled="disabled"
-														name="endtime[]">
+														name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 													</select>
 													<div class=" input-group " style="float: right">
 														<label class="rp"> Rp </label> <input class="field-harga"
-															name="harga[0]" type="text" id="kamis-round"
+															name="" type="text" id="kamis-round"
 															placeholder="Harga" style="float: left"
 															disabled="disabled" />
 
@@ -837,7 +837,7 @@
 												id="entry_jumat" th:each="jumat, iterStat : ${jumat}" >
 
 												
-												<input hidden name="day[]" th:value= ${jumat.day} class="detail">
+												<input hidden name="" value="jumat" class="detail">
 													<select class="time" id="start_jumat" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -875,13 +875,13 @@
 												id="entry_jumat" >
 
 											
-													<input hidden name="day[]" class="detail">
+														<input hidden name="" value="jumat" class="detail">
 													<select class="time" id="start_jumat" disabled="disabled"
-														name="starttime[]">
+														name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 													</select> <select class="timed" id="end_jumat" disabled="disabled"
-														name="endtime[]">
+														name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 													</select>
@@ -920,7 +920,7 @@
 												id="entry_sabtu" th:each="sabtu, iterStat : ${sabtu}">
 
 											
-													<input hidden name="day[]" th:value= ${sabtu.day} class="detail">
+													<input hidden name="" value="sabtu" class="detail">
 													<select class="time" id="start_sabtu" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -957,19 +957,19 @@
 																	<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_sabtu" >
 
-													<input hidden name="day[]" class="detail">
+														<input hidden name="" value="sabtu" class="detail">
 													<select class="time" id="start_sabtu" disabled="disabled"
-														name="star ttime[]">
+														name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 													</select> <select class="timed" id="end_sabtu" disabled="disabled"
-														name="endtime[]">
+														name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 													</select>
 													<div class=" input-group " style="float: right">
 														<label class="rp"> Rp </label> <input class="field-harga"
-															name="harga[0]" type="text" id="sabtu-round"
+															name="" type="text" id="sabtu-round"
 															placeholder="Harga" style="float: left"
 															disabled="disabled" />
 														<button class="btn btn-success btn-add_7" type="button"
@@ -1004,7 +1004,8 @@
 											<div class="entry" style="float: left; padding-left: 23px;"
 												id="entry_minggu" th:each="minggu, iterStat : ${minggu}">
 												
-														<input hidden name="day[]" th:value= ${minggu.day} class="detail">
+
+														<input hidden name="" value="minggu" class="detail">
 													<select class="time" id="start_minggu" name="starttime[]">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"
@@ -1046,19 +1047,19 @@
 												
 											
 
-														<input hidden name="day[]" class="detail">
+													<input hidden name="" value="minggu" class="detail">
 													<select class="time" id="start_minggu" disabled="disabled"
-														name="starttime[]">
+														name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 													</select> <select class="timed" id="end_minggu" disabled="disabled"
-														name="endtime[]">
+														name="">
 														<option th:each="i: ${#numbers.sequence(6,24)}"
 															th:value="${'0' + i}" th:text="${'' + i+ ':00'}"></option>
 													</select>
 													<div class=" input-group " style="float: right">
 														<label class="rp"> Rp </label> <input class="field-harga"
-															name="harga[0]" type="text" id="minggu-round"
+															name="" type="text" id="minggu-round"
 															placeholder="Harga" style="float: left"
 															disabled="disabled" />
 														<button class="btn btn-success btn-add_8" type="button"

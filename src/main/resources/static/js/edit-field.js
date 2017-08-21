@@ -84,7 +84,7 @@ $(function()
             currentEntry = $(this).parents('.entry:first'),
             newEntry = $(currentEntry.clone()).appendTo(controlForm);
 
-        newEntry.find('input').val('');
+        newEntry.find('.field-harga').val('');
         controlForm.find('.entry:not(:last) .btn-add_2')
             .removeClass('btn-add_2').addClass('btn-remove')
             .removeClass('btn-success').addClass('btn-danger')
@@ -187,7 +187,7 @@ $(function()
 			            current_selasa = $(this).parents('.entry:first'),
 			            new_selasa = $(current_selasa.clone()).appendTo(Form2);
 	
-			        new_selasa.find('input').val('');
+			        new_selasa.find('.field-harga').val('');
 			        Form2.find('.entry:not(:last) .btn-add_3')
 			            .removeClass('btn-add_3').addClass('btn-remove')
 			            .removeClass('btn-success').addClass('btn-danger')
@@ -293,7 +293,7 @@ $(function()
 			            current_rabu = $(this).parents('.entry:first'),
 			            new_rabu = $(current_rabu.clone()).appendTo(Form3);
 	
-			        new_rabu.find('input').val('');
+			        new_rabu.find('.field-harga').val('');
 			        Form3.find('.entry:not(:last) .btn-add_4')
 			            .removeClass('btn-add_4').addClass('btn-remove')
 			            .removeClass('btn-success').addClass('btn-danger')
@@ -361,12 +361,15 @@ $(function()
 			                 $('#green-round_4').removeAttr('disabled');
 			                 $('#red-round_4').removeAttr('disabled');
 
+
+							/*$('.detail').attr('name','test');   */
 			    } else {
 			       
 			   			var Form3 = $('#entry_rabu :not(:last)'),
 			            current_rabu = $(this).parents('#entry_rabu :first'),
 			            new_rabu = $(Form3.clone()).appendTo(current_rabu);
-						console.log(Form3);
+						
+
 
 			         if ($('#entry_rabu :not(:last-child)')) {
 
@@ -400,7 +403,7 @@ $(function()
 			            current_kamis = $(this).parents('.entry:first'),
 			            new_kamis = $(current_kamis.clone()).appendTo(Form4);
 	
-			        new_kamis.find('input').val('');
+			        new_kamis.find('.field-harga').val('');
 			        Form4.find('.entry:not(:last) .btn-add_5')
 			            .removeClass('btn-add_5').addClass('btn-remove')
 			            .removeClass('btn-success').addClass('btn-danger')
@@ -504,7 +507,7 @@ $(function()
 			            current_jumat = $(this).parents('.entry:first'),
 			            new_jumat = $(current_jumat.clone()).appendTo(Form5);
 	
-			        new_jumat.find('input').val('');
+			        new_jumat.find('.field-harga').val('');
 			        Form5.find('.entry:not(:last) .btn-add_6')
 			            .removeClass('btn-add_6').addClass('btn-remove')
 			            .removeClass('btn-success').addClass('btn-danger')
@@ -611,7 +614,7 @@ $(function()
 			            current_sabtu = $(this).parents('.entry:first'),
 			            new_sabtu = $(current_sabtu.clone()).appendTo(Form5);
 	
-			        new_sabtu.find('input').val('');
+			        new_sabtu.find('.field-harga').val('');
 			        Form5.find('.entry:not(:last) .btn-add_7')
 			            .removeClass('btn-add_7').addClass('btn-remove')
 			            .removeClass('btn-success').addClass('btn-danger')
@@ -716,7 +719,7 @@ $(function()
 			            current_minggu = $(this).parents('.entry:first'),
 			            new_minggu = $(current_minggu.clone()).appendTo(Form6);
 	
-			        new_minggu.find('input').val('');
+			        new_minggu.find('.field-harga').val('');
 			        Form6.find('.entry:not(:last) .btn-add_8')
 			            .removeClass('btn-add_8').addClass('btn-remove')
 			            .removeClass('btn-success').addClass('btn-danger')
@@ -817,56 +820,7 @@ $(function()
 
 
 /*----------------------------------------------------------------------------*/
-/*$(document).ready(function(){
-$('input:checkbox').change(function(){
-    if($(this).is(":checked")) {
-      $(this).parent().addClass("checked");
-
-	$('.field-harga').each(function(index){
-	    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
-	     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
-	    index++;
-	    });
-	$('.time').each(function(index){
-	    $(this).attr('name','detail[' + (index ) + ']' + '.startTime');   
-	    $(this).attr('id','detail[' + (index ) + ']' + '.startTime');  
-	    index++;
-	    });
-	$('.timed').each(function(index){
-	    $(this).attr('name','detail[' + (index ) + ']' + '.endTime');   
-	    $(this).attr('id','detail[' + (index ) + ']' + '.endTime'); 
-	    index++;
-	    });
-	$('.detail').each(function(index){
-	    $(this).attr('name','detail[' + (index) + ']' + '.day');   
-	    $(this).attr('id','detail[' + (index ) + ']' + '.day'); 
-	    index++;
-	    });
-    } 
-else {
-        $(this).parent().removeClass("checked");
-        $('.detail').each(function(index){
-	    $('.detail').removeAttr('name','detail[' + (index) + ']' + '.day')  
-	   	$('.detail').removeAttr('id','detail[' + (index) + ']' + '.day')
-	    index++;
-    });
-    $('.field-harga').each(function(index){
-    $(this).removeAttr('name','detail[' + (index ) + ']' +'.price');   
-     $(this).removeAttr('id','detail[' + (index ) + ']' + '.price');  
-    index++;
-    });
-$('.time').each(function(index){
-    $(this).removeAttr('name','detail[' + (index ) + ']' + '.startTime');   
-    $(this).removeAttr('id','detail[' + (index ) + ']' + '.startTime');  
-    index++;
-    });
-$('.timed').each(function(index){
-    $(this).removeAttr('name','detail[' + (index ) + ']' + '.endTime');   
-    $(this).removeAttr('id','detail[' + (index ) + ']' + '.endTime'); 
-    index++;
-    }); 
-    }
-});
+/*
 
 /*var hasClass = element.classList.contains('checked');*/
 
@@ -876,23 +830,8 @@ $('.timed').each(function(index){
 //})
 
 $(document).ready(function(){
-   //  $('.checked').each(function(index){
-   //  $(".checked")[index].find("input .field-harga").each(function(index){
-	  //   $(this).attr('name','detail[' + (index ) + ']' +'.price');   
-	  //    $(this).attr('id','detail[' + (index ) + ']' + '.price');  
-	  //   index++;
-	  //   });
-   // });
    var index = 0;  
    var checked = document.getElementsByClassName("checked");
-   console.log(checked.length);
-   console.log(checked[0].getElementsByClassName("field-harga").length);
-   console.log("br");
-   console.log(checked[1].getElementsByClassName("field-harga").length);
-   console.log("br");
-   console.log(checked[2].getElementsByClassName("field-harga").length);
-   console.log("br");
-   console.log(checked[3].getElementsByClassName("field-harga").length);
    for(var indexCheck = 0; indexCheck < checked.length; indexCheck ++){
    		for(var indexChild = 0 ; indexChild < checked[indexCheck].getElementsByClassName("field-harga").length ; indexChild++){
    			 checked[indexCheck].getElementsByClassName('field-harga')[indexChild].setAttribute('name' , 'detail['+(index)+']'+'.price');
@@ -903,9 +842,27 @@ $(document).ready(function(){
    			checked[indexCheck].getElementsByClassName('timed')[indexChild].setAttribute('id' , 'detail['+index+']'+'.endTime');
    			checked[indexCheck].getElementsByClassName('detail')[indexChild].setAttribute('name' , 'detail['+index+']'+'.day');
    			checked[indexCheck].getElementsByClassName('detail')[index].setAttribute('id' , 'detail['+index+']'+'.day');
-   			console.log(index);
    			index++;
-   			// console.log(index);
    		}
    }  
+})
+
+
+
+
+
+$(document).on('change', 'input:checkbox', function(){
+
+// var cek=	$('label').next('div').find('#checked')
+// $('.field-harga').each(function(index){
+// 				    $(this).attr('name','detail[' + (index ) + ']' +'.price');   
+// 				     $(this).attr('id','detail[' + (index ) + ']' + '.price');  
+// 				    index++;
+// 				    });
+
+// 		if($(this).prop('checked' )){
+// 		$(cek).addClass('checked')	
+// 		}else{
+// 			$(cek).removeClass('checked')
+// 		}
 })

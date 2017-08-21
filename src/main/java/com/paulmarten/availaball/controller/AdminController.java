@@ -132,7 +132,7 @@ public class AdminController {
 		if (message.equals("Success")) {
 			message = detailPriceService.saveDetailPrice(futsalField);
 		}
-		return message;
+		return "redirect:/admin/index";
 	}
 
 	@RequestMapping(value = "/current-map/{id}")
